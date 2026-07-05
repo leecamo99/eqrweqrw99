@@ -1,6 +1,106 @@
 {
   "notebooks": [
     {
+      "id": "nb_1783271301368_019n",
+      "name": "test",
+      "date": "2026-07-05",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783271301368_019n_c0",
+          "title": "Chapter 1",
+          "text": "When the new hire has {{cleared}} the {{security}} vendor’s {{required}} {{background}} {{screening}} {{process}}, all {{security}} \nvendor {{personnel}} use {{Employee}} {{Central}} to create the {{position}} and {{onboard}} the new {{employee}}",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "cleared": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "security": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "required": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "background": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "screening": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "process": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "personnel": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "Employee": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "Central": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "position": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "onboard": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "employee": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        }
+      }
+    },
+    {
       "id": "nb_1783270408085_khfm",
       "name": "IMG_0032[2]",
       "date": "2026-07-05",
@@ -536,5 +636,5 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783270408086
+  "updatedAt": 1783271301369
 }
