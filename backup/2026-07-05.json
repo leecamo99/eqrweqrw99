@@ -1,6 +1,238 @@
 {
   "notebooks": [
     {
+      "id": "nb_1783276467121",
+      "name": "t1",
+      "date": "2026-07-05",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783276467121c0",
+          "title": "Chapter 1",
+          "text": "The {{following}} {{script}} is used for {{checking}} in {{visitors}} and {{anyone}} {{receiving}} a badge. {{Sections}} are {{numbered}}, \n{{bulleted}} items are {{things}} the {{CRS}} says {{during}} check-in, and {{lettered}} items {{require}} {{information}} from the \n{{person}}’s {{DCAT}} {{request}} to {{complete}}. \nSites may print and {{laminate}} (or store in a {{plastic}} {{binder}} {{sleeve}}) the {{script}} below and {{maintain}} a copy at \nthe {{CRS}} {{workstation}} for {{reference}}.",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "CRS": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c3"
+        },
+        "DCAT": {
+          "pos": "abbr.",
+          "tw": "DCAT 權限/訪客進出申請",
+          "tip": "依你文章情境理解",
+          "color": "c3"
+        },
+        "following": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "script": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "checking": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "visitors": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "anyone": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "receiving": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Sections": {
+          "pos": "n.",
+          "tw": "章節；段落",
+          "tip": "",
+          "color": "c1"
+        },
+        "numbered": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "bulleted": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "things": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "during": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lettered": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "require": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "information": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "person": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "request": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "complete": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "laminate": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "plastic": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "binder": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sleeve": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "maintain": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "workstation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "reference": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "used": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "badge": {
+          "pos": "n.",
+          "tw": "識別證；工作證",
+          "tip": "temporary badge = 臨時識別證",
+          "color": "c1"
+        },
+        "items": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "says": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "check-in": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Sites": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "print": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "store": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "below": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "copy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
       "id": "nb_1783271301368_019n",
       "name": "test",
       "date": "2026-07-05",
@@ -1098,7 +1330,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783275939492,
+  "updatedAt": 1783276491709,
   "learn": {
     "github": {
       "word": "github",
@@ -1135,6 +1367,30 @@
       "known": false,
       "dueAt": 1783279519121,
       "updatedAt": 1783275925085
+    },
+    "Sections": {
+      "word": "Sections",
+      "pos": "n.",
+      "tw": "章節；段落",
+      "tip": "",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783280076194,
+      "updatedAt": 1783276476194
+    },
+    "bulleted": {
+      "word": "bulleted",
+      "pos": "",
+      "tw": "（未建字義，請自行補充）",
+      "tip": "",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783278291709,
+      "updatedAt": 1783276487139
     }
   }
 }
