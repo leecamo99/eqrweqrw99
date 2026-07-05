@@ -1330,7 +1330,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783280282416,
+  "updatedAt": 1783280353007,
   "learn": {
     "github": {
       "word": "github",
@@ -1408,6 +1408,26 @@
         "bulleted": 2
       },
       "lastSurface": "bulleted",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "approve": {
+      "word": "approve",
+      "lemma": "approve",
+      "pos": "verb",
+      "tw": "核准",
+      "tip": "Auto translated by MyMemory｜To sanction officially; to ratify; to confirm; to set as satisfactory.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283951328,
+      "updatedAt": 1783280353006,
+      "variants": {
+        "approved": 1
+      },
+      "lastSurface": "approved",
       "lastForm": "-ed / past participle",
       "engine": "MyMemory",
       "loading": false
