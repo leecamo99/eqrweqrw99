@@ -15,4 +15,160 @@
 <script>
 const STORE='notebook_platform_v3',SYNC='notebook_sync_v3';let db,cur=null,dirty=false,stimer=null,dtimer=null,lastSync=0,flashQueue=[],flashCurrent=null;const REVIEW_MS=10*60*1000,DEFAULT_DUE=60*60*1000;const MEAN={security:['n.','安全；保全','security vendor = 保全廠商'],vendor:['n.','供應商；廠商','security vendor = 保全廠商'],personnel:['n.','人員','vendor personnel = 廠商人員'],support:['n./v.','支援；支援團隊','support team = 支援團隊'],team:['n.','團隊',''],teams:['n.','團隊',''],coordinates:['v.','協調；安排','coordinate 的第三人稱單數'],coordinate:['v.','協調；安排',''],addition:['n.','新增；增加','addition of permissions = 權限新增'],deletion:['n.','刪除','deletion of permissions = 權限刪除'],necessary:['adj.','必要的','as necessary = 視需要'],position:['n.','職位；位置','new position = 新職位'],working:['v./adj.','合作；運作中的','working with = 與…合作'],technology:['n.','技術；科技','technology support team'],employee:['n.','員工',''],transition:['n./v.','轉換；交接；異動','employee transition process = 員工異動流程'],processes:['n.','流程；程序','process 的複數'],obtain:['v.','取得；獲得','obtain access = 取得權限'],systems:['n.','系統','system 的複數'],ensure:['v.','確保','ensure + 子句'],correctly:['adv.','正確地','set up correctly = 正確設定'],questions:['n.','問題',''],corrections:['n.','修正；更正','make corrections = 進行修正'],email:['n./v.','電子郵件；寄信',''],badge:['n.','識別證；工作證','temporary badge = 臨時識別證'],temporary:['adj.','臨時的；暫時的',''],visible:['adj.','可見的','keep it visible'],return:['v.','歸還；返回',''],leaving:['v.','離開','before + V-ing'],approved:['adj./v.','已核准；批准',''],permission:['n.','權限；許可',''],permissions:['n.','權限；許可',''],specific:['adj.','具體的；明確的',''],explain:['v.','說明；解釋',''],state:['v.','陳述；告知',''],photography:['n.','攝影；拍照',''],includes:['v.','包含',''],including:['prep.','包括',''],recording:['n./v.','錄製；記錄',''],escort:['n./v.','陪同；陪同員','escort policy = 陪同政策'],escorted:['adj./v.','被陪同的',''],supervision:['n.','監督','direct supervision = 直接監督'],assigned:['adj.','被指派的',''],instructions:['n.','指示；說明',''],access:['n./v.','權限；存取；進入',''],facility:['n.','設施；場館',''],swipe:['v./n.','刷卡','swipe your badge'],flashes:['v.','閃爍',''],proceed:['v.','前進；繼續',''],unless:['conj.','除非',''],process:['n.','流程；程序',''],emergency:['n.','緊急狀況',''],exists:['v.','存在；發生',''],applicable:['adj.','適用的','if applicable'],individual:['n.','個人；人員',''],individuals:['n.','人員；個人',''],expires:['v.','到期；失效',''],expiration:['n.','到期；有效期限',''],encounter:['v.','遇到；遭遇',''],issues:['n.','問題；狀況',''],section:['n.','章節；段落',''],patrolling:['n./v.','巡邏',''],DBD:['abbr.','資料承載裝置','Data Bearing Device'],DBDs:['abbr.','資料承載裝置','Data Bearing Devices'],MDF:['abbr.','主配線架','Main Distribution Frame'],MDFs:['abbr.','主配線架',''],ITPAC:['abbr.','資訊技術預組裝設備',''],ITPACs:['abbr.','資訊技術預組裝設備',''],AZ:['abbr.','可用區','Availability Zone'],USB:['abbr.','USB',''],DCAT:['abbr.','DCAT 權限/訪客進出申請','依你文章情境理解'],'personal items':['n.','個人物品',''],'allowed in':['phr.','被允許進入','be allowed in + 地點'],'such as':['phr.','例如',''],'data halls':['n.','資料機房',''],'availability zones':['n.','可用區',''],'secure storage':['n.','安全儲存區',''],'high value asset':['n.','高價值資產',''],'staging areas':['n.','整備區；暫存區',''],'permission levels':['n.','權限等級',''],'not permitted to':['phr.','不被允許做…',''],'live streaming':['n.','直播串流',''],'still images':['n.','靜態影像',''],'mobile equipment':['n.','行動設備',''],'refer to':['phr.','參照；參閱',''],'on foot':['phr.','徒步',''],'production environment':['n.','生產環境；正式營運區域',''],'door policy':['n.','門禁政策',''],'one swipe one entry':['phr.','一刷一進',''],'wait for':['phr.','等待…',''],'card reader':['n.','讀卡機',''],'in accordance with':['phr.','依照；按照',''],'emergency exit door':['n.','緊急出口門',''],'at all times':['phr.','隨時；任何時候',''],'security office':['n.','警衛室；保全辦公室','']};const PHRASES=['in accordance with','not permitted to','one swipe one entry','personal items','allowed in','such as','data halls','availability zones','secure storage','high value asset','staging areas','permission levels','live streaming','still images','mobile equipment','refer to','on foot','production environment','door policy','wait for','card reader','emergency exit door','at all times','security office'];const STOP=new Set('a an the and or of to in on at is are was were be been being do does did have has had you your it its this that these those for with by from as if then must may can will not no yes we our they their he she his her him them i me my before after all any this that here'.split(' '));let sync={token:'',owner:'leecamo99',repo:'eqrweqrw99',branch:'main',path:'backup/latest.json',interval:10,autoLoad:true,daily:true};function esc(s){return String(s||'').replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]))}function norm(){db=db||{};db.notebooks=db.notebooks||[];db.learn=db.learn||{};db.dark=!!db.dark;db.updatedAt=db.updatedAt||Date.now()}function load(){try{db=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){db={}}norm();Object.assign(sync,JSON.parse(localStorage.getItem(SYNC)||'{}'));if(db.dark)document.body.classList.add('dark')}function save(){norm();db.updatedAt=Date.now();localStorage.setItem(STORE,JSON.stringify(db));dirty=true;render();syncText();if(sync.token&&sync.interval>0){clearTimeout(dtimer);dtimer=setTimeout(()=>cloudUpload(false),30000)}}function meaning(w){let k=w.trim(),lk=k.toLowerCase();if(MEAN[k])return MEAN[k];for(let[a,v]of Object.entries(MEAN))if(a.toLowerCase()==lk)return v;let forms=[];if(lk.endsWith('ies'))forms.push(lk.slice(0,-3)+'y');if(lk.endsWith('ing'))forms.push(lk.slice(0,-3),lk.slice(0,-3)+'e');if(lk.endsWith('ed'))forms.push(lk.slice(0,-2),lk.slice(0,-1));if(lk.endsWith('s'))forms.push(lk.slice(0,-1));for(let f of forms)for(let[a,v]of Object.entries(MEAN))if(a.toLowerCase()==f)return v;return ['','（未建字義，請自行補充）','']}function ensureLearn(w){norm();w=w.trim();if(!db.learn[w]){let m=meaning(w);db.learn[w]={word:w,pos:m[0],tw:m[1],tip:m[2],clicks:0,strength:0,captured:false,known:false,dueAt:0,updatedAt:Date.now()}}return db.learn[w]}function clickWord(w){let x=ensureLearn(w);x.clicks++;x.strength=Math.min(10,x.strength+1);x.captured=true;x.known=false;if(!x.dueAt)x.dueAt=Date.now()+DEFAULT_DUE;x.updatedAt=Date.now();localStorage.setItem(STORE,JSON.stringify(db));showWord(w);applyIntensity();renderCapture();dirty=true;syncText()}function known(w){let x=ensureLearn(w);x.clicks=0;x.strength=0;x.captured=false;x.known=true;x.dueAt=0;x.updatedAt=Date.now();save();showWord(w)}function hard(w){let x=ensureLearn(w);x.clicks+=2;x.strength=Math.min(10,x.strength+2);x.captured=true;x.known=false;x.dueAt=Date.now()+30*60*1000;save()}function markText(t,nb){t=t.replace(/\{\{|\}\}/g,'');for(let p of PHRASES){let re=new RegExp('\\b'+p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','gi');t=t.replace(re,m=>{addMark(nb,m,'c2');return '{{'+m+'}}'})}t=t.replace(/\b[A-Z]{2,}s?\b/g,m=>{if(t.includes('{{'+m+'}}'))return m;addMark(nb,m,'c3');return '{{'+m+'}}'});t=t.replace(/\b[a-zA-Z]{6,}\b/g,m=>{if(t.includes('{{'+m+'}}')||STOP.has(m.toLowerCase()))return m;addMark(nb,m,'c1');return '{{'+m+'}}'});return t}function addMark(nb,k,c){if(!nb.marks[k]){let m=meaning(k);nb.marks[k]={pos:m[0],tw:m[1],tip:m[2],color:c}}}function render(){norm();renderSide();renderView();setTimeout(()=>{applyIntensity();renderCapture()},0)}function renderSide(){nblist.innerHTML=db.notebooks.length?db.notebooks.map(n=>`<div class="nb ${n.id==cur?'active':''}" onclick="cur='${n.id}';render()"><button class="del" onclick="event.stopPropagation();delNB('${n.id}')">×</button><b>${esc(n.name)}</b><br><small>${n.date} · ${n.cards.length} 段 · ${Object.values(db.learn).filter(x=>x.captured&&!x.known).length} 捕獲</small></div>`).join(''):'<p style="font-size:12px;color:#bfb5a0">尚無筆記本</p>'}function renderView(){let nb=db.notebooks.find(x=>x.id==cur);if(!nb){view.innerHTML='<div style="text-align:center;color:var(--muted);padding:60px">開始 OCR、貼上文字或新增空白筆記</div>';return}view.innerHTML=`<div id="head">${nb.thumb?`<img src="${nb.thumb}">`:''}<input value="${esc(nb.name)}" onchange="nbName('${nb.id}',this.value)"></div><div>${nb.cards.map(c=>cardHTML(nb,c)).join('')}<button class="btn" onclick="addCard('${nb.id}')">新增段落</button></div>`}function cardHTML(nb,c){return `<section class="card" data-cid="${c.id}"><h3><input value="${esc(c.title)}" onchange="cardTitle('${c.id}',this.value)"> <button class="btn" onclick="delCard('${c.id}')">刪除</button></h3><div class="en">${renderText(c.text,nb)}</div><aside class="note"><h4>STUDY NOTES</h4><ul class="vocab">${Object.keys(nb.marks).map(k=>`<li class="vocabItem" data-vocab="${esc(k)}">${esc(k)} <small>${esc(nb.marks[k].tw||'')}</small></li>`).join('')}</ul><div class="mynote" contenteditable oninput="note('${c.id}',this.innerText)">${esc(c.myNote||'')}</div></aside></section>`}function renderText(text,nb){return text.split('\n').map(line=>'<p>'+renderLine(line,nb)+'</p>').join('')}function renderLine(line,nb){let out='',last=0,re=/\{\{(.+?)\}\}/g,m;while((m=re.exec(line))){out+=wrapPlain(line.slice(last,m.index),nb);let k=m[1];addMark(nb,k,'c1');out+=`<span class="mark" data-key="${esc(k)}">${esc(k)}</span>`;last=re.lastIndex}out+=wrapPlain(line.slice(last),nb);return out}function wrapPlain(chunk,nb){return esc(chunk).replace(/\b[A-Za-z][A-Za-z'’-]{3,}\b/g,function(w){let clean=w.replace(/[’']/g,"'"),base=clean.toLowerCase();if(STOP.has(base))return w;addMark(nb,clean,'c1');return `<span class="mark" data-key="${esc(clean)}">${esc(w)}</span>`})}function applyIntensity(){document.querySelectorAll('.mark').forEach(e=>{let k=e.dataset.key,w=db.learn[k];for(let i=1;i<=10;i++)e.classList.remove('i'+i);if(w)e.classList.add('i'+Math.min(10,w.strength||0))})}function showWord(w){let x=ensureLearn(w);dockBody.innerHTML=`<div class="wordbig">${esc(x.word)}</div><div style="color:var(--muted)">${esc(x.pos)} · 點擊 ${x.clicks} 次 · 亮度 ${x.strength}/10</div><div class="meaning">${esc(x.tw)}</div><div style="color:var(--muted)">${esc(x.tip)}</div><button class="btn" onclick="known('${esc(w)}')">已熟，歸零</button><button class="btn" onclick="hard('${esc(w)}')">還不熟</button><button class="btn" onclick="dock.classList.remove('show')">關閉</button>`;dock.classList.add('show')}function renderCapture(){let arr=Object.values(db.learn||{}).filter(x=>x.captured&&!x.known).sort((a,b)=>b.clicks-a.clicks);capBody.innerHTML=arr.length?arr.map(x=>`<div class="capitem" data-cap="${esc(x.word)}"><span>${esc(x.word)}<br><small>${esc(x.tw)}</small></span><b>${x.clicks}</b></div>`).join(''):'<p style="color:var(--muted)">目前沒有捕獲單字。</p>'}function toggleCapture(){renderCapture();capture.classList.toggle('show')}function due(){let now=Date.now();return Object.values(db.learn||{}).filter(x=>x.captured&&!x.known&&x.dueAt&&x.dueAt<=now).sort((a,b)=>b.clicks-a.clicks)}function startFlash(force){flashQueue=force?Object.values(db.learn||{}).filter(x=>x.captured&&!x.known).sort((a,b)=>b.clicks-a.clicks):due();if(!flashQueue.length){if(force)alert('目前沒有需要複習的捕獲單字。');return}nextFlash()}function nextFlash(){flashCurrent=flashQueue.shift();if(!flashCurrent){flash.classList.remove('show');return}flashQ.textContent=flashCurrent.word;flashMeta.textContent=`點擊 ${flashCurrent.clicks} 次 · 先想中文，再看答案`;flashA.innerHTML=`<b>${esc(flashCurrent.pos)}</b> ${esc(flashCurrent.tw)}<br><small>${esc(flashCurrent.tip)}</small>`;flashA.classList.remove('show');flash.classList.add('show')}function flashHard(){if(flashCurrent)hard(flashCurrent.word);nextFlash()}function flashKnown(){if(flashCurrent)known(flashCurrent.word);nextFlash()}document.addEventListener('click',e=>{let m=e.target.closest('.mark');if(m&&m.dataset.key){clickWord(m.dataset.key);return}let v=e.target.closest('.vocabItem');if(v&&v.dataset.vocab){clickWord(v.dataset.vocab);return}let c=e.target.closest('.capitem');if(c&&c.dataset.cap){showWord(c.dataset.cap);return}});
 function createNB(name,text,thumb=''){let id='nb_'+Date.now();let nb={id,name:name||'未命名',date:new Date().toISOString().slice(0,10),thumb,cards:[],marks:{}};(text.split(/\n\s*\n/).filter(x=>x.trim()).length?text.split(/\n\s*\n/).filter(x=>x.trim()):['(空白)']).forEach((p,i)=>nb.cards.push({id:id+'c'+i,title:'Chapter '+(i+1),text:markText(p.trim(),nb),myNote:''}));db.notebooks.unshift(nb);cur=id;save()}function createBlank(){let n=prompt('筆記本名稱','新筆記本');if(n)createNB(n,'(貼上英文內容)')}function openPaste(){pname.value='';pasteText.value='';pasteModal.classList.add('show')}function createFromPaste(){if(!pasteText.value.trim())return alert('請貼上內容');createNB(pname.value||'貼上筆記',pasteText.value.trim());pasteModal.classList.remove('show')}function nbName(id,v){db.notebooks.find(x=>x.id==id).name=v;save()}function cardTitle(id,v){let c=db.notebooks.flatMap(n=>n.cards).find(c=>c.id==id);c.title=v;save()}function note(id,v){let c=db.notebooks.flatMap(n=>n.cards).find(c=>c.id==id);c.myNote=v;save()}function addCard(id){let nb=db.notebooks.find(x=>x.id==id),t=prompt('貼上英文','');if(t!==null){nb.cards.push({id:id+'c'+Date.now(),title:'New Chapter',text:markText(t,nb),myNote:''});save()}}function delCard(id){db.notebooks.forEach(n=>n.cards=n.cards.filter(c=>c.id!=id));save()}function delNB(id){if(confirm('刪除筆記本？')){db.notebooks=db.notebooks.filter(n=>n.id!=id);cur=db.notebooks[0]?.id||null;save()}}function toggleDark(){db.dark=!db.dark;document.body.classList.toggle('dark',db.dark);save()}function resetAll(){if(confirm('清空本機資料？')){db={notebooks:[],learn:{},dark:false,updatedAt:Date.now()};cur=null;save()}}async function handleFiles(files){progress.classList.add('show');for(let file of files){try{ptext2('讀取圖片…',5);let img=await loadImg(file),thumb=thumbOf(img),ocr=ocrImg(img);ptext2('載入 OCR…',10);let worker=await Tesseract.createWorker(ocrLang.value,1,{logger:m=>{if(m.status==='recognizing text')ptext2('辨識中 '+Math.round(m.progress*100)+'%',15+m.progress*80)}});let r=await worker.recognize(ocr);await worker.terminate();let txt=(r.data.text||'').replace(/[ \t]+/g,' ').replace(/\n{3,}/g,'\n\n').trim();ptext2('完成：'+txt.replace(/\s/g,'').length+' 字元',100);createNB(file.name.replace(/\.[^.]+$/,''),txt||'(辨識結果為空)',thumb)}catch(e){ptext2('錯誤：'+e.message,0)}}setTimeout(()=>progress.classList.remove('show'),1800)}function ptext2(t,p){pbar.style.width=p+'%';progressText.textContent=t}function loadImg(f){return new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>{let i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=r.result};r.readAsDataURL(f)})}function thumbOf(i){let c=document.createElement('canvas'),m=200,s=Math.min(1,m/Math.max(i.width,i.height));c.width=i.width*s;c.height=i.height*s;c.getContext('2d').drawImage(i,0,0,c.width,c.height);return c.toDataURL('image/jpeg',.75)}function ocrImg(i){let c=document.createElement('canvas'),m=2400,s=Math.min(1,m/Math.max(i.width,i.height));c.width=Math.round(i.width*s);c.height=Math.round(i.height*s);let x=c.getContext('2d');x.drawImage(i,0,0,c.width,c.height);let d=x.getImageData(0,0,c.width,c.height),p=d.data;for(let j=0;j<p.length;j+=4){let v=.299*p[j]+.587*p[j+1]+.114*p[j+2];if(prepContrast.checked)v=Math.max(0,Math.min(255,((v/255-.5)*1.35+.5)*255));if(prepBinary.checked)v=v>160?255:0;if(prepGray.checked||prepContrast.checked||prepBinary.checked)p[j]=p[j+1]=p[j+2]=v}x.putImageData(d,0,0);return c.toDataURL('image/jpeg',.92)}function b64e(s){return btoa(unescape(encodeURIComponent(s)))}function b64d(s){return decodeURIComponent(escape(atob(s)))}function syncText(){if(!sync.token){syncTextEl('尚未設定雲端同步','warn');return}if(dirty)syncTextEl('有變動，待同步…','warn');else syncTextEl(lastSync?'已同步 '+Math.max(0,Math.floor((Date.now()-lastSync)/60000))+' 分前':'已設定，尚未同步','ok')}function syncTextEl(t,c){syncText.textContent=t;syncText.className=c}async function ghGet(path){let r=await fetch(`https://api.github.com/repos/${sync.owner}/${sync.repo}/contents/${path}?ref=${sync.branch}`,{headers:{Authorization:'Bearer '+sync.token,Accept:'application/vnd.github+json'}});if(r.status===404)return null;if(!r.ok)throw new Error(r.status+' '+await r.text());return r.json()}async function ghPut(path,content,msg,sha){let body={message:msg,content:b64e(content),branch:sync.branch};if(sha)body.sha=sha;let r=await fetch(`https://api.github.com/repos/${sync.owner}/${sync.repo}/contents/${path}`,{method:'PUT',headers:{Authorization:'Bearer '+sync.token,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw new Error(r.status+' '+await r.text());return r.json()}async function cloudUpload(manual){if(!sync.token){if(manual)alert('請先設定同步');return}try{norm();let ex=await ghGet(sync.path),sha=ex?.sha;await ghPut(sync.path,JSON.stringify(db,null,2),'auto-sync '+new Date().toISOString(),sha);dirty=false;lastSync=Date.now();syncText();if(sync.daily){let day=new Date().toISOString().slice(0,10),sp='backup/'+day+'.json',e=await ghGet(sp);await ghPut(sp,JSON.stringify(db,null,2),'daily snapshot '+day,e?.sha)}if(manual)alert('已上傳')}catch(e){syncTextEl('上傳失敗','err');if(manual)alert('上傳失敗：'+e.message.slice(0,200))}}async function cloudDownload(manual){if(!sync.token){if(manual)alert('請先設定同步');return}try{let ex=await ghGet(sync.path);if(!ex){if(manual)alert('雲端尚無資料');return}let remote=JSON.parse(b64d(ex.content));db=remote;norm();cur=db.notebooks[0]?.id||null;localStorage.setItem(STORE,JSON.stringify(db));dirty=false;lastSync=Date.now();render();syncText();if(manual)alert('已載入雲端資料')}catch(e){if(manual)alert('載入失敗：'+e.message.slice(0,200))}}function openSync(){sToken.value=sync.token;sOwner.value=sync.owner;sRepo.value=sync.repo;sBranch.value=sync.branch;sPath.value=sync.path;sInterval.value=sync.interval;sAutoLoad.checked=sync.autoLoad;sDaily.checked=sync.daily;syncModal.classList.add('show')}async function saveSync(){sync={token:sToken.value.trim(),owner:sOwner.value.trim(),repo:sRepo.value.trim(),branch:sBranch.value.trim()||'main',path:sPath.value.trim()||'backup/latest.json',interval:+sInterval.value,autoLoad:sAutoLoad.checked,daily:sDaily.checked};localStorage.setItem(SYNC,JSON.stringify(sync));try{let r=await fetch(`https://api.github.com/repos/${sync.owner}/${sync.repo}`,{headers:{Authorization:'Bearer '+sync.token,Accept:'application/vnd.github+json'}});if(!r.ok)throw new Error(r.status);syncModal.classList.remove('show');alert('連線成功');schedule();syncText();dirty=true}catch(e){alert('連線失敗：'+e.message)}}function clearSync(){localStorage.removeItem(SYNC);sync={token:'',owner:'leecamo99',repo:'eqrweqrw99',branch:'main',path:'backup/latest.json',interval:10,autoLoad:true,daily:true};syncText()}function schedule(){if(stimer)clearInterval(stimer);if(sync.token&&sync.interval>0)stimer=setInterval(()=>{if(dirty)cloudUpload(false)},sync.interval*60000)}function exportAll(){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:'application/json'}));a.download='notebook_'+new Date().toISOString().slice(0,10)+'.json';a.click()}function importAll(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{db=JSON.parse(r.result);norm();cur=db.notebooks[0]?.id||null;save()}catch(err){alert('格式錯誤')}};r.readAsText(f)}load();cur=db.notebooks[0]?.id||null;render();syncText();schedule();if(sync.token&&sync.autoLoad)cloudDownload(false);setInterval(()=>startFlash(false),REVIEW_MS);
-</script></body></html>
+</script>
+<script>
+/* Lemma Smart Capture + Lazy Translation Patch v20260705-1
+   - Click word -> normalize to lemma -> capture by lemma
+   - Auto translate the lemma with free MyMemory API only when clicked and missing meaning
+   - Fetch English POS/definition from Free Dictionary API as optional fallback
+   - Keep variants: approved/approving/approves are counted under approve
+*/
+(function(){
+  const STORE = 'notebook_platform_v3';
+  const FORM_DELAY = 60*60*1000;
+  const COMMON_LEMMAS = new Set([
+    'approve','include','record','leave','make','take','provide','complete','assign','permit','escort','allow','require','explain','state','refer','enter','proceed','remain','follow','return','expire','encounter','support','coordinate','delete','add','obtain','ensure','correct','work','stream','patrol','issue','process','access','flash','use','close','open','carry','copy','create','update','sync','translate','learn','capture','review'
+  ]);
+  const IRREGULAR = {
+    has:'have', had:'have', having:'have',
+    was:'be', were:'be', been:'be', being:'be', is:'be', are:'be', am:'be',
+    does:'do', did:'do', done:'do', doing:'do',
+    went:'go', gone:'go', going:'go',
+    made:'make', making:'make',
+    took:'take', taken:'take', taking:'take',
+    gave:'give', given:'give', giving:'give',
+    wrote:'write', written:'write', writing:'write',
+    saw:'see', seen:'see', seeing:'see'
+  };
+  function getDB(){let d={};try{d=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){};return normalize(d);}
+  function setDB(d){d=normalize(d);localStorage.setItem(STORE,JSON.stringify(d));}
+  function normalize(d){d=d||{};d.notebooks=d.notebooks||[];d.learn=d.learn||{};d.dark=!!d.dark;d.updatedAt=d.updatedAt||Date.now();return d;}
+  function esc(s){return String(s||'').replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));}
+  function lemmatize(surface){
+    let original = String(surface||'').trim();
+    let w = original.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g,'');
+    if(!w) return {surface:original, lemma:original, form:'unknown'};
+    if(IRREGULAR[w]) return {surface:original, lemma:IRREGULAR[w], form:'irregular form'};
+    if(w.endsWith('ies') && w.length>4) return {surface:original, lemma:w.slice(0,-3)+'y', form:'plural / 3rd person -ies'};
+    if(w.endsWith('ves') && w.length>4) return {surface:original, lemma:w.slice(0,-3)+'f', form:'plural -ves'};
+    if(w.endsWith('ing') && w.length>5){
+      let root=w.slice(0,-3);
+      let withE=root+'e';
+      if(COMMON_LEMMAS.has(withE)) return {surface:original, lemma:withE, form:'-ing form'};
+      if(root.length>=3 && root[root.length-1]===root[root.length-2]) root=root.slice(0,-1);
+      return {surface:original, lemma:root, form:'-ing form'};
+    }
+    if(w.endsWith('ied') && w.length>4) return {surface:original, lemma:w.slice(0,-3)+'y', form:'-ed / past participle'};
+    if(w.endsWith('ed') && w.length>4){
+      let root=w.slice(0,-2);
+      let withE=root+'e';
+      if(COMMON_LEMMAS.has(withE)) return {surface:original, lemma:withE, form:'-ed / past participle'};
+      if(root.length>=3 && root[root.length-1]===root[root.length-2]) root=root.slice(0,-1);
+      return {surface:original, lemma:root, form:'-ed / past participle'};
+    }
+    if(w.endsWith('es') && w.length>4){
+      let root=w.slice(0,-2);
+      let withE=w.slice(0,-1); // includes -> include, uses -> use
+      if(COMMON_LEMMAS.has(withE)) return {surface:original, lemma:withE, form:'plural / 3rd person -es'};
+      return {surface:original, lemma:root, form:'plural / 3rd person -es'};
+    }
+    if(w.endsWith('s') && w.length>3) return {surface:original, lemma:w.slice(0,-1), form:'plural / 3rd person -s'};
+    return {surface:original, lemma:w, form:'base form'};
+  }
+  function localMeaning(lemma){
+    try{
+      if(typeof window.meaning === 'function'){
+        const m = window.meaning(lemma);
+        if(Array.isArray(m)) return {pos:m[0]||'', tw:m[1]||'', tip:m[2]||''};
+      }
+    }catch(e){}
+    return {pos:'', tw:'', tip:''};
+  }
+  function ensureLemma(surface){
+    const info=lemmatize(surface);
+    const db=getDB();
+    const key=info.lemma;
+    if(!db.learn[key]){
+      const lm=localMeaning(key);
+      db.learn[key]={word:key, lemma:key, pos:lm.pos||'', tw:lm.tw||'（未建字義，點擊後自動查詢）', tip:lm.tip||'', clicks:0, strength:0, captured:false, known:false, dueAt:0, updatedAt:Date.now(), variants:{}, lastSurface:info.surface, lastForm:info.form, auto:false};
+    }
+    const x=db.learn[key];
+    x.lemma=key; x.word=key; x.lastSurface=info.surface; x.lastForm=info.form; x.variants=x.variants||{};
+    if(info.surface) x.variants[info.surface]=(x.variants[info.surface]||0)+1;
+    setDB(db);
+    return {db,x,info,key};
+  }
+  async function autoTranslateLemma(key){
+    const db=getDB();
+    const x=db.learn[key];
+    if(!x) return;
+    if(x.loading) return;
+    if(x.tw && !String(x.tw).includes('未建') && !String(x.tw).includes('查詢中')) return;
+    x.loading=true; x.tw='查詢中...'; x.updatedAt=Date.now(); setDB(db); showWordPatched(key);
+    let tw='', pos=x.pos||'', tip=x.tip||'';
+    try{
+      const url='https://api.mymemory.translated.net/get?'+new URLSearchParams({q:key,langpair:'en|zh-TW'}).toString();
+      const res=await fetch(url);
+      const data=await res.json();
+      tw=(data&&data.responseData&&data.responseData.translatedText)||'';
+      if(!tw || tw.toLowerCase()===key.toLowerCase()) tw='（查不到翻譯，請稍後補充）';
+      tip = tip || 'Auto translated by MyMemory';
+    }catch(e){
+      tw='（翻譯 API 暫時失敗）'; tip='MyMemory API error';
+    }
+    try{
+      if(!pos || !tip || tip==='Auto translated by MyMemory'){
+        const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(key));
+        if(r.ok){
+          const jd=await r.json();
+          const m=jd&&jd[0]&&jd[0].meanings&&jd[0].meanings[0];
+          if(m){ pos=pos||m.partOfSpeech||''; const def=m.definitions&&m.definitions[0]&&m.definitions[0].definition; if(def) tip=(tip?tip+'｜':'')+def; }
+        }
+      }
+    }catch(e){}
+    const db2=getDB();
+    if(db2.learn[key]){db2.learn[key].tw=tw; db2.learn[key].pos=pos; db2.learn[key].tip=tip; db2.learn[key].loading=false; db2.learn[key].auto=true; db2.learn[key].updatedAt=Date.now(); setDB(db2);}
+    if(typeof window.renderCapture==='function') try{window.renderCapture()}catch(e){}
+    if(typeof window.applyIntensity==='function') try{window.applyIntensity()}catch(e){}
+    showWordPatched(key);
+    if(typeof window.save==='function') try{window.save()}catch(e){}
+  }
+  function showWordPatched(surfaceOrLemma){
+    const info=lemmatize(surfaceOrLemma);
+    const db=getDB();
+    const x=db.learn[info.lemma] || db.learn[surfaceOrLemma];
+    if(!x) return;
+    const variants=Object.entries(x.variants||{}).sort((a,b)=>b[1]-a[1]).map(([k,v])=>esc(k)+' ×'+v).join(', ');
+    if(!document.getElementById('dockBody')) return;
+    dockBody.innerHTML=`<div class="wordbig">${esc(x.lastSurface||surfaceOrLemma)}</div><div style="color:var(--muted)">原形：<b>${esc(x.lemma||x.word)}</b> · ${esc(x.pos||'')} · 點擊 ${x.clicks||0} 次 · 亮度 ${x.strength||0}/10</div><div style="color:var(--muted)">型態：${esc(x.lastForm||'base form')}</div><div class="meaning">${esc(x.tw||'')}</div><div style="color:var(--muted)">${esc(x.tip||'')}</div><div style="font-size:12px;color:var(--muted);margin-top:6px">變形：${variants||'—'}</div><button class="btn" onclick="known('${esc(x.lemma||x.word)}')">已熟，歸零</button><button class="btn" onclick="hard('${esc(x.lemma||x.word)}')">還不熟</button><button class="btn" onclick="dock.classList.remove('show')">關閉</button>`;
+    dock.classList.add('show');
+  }
+  const oldClick=window.clickWord;
+  window.clickWord=function(surface){
+    const {x,info,key}=ensureLemma(surface);
+    x.clicks=(x.clicks||0)+1; x.strength=Math.min(10,(x.strength||0)+1); x.captured=true; x.known=false; if(!x.dueAt)x.dueAt=Date.now()+FORM_DELAY; x.updatedAt=Date.now();
+    const db=getDB(); db.learn[key]=x; setDB(db);
+    showWordPatched(key);
+    if(typeof window.applyIntensity==='function') try{window.applyIntensity()}catch(e){}
+    if(typeof window.renderCapture==='function') try{window.renderCapture()}catch(e){}
+    if(!x.tw || String(x.tw).includes('未建') || String(x.tw).includes('查詢中')) autoTranslateLemma(key);
+    if(typeof window.save==='function') try{window.save()}catch(e){}
+  };
+  const oldEnsure=window.ensureLearn;
+  window.ensureLearn=function(surface){return ensureLemma(surface).x;};
+  const oldShow=window.showWord;
+  window.showWord=function(surface){showWordPatched(surface);};
+  const oldKnown=window.known;
+  window.known=function(surface){const key=lemmatize(surface).lemma;const db=getDB();if(db.learn[key]){db.learn[key].clicks=0;db.learn[key].strength=0;db.learn[key].captured=false;db.learn[key].known=true;db.learn[key].dueAt=0;db.learn[key].updatedAt=Date.now();setDB(db);}if(typeof window.applyIntensity==='function')try{window.applyIntensity()}catch(e){};if(typeof window.renderCapture==='function')try{window.renderCapture()}catch(e){};showWordPatched(key);if(typeof window.save==='function')try{window.save()}catch(e){}};
+  const oldHard=window.hard;
+  window.hard=function(surface){const key=lemmatize(surface).lemma;const db=getDB();if(!db.learn[key]) ensureLemma(surface);const d=getDB();const x=d.learn[key];x.clicks=(x.clicks||0)+2;x.strength=Math.min(10,(x.strength||0)+2);x.captured=true;x.known=false;x.dueAt=Date.now()+30*60*1000;x.updatedAt=Date.now();setDB(d);showWordPatched(key);if(typeof window.renderCapture==='function')try{window.renderCapture()}catch(e){};if(typeof window.save==='function')try{window.save()}catch(e){}};
+  const oldApply=window.applyIntensity;
+  window.applyIntensity=function(){const db=getDB();document.querySelectorAll('.mark').forEach(e=>{const key=lemmatize(e.dataset.key||e.textContent).lemma;const w=db.learn[key];for(let i=1;i<=10;i++)e.classList.remove('i'+i);if(w)e.classList.add('i'+Math.min(10,w.strength||0));});};
+  const oldCapture=window.renderCapture;
+  window.renderCapture=function(){const db=getDB();const arr=Object.values(db.learn||{}).filter(x=>x.captured&&!x.known).sort((a,b)=>(b.clicks||0)-(a.clicks||0));if(!document.getElementById('capBody'))return;capBody.innerHTML=arr.length?arr.map(x=>`<div class="capitem" data-cap="${esc(x.lemma||x.word)}"><span>${esc(x.lemma||x.word)}<br><small>${esc(x.tw||'')}</small></span><b>${x.clicks||0}</b></div>`).join(''):'<p style="color:var(--muted)">目前沒有捕獲單字。</p>';};
+  window.lemmatizeWord=lemmatize;
+  window.autoTranslateLemma=autoTranslateLemma;
+  setTimeout(()=>{try{window.applyIntensity();window.renderCapture();console.log('Lemma Smart Capture patch loaded');}catch(e){console.warn(e)}},500);
+})();
+</script>
+</body></html>
