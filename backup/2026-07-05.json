@@ -1,34 +1,6 @@
 {
   "notebooks": [
     {
-      "id": "nb_1783275572777",
-      "name": "2",
-      "date": "2026-07-05",
-      "thumb": "",
-      "cards": [
-        {
-          "id": "nb_1783275572777c0",
-          "title": "Chapter 1",
-          "text": "https://leecamo99.{{github}}.io/eqrweqrw99/",
-          "myNote": ""
-        }
-      ],
-      "marks": {
-        "github": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "https": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        }
-      }
-    },
-    {
       "id": "nb_1783271301368_019n",
       "name": "test",
       "date": "2026-07-05",
@@ -1126,7 +1098,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783275887857,
+  "updatedAt": 1783275939492,
   "learn": {
     "github": {
       "word": "github",
@@ -1157,12 +1129,12 @@
       "pos": "n.",
       "tw": "安全；保全",
       "tip": "security vendor = 保全廠商",
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 6,
+      "strength": 6,
       "captured": true,
       "known": false,
       "dueAt": 1783279519121,
-      "updatedAt": 1783275919121
+      "updatedAt": 1783275925085
     }
   }
 }
