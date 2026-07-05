@@ -83,7 +83,7 @@
           "tw": "項目符號",
           "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
           "color": "c1",
-          "lemma": "bulleted"
+          "lemma": "bullet"
         },
         "things": {
           "pos": "",
@@ -92,11 +92,11 @@
           "color": "c1"
         },
         "during": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "adjective",
+          "tw": "dur",
+          "tip": "Auto translated by MyMemory｜Major; in the major mode.",
           "color": "c1",
-          "lemma": "during"
+          "lemma": "dur"
         },
         "lettered": {
           "pos": "",
@@ -117,10 +117,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "request": {
           "pos": "",
@@ -287,7 +288,7 @@
           "tip": "",
           "color": "c1",
           "learned": false,
-          "lemma": "screening"
+          "lemma": "screen"
         },
         "process": {
           "pos": "",
@@ -1055,10 +1056,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "videos": {
           "pos": "",
@@ -1340,7 +1342,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783282985489,
+  "updatedAt": 1783282208597,
   "learn": {
     "github": {
       "word": "github",
@@ -1522,43 +1524,43 @@
       "engine": "MyMemory",
       "loading": false
     },
+    "person": {
+      "word": "person",
+      "lemma": "person",
+      "pos": "noun",
+      "tw": "人物",
+      "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283990815,
+      "updatedAt": 1783282190815,
+      "variants": {
+        "person": 1
+      },
+      "lastSurface": "person",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false
+    },
     "dur": {
       "word": "dur",
       "lemma": "dur",
       "pos": "adjective",
       "tw": "dur",
       "tip": "Auto translated by MyMemory｜Major; in the major mode.",
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 3,
+      "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1783286471518,
-      "updatedAt": 1783282875538,
+      "dueAt": 1783284008593,
+      "updatedAt": 1783282208593,
       "variants": {
         "during": 1
       },
       "lastSurface": "during",
       "lastForm": "-ing form",
-      "engine": "MyMemory",
-      "loading": false
-    },
-    "during": {
-      "word": "during",
-      "lemma": "during",
-      "pos": "verb",
-      "tw": "期間",
-      "tip": "Auto translated by MyMemory｜To last, continue, endure.",
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "dueAt": 1783286583512,
-      "updatedAt": 1783282985488,
-      "variants": {
-        "during": 1
-      },
-      "lastSurface": "during",
-      "lastForm": "fixed lexical item",
       "engine": "MyMemory",
       "loading": false
     }
