@@ -95,7 +95,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "dur"
         },
         "lettered": {
           "pos": "",
@@ -1339,7 +1340,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783282086433,
+  "updatedAt": 1783282875541,
   "learn": {
     "github": {
       "word": "github",
@@ -1518,6 +1519,26 @@
       },
       "lastSurface": "CRS",
       "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "dur": {
+      "word": "dur",
+      "lemma": "dur",
+      "pos": "adjective",
+      "tw": "dur",
+      "tip": "Auto translated by MyMemory｜Major; in the major mode.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286471518,
+      "updatedAt": 1783282875538,
+      "variants": {
+        "during": 1
+      },
+      "lastSurface": "during",
+      "lastForm": "-ing form",
       "engine": "MyMemory",
       "loading": false
     }
