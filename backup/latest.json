@@ -1330,7 +1330,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783280353007,
+  "updatedAt": 1783280436415,
   "learn": {
     "github": {
       "word": "github",
@@ -1429,6 +1429,26 @@
       },
       "lastSurface": "approved",
       "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "script": {
+      "word": "script",
+      "lemma": "script",
+      "pos": "noun",
+      "tw": "指令碼",
+      "tip": "Auto translated by MyMemory｜A writing; a written document.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783284032958,
+      "updatedAt": 1783280436414,
+      "variants": {
+        "script": 1
+      },
+      "lastSurface": "script",
+      "lastForm": "base form",
       "engine": "MyMemory",
       "loading": false
     }
