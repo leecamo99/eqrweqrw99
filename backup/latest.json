@@ -28,10 +28,11 @@
           "color": "c3"
         },
         "following": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "關注中",
+          "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+          "color": "c1",
+          "lemma": "following"
         },
         "script": {
           "pos": "noun",
@@ -83,7 +84,7 @@
           "tw": "項目符號",
           "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
           "color": "c1",
-          "lemma": "bullet"
+          "lemma": "bulleted"
         },
         "things": {
           "pos": "",
@@ -96,7 +97,7 @@
           "tw": "dur",
           "tip": "Auto translated by MyMemory｜Major; in the major mode.",
           "color": "c1",
-          "lemma": "dur"
+          "lemma": "during"
         },
         "lettered": {
           "pos": "",
@@ -288,7 +289,7 @@
           "tip": "",
           "color": "c1",
           "learned": false,
-          "lemma": "screen"
+          "lemma": "screening"
         },
         "process": {
           "pos": "",
@@ -498,11 +499,12 @@
           "learned": false
         },
         "following": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "verb",
+          "tw": "關注中",
+          "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "following"
         },
         "policies": {
           "pos": "",
@@ -1342,7 +1344,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783282208597,
+  "updatedAt": 1783284278668,
   "learn": {
     "github": {
       "word": "github",
@@ -1561,6 +1563,46 @@
       },
       "lastSurface": "during",
       "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "during": {
+      "word": "during",
+      "lemma": "during",
+      "pos": "verb",
+      "tw": "期間",
+      "tip": "Auto translated by MyMemory｜To last, continue, endure.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286070454,
+      "updatedAt": 1783284270454,
+      "variants": {
+        "during": 1
+      },
+      "lastSurface": "during",
+      "lastForm": "fixed lexical item",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "following": {
+      "word": "following",
+      "lemma": "following",
+      "pos": "verb",
+      "tw": "關注中",
+      "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286078665,
+      "updatedAt": 1783284278665,
+      "variants": {
+        "following": 1
+      },
+      "lastSurface": "following",
+      "lastForm": "fixed lexical item",
       "engine": "MyMemory",
       "loading": false
     }
