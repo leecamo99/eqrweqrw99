@@ -1,6 +1,28 @@
 {
   "notebooks": [
     {
+      "id": "nb_1783274844580",
+      "name": "貼上筆記",
+      "date": "2026-07-05",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783274844580c0",
+          "title": "Chapter 1",
+          "text": "https://leecamo99.{{github}}.io/eqrweqrw99/",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "github": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
       "id": "nb_1783274674693",
       "name": "新筆記本",
       "date": "2026-07-05",
@@ -651,5 +673,5 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783274674694
+  "updatedAt": 1783274844581
 }
