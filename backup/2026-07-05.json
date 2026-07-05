@@ -1,6 +1,236 @@
 {
   "notebooks": [
     {
+      "id": "nb_1783274674693",
+      "name": "新筆記本",
+      "date": "2026-07-05",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783274674693c0",
+          "title": "Chapter 1",
+          "text": "(貼上英文內容)",
+          "myNote": ""
+        },
+        {
+          "id": "nb_1783274674693c1783274708291",
+          "title": "New Chapter",
+          "text": "The {{security}} vendor {{personnel}} {{support}} team {{coordinates}} the {{addition}} or {{deletion}} of {{permissions}} as {{necessary}} for the new {{position}} by {{working}} with other {{security}} vendor teams and {{technology}} {{support}} teams.\r\n\r\nUse your {{security}} vendor's {{employee}} {{transition}} {{processes}} to obtain access to all {{security}} {{systems}} and ensure the {{employee}} is set up {{correctly}} in all {{security}} {{systems}}. For {{questions}} or to make {{corrections}}, email the {{security}} vendor's {{personnel}} {{support}} team.",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "security": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "personnel": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "support": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "coordinates": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "addition": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "deletion": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "permissions": {
+          "pos": "n.",
+          "tw": "權限；許可",
+          "tip": "",
+          "color": "c1"
+        },
+        "necessary": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "position": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "working": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "technology": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "employee": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "transition": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "processes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "systems": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "correctly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "questions": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "corrections": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
+      "id": "nb_1783271301368_019n",
+      "name": "test",
+      "date": "2026-07-05",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783271301368_019n_c0",
+          "title": "Chapter 1",
+          "text": "When the new hire has {{cleared}} the {{security}} vendor’s {{required}} {{background}} {{screening}} {{process}}, all {{security}} \nvendor {{personnel}} use {{Employee}} {{Central}} to create the {{position}} and {{onboard}} the new {{employee}}",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "cleared": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "security": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "required": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "background": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "screening": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "process": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "personnel": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "Employee": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "Central": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "position": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "onboard": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        },
+        "employee": {
+          "pos": "",
+          "tw": "",
+          "tip": "",
+          "color": "c1",
+          "learned": false
+        }
+      }
+    },
+    {
       "id": "nb_1783270408085_khfm",
       "name": "IMG_0032[2]",
       "date": "2026-07-05",
@@ -536,5 +766,5 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783270408086
+  "updatedAt": 1783274708292
 }
