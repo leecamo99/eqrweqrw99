@@ -28,10 +28,11 @@
           "color": "c3"
         },
         "following": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "關注中",
+          "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+          "color": "c1",
+          "lemma": "following"
         },
         "script": {
           "pos": "noun",
@@ -92,9 +93,9 @@
           "color": "c1"
         },
         "during": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "adjective",
+          "tw": "dur",
+          "tip": "Auto translated by MyMemory｜Major; in the major mode.",
           "color": "c1",
           "lemma": "during"
         },
@@ -117,10 +118,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "request": {
           "pos": "",
@@ -497,11 +499,12 @@
           "learned": false
         },
         "following": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "verb",
+          "tw": "關注中",
+          "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "following"
         },
         "policies": {
           "pos": "",
@@ -1055,10 +1058,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "videos": {
           "pos": "",
@@ -1340,7 +1344,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783282985489,
+  "updatedAt": 1783284278668,
   "learn": {
     "github": {
       "word": "github",
@@ -1522,18 +1526,38 @@
       "engine": "MyMemory",
       "loading": false
     },
+    "person": {
+      "word": "person",
+      "lemma": "person",
+      "pos": "noun",
+      "tw": "人物",
+      "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283990815,
+      "updatedAt": 1783282190815,
+      "variants": {
+        "person": 1
+      },
+      "lastSurface": "person",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false
+    },
     "dur": {
       "word": "dur",
       "lemma": "dur",
       "pos": "adjective",
       "tw": "dur",
       "tip": "Auto translated by MyMemory｜Major; in the major mode.",
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 3,
+      "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1783286471518,
-      "updatedAt": 1783282875538,
+      "dueAt": 1783284008593,
+      "updatedAt": 1783282208593,
       "variants": {
         "during": 1
       },
@@ -1548,16 +1572,36 @@
       "pos": "verb",
       "tw": "期間",
       "tip": "Auto translated by MyMemory｜To last, continue, endure.",
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 3,
+      "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1783286583512,
-      "updatedAt": 1783282985488,
+      "dueAt": 1783286070454,
+      "updatedAt": 1783284270454,
       "variants": {
         "during": 1
       },
       "lastSurface": "during",
+      "lastForm": "fixed lexical item",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "following": {
+      "word": "following",
+      "lemma": "following",
+      "pos": "verb",
+      "tw": "關注中",
+      "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286078665,
+      "updatedAt": 1783284278665,
+      "variants": {
+        "following": 1
+      },
+      "lastSurface": "following",
       "lastForm": "fixed lexical item",
       "engine": "MyMemory",
       "loading": false
