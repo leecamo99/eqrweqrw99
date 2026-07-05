@@ -1330,7 +1330,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783279816358,
+  "updatedAt": 1783280232068,
   "learn": {
     "github": {
       "word": "github",
@@ -1391,6 +1391,26 @@
       "known": false,
       "dueAt": 1783278291709,
       "updatedAt": 1783276487139
+    },
+    "bullet": {
+      "word": "bullet",
+      "lemma": "bullet",
+      "pos": "noun",
+      "tw": "項目符號",
+      "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283830778,
+      "updatedAt": 1783280232067,
+      "variants": {
+        "bulleted": 1
+      },
+      "lastSurface": "bulleted",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false
     }
   }
 }
