@@ -16,9 +16,10 @@
       "marks": {
         "CRS": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c3"
+          "tw": "crs",
+          "tip": "Auto translated by MyMemory",
+          "color": "c3",
+          "lemma": "crs"
         },
         "DCAT": {
           "pos": "abbr.",
@@ -33,16 +34,18 @@
           "color": "c1"
         },
         "script": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "指令碼",
+          "tip": "Auto translated by MyMemory｜A writing; a written document.",
+          "color": "c1",
+          "lemma": "script"
         },
         "checking": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "檢查, 檢查",
+          "tip": "Auto translated by MyMemory｜A situation in which the king is directly threatened by an opposing piece.",
+          "color": "c1",
+          "lemma": "check"
         },
         "visitors": {
           "pos": "",
@@ -66,7 +69,8 @@
           "pos": "n.",
           "tw": "章節；段落",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "section"
         },
         "numbered": {
           "pos": "",
@@ -75,10 +79,11 @@
           "color": "c1"
         },
         "bulleted": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "項目符號",
+          "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
+          "color": "c1",
+          "lemma": "bullet"
         },
         "things": {
           "pos": "",
@@ -254,11 +259,12 @@
           "learned": false
         },
         "security": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "n.",
+          "tw": "安全；保全",
+          "tip": "security vendor = 保全廠商",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "security"
         },
         "required": {
           "pos": "",
@@ -276,10 +282,11 @@
         },
         "screening": {
           "pos": "",
-          "tw": "",
+          "tw": "（未建字義，請自行補充）",
           "tip": "",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "screen"
         },
         "process": {
           "pos": "",
@@ -545,11 +552,12 @@
           "learned": false
         },
         "approved": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "verb",
+          "tw": "核准",
+          "tip": "Auto translated by MyMemory｜To sanction officially; to ratify; to confirm; to set as satisfactory.",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "approve"
         },
         "allowed": {
           "pos": "",
@@ -881,11 +889,12 @@
           "learned": false
         },
         "security": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "n.",
+          "tw": "安全；保全",
+          "tip": "security vendor = 保全廠商",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "security"
         },
         "expired": {
           "pos": "",
@@ -1330,7 +1339,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783281668892,
+  "updatedAt": 1783282086433,
   "learn": {
     "github": {
       "word": "github",
@@ -1398,14 +1407,14 @@
       "pos": "noun",
       "tw": "項目符號",
       "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
-      "clicks": 10,
+      "clicks": 13,
       "strength": 10,
       "captured": true,
       "known": false,
-      "dueAt": 1783283338848,
-      "updatedAt": 1783281668889,
+      "dueAt": 1783283876491,
+      "updatedAt": 1783282076491,
       "variants": {
-        "bulleted": 6
+        "bulleted": 7
       },
       "lastSurface": "bulleted",
       "lastForm": "-ed / past participle",
@@ -1489,6 +1498,26 @@
       },
       "lastSurface": "checking",
       "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "crs": {
+      "word": "crs",
+      "lemma": "crs",
+      "pos": "",
+      "tw": "crs",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283886432,
+      "updatedAt": 1783282086432,
+      "variants": {
+        "CRS": 1
+      },
+      "lastSurface": "CRS",
+      "lastForm": "base form",
       "engine": "MyMemory",
       "loading": false
     }
