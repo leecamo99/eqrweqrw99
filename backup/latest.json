@@ -16,9 +16,10 @@
       "marks": {
         "CRS": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c3"
+          "tw": "crs",
+          "tip": "Auto translated by MyMemory",
+          "color": "c3",
+          "lemma": "crs"
         },
         "DCAT": {
           "pos": "abbr.",
@@ -27,22 +28,25 @@
           "color": "c3"
         },
         "following": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "關注中",
+          "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+          "color": "c1",
+          "lemma": "following"
         },
         "script": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "指令碼",
+          "tip": "Auto translated by MyMemory｜A writing; a written document.",
+          "color": "c1",
+          "lemma": "script"
         },
         "checking": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "檢查, 檢查",
+          "tip": "Auto translated by MyMemory｜A situation in which the king is directly threatened by an opposing piece.",
+          "color": "c1",
+          "lemma": "check"
         },
         "visitors": {
           "pos": "",
@@ -66,7 +70,8 @@
           "pos": "n.",
           "tw": "章節；段落",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "section"
         },
         "numbered": {
           "pos": "",
@@ -75,10 +80,11 @@
           "color": "c1"
         },
         "bulleted": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "項目符號",
+          "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
+          "color": "c1",
+          "lemma": "bulleted"
         },
         "things": {
           "pos": "",
@@ -87,10 +93,11 @@
           "color": "c1"
         },
         "during": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "adjective",
+          "tw": "dur",
+          "tip": "Auto translated by MyMemory｜Major; in the major mode.",
+          "color": "c1",
+          "lemma": "during"
         },
         "lettered": {
           "pos": "",
@@ -111,10 +118,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "request": {
           "pos": "",
@@ -254,11 +262,12 @@
           "learned": false
         },
         "security": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "n.",
+          "tw": "安全；保全",
+          "tip": "security vendor = 保全廠商",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "security"
         },
         "required": {
           "pos": "",
@@ -276,10 +285,11 @@
         },
         "screening": {
           "pos": "",
-          "tw": "",
+          "tw": "（未建字義，請自行補充）",
           "tip": "",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "screening"
         },
         "process": {
           "pos": "",
@@ -489,11 +499,12 @@
           "learned": false
         },
         "following": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "verb",
+          "tw": "關注中",
+          "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "following"
         },
         "policies": {
           "pos": "",
@@ -545,11 +556,12 @@
           "learned": false
         },
         "approved": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "verb",
+          "tw": "核准",
+          "tip": "Auto translated by MyMemory｜To sanction officially; to ratify; to confirm; to set as satisfactory.",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "approve"
         },
         "allowed": {
           "pos": "",
@@ -881,11 +893,12 @@
           "learned": false
         },
         "security": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "n.",
+          "tw": "安全；保全",
+          "tip": "security vendor = 保全廠商",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "security"
         },
         "expired": {
           "pos": "",
@@ -1045,10 +1058,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "videos": {
           "pos": "",
@@ -1330,7 +1344,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783288879780,
+  "updatedAt": 1783284278668,
   "learn": {
     "github": {
       "word": "github",
@@ -1391,6 +1405,206 @@
       "known": false,
       "dueAt": 1783278291709,
       "updatedAt": 1783276487139
+    },
+    "bullet": {
+      "word": "bullet",
+      "lemma": "bullet",
+      "pos": "noun",
+      "tw": "項目符號",
+      "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
+      "clicks": 13,
+      "strength": 10,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283876491,
+      "updatedAt": 1783282076491,
+      "variants": {
+        "bulleted": 7
+      },
+      "lastSurface": "bulleted",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "approve": {
+      "word": "approve",
+      "lemma": "approve",
+      "pos": "verb",
+      "tw": "核准",
+      "tip": "Auto translated by MyMemory｜To sanction officially; to ratify; to confirm; to set as satisfactory.",
+      "clicks": 2,
+      "strength": 2,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283951328,
+      "updatedAt": 1783280881261,
+      "variants": {
+        "approved": 2
+      },
+      "lastSurface": "approved",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "script": {
+      "word": "script",
+      "lemma": "script",
+      "pos": "noun",
+      "tw": "指令碼",
+      "tip": "Auto translated by MyMemory｜A writing; a written document.",
+      "clicks": 2,
+      "strength": 2,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783284032958,
+      "updatedAt": 1783281461271,
+      "variants": {
+        "script": 2
+      },
+      "lastSurface": "script",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "validat": {
+      "word": "validat",
+      "lemma": "validat",
+      "pos": "",
+      "tw": "validat",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783284598102,
+      "updatedAt": 1783281001764,
+      "variants": {
+        "validated": 1
+      },
+      "lastSurface": "validated",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "check": {
+      "word": "check",
+      "lemma": "check",
+      "pos": "noun",
+      "tw": "檢查, 檢查",
+      "tip": "Auto translated by MyMemory｜A situation in which the king is directly threatened by an opposing piece.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783285084428,
+      "updatedAt": 1783281486079,
+      "variants": {
+        "checking": 1
+      },
+      "lastSurface": "checking",
+      "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "crs": {
+      "word": "crs",
+      "lemma": "crs",
+      "pos": "",
+      "tw": "crs",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283886432,
+      "updatedAt": 1783282086432,
+      "variants": {
+        "CRS": 1
+      },
+      "lastSurface": "CRS",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "person": {
+      "word": "person",
+      "lemma": "person",
+      "pos": "noun",
+      "tw": "人物",
+      "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783283990815,
+      "updatedAt": 1783282190815,
+      "variants": {
+        "person": 1
+      },
+      "lastSurface": "person",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "dur": {
+      "word": "dur",
+      "lemma": "dur",
+      "pos": "adjective",
+      "tw": "dur",
+      "tip": "Auto translated by MyMemory｜Major; in the major mode.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783284008593,
+      "updatedAt": 1783282208593,
+      "variants": {
+        "during": 1
+      },
+      "lastSurface": "during",
+      "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "during": {
+      "word": "during",
+      "lemma": "during",
+      "pos": "verb",
+      "tw": "期間",
+      "tip": "Auto translated by MyMemory｜To last, continue, endure.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286070454,
+      "updatedAt": 1783284270454,
+      "variants": {
+        "during": 1
+      },
+      "lastSurface": "during",
+      "lastForm": "fixed lexical item",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "following": {
+      "word": "following",
+      "lemma": "following",
+      "pos": "verb",
+      "tw": "關注中",
+      "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286078665,
+      "updatedAt": 1783284278665,
+      "variants": {
+        "following": 1
+      },
+      "lastSurface": "following",
+      "lastForm": "fixed lexical item",
+      "engine": "MyMemory",
+      "loading": false
     }
   }
 }
