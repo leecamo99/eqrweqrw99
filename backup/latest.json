@@ -305,9 +305,9 @@
           "color": "c1"
         },
         "totally": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "adverb",
+          "tw": "完全",
+          "tip": "Auto translated by MyMemory｜To the fullest extent or degree.",
           "color": "c1",
           "lemma": "totally"
         },
@@ -4869,7 +4869,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783353922120,
+  "updatedAt": 1783359240605,
   "learn": {
     "github": {
       "word": "github",
@@ -4941,15 +4941,37 @@
       "strength": 0,
       "captured": false,
       "known": true,
-      "dueAt": 0,
-      "updatedAt": 1783352586481,
+      "dueAt": 1783445625346,
+      "updatedAt": 1783359225346,
       "variants": {
         "bulleted": 7
       },
       "lastSurface": "bulleted",
       "lastForm": "-ed / past participle",
       "engine": "MyMemory",
-      "loading": false
+      "loading": false,
+      "firstSeenAt": 1783352586481,
+      "lastSeenAt": 1783352586481,
+      "lastReviewedAt": 1783359225346,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359225346,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
     },
     "approve": {
       "word": "approve",
@@ -5001,15 +5023,37 @@
       "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1783354414199,
-      "updatedAt": 1783352614199,
+      "dueAt": 1783445635272,
+      "updatedAt": 1783359235272,
       "variants": {
         "validated": 1
       },
       "lastSurface": "validated",
       "lastForm": "-ed / past participle",
       "engine": "MyMemory",
-      "loading": false
+      "loading": false,
+      "firstSeenAt": 1783352614199,
+      "lastSeenAt": 1783352614199,
+      "lastReviewedAt": 1783359235272,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 3,
+      "reviewHistory": [
+        {
+          "ts": 1783359235272,
+          "day": "2026-07-06",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.4,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
     },
     "check": {
       "word": "check",
@@ -5081,15 +5125,37 @@
       "strength": 0,
       "captured": false,
       "known": true,
-      "dueAt": 0,
-      "updatedAt": 1783352599049,
+      "dueAt": 1783445636861,
+      "updatedAt": 1783359236861,
       "variants": {
         "during": 1
       },
       "lastSurface": "during",
       "lastForm": "-ing form",
       "engine": "MyMemory",
-      "loading": false
+      "loading": false,
+      "firstSeenAt": 1783352599049,
+      "lastSeenAt": 1783352599049,
+      "lastReviewedAt": 1783359236861,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359236861,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
     },
     "during": {
       "word": "during",
@@ -5141,15 +5207,37 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "dueAt": 1783354741134,
-      "updatedAt": 1783352941134,
+      "dueAt": 1783445622139,
+      "updatedAt": 1783359222139,
       "variants": {
         "spontaneously": 7
       },
       "lastSurface": "spontaneously",
       "lastForm": "base form",
       "engine": "MyMemory",
-      "loading": false
+      "loading": false,
+      "firstSeenAt": 1783352941134,
+      "lastSeenAt": 1783352941134,
+      "lastReviewedAt": 1783359222139,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 11,
+      "reviewHistory": [
+        {
+          "ts": 1783359222139,
+          "day": "2026-07-06",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 11,
+          "strength": 10,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.4,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
     },
     "welcome": {
       "word": "welcome",
@@ -5157,19 +5245,41 @@
       "pos": "noun",
       "tw": "歡迎",
       "tip": "Auto translated by MyMemory｜The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "dueAt": 1783356951601,
-      "updatedAt": 1783353354870,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 1783445640098,
+      "updatedAt": 1783359240098,
       "variants": {
         "welcome": 1
       },
       "lastSurface": "welcome",
       "lastForm": "base form",
       "engine": "MyMemory",
-      "loading": false
+      "loading": false,
+      "firstSeenAt": 1783353354870,
+      "lastSeenAt": 1783353354870,
+      "lastReviewedAt": 1783359240098,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1783359240098,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
     },
     "totally": {
       "word": "totally",
@@ -5177,19 +5287,105 @@
       "pos": "adverb",
       "tw": "完全",
       "tip": "Auto translated by MyMemory｜To the fullest extent or degree.",
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "dueAt": 1783357519598,
-      "updatedAt": 1783353922101,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 1783445640605,
+      "updatedAt": 1783359240605,
       "variants": {
         "totally": 1
       },
       "lastSurface": "totally",
       "lastForm": "base form",
       "engine": "MyMemory",
-      "loading": false
+      "loading": false,
+      "firstSeenAt": 1783353922101,
+      "lastSeenAt": 1783353922101,
+      "lastReviewedAt": 1783359240605,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1783359240605,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
+    },
+    "follow": {
+      "word": "follow",
+      "lemma": "follow",
+      "firstSeenAt": 1783359238354,
+      "lastSeenAt": 1783359238354,
+      "lastReviewedAt": 1783359238354,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359238354,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783445638354,
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1,
+      "known": true,
+      "captured": false,
+      "clicks": 0,
+      "strength": 0,
+      "updatedAt": 1783359238354
+    },
+    "section": {
+      "word": "section",
+      "lemma": "section",
+      "firstSeenAt": 1783359239525,
+      "lastSeenAt": 1783359239525,
+      "lastReviewedAt": 1783359239525,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359239525,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783445639525,
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1,
+      "known": true,
+      "captured": false,
+      "clicks": 0,
+      "strength": 0,
+      "updatedAt": 1783359239525
     }
   }
 }
