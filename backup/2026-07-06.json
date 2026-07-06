@@ -33,9 +33,9 @@
           "color": "c1"
         },
         "welcome": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "歡迎",
+          "tip": "Auto translated by MyMemory｜The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
           "color": "c1",
           "lemma": "welcome"
         },
@@ -308,7 +308,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "totally"
         },
         "normal": {
           "pos": "",
@@ -4094,9 +4095,9 @@
           "learned": false
         },
         "Welcome": {
-          "pos": "",
-          "tw": "",
-          "tip": "",
+          "pos": "noun",
+          "tw": "歡迎",
+          "tip": "Auto translated by MyMemory｜The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
           "color": "c1",
           "learned": false,
           "lemma": "welcome"
@@ -4868,7 +4869,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783353354877,
+  "updatedAt": 1783353922120,
   "learn": {
     "github": {
       "word": "github",
@@ -5166,6 +5167,26 @@
         "welcome": 1
       },
       "lastSurface": "welcome",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "totally": {
+      "word": "totally",
+      "lemma": "totally",
+      "pos": "adverb",
+      "tw": "完全",
+      "tip": "Auto translated by MyMemory｜To the fullest extent or degree.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783357519598,
+      "updatedAt": 1783353922101,
+      "variants": {
+        "totally": 1
+      },
+      "lastSurface": "totally",
       "lastForm": "base form",
       "engine": "MyMemory",
       "loading": false
