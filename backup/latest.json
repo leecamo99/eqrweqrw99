@@ -99,9 +99,9 @@
           "color": "c1"
         },
         "spontaneously": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "adverb",
+          "tw": "自發地",
+          "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
           "color": "c1",
           "lemma": "spontaneously"
         },
@@ -1112,7 +1112,7 @@
           "tw": "期間",
           "tip": "Auto translated by MyMemory｜To last, continue, endure.",
           "color": "c1",
-          "lemma": "during"
+          "lemma": "dur"
         },
         "another": {
           "pos": "",
@@ -3554,7 +3554,7 @@
           "tw": "關注中",
           "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
           "color": "c1",
-          "lemma": "following"
+          "lemma": "follow"
         },
         "script": {
           "pos": "noun",
@@ -3606,7 +3606,7 @@
           "tw": "項目符號",
           "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
           "color": "c1",
-          "lemma": "bulleted"
+          "lemma": "bullet"
         },
         "things": {
           "pos": "",
@@ -3619,7 +3619,7 @@
           "tw": "dur",
           "tip": "Auto translated by MyMemory｜Major; in the major mode.",
           "color": "c1",
-          "lemma": "during"
+          "lemma": "dur"
         },
         "lettered": {
           "pos": "",
@@ -3811,7 +3811,7 @@
           "tip": "",
           "color": "c1",
           "learned": false,
-          "lemma": "screening"
+          "lemma": "screen"
         },
         "process": {
           "pos": "",
@@ -4026,7 +4026,7 @@
           "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
           "color": "c1",
           "learned": false,
-          "lemma": "following"
+          "lemma": "follow"
         },
         "policies": {
           "pos": "",
@@ -4866,7 +4866,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783349346787,
+  "updatedAt": 1783350743489,
   "learn": {
     "github": {
       "word": "github",
@@ -5134,14 +5134,14 @@
       "pos": "adverb",
       "tw": "自發地",
       "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 2,
+      "strength": 2,
       "captured": true,
       "known": false,
       "dueAt": 1783352943500,
-      "updatedAt": 1783349346780,
+      "updatedAt": 1783350743481,
       "variants": {
-        "spontaneously": 1
+        "spontaneously": 2
       },
       "lastSurface": "spontaneously",
       "lastForm": "base form",
