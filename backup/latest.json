@@ -4866,7 +4866,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783351146915,
+  "updatedAt": 1783351557403,
   "learn": {
     "github": {
       "word": "github",
@@ -5134,14 +5134,14 @@
       "pos": "adverb",
       "tw": "自發地",
       "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
-      "clicks": 7,
-      "strength": 7,
+      "clicks": 8,
+      "strength": 8,
       "captured": true,
       "known": false,
       "dueAt": 1783352946905,
-      "updatedAt": 1783351146905,
+      "updatedAt": 1783351557396,
       "variants": {
-        "spontaneously": 5
+        "spontaneously": 6
       },
       "lastSurface": "spontaneously",
       "lastForm": "base form",
