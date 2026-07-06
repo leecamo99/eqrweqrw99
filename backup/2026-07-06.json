@@ -102,7 +102,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "spontaneously"
         },
         "without": {
           "pos": "",
@@ -1107,10 +1108,11 @@
           "color": "c1"
         },
         "during": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "期間",
+          "tip": "Auto translated by MyMemory｜To last, continue, endure.",
+          "color": "c1",
+          "lemma": "during"
         },
         "another": {
           "pos": "",
@@ -4864,7 +4866,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783349013758,
+  "updatedAt": 1783349346787,
   "learn": {
     "github": {
       "word": "github",
@@ -5123,6 +5125,26 @@
       },
       "lastSurface": "following",
       "lastForm": "fixed lexical item",
+      "engine": "MyMemory",
+      "loading": false
+    },
+    "spontaneously": {
+      "word": "spontaneously",
+      "lemma": "spontaneously",
+      "pos": "adverb",
+      "tw": "自發地",
+      "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783352943500,
+      "updatedAt": 1783349346780,
+      "variants": {
+        "spontaneously": 1
+      },
+      "lastSurface": "spontaneously",
+      "lastForm": "base form",
       "engine": "MyMemory",
       "loading": false
     }
