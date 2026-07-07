@@ -36,7 +36,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "overtime"
         },
         "weekend": {
           "pos": "",
@@ -1532,7 +1533,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "follow"
         },
         "summary": {
           "pos": "",
@@ -4637,7 +4639,8 @@
           "tw": "",
           "tip": "",
           "color": "c1",
-          "learned": false
+          "learned": false,
+          "lemma": "section"
         },
         "Patrolling": {
           "pos": "",
@@ -5191,7 +5194,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "follow"
         },
         "while": {
           "pos": "",
@@ -5245,7 +5249,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783430068735,
+  "updatedAt": 1783430276976,
   "learn": {
     "github": {
       "word": "github",
@@ -5762,6 +5766,38 @@
       "clicks": 0,
       "strength": 0,
       "updatedAt": 1783359239525
+    },
+    "overtime": {
+      "word": "overtime",
+      "lemma": "overtime",
+      "firstSeenAt": 1783430274331,
+      "lastSeenAt": 1783430275347,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783433874336,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "overtime",
+      "lastForm": "base form",
+      "variants": {
+        "overtime": 2
+      },
+      "clicks": 2,
+      "strength": 2,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783430276967,
+      "loading": false,
+      "tw": "加班",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Working time outside of one's regular hours."
     }
   }
 }
