@@ -1,4 +1,4 @@
-/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (絕對防外流精準版) */
+/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (精準 DIV 定位版) */
 (function() {
   const TAG = '[TTS Word Upgrade]';
   let localAudio = null;
@@ -42,7 +42,7 @@
 
   // 3. 定時監控畫面上是否有彈出 WORD NOTE 視窗
   setInterval(() => {
-    // 💡 修正 1：精準識別彈窗，排除外部包含 MY NOTEBOOKS 的側邊欄容器
+    // 精準抓取 WORD NOTE 彈窗
     const allModals = Array.from(document.querySelectorAll('div[style*="fixed"]'));
     const modal = allModals.find(div => div.textContent.includes('WORD NOTE') && !div.textContent.includes('MY NOTEBOOKS'));
     
@@ -66,32 +66,34 @@
         e.preventDefault();
         e.stopPropagation();
 
-        // 💡 修正 2：給網頁 UI 渲染保留 50 毫秒極短緩衝時間，確保文字 100% 寫入進去
+        // 保留微小渲染緩衝
         setTimeout(async () => {
           let wordText = '';
           
-          // 💡 修正 3：嚴格限縮搜尋範圍！只在「發音按鈕的同層父級容器」內尋找加粗標題，徹底與外面世界隔離
-          const parentContainer = newSpeakBtn.parentElement || modal;
-          const boldTags = parentContainer.querySelectorAll('b, strong');
-          
-          for (let b of boldTags) {
-            const txt = b.textContent.trim().replace(/[^a-zA-Z']/g, '');
-            // 排除掉可能干擾的功能字眼
-            if (txt && txt.length > 0 && !b.textContent.includes('WORD') && txt.toLowerCase() !== 'key') {
-              wordText = txt;
-              break;
+          // 💡 終極修正：直接尋找彈窗內字體大小為 32px 且加粗的那個主要單字 Div！
+          const wordDiv = Array.from(modal.querySelectorAll('div')).find(div => {
+            const style = div.getAttribute('style') || '';
+            return style.includes('32px') && (style.includes('bold') || div.style.fontWeight === 'bold');
+          });
+
+          if (wordDiv) {
+            wordText = wordDiv.textContent.trim().replace(/[^a-zA-Z']/g, '');
+          }
+
+          // 備援：萬一格式變了，找發音按鈕上面的第一個非功能性英文單字
+          if (!wordText) {
+            const allDivs = Array.from(modal.querySelectorAll('div'));
+            for (let d of allDivs) {
+              const txt = d.textContent.trim().replace(/[^a-zA-Z']/g, '');
+              if (txt && txt.length > 0 && txt.length < 25 && !d.textContent.includes('WORD') && !d.textContent.includes('形')) {
+                wordText = txt;
+                break;
+              }
             }
           }
 
-          if (!wordText) {
-            console.warn(`${TAG} 警告：嚴格範圍內找不到有效單字，嘗試最後盲抓`);
-            const fallbackBold = modal.querySelector('b, strong');
-            if (fallbackBold) wordText = fallbackBold.textContent.trim().replace(/[^a-zA-Z']/g, '');
-          }
-
-          // 如果不小心抓到大寫的長字串（代表可能抓錯成功能選單），直接拒絕發音
           if (!wordText || wordText === 'MYNOTEBOOKS') {
-            console.error(`${TAG} 錯誤：抓取到異常單字來源 "${wordText}"，已自動攔截防止錯誤發音。`);
+            console.error(`${TAG} 錯誤：抓取單字失敗或抓到錯誤標題。`);
             return;
           }
 
