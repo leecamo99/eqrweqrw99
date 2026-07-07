@@ -1,148 +1,89 @@
-/* Google Cloud TTS Reader Patch V6: 純 JS 三段縮放控制器 (修復版) */
 (function() {
-  let currentMode = 1; // 1: 展開, 2: 迷你, 3: 收合
-  let ttsPanel = null;
-  let toggleBtn = null;
-  let originalStyles = { height: '', padding: '', display: '', background: '' };
-
-  // 強力輪詢：確保抓到面板，且 v7 已經把播放器界面畫好了
-  const checkTTS = setInterval(() => {
-    const panel = document.querySelector('.audio-player-panel') || 
-                  document.querySelector('[class*="tts-panel"]') || 
-                  document.querySelector('[id*="tts"]');
-    
-    if (panel && panel.children.length > 0) {
-      clearInterval(checkTTS);
-      ttsPanel = panel;
-      
-      // 紀錄最原始的 CSS 樣式
-      originalStyles.height = ttsPanel.style.height || '160px';
-      originalStyles.padding = ttsPanel.style.padding;
-      originalStyles.display = ttsPanel.style.display;
-      originalStyles.background = ttsPanel.style.background;
-
-      // 強制基本定位在螢幕最下方
-      ttsPanel.style.position = 'fixed';
-      ttsPanel.style.bottom = '0';
-      ttsPanel.style.left = '0';
-      ttsPanel.style.width = '100%';
-      ttsPanel.style.zIndex = '99999';
-      ttsPanel.style.transition = 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
-      ttsPanel.style.overflow = 'hidden';
-
-      initV6Controller();
-    }
-  }, 300);
-
-  function initV6Controller() {
-    // 1. 建立控制按鈕 [-]
-    toggleBtn = document.createElement('button');
-    toggleBtn.className = 'tts-v6-toggle-btn';
-    toggleBtn.style.cssText = `
-      position: absolute !important;
-      top: 8px !important;
-      right: 12px !important;
-      background: var(--accent, #a68a56) !important;
-      color: white !important;
-      border: none !important;
-      padding: 6px 12px !important;
-      border-radius: 4px !important;
-      font-size: 14px !important;
-      cursor: pointer !important;
-      z-index: 100005 !important;
-    `;
-    toggleBtn.innerHTML = '➖ 縮小';
-    ttsPanel.appendChild(toggleBtn);
-
-    // 2. 綁定循環點擊事件
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      currentMode = currentMode === 3 ? 1 : currentMode + 1;
-      applyModeLayout();
-    });
-
-    applyModeLayout();
+  // 1. 配合你目前的網頁，強行抓取 v5 的語音面板外殼
+  // 偵測畫面底部固定定位、含有 TTS 或播放控制的 container
+  const p = document.querySelector('div[style*="fixed"][style*="bottom"]') || 
+            document.querySelector('.audio-player-panel') || 
+            Array.from(document.querySelectorAll('div')).find(el => el.textContent.includes('Google Cloud TTS'));
+            
+  if (!p) {
+    console.error('❌ 測試失敗：畫面上找不到任何語音面板，請確認元件是否有出現在最下方。');
+    return;
   }
 
-  function applyModeLayout() {
-    const children = Array.from(ttsPanel.children);
+  // 2. 移除可能殘留的舊按鈕，避免重複
+  const oldBtn = p.querySelector('.tts-v6-toggle-btn');
+  if (oldBtn) oldBtn.remove();
 
-    if (currentMode === 1) {
+  // 3. 建立測試按鈕 [-]
+  const btn = document.createElement('button');
+  btn.className = 'tts-v6-toggle-btn';
+  btn.style.cssText = 'position:absolute!important;top:8px!important;right:12px!important;background:#a68a56!important;color:white!important;border:none!important;padding:6px 12px!important;border-radius:4px!important;font-size:14px!important;cursor:pointer!important;z-index:100005!important;';
+  btn.innerHTML = '➖ 縮小';
+  p.appendChild(btn);
+
+  let mode = 1;
+  const children = Array.from(p.children);
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    mode = mode === 3 ? 1 : mode + 1;
+    
+    if (mode === 1) {
       // 🟢 模式 1：展開 (160px)
-      ttsPanel.style.height = '160px';
-      ttsPanel.style.padding = '12px 16px';
-      ttsPanel.style.display = 'block';
-      ttsPanel.style.background = originalStyles.background || 'var(--paper, #ffffff)';
+      p.style.setProperty('height', '160px', 'important');
+      p.style.setProperty('padding', '12px 16px', 'important');
+      p.style.setProperty('display', 'block', 'important');
+      p.style.setProperty('background', '#1a252f', 'important'); // 配合你目前的深色面板
       
-      toggleBtn.innerHTML = '➖ 縮小';
-      toggleBtn.style.position = 'absolute';
-      toggleBtn.style.top = '8px';
-      toggleBtn.style.right = '12px';
-      toggleBtn.style.width = 'auto';
-      toggleBtn.style.height = 'auto';
-      toggleBtn.style.background = 'var(--accent, #a68a56)';
-
-      // 💡 強制將所有元件的 display 喚醒還原為 block 或 flex
+      btn.innerHTML = '➖ 縮小';
+      btn.style.cssText = 'position:absolute!important;top:8px!important;right:12px!important;background:#a68a56!important;color:white!important;border:none!important;padding:6px 12px!important;border-radius:4px!important;font-size:14px!important;cursor:pointer!important;z-index:100005!important;';
+      
       children.forEach(el => {
-        if (el === toggleBtn) return;
-        if (el.tagName === 'DIV' || el.classList.contains('controls-row')) {
-          el.style.setProperty('display', 'flex', 'important');
-        } else {
-          el.style.setProperty('display', 'inline-block', 'important');
-        }
+        if (el === btn) return;
+        el.style.setProperty('display', '', ''); // 恢復原本顯示
       });
-
-    } else if (currentMode === 2) {
+      console.log('🟢 模式 1：展開 (160px)');
+      
+    } else if (mode === 2) {
       // 🟡 模式 2：迷你播放器 (52px)
-      ttsPanel.style.height = '52px';
-      ttsPanel.style.padding = '0 16px';
-      ttsPanel.style.display = 'flex';
-      ttsPanel.style.alignItems = 'center';
-      ttsPanel.style.gap = '12px';
-      ttsPanel.style.background = 'var(--paper, #ffffff)';
-
-      toggleBtn.innerHTML = '⚏ 迷你';
-      toggleBtn.style.position = 'absolute';
-      toggleBtn.style.top = '10px';
-      toggleBtn.style.right = '12px';
-      toggleBtn.style.width = 'auto';
-      toggleBtn.style.height = 'auto';
-
+      p.style.setProperty('height', '52px', 'important');
+      p.style.setProperty('padding', '0 16px', 'important');
+      p.style.setProperty('display', 'flex', 'important');
+      p.style.setProperty('align-items', 'center', 'important');
+      p.style.setProperty('gap', '12px', 'important');
+      
+      btn.innerHTML = '⚏ 迷你';
+      btn.style.cssText = 'position:absolute!important;top:10px!important;right:12px!important;background:#a68a56!important;color:white!important;border:none!important;padding:6px 12px!important;border-radius:4px!important;font-size:14px!important;cursor:pointer!important;z-index:100005!important;';
+      
       children.forEach(el => {
-        if (el === toggleBtn) return;
-        // 隱藏下拉選單與雜項
-        if (el.tagName === 'SELECT' || el.tagName === 'BR' || el.tagName === 'H3' || el.tagName === 'TEXTAREA' || el.classList.contains('voice-select') || el.classList.contains('speed-control')) {
+        if (el === btn) return;
+        // 隱藏下拉選單、文字標題與換行，只留播放、暫停按鈕與進度條
+        if (['SELECT', 'BR', 'SPAN'].includes(el.tagName) || el.textContent.includes('Google Cloud') || el.textContent.includes('待命')) {
           el.style.setProperty('display', 'none', 'important');
         } else {
-          // 留下的播放核心排成一橫列
           el.style.setProperty('display', 'flex', 'important');
           el.style.setProperty('align-items', 'center', 'important');
           el.style.setProperty('margin', '0', 'important');
         }
       });
-
-    } else if (currentMode === 3) {
+      console.log('🟡 模式 2：迷你播放器 (52px)');
+      
+    } else if (mode === 3) {
       // 🔴 模式 3：收合 (32px)
-      ttsPanel.style.height = '32px';
-      ttsPanel.style.padding = '0';
-      ttsPanel.style.display = 'flex';
-      ttsPanel.style.alignItems = 'center';
-      ttsPanel.style.justifyContent = 'center';
-      ttsPanel.style.background = 'var(--primary, #34495e)';
-
-      // 隱藏除了切換鈕以外的所有東西
-      children.forEach(el => {
-        if (el !== toggleBtn) el.style.setProperty('display', 'none', 'important');
-      });
-
-      // 讓按鈕鋪滿變長條狀態，變成一整條都可以點擊
-      toggleBtn.innerHTML = '🎧 TTS (點擊展開)';
-      toggleBtn.style.position = 'static';
-      toggleBtn.style.width = '100%';
-      toggleBtn.style.height = '100%';
-      toggleBtn.style.background = 'transparent';
+      p.style.setProperty('height', '32px', 'important');
+      p.style.setProperty('padding', '0', 'important');
+      p.style.setProperty('display', 'flex', 'important');
+      p.style.setProperty('align-items', 'center', 'important');
+      p.style.setProperty('justifyContent', 'center', 'important');
+      p.style.setProperty('background', '#34495e', 'important');
+      
+      children.forEach(el => { if (el !== btn) el.style.setProperty('display', 'none', 'important'); });
+      
+      btn.innerHTML = '🎧 TTS (點擊展開)';
+      btn.style.cssText = 'position:static!important;width:100%!important;height:100%!important;background:transparent!important;color:white!important;border:none!important;font-size:14px!important;cursor:pointer!important;';
+      console.log('🔴 模式 3：收合 (32px)');
     }
-  }
+  });
+
+  console.log('✅ [TTS V6 本地相容測試] 成功接管現有的 v5 面板！現在可以去點擊右上角的按鈕了。');
 })();
