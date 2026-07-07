@@ -18,7 +18,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "morn"
         },
         "everyone": {
           "pos": "",
@@ -220,9 +221,9 @@
           "color": "c1"
         },
         "over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
           "color": "c1",
           "lemma": "over"
         },
@@ -3110,9 +3111,9 @@
           "color": "c1"
         },
         "over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
           "color": "c1",
           "lemma": "over"
         },
@@ -5251,7 +5252,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783443670851,
+  "updatedAt": 1783443777829,
   "learn": {
     "github": {
       "word": "github",
@@ -5922,11 +5923,11 @@
       "word": "overtime",
       "lemma": "overtime",
       "firstSeenAt": 1783430274331,
-      "lastSeenAt": 1783443604554,
+      "lastSeenAt": 1783443747149,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 30,
-      "sessionClicks": 30,
-      "maxClickStreak": 29,
+      "lifetimeClicks": 31,
+      "sessionClicks": 31,
+      "maxClickStreak": 30,
       "reviewHistory": [],
       "dueAt": 1783433874336,
       "intervalDays": 0,
@@ -5937,13 +5938,13 @@
       "lastSurface": "overtime",
       "lastForm": "base form",
       "variants": {
-        "overtime": 30
+        "overtime": 31
       },
-      "clicks": 30,
+      "clicks": 31,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783443604558,
+      "updatedAt": 1783443747152,
       "loading": false,
       "tw": "加班",
       "engine": "MyMemory",
@@ -5955,33 +5956,65 @@
       "word": "over",
       "lemma": "over",
       "firstSeenAt": 1783443668598,
-      "lastSeenAt": 1783443668598,
+      "lastSeenAt": 1783443741499,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1783447268603,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "over",
       "lastForm": "base form",
       "variants": {
-        "over": 1
+        "over": 2
       },
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 2,
+      "strength": 2,
       "captured": true,
       "known": false,
-      "updatedAt": 1783443670846,
+      "updatedAt": 1783443741504,
       "loading": false,
       "tw": "超过",
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜A set of six legal balls bowled."
+    },
+    "morn": {
+      "word": "morn",
+      "lemma": "morn",
+      "firstSeenAt": 1783443775399,
+      "lastSeenAt": 1783443775399,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783447375404,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "morning",
+      "lastForm": "-ing form",
+      "variants": {
+        "morning": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783443777824,
+      "loading": false,
+      "tw": "早晨",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Morning."
     }
   }
 }
