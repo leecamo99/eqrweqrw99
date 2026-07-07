@@ -5254,7 +5254,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783446846703,
+  "updatedAt": 1783447201720,
   "learn": {
     "github": {
       "word": "github",
@@ -5995,11 +5995,11 @@
       "word": "over",
       "lemma": "over",
       "firstSeenAt": 1783443668598,
-      "lastSeenAt": 1783445611632,
+      "lastSeenAt": 1783447201711,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 9,
-      "sessionClicks": 9,
-      "maxClickStreak": 8,
+      "lifetimeClicks": 10,
+      "sessionClicks": 10,
+      "maxClickStreak": 9,
       "reviewHistory": [],
       "dueAt": 1783447268603,
       "intervalDays": 0,
@@ -6010,18 +6010,19 @@
       "lastSurface": "over",
       "lastForm": "base form",
       "variants": {
-        "over": 9
+        "over": 10
       },
-      "clicks": 9,
-      "strength": 9,
+      "clicks": 10,
+      "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783445611636,
+      "updatedAt": 1783447201715,
       "loading": false,
       "tw": "超过",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A set of six legal balls bowled."
+      "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
+      "isWeak": true
     },
     "morn": {
       "word": "morn",
