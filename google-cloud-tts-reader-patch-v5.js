@@ -93,7 +93,17 @@
     for(let i=0;i<idx;i++)words[i]?.el?.classList.add('gctts-read');
     for(let i=idx;i<words.length;i++)words[i]?.el?.classList.remove('gctts-read');
     const el=words[idx]?.el;
-    if(el){el.classList.add('gctts-current'); if(scroll)el.scrollIntoView({behavior:'smooth',block:'center'});}
+    if(el){
+  el.classList.add('gctts-current');
+
+  if(scroll){
+    el.scrollIntoView({
+      behavior:'smooth',
+      block:'nearest'
+    });
+  }
+}
+
     updateProgressWord(idx);
   }
 
@@ -181,7 +191,22 @@
       audio=new Audio(url);
       audio.onloadedmetadata=()=>{highlightWord(c.start||0,true);};
       audio.onplay=()=>{stopCursor();cursorLoop();}; audio.onpause=()=>stopCursor();
-      audio.onended=()=>{URL.revokeObjectURL(url);stopCursor();if(!playing)return;highlightWord(Math.max(c.start,(c.end||c.start)-1),false);chunkIndex++;if(chunkIndex>=chunks.length){playing=false;status('播放完成');return;}playCurrent();};
+      audio.onended=()=>{URL.revokeObjectURL(url);stopCursor();if(!playing)return;highlightWord(Math.max(c.start,(c.end||c.start)-1),false);chunkIndex++;if(chunkIndex>=chunks.length){
+
+  playing=false;
+
+  status('播放完成');
+
+  if(typeof panelMode!=='undefined'){
+
+    panelMode='mini';
+
+    applyPanelMode();
+  }
+
+  return;
+}
+
       audio.onerror=()=>{URL.revokeObjectURL(url);stopCursor();playing=false;status('播放失敗');};
       status('播放中：'+(chunkIndex+1)+' / '+chunks.length+' · '+byteLen(c.text)+' bytes');
       await audio.play();
@@ -209,10 +234,111 @@
   function inject(){
     injectStyle(); const old=document.getElementById('gcttsPanel'); if(old)old.remove();
     const p=document.createElement('div'); p.id='gcttsPanel';
-    p.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;border-top:1px solid rgba(255,255,255,.18);padding:8px 10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28)';
+    p.style.cssText=
+'position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;border-top:1px solid rgba(255,255,255,.18);padding:8px 10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28);transition:height .25s ease;overflow:hidden;';
+
     const s=load();
     p.innerHTML=`<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><b style="color:#f4d27a">Google Cloud TTS 真人朗讀 v5</b><span id="gcttsStatus" style="flex:1;color:#d8cfbb;min-width:120px">待命</span><button id="gcttsKey">Key</button><button id="gcttsPlay">▶ 全文</button><button id="gcttsPause">暫停</button><button id="gcttsResume">繼續</button><button id="gcttsStop">停止</button></div><div style="display:flex;gap:8px;align-items:center;margin-top:6px"><input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1"><span id="gcttsProgressLabel">0 / 0</span></div><div style="display:flex;gap:8px;margin-top:6px"><select id="gcttsVoice" style="flex:1">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]} — ${v[0]}</option>`).join('')}</select><select id="gcttsRate"><option value="0.82" ${String(s.rate||0.92)==='0.82'?'selected':''}>慢</option><option value="0.92" ${String(s.rate||0.92)==='0.92'?'selected':''}>自然慢</option><option value="1" ${String(s.rate||0.92)==='1'?'selected':''}>正常</option><option value="1.12" ${String(s.rate||0.92)==='1.12'?'selected':''}>快</option></select></div>`;
-    document.body.appendChild(p); document.body.style.paddingBottom='132px';
+    document.body.appendChild(p);
+
+document.body.style.paddingBottom =
+  window.innerWidth < 768
+    ? '60px'
+    : '132px';
+
+/* v8 mini / hide mode */
+
+const modeBtn=document.createElement('button');
+
+modeBtn.id='gcttsModeBtn';
+
+modeBtn.style.cssText=
+position:absolute;
+right:70px;
+top:8px;
+z-index:999999;
+border:none;
+border-radius:6px;
+padding:4px 8px;
+background:#4b5563;
+color:#fff;
+cursor:pointer;
+;
+
+let panelMode=
+  localStorage.getItem('tts-panel-mode')
+  || (
+      window.innerWidth < 768
+        ? 'mini'
+        : 'full'
+     );
+
+function applyPanelMode(){
+
+  if(panelMode==='full'){
+
+    p.style.height='170px';
+
+    if(p.children[1]) p.children[1].style.display='';
+    if(p.children[2]) p.children[2].style.display='';
+
+    document.body.style.paddingBottom='170px';
+  }
+
+  else if(panelMode==='mini'){
+
+    p.style.height='58px';
+
+    if(p.children[1]) p.children[1].style.display='none';
+    if(p.children[2]) p.children[2].style.display='none';
+
+    document.body.style.paddingBottom='70px';
+  }
+
+  else{
+
+    p.style.height='30px';
+
+    if(p.children[1]) p.children[1].style.display='none';
+    if(p.children[2]) p.children[2].style.display='none';
+
+    document.body.style.paddingBottom='35px';
+  }
+
+  localStorage.setItem(
+    'tts-panel-mode',
+    panelMode
+  );
+
+  modeBtn.textContent=
+    panelMode==='full'
+      ? '▾'
+      : panelMode==='mini'
+          ? '▸'
+          : '▲';
+}
+
+modeBtn.onclick=()=>{
+
+  if(panelMode==='full')
+
+    panelMode='mini';
+
+  else if(panelMode==='mini')
+
+    panelMode='hide';
+
+  else
+
+    panelMode='full';
+
+  applyPanelMode();
+};
+
+p.appendChild(modeBtn);
+
+applyPanelMode();
+
     document.getElementById('gcttsKey').onclick=setKey; document.getElementById('gcttsPlay').onclick=playAll; document.getElementById('gcttsPause').onclick=pause; document.getElementById('gcttsResume').onclick=resume; document.getElementById('gcttsStop').onclick=stop;
     const prog=document.getElementById('gcttsProgress');
     prog.oninput=e=>{if(!words.length)chunks=buildChunks(); const idx=Number(e.target.value)||0; highlightWord(idx,true);};
