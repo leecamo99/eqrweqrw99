@@ -223,7 +223,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "over"
         },
         "year's": {
           "pos": "",
@@ -3112,7 +3113,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "over"
         },
         "time": {
           "pos": "",
@@ -5249,7 +5251,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783443604564,
+  "updatedAt": 1783443670851,
   "learn": {
     "github": {
       "word": "github",
@@ -5948,6 +5950,38 @@
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜Working time outside of one's regular hours.",
       "isWeak": true
+    },
+    "over": {
+      "word": "over",
+      "lemma": "over",
+      "firstSeenAt": 1783443668598,
+      "lastSeenAt": 1783443668598,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783447268603,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "over",
+      "lastForm": "base form",
+      "variants": {
+        "over": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783443670846,
+      "loading": false,
+      "tw": "超过",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A set of six legal balls bowled."
     }
   }
 }
