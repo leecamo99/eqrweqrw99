@@ -5254,7 +5254,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783445505589,
+  "updatedAt": 1783445636541,
   "learn": {
     "github": {
       "word": "github",
@@ -5925,10 +5925,10 @@
       "word": "overtime",
       "lemma": "overtime",
       "firstSeenAt": 1783430274331,
-      "lastSeenAt": 1783445505579,
+      "lastSeenAt": 1783445636531,
       "lastReviewedAt": 1783445252799,
-      "lifetimeClicks": 40,
-      "sessionClicks": 40,
+      "lifetimeClicks": 41,
+      "sessionClicks": 41,
       "maxClickStreak": 38,
       "reviewHistory": [
         {
@@ -5945,18 +5945,18 @@
       "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "young",
+      "status": "learning",
       "totalResets": 1,
       "lastSurface": "overtime",
       "lastForm": "base form",
       "variants": {
-        "overtime": 40
+        "overtime": 41
       },
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 2,
+      "strength": 2,
       "captured": true,
       "known": false,
-      "updatedAt": 1783445505583,
+      "updatedAt": 1783445636535,
       "loading": false,
       "tw": "加班",
       "engine": "MyMemory",
@@ -5968,11 +5968,11 @@
       "word": "over",
       "lemma": "over",
       "firstSeenAt": 1783443668598,
-      "lastSeenAt": 1783444596388,
+      "lastSeenAt": 1783445611632,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 7,
-      "sessionClicks": 7,
-      "maxClickStreak": 6,
+      "lifetimeClicks": 9,
+      "sessionClicks": 9,
+      "maxClickStreak": 8,
       "reviewHistory": [],
       "dueAt": 1783447268603,
       "intervalDays": 0,
@@ -5983,13 +5983,13 @@
       "lastSurface": "over",
       "lastForm": "base form",
       "variants": {
-        "over": 7
+        "over": 9
       },
-      "clicks": 7,
-      "strength": 7,
+      "clicks": 9,
+      "strength": 9,
       "captured": true,
       "known": false,
-      "updatedAt": 1783444596390,
+      "updatedAt": 1783445611636,
       "loading": false,
       "tw": "超过",
       "engine": "MyMemory",
