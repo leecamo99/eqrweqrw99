@@ -31,7 +31,7 @@
   function save(s){localStorage.setItem(SETTINGS,JSON.stringify(s||{}));}
   function byteLen(s){return enc.encode(String(s||'')).length;}
   function status(t){const el=document.getElementById('gcttsStatus');if(el)el.textContent=t||'';}
-  function endsWithPunc(s){return /[.!?。！？]$/.test(String(s||'').trim());}
+  function endsWithPunc(s){return /[.!?ãï¼ï¼]$/.test(String(s||'').trim());}
   function asSentence(s){s=String(s||'').replace(/\s+/g,' ').trim(); if(!s)return ''; return endsWithPunc(s)?s:s+'.';}
 
   function injectStyle(){
@@ -63,7 +63,7 @@
       nodes.forEach(node=>{
         const text=node.nodeValue;
         const frag=document.createDocumentFragment();
-        let last=0; const re=/[A-Za-z]+(?:[’'][A-Za-z]+)?/g; let m;
+        let last=0; const re=/[A-Za-z]+(?:[â'][A-Za-z]+)?/g; let m;
         while((m=re.exec(text))){
           if(m.index>last)frag.appendChild(document.createTextNode(text.slice(last,m.index)));
           const sp=document.createElement('span');
@@ -93,27 +93,17 @@
     for(let i=0;i<idx;i++)words[i]?.el?.classList.add('gctts-read');
     for(let i=idx;i<words.length;i++)words[i]?.el?.classList.remove('gctts-read');
     const el=words[idx]?.el;
-    if(el){
-  el.classList.add('gctts-current');
-
-  if(scroll){
-    el.scrollIntoView({
-      behavior:'smooth',
-      block:'nearest'
-    });
-  }
-}
-
+    if(el){el.classList.add('gctts-current'); if(scroll)el.scrollIntoView({behavior:'smooth',block:'center'});}
     updateProgressWord(idx);
   }
 
   function splitLongLineToSentencesWithWords(line,startWordIndex){
     line=String(line||'').replace(/\s+/g,' ').trim(); if(!line)return [];
-    const raw=line.match(/[^.!?。！？]+[.!?。！？]?/g)||[line];
+    const raw=line.match(/[^.!?ãï¼ï¼]+[.!?ãï¼ï¼]?/g)||[line];
     const result=[]; let cursor=startWordIndex;
     for(const piece0 of raw){
       let piece=String(piece0||'').trim(); if(!piece)continue;
-      const pieceWords=piece.match(/[A-Za-z]+(?:[’'][A-Za-z]+)?/g)||[];
+      const pieceWords=piece.match(/[A-Za-z]+(?:[â'][A-Za-z]+)?/g)||[];
       if(byteLen(piece)<=MAX_SENTENCE_BYTES){result.push({text:asSentence(piece),start:cursor,end:cursor+pieceWords.length}); cursor+=pieceWords.length; continue;}
       let buf='', localStart=cursor, localCount=0;
       for(const w of piece.split(/\s+/)){
@@ -135,7 +125,7 @@
       for(const line of lines){
         const sentenceObjs=splitLongLineToSentencesWithWords(line,globalWord);
         out.push(...sentenceObjs);
-        const lineWords=line.match(/[A-Za-z]+(?:[’'][A-Za-z]+)?/g)||[];
+        const lineWords=line.match(/[A-Za-z]+(?:[â'][A-Za-z]+)?/g)||[];
         globalWord+=lineWords.length;
       }
     });
@@ -158,12 +148,12 @@
     return idx>=chunks[chunks.length-1].end ? chunks.length-1 : 0;
   }
   async function synthesize(text){
-    const key=localStorage.getItem(KEY)||''; if(!key)throw new Error('請先設定 Google Cloud TTS API Key');
+    const key=localStorage.getItem(KEY)||''; if(!key)throw new Error('è«åè¨­å® Google Cloud TTS API Key');
     const s=load(); const voiceName=s.voice||'en-US-Chirp3-HD-Aoede'; const languageCode=voiceName.split('-').slice(0,2).join('-')||'en-US';
     const body={input:{text},voice:{languageCode,name:voiceName},audioConfig:{audioEncoding:'MP3',speakingRate:Number(s.rate||0.92)}};
     const res=await fetch('https://texttospeech.googleapis.com/v1/text:synthesize?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const raw=await res.text(); if(!res.ok)throw new Error('Google Cloud TTS '+res.status+': '+raw.slice(0,320));
-    const data=JSON.parse(raw); if(!data.audioContent)throw new Error('Google Cloud TTS 回傳沒有 audioContent');
+    const data=JSON.parse(raw); if(!data.audioContent)throw new Error('Google Cloud TTS åå³æ²æ audioContent');
     const bin=atob(data.audioContent); const bytes=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
     return new Blob([bytes],{type:'audio/mpeg'});
   }
@@ -184,44 +174,29 @@
     playing=true;
     const c=chunks[chunkIndex];
     highlightWord(c.start||0,true);
-    status('合成中：'+(chunkIndex+1)+' / '+chunks.length+' · '+byteLen(c.text)+' bytes');
+    status('åæä¸­ï¼'+(chunkIndex+1)+' / '+chunks.length+' Â· '+byteLen(c.text)+' bytes');
     try{
       const blob=await synthesize(c.text); const url=URL.createObjectURL(blob);
       if(audio){audio.pause();audio=null;}
       audio=new Audio(url);
       audio.onloadedmetadata=()=>{highlightWord(c.start||0,true);};
       audio.onplay=()=>{stopCursor();cursorLoop();}; audio.onpause=()=>stopCursor();
-      audio.onended=()=>{URL.revokeObjectURL(url);stopCursor();if(!playing)return;highlightWord(Math.max(c.start,(c.end||c.start)-1),false);chunkIndex++;if(chunkIndex>=chunks.length){
-
-  playing=false;
-
-  status('播放完成');
-
-  if(typeof panelMode!=='undefined'){
-
-    panelMode='mini';
-
-    applyPanelMode();
-  }
-
-  return;
-}
-
-      audio.onerror=()=>{URL.revokeObjectURL(url);stopCursor();playing=false;status('播放失敗');};
-      status('播放中：'+(chunkIndex+1)+' / '+chunks.length+' · '+byteLen(c.text)+' bytes');
+      audio.onended=()=>{URL.revokeObjectURL(url);stopCursor();if(!playing)return;highlightWord(Math.max(c.start,(c.end||c.start)-1),false);chunkIndex++;if(chunkIndex>=chunks.length){playing=false;status('æ­æ¾å®æ');return;}playCurrent();};
+      audio.onerror=()=>{URL.revokeObjectURL(url);stopCursor();playing=false;status('æ­æ¾å¤±æ');};
+      status('æ­æ¾ä¸­ï¼'+(chunkIndex+1)+' / '+chunks.length+' Â· '+byteLen(c.text)+' bytes');
       await audio.play();
-    }catch(e){playing=false;stopCursor();status('TTS 失敗：'+e.message);console.error(e);}
+    }catch(e){playing=false;stopCursor();status('TTS å¤±æï¼'+e.message);console.error(e);}
   }
   function playAll(){
     chunks=buildChunks(); chunkIndex=0;
-    if(!chunks.length)return alert('沒有可朗讀的文章。');
+    if(!chunks.length)return alert('æ²æå¯æè®çæç« ã');
     updateProgressWord(0);
     console.log('Google Cloud TTS v5 chunks:',chunks.map((c,i)=>({i:i+1,bytes:byteLen(c.text),start:c.start,end:c.end,preview:c.text.slice(0,100)})));
     playCurrent();
   }
-  function stop(){playing=false;stopCursor();if(audio){audio.pause();audio.currentTime=0;}status('已停止');clearHighlight();updateProgressWord(0);}
-  function pause(){if(audio){audio.pause();status('已暫停');}}
-  function resume(){if(audio){audio.play();status('繼續播放');}}
+  function stop(){playing=false;stopCursor();if(audio){audio.pause();audio.currentTime=0;}status('å·²åæ­¢');clearHighlight();updateProgressWord(0);}
+  function pause(){if(audio){audio.pause();status('å·²æ«å');}}
+  function resume(){if(audio){audio.play();status('ç¹¼çºæ­æ¾');}}
   function seekWord(idx){
     idx=Math.max(0,Math.min(words.length-1,Number(idx)||0));
     if(!chunks.length)chunks=buildChunks();
@@ -230,115 +205,14 @@
     highlightWord(idx,true);
     playCurrent();
   }
-  function setKey(){const old=localStorage.getItem(KEY)||'';const k=prompt('貼上 Google Cloud Text-to-Speech API Key（只存本機 localStorage）',old);if(k===null)return;if(k.trim())localStorage.setItem(KEY,k.trim());else localStorage.removeItem(KEY);alert(k.trim()?'Google Cloud TTS Key 已儲存':'Google Cloud TTS Key 已清除');}
+  function setKey(){const old=localStorage.getItem(KEY)||'';const k=prompt('è²¼ä¸ Google Cloud Text-to-Speech API Keyï¼åªå­æ¬æ© localStorageï¼',old);if(k===null)return;if(k.trim())localStorage.setItem(KEY,k.trim());else localStorage.removeItem(KEY);alert(k.trim()?'Google Cloud TTS Key å·²å²å­':'Google Cloud TTS Key å·²æ¸é¤');}
   function inject(){
     injectStyle(); const old=document.getElementById('gcttsPanel'); if(old)old.remove();
     const p=document.createElement('div'); p.id='gcttsPanel';
-    p.style.cssText=
-'position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;border-top:1px solid rgba(255,255,255,.18);padding:8px 10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28);transition:height .25s ease;overflow:hidden;';
-
+    p.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;border-top:1px solid rgba(255,255,255,.18);padding:8px 10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28)';
     const s=load();
-    p.innerHTML=`<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><b style="color:#f4d27a">Google Cloud TTS 真人朗讀 v5</b><span id="gcttsStatus" style="flex:1;color:#d8cfbb;min-width:120px">待命</span><button id="gcttsKey">Key</button><button id="gcttsPlay">▶ 全文</button><button id="gcttsPause">暫停</button><button id="gcttsResume">繼續</button><button id="gcttsStop">停止</button></div><div style="display:flex;gap:8px;align-items:center;margin-top:6px"><input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1"><span id="gcttsProgressLabel">0 / 0</span></div><div style="display:flex;gap:8px;margin-top:6px"><select id="gcttsVoice" style="flex:1">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]} — ${v[0]}</option>`).join('')}</select><select id="gcttsRate"><option value="0.82" ${String(s.rate||0.92)==='0.82'?'selected':''}>慢</option><option value="0.92" ${String(s.rate||0.92)==='0.92'?'selected':''}>自然慢</option><option value="1" ${String(s.rate||0.92)==='1'?'selected':''}>正常</option><option value="1.12" ${String(s.rate||0.92)==='1.12'?'selected':''}>快</option></select></div>`;
-    document.body.appendChild(p);
-
-document.body.style.paddingBottom =
-  window.innerWidth < 768
-    ? '60px'
-    : '132px';
-
-/* v8 mini / hide mode */
-
-const modeBtn=document.createElement('button');
-
-modeBtn.id='gcttsModeBtn';
-
-modeBtn.style.cssText=
-position:absolute;
-right:70px;
-top:8px;
-z-index:999999;
-border:none;
-border-radius:6px;
-padding:4px 8px;
-background:#4b5563;
-color:#fff;
-cursor:pointer;
-;
-
-let panelMode=
-  localStorage.getItem('tts-panel-mode')
-  || (
-      window.innerWidth < 768
-        ? 'mini'
-        : 'full'
-     );
-
-function applyPanelMode(){
-
-  if(panelMode==='full'){
-
-    p.style.height='170px';
-
-    if(p.children[1]) p.children[1].style.display='';
-    if(p.children[2]) p.children[2].style.display='';
-
-    document.body.style.paddingBottom='170px';
-  }
-
-  else if(panelMode==='mini'){
-
-    p.style.height='58px';
-
-    if(p.children[1]) p.children[1].style.display='none';
-    if(p.children[2]) p.children[2].style.display='none';
-
-    document.body.style.paddingBottom='70px';
-  }
-
-  else{
-
-    p.style.height='30px';
-
-    if(p.children[1]) p.children[1].style.display='none';
-    if(p.children[2]) p.children[2].style.display='none';
-
-    document.body.style.paddingBottom='35px';
-  }
-
-  localStorage.setItem(
-    'tts-panel-mode',
-    panelMode
-  );
-
-  modeBtn.textContent=
-    panelMode==='full'
-      ? '▾'
-      : panelMode==='mini'
-          ? '▸'
-          : '▲';
-}
-
-modeBtn.onclick=()=>{
-
-  if(panelMode==='full')
-
-    panelMode='mini';
-
-  else if(panelMode==='mini')
-
-    panelMode='hide';
-
-  else
-
-    panelMode='full';
-
-  applyPanelMode();
-};
-
-p.appendChild(modeBtn);
-
-applyPanelMode();
-
+    p.innerHTML=`<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><b style="color:#f4d27a">Google Cloud TTS çäººæè® v5</b><span id="gcttsStatus" style="flex:1;color:#d8cfbb;min-width:120px">å¾å½</span><button id="gcttsKey">Key</button><button id="gcttsPlay">â¶ å¨æ</button><button id="gcttsPause">æ«å</button><button id="gcttsResume">ç¹¼çº</button><button id="gcttsStop">åæ­¢</button></div><div style="display:flex;gap:8px;align-items:center;margin-top:6px"><input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1"><span id="gcttsProgressLabel">0 / 0</span></div><div style="display:flex;gap:8px;margin-top:6px"><select id="gcttsVoice" style="flex:1">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]} â ${v[0]}</option>`).join('')}</select><select id="gcttsRate"><option value="0.82" ${String(s.rate||0.92)==='0.82'?'selected':''}>æ¢</option><option value="0.92" ${String(s.rate||0.92)==='0.92'?'selected':''}>èªç¶æ¢</option><option value="1" ${String(s.rate||0.92)==='1'?'selected':''}>æ­£å¸¸</option><option value="1.12" ${String(s.rate||0.92)==='1.12'?'selected':''}>å¿«</option></select></div>`;
+    document.body.appendChild(p); document.body.style.paddingBottom='132px';
     document.getElementById('gcttsKey').onclick=setKey; document.getElementById('gcttsPlay').onclick=playAll; document.getElementById('gcttsPause').onclick=pause; document.getElementById('gcttsResume').onclick=resume; document.getElementById('gcttsStop').onclick=stop;
     const prog=document.getElementById('gcttsProgress');
     prog.oninput=e=>{if(!words.length)chunks=buildChunks(); const idx=Number(e.target.value)||0; highlightWord(idx,true);};
