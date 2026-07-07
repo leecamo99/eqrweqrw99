@@ -1,4 +1,4 @@
-/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (精準 DOM 定位版) */
+/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (絕對防外流精準版) */
 (function() {
   const TAG = '[TTS Word Upgrade]';
   let localAudio = null;
@@ -42,10 +42,9 @@
 
   // 3. 定時監控畫面上是否有彈出 WORD NOTE 視窗
   setInterval(() => {
-    // 💡 精準鎖定：只抓取真正的 WORD NOTE 彈窗容器
-    const modal = Array.from(document.querySelectorAll('div')).find(div => {
-      return div.textContent.includes('WORD NOTE') && div.style.position === 'fixed';
-    });
+    // 💡 修正 1：精準識別彈窗，排除外部包含 MY NOTEBOOKS 的側邊欄容器
+    const allModals = Array.from(document.querySelectorAll('div[style*="fixed"]'));
+    const modal = allModals.find(div => div.textContent.includes('WORD NOTE') && !div.textContent.includes('MY NOTEBOOKS'));
     
     if (!modal) return;
 
@@ -63,29 +62,42 @@
       const newSpeakBtn = speakBtn.cloneNode(true);
       speakBtn.parentNode.replaceChild(newSpeakBtn, speakBtn);
 
-      newSpeakBtn.addEventListener('click', async (e) => {
+      newSpeakBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        // 💡 終極精準抓字：直接去 WORD NOTE 內文裡找第一個出現的加粗單字
-        // 排除掉包含 "WORD NOTE"、"原形" 等中文字的行，只拿純英文字
-        let wordText = '';
-        const boldTags = modal.querySelectorAll('b, strong');
-        for (let b of boldTags) {
-          const txt = b.textContent.trim().replace(/[^a-zA-Z']/g, '');
-          if (txt && txt.length > 0 && !b.textContent.includes('WORD') && b.textContent.toLowerCase() !== 'key') {
-            wordText = txt;
-            break;
+        // 💡 修正 2：給網頁 UI 渲染保留 50 毫秒極短緩衝時間，確保文字 100% 寫入進去
+        setTimeout(async () => {
+          let wordText = '';
+          
+          // 💡 修正 3：嚴格限縮搜尋範圍！只在「發音按鈕的同層父級容器」內尋找加粗標題，徹底與外面世界隔離
+          const parentContainer = newSpeakBtn.parentElement || modal;
+          const boldTags = parentContainer.querySelectorAll('b, strong');
+          
+          for (let b of boldTags) {
+            const txt = b.textContent.trim().replace(/[^a-zA-Z']/g, '');
+            // 排除掉可能干擾的功能字眼
+            if (txt && txt.length > 0 && !b.textContent.includes('WORD') && txt.toLowerCase() !== 'key') {
+              wordText = txt;
+              break;
+            }
           }
-        }
 
-        if (!wordText) {
-          console.warn(`${TAG} 警告：在彈窗內找不到任何有效單字。`);
-          return;
-        }
+          if (!wordText) {
+            console.warn(`${TAG} 警告：嚴格範圍內找不到有效單字，嘗試最後盲抓`);
+            const fallbackBold = modal.querySelector('b, strong');
+            if (fallbackBold) wordText = fallbackBold.textContent.trim().replace(/[^a-zA-Z']/g, '');
+          }
 
-        console.log(`${TAG} 確定觸發獨立真人發音，精準解析單字為: "${wordText}"`);
-        await playStandaloneWordAudio(wordText);
+          // 如果不小心抓到大寫的長字串（代表可能抓錯成功能選單），直接拒絕發音
+          if (!wordText || wordText === 'MYNOTEBOOKS') {
+            console.error(`${TAG} 錯誤：抓取到異常單字來源 "${wordText}"，已自動攔截防止錯誤發音。`);
+            return;
+          }
+
+          console.log(`${TAG} 確定觸發獨立真人發音，精準解析單字為: "${wordText}"`);
+          await playStandaloneWordAudio(wordText);
+        }, 50);
       });
     }
   }, 400);
