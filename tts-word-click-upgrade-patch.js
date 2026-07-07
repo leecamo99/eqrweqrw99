@@ -1,7 +1,8 @@
-/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (v5 面板事件觸發版) */
+/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (API 金鑰共享自主播放版) */
 (function() {
   const TAG = '[TTS Word Upgrade]';
   let lastClickedWord = ''; 
+  let localAudio = null; // 我們自己獨立的播放器，不跟文章打架
 
   // 1. 全域劫持：直接沒收原生假音的發聲權
   if (window.speechSynthesis) {
@@ -40,7 +41,7 @@
       speakBtn.parentNode.replaceChild(newSpeakBtn, speakBtn);
 
       // 綁定專屬的 Google Cloud TTS 播放邏輯
-      newSpeakBtn.addEventListener('click', (e) => {
+      newSpeakBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
 
@@ -58,43 +59,52 @@
         if (wordText && wordText.length > 0) {
           if (window.speechSynthesis) window.speechSynthesis.cancel();
 
-          // 💡 嘗試直接調用全域 API 函式
-          if (typeof window.playTextViaGoogleTTS === 'function') {
-            window.playTextViaGoogleTTS(wordText);
-          } else if (typeof window.speakText === 'function') {
-            window.speakText(wordText);
-          } else if (typeof window.playText === 'function') {
-            window.playText(wordText);
-          } else if (window.ttsAudioPlayer && typeof window.ttsAudioPlayer.playText === 'function') {
-            window.ttsAudioPlayer.playText(wordText);
-          } else {
-            // 💡 終極按鈕觸發核心：直接利用網頁上既有的播放機制來出聲！
-            // 尋找你底部的 v5 播放面板中的「播放」按鈕
-            const ttsPanel = document.querySelector('.audio-player-panel') || 
-                             document.querySelector('div[style*="fixed"][style*="bottom"]');
-            
-            // 尋找面板內的播放按鈕 (可能包含 播放、▶、Play 等關鍵字)
-            const playBtn = ttsPanel ? Array.from(ttsPanel.querySelectorAll('button')).find(b => 
-              b.textContent.includes('播放') || b.textContent.includes('▶') || b.textContent.toLowerCase().includes('play')
-            ) : null;
+          // 💡 獲取網頁上現有的金鑰設定與語音設定
+          const apiKey = localStorage.getItem('google_tts_api_key') || (window.ttsConfig && window.ttsConfig.apiKey);
+          
+          // 嘗試抓取底部 v5 目前選用的語音與語速，如果抓不到就用高品質預設值
+          const voiceSelect = document.querySelector('.audio-player-panel select');
+          const voiceName = voiceSelect ? voiceSelect.value : 'en-US-Chirp3-HD-Aoede';
+          
+          if (!apiKey) {
+            console.error(`${TAG} 錯誤：找不到 Google Cloud TTS API Key，請先點擊底部面板的 [Key] 按鈕輸入。`);
+            alert('請先點擊底部 TTS 面板的 [Key] 按鈕輸入您的 Google Cloud API Key 才能啟用真人發音。');
+            return;
+          }
 
-            if (playBtn) {
-              console.log(`${TAG} 成功調用 v5 面板按鈕發音機制`);
-              
-              // 如果 v5 腳本有暴露特定的單字臨時變數或全域文字緩衝區，我們直接餵給它
-              if (window.ttsConfig) window.ttsConfig.text = wordText;
-              if (window.currentTTSText !== undefined) window.currentTTSText = wordText;
-              
-              // 直接觸發底部的播放按鈕點擊
-              playBtn.click();
+          try {
+            speakBtn.innerHTML = '⏳ 載入中...';
+            
+            // 💡 直接對 Google Cloud TTS API 發出單字請求
+            const response = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                input: { text: wordText },
+                voice: { languageCode: 'en-US', name: voiceName },
+                audioConfig: { audioEncoding: 'MP3', speakingRate: 1.0 }
+              })
+            });
+
+            const data = await response.json();
+            if (data.audioContent) {
+              // 建立獨立音訊，絕不影響底部的文章播放狀態
+              if (localAudio) localAudio.pause();
+              localAudio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+              localAudio.play();
+              console.log(`${TAG} 真人單字音訊播放成功！`);
             } else {
-              console.error(`${TAG} 錯誤：找不到任何可用的 Google Cloud TTS 播放函式或面板按鈕。`);
+              console.error(`${TAG} API 回傳錯誤:`, data);
             }
+          } catch (err) {
+            console.error(`${TAG} 請求失敗:`, err);
+          } finally {
+            newSpeakBtn.innerHTML = '🔊 TTS 真人發音';
           }
         }
       });
 
-      console.log(`${TAG} WORD NOTE 按鈕已成功適配 v5 核心引擎！`);
+      console.log(`${TAG} WORD NOTE 按鈕已升級為獨立 API 金鑰共享版！`);
     }
   }, 400);
 })();
