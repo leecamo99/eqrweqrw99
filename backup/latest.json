@@ -44,7 +44,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "weekend"
         },
         "complete": {
           "pos": "",
@@ -808,7 +809,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "weekend"
         },
         "perfect": {
           "pos": "",
@@ -5252,7 +5254,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783444596394,
+  "updatedAt": 1783444661088,
   "learn": {
     "github": {
       "word": "github",
@@ -6015,6 +6017,38 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜Morning."
+    },
+    "weekend": {
+      "word": "weekend",
+      "lemma": "weekend",
+      "firstSeenAt": 1783444658305,
+      "lastSeenAt": 1783444658305,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783448258308,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "weekend",
+      "lastForm": "base form",
+      "variants": {
+        "weekend": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783444661084,
+      "loading": false,
+      "tw": "週末",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday."
     }
   }
 }
