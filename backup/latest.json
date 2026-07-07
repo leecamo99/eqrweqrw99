@@ -5927,9 +5927,9 @@
       "firstSeenAt": 1783430274331,
       "lastSeenAt": 1783446834014,
       "lastReviewedAt": 1783446740565,
-      "lifetimeClicks": 50,
-      "sessionClicks": 50,
-      "maxClickStreak": 38,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
       "reviewHistory": [
         {
           "ts": 1783445252799,
