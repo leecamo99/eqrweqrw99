@@ -1,4 +1,4 @@
-/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (v5 播放核心相容版) */
+/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (v5 面板事件觸發版) */
 (function() {
   const TAG = '[TTS Word Upgrade]';
   let lastClickedWord = ''; 
@@ -58,32 +58,37 @@
         if (wordText && wordText.length > 0) {
           if (window.speechSynthesis) window.speechSynthesis.cancel();
 
-          // 💡 針對 v5 進行精準的多重函式庫轟炸播放
+          // 💡 嘗試直接調用全域 API 函式
           if (typeof window.playTextViaGoogleTTS === 'function') {
             window.playTextViaGoogleTTS(wordText);
           } else if (typeof window.speakText === 'function') {
-            // v5 主程式常見的全域播放函式名稱
             window.speakText(wordText);
           } else if (typeof window.playText === 'function') {
             window.playText(wordText);
           } else if (window.ttsAudioPlayer && typeof window.ttsAudioPlayer.playText === 'function') {
             window.ttsAudioPlayer.playText(wordText);
           } else {
-            // 💡 終極暴力備援：如果找不到任何 JS 函式，直接模擬「將單字填入底部的輸入框，並點擊撥放鈕」
-            const ttsTextArea = document.querySelector('.audio-player-panel textarea') || document.querySelector('textarea');
-            const ttsPlayBtn = document.querySelector('.audio-player-panel button') || Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('播放') || b.textContent.includes('▶'));
+            // 💡 終極按鈕觸發核心：直接利用網頁上既有的播放機制來出聲！
+            // 尋找你底部的 v5 播放面板中的「播放」按鈕
+            const ttsPanel = document.querySelector('.audio-player-panel') || 
+                             document.querySelector('div[style*="fixed"][style*="bottom"]');
             
-            if (ttsTextArea && ttsPlayBtn) {
-              console.log(`${TAG} 觸發 v5 介面模擬播放方案`);
-              const oldVal = ttsTextArea.value;
-              ttsTextArea.value = wordText;
-              // 觸發輸入事件確保背後框架有收到
-              ttsTextArea.dispatchEvent(new Event('input', { bubbles: true }));
-              ttsPlayBtn.click();
-              // 播放後悄悄把原本輸入框的文章塞回去，不影響你聽長文章
-              setTimeout(() => { ttsTextArea.value = oldVal; ttsTextArea.dispatchEvent(new Event('input', { bubbles: true })); }, 800);
+            // 尋找面板內的播放按鈕 (可能包含 播放、▶、Play 等關鍵字)
+            const playBtn = ttsPanel ? Array.from(ttsPanel.querySelectorAll('button')).find(b => 
+              b.textContent.includes('播放') || b.textContent.includes('▶') || b.textContent.toLowerCase().includes('play')
+            ) : null;
+
+            if (playBtn) {
+              console.log(`${TAG} 成功調用 v5 面板按鈕發音機制`);
+              
+              // 如果 v5 腳本有暴露特定的單字臨時變數或全域文字緩衝區，我們直接餵給它
+              if (window.ttsConfig) window.ttsConfig.text = wordText;
+              if (window.currentTTSText !== undefined) window.currentTTSText = wordText;
+              
+              // 直接觸發底部的播放按鈕點擊
+              playBtn.click();
             } else {
-              console.error(`${TAG} 錯誤：找不到任何可用的 Google Cloud TTS 播放介面。`);
+              console.error(`${TAG} 錯誤：找不到任何可用的 Google Cloud TTS 播放函式或面板按鈕。`);
             }
           }
         }
