@@ -5254,7 +5254,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783446740565,
+  "updatedAt": 1783446846703,
   "learn": {
     "github": {
       "word": "github",
@@ -5925,10 +5925,10 @@
       "word": "overtime",
       "lemma": "overtime",
       "firstSeenAt": 1783430274331,
-      "lastSeenAt": 1783446714765,
+      "lastSeenAt": 1783446834014,
       "lastReviewedAt": 1783446740565,
-      "lifetimeClicks": 49,
-      "sessionClicks": 49,
+      "lifetimeClicks": 50,
+      "sessionClicks": 50,
       "maxClickStreak": 38,
       "reviewHistory": [
         {
@@ -5977,13 +5977,13 @@
       "lastSurface": "overtime",
       "lastForm": "base form",
       "variants": {
-        "overtime": 49
+        "overtime": 50
       },
-      "clicks": 0,
-      "strength": 0,
-      "captured": false,
-      "known": true,
-      "updatedAt": 1783446740565,
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783446834017,
       "loading": false,
       "tw": "加班",
       "engine": "MyMemory",
