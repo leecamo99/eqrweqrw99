@@ -7,9 +7,9 @@
       "thumb": "",
       "cards": [
         {
-          "id": "nb_1783429952478c0",
-          "title": "Chapter 1",
-          "text": "Good {{morning}}, / \nFirst, / I’d like to say a big “thank you” / to {{everyone}} / who \n{{worked}} {{overtime}} / over the {{weekend}} / to {{complete}} this year’s \nstock count. / You guys {{finished}} / in {{record}} time! / \nThat being said, / there is still a lot / to do / before the end of\nthis month. / We {{finally}} {{received}} / the men’s {{winter}} coats / \nfrom our {{supplier}} / {{yesterday}}, / and we need to get them out / \non the floor / before the early {{holiday}} sale {{starts}} / \non {{December}} 1. / {{Additionally}}, / we will be {{erecting}} / two \n{{temporary}} {{stands}} / near the {{entrance}} / to {{display}} last year’s \n{{leftover}} stock / for sale. / \nI know / you are all doing your best, / and I won’t {{forget}} it / \nwhen I {{calculate}} this year’s {{bonuses}}. / Keep it up! / \n{{Thanks}} again, / \nC. Smith / \n{{General}} {{Manager}}, C&M {{Fashion}} /",
+          "id": "nb_1783429952478c1783430068734",
+          "title": "New Chapter",
+          "text": "Good {{morning}}, First, I’d like to say a big “thank you” to {{everyone}} who {{worked}} {{overtime}} over the {{weekend}} to {{complete}} this year’s stock count. You guys {{finished}} in {{record}} time! That being said, there is still a lot to do before the end of this month. We {{finally}} {{received}} the men’s {{winter}} coats from our {{supplier}} {{yesterday}}, and we need to get them out on the floor before the early {{holiday}} sale {{starts}} on {{December}} 1. {{Additionally}}, we will be {{erecting}} two {{temporary}} {{stands}} near the {{entrance}} to {{display}} last year’s {{leftover}} stock for sale. I know you are all doing your best, and I won’t {{forget}} it when I {{calculate}} this year’s {{bonuses}}. Keep it up! {{Thanks}} again, C. Smith {{General}} {{Manager}}, C&M {{Fashion}}",
           "myNote": ""
         }
       ],
@@ -5245,7 +5245,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783429952485,
+  "updatedAt": 1783430068735,
   "learn": {
     "github": {
       "word": "github",
