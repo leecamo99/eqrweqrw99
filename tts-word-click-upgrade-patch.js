@@ -1,7 +1,8 @@
-/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (全域文字劫持注入版) */
+/* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (純淨獨立驅動版) */
 (function() {
   const TAG = '[TTS Word Upgrade]';
   let lastClickedWord = ''; 
+  let localAudio = null;
 
   // 1. 全域劫持：直接沒收原生假音的發聲權
   if (window.speechSynthesis) {
@@ -40,12 +41,13 @@
       speakBtn.parentNode.replaceChild(newSpeakBtn, speakBtn);
 
       // 綁定專屬的 Google Cloud TTS 播放邏輯
-      newSpeakBtn.addEventListener('click', (e) => {
+      newSpeakBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
 
         let wordText = lastClickedWord;
 
+        // 備援方案：如果沒記到，從彈窗內抓取
         if (!wordText) {
           const modal = newSpeakBtn.closest('div[style*="fixed"]') || document.body;
           const boldWord = modal.querySelector('strong, b, h2');
@@ -57,62 +59,57 @@
         if (wordText && wordText.length > 0) {
           if (window.speechSynthesis) window.speechSynthesis.cancel();
 
-          // 💡 核心大絕招：直接尋找 v5.js 存放文章內容的網頁核心節點
-          // 你的專案中，儲存文章內容以便閱讀和傳給 TTS 的核心容器通常是 article 或是特定的專案 class
-          const contentArea = document.getElementById('text-input') || 
-                              document.querySelector('textarea') || 
-                              document.querySelector('.article-content') ||
-                              document.querySelector('.content') ||
-                              document.body;
+          // 💡 直接從網頁本地儲存空間撈取當初輸入的 API 金鑰
+          const apiKey = localStorage.getItem('google_tts_api_key') || localStorage.getItem('tts_api_key');
+          
+          // 嘗試抓取底部選單選用的語音，抓不到就用預設高品質語音
+          const voiceSelect = document.querySelector('.audio-player-panel select');
+          const voiceName = voiceSelect ? voiceSelect.value : 'en-US-Chirp3-HD-Aoede';
 
-          // 尋找底部的 v5 播放面板與播放按鈕
-          const ttsPanel = document.querySelector('.audio-player-panel') || 
-                           document.querySelector('div[style*="fixed"][style*="bottom"]');
-          const playBtn = ttsPanel ? Array.from(ttsPanel.querySelectorAll('button')).find(b => 
-            b.textContent.includes('播放') || b.textContent.includes('▶') || b.textContent.toLowerCase().includes('play')
-          ) : null;
+          if (!apiKey) {
+            console.warn(`${TAG} 錯誤：在 localStorage 中找不到 API Key，啟用免密鑰高清備援接口！`);
+            // 💡 備援：如果真的因為作用域拿不到 Key，直接走 Google 官方的高清免費真人接口，保證一定有聲音
+            if (localAudio) localAudio.pause();
+            localAudio = new Audio(`https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(wordText)}`);
+            localAudio.play();
+            return;
+          }
 
-          if (playBtn) {
-            // 💡 1. 記憶原本全域的設定與文字狀態，以便播放完單字後能「無縫還原」
-            const originalTtsConfigText = window.ttsConfig ? window.ttsConfig.text : null;
-            const originalGlobalText = window.currentTTSText;
+          try {
+            newSpeakBtn.innerHTML = '⏳ 載入中...';
             
-            // 💡 2. 強行把單字塞進所有 v5.js 可能讀取文字的全域變數與暫存區中
-            if (window.ttsConfig) window.ttsConfig.text = wordText;
-            window.currentTTSText = wordText;
-            
-            // 針對有隱藏輸入框的備援注入
-            const hiddenInput = document.querySelector('.audio-player-panel textarea') || document.querySelector('#text-input');
-            let originalInputValue = '';
-            if (hiddenInput) {
-              originalInputValue = hiddenInput.value;
-              hiddenInput.value = wordText;
-              hiddenInput.dispatchEvent(new Event('input', { bubbles: true }));
+            // 💡 完全獨立驅動：直接發送請求，不透過 v5
+            const response = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                input: { text: wordText },
+                voice: { languageCode: 'en-US', name: voiceName },
+                audioConfig: { audioEncoding: 'MP3', speakingRate: 1.0 }
+              })
+            });
+
+            const data = await response.json();
+            if (data.audioContent) {
+              if (localAudio) localAudio.pause();
+              localAudio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+              localAudio.play();
+              console.log(`${TAG} 🎉 獨立驅動：真人單字發音成功！`);
+            } else {
+              throw new Error('API 回傳空內容');
             }
-
-            console.log(`${TAG} 已成功將全域核心文字暫時劫持替換為: "${wordText}"，驅動播放按鈕...`);
-            
-            // 💡 3. 點擊底部的播放按鈕（這時 v5 就會乖乖帶著它的 API Key 去播這個單字！）
-            playBtn.click();
-
-            // 💡 4. 防呆還原：0.6 秒後悄悄把原本的文章塞回去，這樣你接下來按底部播放時，依然是原本的文章！
-            setTimeout(() => {
-              if (window.ttsConfig && originalTtsConfigText !== null) window.ttsConfig.text = originalTtsConfigText;
-              if (originalGlobalText !== undefined) window.currentTTSText = originalGlobalText;
-              if (hiddenInput) {
-                hiddenInput.value = originalInputValue;
-                hiddenInput.dispatchEvent(new Event('input', { bubbles: true }));
-              }
-              console.log(`${TAG} 全域文章內容已安全還原，不影響原本文章朗讀。`);
-            }, 600);
-
-          } else {
-            console.error(`${TAG} 錯誤：找不到底部的 TTS 播放面板按鈕。`);
+          } catch (err) {
+            console.error(`${TAG} 獨立請求失敗，切換至免密鑰備援接口:`, err);
+            if (localAudio) localAudio.pause();
+            localAudio = new Audio(`https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(wordText)}`);
+            localAudio.play();
+          } finally {
+            newSpeakBtn.innerHTML = '🔊 TTS 真人發音';
           }
         }
       });
 
-      console.log(`${TAG} WORD NOTE 按鈕已升級為全域文字劫持注入版！`);
+      console.log(`${TAG} WORD NOTE 按鈕已回歸純淨獨立驅動版！`);
     }
   }, 400);
 })();
