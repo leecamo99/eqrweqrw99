@@ -5254,7 +5254,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783447201720,
+  "updatedAt": 1783447424357,
   "learn": {
     "github": {
       "word": "github",
@@ -5929,7 +5929,7 @@
       "lastReviewedAt": 1783446740565,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [
         {
           "ts": 1783445252799,
@@ -5995,11 +5995,11 @@
       "word": "over",
       "lemma": "over",
       "firstSeenAt": 1783443668598,
-      "lastSeenAt": 1783447201711,
+      "lastSeenAt": 1783447424347,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 10,
-      "sessionClicks": 10,
-      "maxClickStreak": 9,
+      "lifetimeClicks": 11,
+      "sessionClicks": 11,
+      "maxClickStreak": 10,
       "reviewHistory": [],
       "dueAt": 1783447268603,
       "intervalDays": 0,
@@ -6010,13 +6010,13 @@
       "lastSurface": "over",
       "lastForm": "base form",
       "variants": {
-        "over": 10
+        "over": 11
       },
-      "clicks": 10,
+      "clicks": 11,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783447201715,
+      "updatedAt": 1783447424351,
       "loading": false,
       "tw": "超过",
       "engine": "MyMemory",
