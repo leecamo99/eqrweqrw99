@@ -15,9 +15,9 @@
       ],
       "marks": {
         "morning": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "早晨",
+          "tip": "Auto translated by MyMemory｜Morning.",
           "color": "c1",
           "lemma": "morn"
         },
@@ -5252,7 +5252,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783443842895,
+  "updatedAt": 1783443909712,
   "learn": {
     "github": {
       "word": "github",
@@ -5956,11 +5956,11 @@
       "word": "over",
       "lemma": "over",
       "firstSeenAt": 1783443668598,
-      "lastSeenAt": 1783443842883,
+      "lastSeenAt": 1783443909701,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 3,
-      "sessionClicks": 3,
-      "maxClickStreak": 2,
+      "lifetimeClicks": 4,
+      "sessionClicks": 4,
+      "maxClickStreak": 3,
       "reviewHistory": [],
       "dueAt": 1783447268603,
       "intervalDays": 0,
@@ -5971,13 +5971,13 @@
       "lastSurface": "over",
       "lastForm": "base form",
       "variants": {
-        "over": 3
+        "over": 4
       },
-      "clicks": 3,
-      "strength": 3,
+      "clicks": 4,
+      "strength": 4,
       "captured": true,
       "known": false,
-      "updatedAt": 1783443842888,
+      "updatedAt": 1783443909705,
       "loading": false,
       "tw": "超过",
       "engine": "MyMemory",
