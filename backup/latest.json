@@ -5249,7 +5249,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783443384721,
+  "updatedAt": 1783443234406,
   "learn": {
     "github": {
       "word": "github",
@@ -5920,11 +5920,11 @@
       "word": "overtime",
       "lemma": "overtime",
       "firstSeenAt": 1783430274331,
-      "lastSeenAt": 1783443185119,
+      "lastSeenAt": 1783443234394,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 27,
-      "sessionClicks": 27,
-      "maxClickStreak": 26,
+      "lifetimeClicks": 28,
+      "sessionClicks": 28,
+      "maxClickStreak": 27,
       "reviewHistory": [],
       "dueAt": 1783433874336,
       "intervalDays": 0,
@@ -5935,51 +5935,19 @@
       "lastSurface": "overtime",
       "lastForm": "base form",
       "variants": {
-        "overtime": 27
+        "overtime": 28
       },
-      "clicks": 27,
+      "clicks": 28,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783443185123,
+      "updatedAt": 1783443234399,
       "loading": false,
       "tw": "加班",
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜Working time outside of one's regular hours.",
       "isWeak": true
-    },
-    "over": {
-      "word": "over",
-      "lemma": "over",
-      "firstSeenAt": 1783443383628,
-      "lastSeenAt": 1783443383628,
-      "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
-      "maxClickStreak": 0,
-      "reviewHistory": [],
-      "dueAt": 1783446983635,
-      "intervalDays": 0,
-      "ease": 2.5,
-      "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
-      "lastSurface": "over",
-      "lastForm": "base form",
-      "variants": {
-        "over": 1
-      },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783443384714,
-      "loading": false,
-      "tw": "超过",
-      "engine": "MyMemory",
-      "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A set of six legal balls bowled."
     }
   }
 }
