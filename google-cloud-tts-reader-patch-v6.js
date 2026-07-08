@@ -76,6 +76,7 @@
         }
       });
     } else if (currentMode === 2) {
+      // 🟡 模式 2：迷你
       ttsPanel.style.setProperty('height', settings.panelHeight, 'important');
       ttsPanel.style.setProperty('padding', settings.panelPadding, 'important');
       ttsPanel.style.setProperty('display', 'flex', 'important');
@@ -84,7 +85,14 @@
 
       children.forEach(el => {
         if (el === toggleBtn) return;
+        
+        // 識別邏輯：檢查元素文字內容是否包含 'Key'
+        const text = el.textContent || '';
+        
         if (el.id === 'gcttsProgress') {
+          el.style.setProperty('display', 'none', 'important');
+        } else if (text.includes('Key')) { 
+          // 隱藏包含 Key 的元件
           el.style.setProperty('display', 'none', 'important');
         } else if (['SELECT', 'BR', 'SPAN'].includes(el.tagName) && el.id !== 'gcttsProgressLabel') {
           el.style.setProperty('display', 'none', 'important');
