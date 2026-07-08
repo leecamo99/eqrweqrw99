@@ -187,3 +187,49 @@
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
+
+/* 
+   Native TTS & Detail Integration for Flashcards
+   移植目標：將 Word Note 的發音邏輯與懸浮詳解直接植入閃卡
+*/
+
+(function() {
+  'use strict';
+
+  // 1. 真人發音引擎 (Google TTS) - 絕對穩定
+  const playFlashcardAudio = (word) => {
+    const cleanWord = word.replace(/[^a-zA-Z\s\-]/g, '').trim().split(/\s+/)[0];
+    if (!cleanWord) return;
+    
+    // 使用 Google 翻譯引擎，繞過 404 字典接口風險
+    const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(cleanWord)}`;
+    const audio = new Audio(ttsUrl);
+    
+    // 強制播放，如果被瀏覽器阻擋，將會自動觸發 catch
+    audio.play().catch(e => {
+        console.warn("瀏覽器阻擋發音，請確認已與網頁互動過。");
+    });
+  };
+
+  // 2. 注入按鈕至閃卡視窗
+  const injectFlashcardFeatures = () => {
+    const modal = document.querySelector('.word-note-popup, .flashcard-modal'); // 請根據你的實際 class 名稱調整
+    if (!modal || modal.dataset.nativeInjected) return;
+    modal.dataset.nativeInjected = 'true';
+
+    const word = modal.querySelector('.word-title, .wordbig')?.textContent || '';
+    
+    // 建立發音按鈕
+    const btn = document.createElement('button');
+    btn.textContent = '🔊 發音';
+    btn.style.cssText = "margin: 5px; padding: 5px 10px; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer;";
+    btn.onclick = (e) => { e.stopPropagation(); playFlashcardAudio(word); };
+    
+    // 注入到模組標題列
+    modal.prepend(btn);
+  };
+
+  // 3. 監控渲染
+  const observer = new MutationObserver(injectFlashcardFeatures);
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
