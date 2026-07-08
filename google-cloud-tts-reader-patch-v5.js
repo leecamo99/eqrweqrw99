@@ -252,10 +252,7 @@
     
     
     // ... 後續綁定邏輯保持不變 ...
-    document.getElementById('gcttsKey').onclick=setKey; document.getElementById('gcttsPlay').onclick=playAll; document.getElementById('gcttsPause').onclick=pause; document.getElementById('gcttsResume').onclick=resume; document.getElementById('gcttsStop').onclick=stop;
-    // ... 前面的程式碼保持不變 ...
-
-    // --- 修正後的綁定邏輯 ---
+// --- 請將此區塊直接貼上並覆蓋舊的綁定邏輯 ---
     document.getElementById('gcttsKey').onclick = setKey;
     document.getElementById('gcttsPlay').onclick = playAll;
     document.getElementById('gcttsPause').onclick = pause;
@@ -264,14 +261,14 @@
 
     const prog = document.getElementById('gcttsProgress');
     
-    // 拖動時僅高亮預覽，不觸發請求
+    // 拖動時僅高亮預覽，不觸發播放以避免頻繁請求
     prog.oninput = e => {
         if (!words.length) buildChunks();
         const idx = Number(e.target.value) || 0;
         highlightWord(idx, false);
     };
 
-    // 拖動結束後，正式跳轉到該位置並播放
+    // 拖動結束後，執行精準跳轉
     prog.onchange = e => {
         seekWord(e.target.value);
     };
@@ -280,6 +277,29 @@
     document.getElementById('gcttsRate').onchange = e => { const s = load(); s.rate = Number(e.target.value); save(s); };
     
     console.log('Google Cloud TTS reader patch v5.1 loaded with seek fix');
+  }
+
+  // 確保 seekWord 函式在作用域內 (這段必須加在 inject 函式外部)
+  function seekWord(idx) {
+    idx = Math.max(0, Math.min(words.length - 1, Number(idx) || 0));
+    if (!chunks.length) chunks = buildChunks();
+    chunkIndex = findChunkByWord(idx);
+    playing = false; 
+    stopCursor();
+    if (audio) {
+        audio.pause();
+        audio.onended = null;
+        audio.src = "";
+        audio = null;
+    }
+    highlightWord(idx, true);
+    playCurrent(); 
+  }
+
+  window.seekWord = seekWord;
+  // --- 貼上結束 ---
+
+   
   }
 
   // 強制暴露 seekWord 供外部呼叫
