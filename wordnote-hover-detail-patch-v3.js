@@ -1,9 +1,7 @@
-/* wordnote-hover-detail-patch-v3.js (Integrated with TTS Custom Patch)
+/* wordnote-hover-detail-patch-v5.js (Integrated with Dual-Engine Mini TTS)
    1. Fix duplicate detail lines in WORD NOTE hover popover.
-      - Deduplicates repeated "Auto translated by ..."
-      - Removes repeated identical lines
-      - Keeps Chinese translation visible in WORD NOTE; only detailed English info appears on hover
-   2. Inject immune TTS Audio button into Flashcard Modal.
+   2. Inject immune Mini TTS Audio button into Flashcard Modal.
+   3. Dual-Engine Audio: Dictionary API (Primary) + Google Translate TTS (Fallback).
 */
 (function(){
   'use strict';
@@ -22,19 +20,12 @@
     tipEl = document.createElement('div');
     tipEl.id = 'wordnoteHoverDetail';
     tipEl.style.cssText = [
-      'position:fixed',
-      'z-index:99999',
-      'display:none',
-      'max-width:min(520px, calc(100vw - 32px))',
-      'background:#2f3f52',
-      'color:#fff8e8',
-      'border:1px solid rgba(255,255,255,.25)',
-      'box-shadow:0 10px 28px rgba(0,0,0,.28)',
-      'border-radius:8px',
-      'padding:12px 14px',
+      'position:fixed', 'z-index:99999', 'display:none',
+      'max-width:min(520px, calc(100vw - 32px))', 'background:#2f3f52', 'color:#fff8e8',
+      'border:1px solid rgba(255,255,255,.25)', 'box-shadow:0 10px 28px rgba(0,0,0,.28)',
+      'border-radius:8px', 'padding:12px 14px',
       'font:14px/1.65 Microsoft JhengHei, system-ui, sans-serif',
-      'white-space:normal',
-      'pointer-events:none'
+      'white-space:normal', 'pointer-events:none'
     ].join(';');
     document.body.appendChild(tipEl);
     return tipEl;
@@ -52,10 +43,7 @@
       if(tip) parts.push(tip);
       if(item.lastForm) parts.push('Form: ' + item.lastForm);
       if(item.variants){
-        const variants = Object.entries(item.variants)
-          .sort((a,b)=>b[1]-a[1])
-          .map(([k,v])=>`${k} ×${v}`)
-          .join(', ');
+        const variants = Object.entries(item.variants).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${k} ×${v}`).join(', ');
         if(variants) parts.push('Variants: ' + variants);
       }
       return parts.join('\n');
@@ -85,22 +73,14 @@
     let text = String(raw||'').trim();
     if(!text) text = getDetailFromDB();
     if(!text) return [];
-    const rough = text
-      .replace(/｜/g, '\n')
-      .replace(/\s*\|\s*/g, '\n')
-      .split(/\n+/)
-      .map(x=>x.trim())
-      .filter(Boolean);
-    return uniqueLines(rough);
+    return uniqueLines(text.replace(/｜/g, '\n').replace(/\s*\|\s*/g, '\n').split(/\n+/).map(x=>x.trim()).filter(Boolean));
   }
   
   function positionTip(e){
     const el = ensureTip();
     const pad = 14;
-    let x = e.clientX + 16;
-    let y = e.clientY + 16;
-    el.style.left = x + 'px';
-    el.style.top = y + 'px';
+    let x = e.clientX + 16, y = e.clientY + 16;
+    el.style.left = x + 'px'; el.style.top = y + 'px';
     el.style.display = 'block';
     const r = el.getBoundingClientRect();
     if(r.right > window.innerWidth - pad) x = Math.max(pad, window.innerWidth - r.width - pad);
@@ -113,78 +93,80 @@
     const lines = normalizeDetail(detail);
     if(!lines.length) return;
     const el = ensureTip();
-    el.innerHTML = '<div style="font-weight:700;color:#f4d27a;margin-bottom:6px">詳細英文解釋</div>' +
-      lines.map(line => `<div>${esc(line)}</div>`).join('');
+    el.innerHTML = '<div style="font-weight:700;color:#f4d27a;margin-bottom:6px">詳細英文解釋</div>' + lines.map(line => `<div>${esc(line)}</div>`).join('');
     positionTip(e);
   }
   
-  function hideTip(){
-    if(tipEl) tipEl.style.display = 'none';
-  }
+  function hideTip(){ if(tipEl) tipEl.style.display = 'none'; }
   
   function bindMeaning(){
     const meaning = document.querySelector('#dockBody .meaning');
     if(!meaning || meaning.dataset.hoverDetailBound === '2') return;
     meaning.dataset.hoverDetailBound = '2';
-
-    const rawDetail = meaning.getAttribute('title') || getDetailFromDB();
-    const lines = normalizeDetail(rawDetail);
-    if(lines.length){
-      meaning.dataset.detail = lines.join('\n');
-      meaning.removeAttribute('title');
-    }
+    const lines = normalizeDetail(meaning.getAttribute('title') || getDetailFromDB());
+    if(lines.length){ meaning.dataset.detail = lines.join('\n'); meaning.removeAttribute('title'); }
     meaning.style.cursor = 'help';
     meaning.addEventListener('mouseenter', e => showTip(e, meaning.dataset.detail || getDetailFromDB()));
-    meaning.addEventListener('mousemove', e => positionTip(e));
+    meaning.addEventListener('mousemove', positionTip);
     meaning.addEventListener('mouseleave', hideTip);
   }
   
   const hoverObs = new MutationObserver(()=>setTimeout(bindMeaning, 0));
 
-
   // ==========================================
-  // PART 2: 閃卡彈窗 TTS 發音 (免疫劫持版)
+  // PART 2: 閃卡彈窗 TTS 發音 (雙引擎迷你免疫版)
   // ==========================================
   async function playIndependentAudio(word) {
-    console.log(`[TTS Custom] 播放: ${word}`);
     try {
-        const cleanWord = word.replace(/[^a-zA-Z\s]/g, '').trim().split(/\s+/)[0];
-        if (!cleanWord) return alert("無法解析單字");
+        const cleanWord = word.replace(/[^a-zA-Z\s\-]/g, '').trim().split(/\s+/)[0];
+        if (!cleanWord) return;
         
-        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(cleanWord)}`);
-        const data = await res.json();
-        const audioUrl = data[0]?.phonetics?.find(p => p.audio)?.audio;
-        if (audioUrl) { new Audio(audioUrl).play(); }
-        else { alert("找不到此單字的真人音檔"); }
-    } catch (e) { console.error(e); }
+        console.log(`[TTS Custom] 準備播放單字: ${cleanWord}`);
+        let audioUrl = null;
+
+        // 【引擎 1】：免費字典 API
+        try {
+            const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(cleanWord)}`);
+            if (res.ok) {
+                const data = await res.json();
+                audioUrl = data[0]?.phonetics?.find(p => p.audio)?.audio;
+            }
+        } catch (e) { console.log("[TTS Custom] API 請求失敗，準備切換..."); }
+
+        // 【引擎 2】：強制 Google TTS 備援 (保證 100% 有聲)
+        if (!audioUrl) {
+            audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(cleanWord)}`;
+        }
+
+        const audio = new Audio(audioUrl);
+        audio.play().catch(e => console.error("播放遭拒:", e));
+    } catch (e) { console.error("發音模組錯誤:", e); }
   }
 
   function bindTTSButton() {
-    if (document.getElementById('my-immune-btn')) return;
+    if (document.getElementById('my-mini-immune-btn')) return;
 
     const divs = Array.from(document.querySelectorAll('div')).reverse();
-    
     for (const modal of divs) {
         if (modal.textContent.includes('點擊') && modal.textContent.includes('先想中文')) {
-            const word = modal.innerText.split('\n')[0].trim();
+            let word = "";
+            const titleEl = document.querySelector('.word-note-popup h1, .word-note-popup h2, .word-note-popup .word-title, .wordbig');
+            if (titleEl) {
+                word = titleEl.textContent;
+            } else {
+                const rootPopup = modal.closest('div[class*="popup"]') || modal.parentElement.parentElement;
+                word = (rootPopup ? rootPopup.innerText : modal.innerText).split('\n')[0].trim();
+            }
             
-            // 使用 div 取代 button，免疫舊代碼劫持變紫色
             const btn = document.createElement('div');
-            btn.id = 'my-immune-btn';
-            btn.textContent = '🔊 真人發音';
-            btn.style.cssText = "display: inline-block; margin: 10px auto; padding: 8px 16px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; text-align: center; transition: background 0.2s;";
+            btn.id = 'my-mini-immune-btn';
+            btn.textContent = '🔊';
+            btn.title = '真人發音';
+            btn.style.cssText = "display: inline-flex; justify-content: center; align-items: center; width: 26px; height: 26px; margin-right: 8px; background: #27ae60; color: white; border-radius: 50%; cursor: pointer; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); vertical-align: middle; transition: background 0.2s;";
             
-            // 增加簡單的 hover 效果讓它更像按鈕
-            btn.onmouseover = () => btn.style.background = '#2ecc71';
-            btn.onmouseout = () => btn.style.background = '#27ae60';
-
-            btn.onclick = (e) => { 
-                e.stopPropagation(); 
-                playIndependentAudio(word); 
-            };
+            btn.onclick = (e) => { e.stopPropagation(); playIndependentAudio(word); };
             
             modal.prepend(btn);
-            console.log(`✅ [TTS Custom] 已掛載免疫按鈕，真實抓取單字: ${word}`);
             break; 
         }
     }
@@ -192,21 +174,12 @@
 
   const ttsObs = new MutationObserver(() => setTimeout(bindTTSButton, 0));
 
-
-  // ==========================================
-  // 初始化 (BOOT)
-  // ==========================================
   function boot(){
-    // 1. 啟動 Hover Detail
     ensureTip();
     bindMeaning();
     const dock = document.getElementById('dockBody');
     if(dock) hoverObs.observe(dock, { childList: true, subtree: true });
-
-    // 2. 啟動 TTS Button (監控全域)
     ttsObs.observe(document.body, { childList: true, subtree: true });
-
-    console.log('✅ WORD NOTE Hover Detail & TTS Custom Patch loaded successfully');
   }
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
