@@ -237,7 +237,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "count"
         },
         "guys": {
           "pos": "",
@@ -5256,7 +5257,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783510167243,
+  "updatedAt": 1783510431300,
   "learn": {
     "github": {
       "word": "github",
@@ -6160,6 +6161,38 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy."
+    },
+    "count": {
+      "word": "count",
+      "lemma": "count",
+      "firstSeenAt": 1783510428740,
+      "lastSeenAt": 1783510431288,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783514028744,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "count",
+      "lastForm": "base form",
+      "variants": {
+        "count": 2
+      },
+      "clicks": 2,
+      "strength": 2,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510431293,
+      "loading": false,
+      "tw": "數量",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The act of counting or tallying a quantity."
     }
   }
 }
