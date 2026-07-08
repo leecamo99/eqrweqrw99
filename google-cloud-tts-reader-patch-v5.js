@@ -214,20 +214,9 @@
     const s=load();
     
  p.innerHTML = `
-      <!-- 第二層 (倒數第二層)：控制按鈕與設定區 -->
-      <div id="gcttsControls" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px; position:relative; z-index:2;">
-        <b style="color:#f4d27a">TTS v5</b>
-        <select id="gcttsVoice" style="max-width:140px;">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]}</option>`).join('')}</select>
-        <select id="gcttsRate">
-          <option value="0.82" ${String(s.rate||0.92)==='0.82'?'selected':''}>慢</option>
-          <option value="0.92" ${String(s.rate||0.92)==='0.92'?'selected':''}>自然</option>
-          <option value="1" ${String(s.rate||0.92)==='1'?'selected':''}>正常</option>
-          <option value="1.12" ${String(s.rate||0.92)==='1.12'?'selected':''}>快</option>
-        </select>
-        <input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1">
-        <span id="gcttsProgressLabel" style="min-width:40px;">0 / 0</span>
-        
-        <!-- 操作按鈕 -->
+      <!-- 第1層：控制按鈕 -->
+      <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+        <b style="color:#f4d27a; margin-right:5px;">TTS v5</b>
         <button id="gcttsPlay">▶ 全文</button>
         <button id="gcttsPause">暫停</button>
         <button id="gcttsResume">繼續</button>
@@ -235,8 +224,25 @@
         <button id="gcttsKey">Key</button>
       </div>
 
-      <!-- 第一層 (最底層)：狀態顯示區 -->
-      <div id="gcttsStatus" style="width:100%; border-top:1px solid rgba(255,255,255,0.1); padding-top:6px; color:#f4d27a; font-size:12px; font-weight:bold; text-align:center; position:relative; z-index:1;">
+      <!-- 第2層：進度條 -->
+      <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+        <input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1">
+        <span id="gcttsProgressLabel" style="min-width:40px;">0 / 0</span>
+      </div>
+
+      <!-- 第3層：選單 -->
+      <div style="display:flex; gap:8px; margin-bottom:8px;">
+        <select id="gcttsVoice" style="flex:1; max-width:200px;">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]}</option>`).join('')}</select>
+        <select id="gcttsRate">
+          <option value="0.82" ${String(s.rate||0.92)==='0.82'?'selected':''}>慢</option>
+          <option value="0.92" ${String(s.rate||0.92)==='0.92'?'selected':''}>自然</option>
+          <option value="1" ${String(s.rate||0.92)==='1'?'selected':''}>正常</option>
+          <option value="1.12" ${String(s.rate||0.92)==='1.12'?'selected':''}>快</option>
+        </select>
+      </div>
+
+      <!-- 第4層：狀態列 (最底部) -->
+      <div id="gcttsStatus" style="width:100%; border-top:1px solid rgba(255,255,255,0.1); padding-top:6px; color:#f4d27a; font-size:12px; font-weight:bold; text-align:center;">
         待命
       </div>
     `;
