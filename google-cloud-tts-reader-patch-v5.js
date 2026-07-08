@@ -1,13 +1,5 @@
-
-/* google-cloud-tts-reader-patch-v5.js v20260707-5
-   Google Cloud TTS + approximate dynamic cursor + continuous progress bar.
-   Fix from v4: progress bar now moves while audio is playing.
-   - Progress max = total article words, not chunk count.
-   - During playback, progress value follows estimated current word.
-   - Dragging progress seeks to the chunk containing that word.
-   Note: Google Cloud TTS REST returns audioContent only, no word timestamps; cursor is approximate.
-   Install:
-   <script src="./google-cloud-tts-reader-patch-v5.js?v=20260707-5"></script>
+/* google-cloud-tts-reader-patch-v5.js v20260707-6
+   Fixed: seekWord stability and event handling.
 */
 (function(){
   'use strict';
@@ -191,17 +183,22 @@
     chunks=buildChunks(); chunkIndex=0;
     if(!chunks.length)return alert('沒有可朗讀的文章。');
     updateProgressWord(0);
-    console.log('Google Cloud TTS v5 chunks:',chunks.map((c,i)=>({i:i+1,bytes:byteLen(c.text),start:c.start,end:c.end,preview:c.text.slice(0,100)})));
     playCurrent();
   }
-  function stop(){playing=false;stopCursor();if(audio){audio.pause();audio.currentTime=0;}status('已停止');clearHighlight();updateProgressWord(0);}
+  function stop(){playing=false;stopCursor();if(audio){audio.pause();audio.currentTime=0;audio=null;}status('已停止');clearHighlight();updateProgressWord(0);}
   function pause(){if(audio){audio.pause();status('已暫停');}}
   function resume(){if(audio){audio.play();status('繼續播放');}}
   function seekWord(idx){
     idx=Math.max(0,Math.min(words.length-1,Number(idx)||0));
     if(!chunks.length)chunks=buildChunks();
     chunkIndex=findChunkByWord(idx);
-    if(audio)audio.pause();
+    playing=false; 
+    stopCursor();
+    if(audio) {
+        audio.pause();
+        audio.onended = null;
+        audio = null;
+    }
     highlightWord(idx,true);
     playCurrent();
   }
@@ -209,12 +206,9 @@
   function inject(){
     injectStyle(); const old=document.getElementById('gcttsPanel'); if(old)old.remove();
     const p=document.createElement('div'); p.id='gcttsPanel';
-    // 面板本體樣式
     p.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;padding:10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28)';
     const s=load();
-    
- p.innerHTML = `
-      <!-- 第1層：控制按鈕 -->
+    p.innerHTML = `
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <b style="color:#f4d27a; margin-right:5px;">TTS v5</b>
         <button id="gcttsPlay">▶ 全文</button>
@@ -223,14 +217,10 @@
         <button id="gcttsStop">停止</button>
         <button id="gcttsKey">Key</button>
       </div>
-
-      <!-- 第2層：進度條 -->
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1">
         <span id="gcttsProgressLabel" style="min-width:140px;">0 / 0</span>
       </div>
-
-      <!-- 第3層：選單 -->
       <div style="display:flex; gap:8px; margin-bottom:8px;">
         <select id="gcttsVoice" style="flex:1; max-width:200px;">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]}</option>`).join('')}</select>
         <select id="gcttsRate">
@@ -240,73 +230,25 @@
           <option value="1.12" ${String(s.rate||0.92)==='1.12'?'selected':''}>快</option>
         </select>
       </div>
-
-      <!-- 第4層：狀態列 (最底部) -->
-      <div id="gcttsStatus" style="width:100%; border-top:1px solid rgba(255,255,255,0.1); padding-top:6px; color:#f4d27a; font-size:12px; font-weight:bold; text-align:center;">
-        待命
-      </div>
+      <div id="gcttsStatus" style="width:100%; border-top:1px solid rgba(255,255,255,0.1); padding-top:6px; color:#f4d27a; font-size:12px; font-weight:bold; text-align:center;">待命</div>
     `;
-    
     document.body.appendChild(p); 
     document.body.style.paddingBottom='160px'; 
     
-    
-    // ... 後續綁定邏輯保持不變 ...
-// --- 請將此區塊直接貼上並覆蓋舊的綁定邏輯 ---
-    document.getElementById('gcttsKey').onclick = setKey;
-    document.getElementById('gcttsPlay').onclick = playAll;
-    document.getElementById('gcttsPause').onclick = pause;
-    document.getElementById('gcttsResume').onclick = resume;
-    document.getElementById('gcttsStop').onclick = stop;
+    document.getElementById('gcttsKey').onclick=setKey; 
+    document.getElementById('gcttsPlay').onclick=playAll; 
+    document.getElementById('gcttsPause').onclick=pause; 
+    document.getElementById('gcttsResume').onclick=resume; 
+    document.getElementById('gcttsStop').onclick=stop;
 
     const prog = document.getElementById('gcttsProgress');
-    
-    // 拖動時僅高亮預覽，不觸發播放以避免頻繁請求
-    prog.oninput = e => {
-        if (!words.length) buildChunks();
-        const idx = Number(e.target.value) || 0;
-        highlightWord(idx, false);
-    };
+    prog.oninput = e => { if(!words.length)buildChunks(); highlightWord(Number(e.target.value)||0, false); };
+    prog.onchange = e => { seekWord(e.target.value); };
 
-    // 拖動結束後，執行精準跳轉
-    prog.onchange = e => {
-        seekWord(e.target.value);
-    };
-
-    document.getElementById('gcttsVoice').onchange = e => { const s = load(); s.voice = e.target.value; save(s); };
-    document.getElementById('gcttsRate').onchange = e => { const s = load(); s.rate = Number(e.target.value); save(s); };
-    
-    console.log('Google Cloud TTS reader patch v5.1 loaded with seek fix');
-  }
-
-  // 確保 seekWord 函式在作用域內 (這段必須加在 inject 函式外部)
-  function seekWord(idx) {
-    idx = Math.max(0, Math.min(words.length - 1, Number(idx) || 0));
-    if (!chunks.length) chunks = buildChunks();
-    chunkIndex = findChunkByWord(idx);
-    playing = false; 
-    stopCursor();
-    if (audio) {
-        audio.pause();
-        audio.onended = null;
-        audio.src = "";
-        audio = null;
-    }
-    highlightWord(idx, true);
-    playCurrent(); 
+    document.getElementById('gcttsVoice').onchange=e=>{const s=load();s.voice=e.target.value;save(s);};
+    document.getElementById('gcttsRate').onchange=e=>{const s=load();s.rate=Number(e.target.value);save(s);};
   }
 
   window.seekWord = seekWord;
-  // --- 貼上結束 ---
-
-   
-  }
-
-  // 強制暴露 seekWord 供外部呼叫
-  window.seekWord = seekWord;
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inject); else inject();
-  window.openGoogleCloudTTSKey = setKey;
-  window.googleCloudTTSPlayAll = playAll;
-  window.googleCloudTTSSplitDebug = () => { const cs = buildChunks(); return cs.map((c, i) => ({ i: i + 1, bytes: byteLen(c.text), start: c.start, end: c.end, text: c.text })); };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',inject); else inject();
 })();
