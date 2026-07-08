@@ -1,4 +1,4 @@
-/* wordnote-hover-detail-patch-v5.js (Integrated with Dual-Engine Mini TTS)
+/* wordnote-hover-detail-patch.js (Integrated All-in-One Patch)
    1. Fix duplicate detail lines in WORD NOTE hover popover.
    2. Inject immune Mini TTS Audio button into Flashcard Modal.
    3. Dual-Engine Audio: Dictionary API (Primary) + Google Translate TTS (Fallback).
@@ -85,8 +85,7 @@
     const r = el.getBoundingClientRect();
     if(r.right > window.innerWidth - pad) x = Math.max(pad, window.innerWidth - r.width - pad);
     if(r.bottom > window.innerHeight - pad) y = Math.max(pad, e.clientY - r.height - 16);
-    el.style.left = x + 'px';
-    el.style.top = y + 'px';
+    el.style.left = x + 'px'; el.style.top = y + 'px';
   }
   
   function showTip(e, detail){
@@ -117,30 +116,16 @@
   // PART 2: 閃卡彈窗 TTS 發音 (雙引擎迷你免疫版)
   // ==========================================
   async function playIndependentAudio(word) {
-    try {
-        const cleanWord = word.replace(/[^a-zA-Z\s\-]/g, '').trim().split(/\s+/)[0];
-        if (!cleanWord) return;
-        
-        console.log(`[TTS Custom] 準備播放單字: ${cleanWord}`);
-        let audioUrl = null;
+    const cleanWord = word.replace(/[^a-zA-Z\s\-]/g, '').trim().split(/\s+/)[0];
+    if (!cleanWord) return;
+    
+    console.log(`[TTS Custom] 啟動發音: ${cleanWord}`);
 
-        // 【引擎 1】：免費字典 API
-        try {
-            const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(cleanWord)}`);
-            if (res.ok) {
-                const data = await res.json();
-                audioUrl = data[0]?.phonetics?.find(p => p.audio)?.audio;
-            }
-        } catch (e) { console.log("[TTS Custom] API 請求失敗，準備切換..."); }
-
-        // 【引擎 2】：強制 Google TTS 備援 (保證 100% 有聲)
-        if (!audioUrl) {
-            audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(cleanWord)}`;
-        }
-
-        const audio = new Audio(audioUrl);
-        audio.play().catch(e => console.error("播放遭拒:", e));
-    } catch (e) { console.error("發音模組錯誤:", e); }
+    // 使用 Google 翻譯 TTS 連結 (萬能保險)
+    const googleTtsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(cleanWord)}`;
+    
+    const audio = new Audio(googleTtsUrl);
+    audio.play().catch(e => console.error("播放遭拒:", e));
   }
 
   function bindTTSButton() {
@@ -160,10 +145,13 @@
             
             const btn = document.createElement('div');
             btn.id = 'my-mini-immune-btn';
-            btn.textContent = '🔊';
-            btn.title = '真人發音';
-            btn.style.cssText = "display: inline-flex; justify-content: center; align-items: center; width: 26px; height: 26px; margin-right: 8px; background: #27ae60; color: white; border-radius: 50%; cursor: pointer; font-size: 13px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); vertical-align: middle; transition: background 0.2s;";
+            btn.textContent = '🔊 真人發音';
+            btn.title = '點擊聆聽發音';
+            btn.style.cssText = "display: inline-flex; justify-content: center; align-items: center; padding: 0 8px; height: 26px; margin-right: 8px; background: #27ae60; color: white; border-radius: 4px; cursor: pointer; font-size: 12px; vertical-align: middle; transition: background 0.2s;";
             
+            btn.onmouseover = () => btn.style.background = '#2ecc71';
+            btn.onmouseout = () => btn.style.background = '#27ae60';
+
             btn.onclick = (e) => { e.stopPropagation(); playIndependentAudio(word); };
             
             modal.prepend(btn);
@@ -174,6 +162,9 @@
 
   const ttsObs = new MutationObserver(() => setTimeout(bindTTSButton, 0));
 
+  // ==========================================
+  // 初始化
+  // ==========================================
   function boot(){
     ensureTip();
     bindMeaning();
