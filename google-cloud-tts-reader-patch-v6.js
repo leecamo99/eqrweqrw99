@@ -83,26 +83,29 @@
 
     // 修正：補上對應的 if 判斷
     if (currentMode === 1) {
-      // 🟢 模式 1：展開
-      ttsPanel.style.setProperty('height', '160px', 'important');
-      ttsPanel.style.setProperty('padding', '12px 16px', 'important');
-      ttsPanel.style.setProperty('display', 'block', 'important');
-      toggleBtn.innerHTML = '☰';
-      toggleBtn.style.cssText = `position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;`;
-      
-      children.forEach(el => { 
-        if (el === toggleBtn) return;
-        
-        el.style.setProperty('display', '', ''); 
-        
-        if (el.id === 'gcttsProgress') {
-           el.style.setProperty('display', 'flex', 'important');
-           el.style.setProperty('width', '100%', 'important'); 
-           el.style.setProperty('flex', '1', 'important');     
-        } else if (el.id === 'gcttsProgressLabel') {
-           el.style.setProperty('display', 'flex', 'important');
-        }
-      });
+     // 🟢 模式 1：展開
+ttsPanel.style.setProperty('height', '160px', 'important');
+ttsPanel.style.setProperty('padding', '12px 16px', 'important');
+ttsPanel.style.setProperty('display', 'block', 'important'); // 保持 block 佈局
+toggleBtn.innerHTML = '☰';
+toggleBtn.style.cssText = `position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;`;
+
+children.forEach(el => { 
+  if (el === toggleBtn) return;
+  
+  // 清除舊的 display 設定，讓其回到預設行為
+  el.style.setProperty('display', '', ''); 
+  
+  // 針對進度條與標籤的強制佈局
+  if (el.id === 'gcttsProgress') {
+     // 將 display 改為 block，這樣寬度 100% 才會強制佔滿整行
+     el.style.setProperty('display', 'block', 'important'); 
+     el.style.setProperty('width', 'calc(100% - 32px)', 'important'); // 扣除 padding 寬度以防溢出
+     el.style.setProperty('margin', '8px 0', 'important'); // 加入一點點上下間距讓外觀更好
+  } else if (el.id === 'gcttsProgressLabel') {
+     el.style.setProperty('display', 'block', 'important');
+  }
+});
 
     } else if (currentMode === 2) {
       // 🟡 模式 2：迷你
