@@ -146,7 +146,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "leftover"
         },
         "forget": {
           "pos": "",
@@ -155,16 +156,18 @@
           "color": "c1"
         },
         "calculate": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "計算",
+          "tip": "Auto translated by MyMemory｜To determine the value of something or the solution to something by a mathematical process.",
+          "color": "c1",
+          "lemma": "calculate"
         },
         "bonuses": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎金",
+          "tip": "Auto translated by MyMemory｜Something extra that is good; an added benefit.",
+          "color": "c1",
+          "lemma": "bonus"
         },
         "Thanks": {
           "pos": "",
@@ -234,9 +237,9 @@
           "color": "c1"
         },
         "count": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "數量",
+          "tip": "Auto translated by MyMemory｜The act of counting or tallying a quantity.",
           "color": "c1",
           "lemma": "count"
         },
@@ -5257,7 +5260,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783510431300,
+  "updatedAt": 1783510698939,
   "learn": {
     "github": {
       "word": "github",
@@ -6138,7 +6141,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1783490353212,
       "intervalDays": 0,
@@ -6193,6 +6196,102 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜The act of counting or tallying a quantity."
+    },
+    "bonus": {
+      "word": "bonus",
+      "lemma": "bonus",
+      "firstSeenAt": 1783510680011,
+      "lastSeenAt": 1783510680011,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783514280016,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "bonuses",
+      "lastForm": "plural / 3rd person -es",
+      "variants": {
+        "bonuses": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510680449,
+      "loading": false,
+      "tw": "獎金",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Something extra that is good; an added benefit."
+    },
+    "calculate": {
+      "word": "calculate",
+      "lemma": "calculate",
+      "firstSeenAt": 1783510685318,
+      "lastSeenAt": 1783510685318,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783514285324,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "calculate",
+      "lastForm": "base form",
+      "variants": {
+        "calculate": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510687079,
+      "loading": false,
+      "tw": "計算",
+      "engine": "MyMemory",
+      "pos": "verb",
+      "tip": "Auto translated by MyMemory｜To determine the value of something or the solution to something by a mathematical process."
+    },
+    "leftover": {
+      "word": "leftover",
+      "lemma": "leftover",
+      "firstSeenAt": 1783510697499,
+      "lastSeenAt": 1783510697499,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783514297505,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "leftover",
+      "lastForm": "base form",
+      "variants": {
+        "leftover": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510698931,
+      "loading": false,
+      "tw": "剩飯",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Something left behind; an excess or remainder."
     }
   }
 }
