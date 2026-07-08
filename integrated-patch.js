@@ -1,42 +1,43 @@
 (function(){
   'use strict';
 
-  // --- 1. 定義所有核心功能函式 ---
-  function bindMeaning(){
-    const meaning = document.querySelector('#dockBody .meaning');
-    if(!meaning || meaning.dataset.bound) return;
-    meaning.dataset.bound = 'true';
-    meaning.style.cursor = 'help';
-    meaning.addEventListener('mouseenter', e => { /* ...原本的 hover 詳解邏輯... */ });
-  }
-
-  function playVoice(word) {
-    const cleanWord = word.replace(/[^a-zA-Z\s\-]/g, '').trim().split(/\s+/)[0];
+  // 統一發音引擎
+  window.playVoice = function(word) {
+    const cleanWord = String(word||'').replace(/[^a-zA-Z\s\-]/g, '').trim().split(/\s+/)[0];
     if (!cleanWord) return;
     const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(cleanWord)}`;
-    new Audio(ttsUrl).play().catch(e => console.log("需點擊頁面解鎖"));
+    new Audio(ttsUrl).play().catch(e => console.log("需點擊頁面解鎖音訊"));
+  };
+
+  // 暴力注入邏輯
+  function inject() {
+    // 尋找所有可能是彈窗的 DIV
+    const modals = document.querySelectorAll('div[style*="fixed"], div[id*="dock"], .word-note-popup');
+    
+    modals.forEach(modal => {
+        // 只要彈窗裡面有這些關鍵字，且還沒掛過按鈕
+        if ((modal.textContent.includes('點擊') || modal.textContent.includes('先想中文')) && !modal.dataset.ttsInjected) {
+            modal.dataset.ttsInjected = 'true';
+            
+            // 建立按鈕
+            const btn = document.createElement('button');
+            btn.textContent = '🔊 真人發音';
+            btn.style.cssText = "display:block; width:100%; padding:10px; background:#27ae60; color:white; border:none; border-radius:4px; cursor:pointer; font-size:14px; margin-bottom:10px;";
+            
+            // 點擊事件：從該彈窗內找尋 h1/h2 或 .wordbig 作為單字
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                const word = modal.querySelector('h1, h2, .wordbig, .word-title')?.textContent || '';
+                if (word) window.playVoice(word);
+            };
+            
+            // 強制塞在彈窗最上方
+            modal.prepend(btn);
+            console.log("✅ [TTS] 已成功在彈窗注入發音按鈕！");
+        }
+    });
   }
 
-  // --- 2. 統一的執行邏輯 (使用 setTimeout 確保 DOM 就緒) ---
-  function mainLoop() {
-    try {
-        bindMeaning(); // 確保這先執行
-        
-        // 處理發音按鈕注入
-        document.querySelectorAll('div').forEach(el => {
-            if ((el.textContent.includes('點擊') || el.textContent.includes('發音')) && !el.dataset.upgraded) {
-                el.dataset.upgraded = 'true';
-                el.addEventListener('click', (e) => {
-                    const word = document.querySelector('.word-note-popup h1, .wordbig')?.textContent || '';
-                    if (word) playVoice(word);
-                });
-            }
-        });
-    } catch (e) {
-        console.error("執行衝突:", e);
-    }
-  }
-
-  // 監控頁面變化
-  new MutationObserver(mainLoop).observe(document.body, { childList: true, subtree: true });
+  // 持續監控頁面變化
+  new MutationObserver(inject).observe(document.body, { childList: true, subtree: true });
 })();
