@@ -209,15 +209,15 @@
   function inject(){
     injectStyle(); const old=document.getElementById('gcttsPanel'); if(old)old.remove();
     const p=document.createElement('div'); p.id='gcttsPanel';
-    // 增加 paddingBottom 給狀態列預留空間
-    p.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;border-top:1px solid rgba(255,255,255,.18);padding:10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28)';
+    // 面板本體樣式
+    p.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;padding:10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28)';
     const s=load();
     
-    // 重新編排 HTML：分為兩行
     p.innerHTML=`
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+      <!-- 第二層：控制按鈕區 (倒數第二層) -->
+      <div id="gcttsControls" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px; position:relative; z-index:2;">
         <b style="color:#f4d27a">TTS v5</b>
-        <select id="gcttsVoice" style="max-width:150px;">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]}</option>`).join('')}</select>
+        <select id="gcttsVoice" style="max-width:140px;">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]}</option>`).join('')}</select>
         <select id="gcttsRate">
           <option value="0.82" ${String(s.rate||0.92)==='0.82'?'selected':''}>慢</option>
           <option value="0.92" ${String(s.rate||0.92)==='0.92'?'selected':''}>自然</option>
@@ -225,22 +225,23 @@
           <option value="1.12" ${String(s.rate||0.92)==='1.12'?'selected':''}>快</option>
         </select>
         <input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1">
-        <span id="gcttsProgressLabel" style="min-width:50px;">0 / 0</span>
-        <button id="gcttsKey">Key</button>
+        <span id="gcttsProgressLabel" style="min-width:40px;">0 / 0</span>
         <button id="gcttsPlay">▶ 全文</button>
         <button id="gcttsPause">暫停</button>
         <button id="gcttsResume">繼續</button>
         <button id="gcttsStop">停止</button>
+         <button id="gcttsKey">Key</button>
       </div>
-      <!-- 新增：狀態列獨立一行 -->
-      <div id="gcttsStatus" style="width:100%; border-top:1px solid rgba(255,255,255,0.1); padding-top:6px; color:#f4d27a; font-size:12px; font-weight:bold; text-align:center;">
+
+      <!-- 第一層 (最底層)：狀態顯示區 -->
+      <div id="gcttsStatus" style="width:100%; border-top:1px solid rgba(255,255,255,0.1); padding-top:6px; color:#f4d27a; font-size:12px; font-weight:bold; text-align:center; position:relative; z-index:1;">
         待命
       </div>
     `;
     
     document.body.appendChild(p); 
-    // 因為面板變高了，調整頁面底部間距
     document.body.style.paddingBottom='160px'; 
+    
     
     // ... 後續綁定邏輯保持不變 ...
     document.getElementById('gcttsKey').onclick=setKey; document.getElementById('gcttsPlay').onclick=playAll; document.getElementById('gcttsPause').onclick=pause; document.getElementById('gcttsResume').onclick=resume; document.getElementById('gcttsStop').onclick=stop;
