@@ -86,7 +86,7 @@
       ttsPanel.style.setProperty('height', '160px', 'important');
       ttsPanel.style.setProperty('padding', '12px 16px', 'important');
       ttsPanel.style.setProperty('display', 'block', 'important');
-      toggleBtn.innerHTML = '➖ 縮小';
+      toggleBtn.innerHTML = '☰';
       toggleBtn.style.cssText = `position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;`;
       children.forEach(el => { if (el !== toggleBtn) el.style.setProperty('display', '', ''); });
 
@@ -95,7 +95,7 @@
       ttsPanel.style.setProperty('height', '52px', 'important');
       ttsPanel.style.setProperty('padding', '0 16px', 'important');
       ttsPanel.style.setProperty('display', 'flex', 'important');
-      toggleBtn.innerHTML = '⚏ 迷你';
+      toggleBtn.innerHTML = '＝';
       children.forEach(el => {
         if (el === toggleBtn) return;
         if (['SELECT', 'BR', 'SPAN'].includes(el.tagName) || el.textContent.includes('Google Cloud') || el.style.position === 'absolute') {
@@ -114,7 +114,7 @@
       
       children.forEach(el => { if (el !== toggleBtn) el.style.setProperty('display', 'none', 'important'); });
 
-      toggleBtn.innerHTML = '🎧 TTS (點擊展開)';
+      toggleBtn.innerHTML = '🎧 全文語音';
       toggleBtn.style.cssText = `position: static !important; width: 100% !important; height: 100% !important; background: transparent !important; color: white !important; border: none !important; font-size: 14px !important; cursor: pointer !important;`;
     }
   }
