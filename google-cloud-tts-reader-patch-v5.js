@@ -227,7 +227,7 @@
       <!-- 第2層：進度條 -->
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1">
-        <span id="gcttsProgressLabel" style="min-width:40px;">0 / 0</span>
+        <span id="gcttsProgressLabel" style="min-width:140px;">0 / 0</span>
       </div>
 
       <!-- 第3層：選單 -->
