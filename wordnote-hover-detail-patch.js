@@ -115,3 +115,21 @@
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
+// 閃卡語音播放注入模組
+function addTTSButtonToFlashcard() {
+    const noteEl = document.querySelector('.word-note-popup'); // 請替換成你實際的閃卡選擇器
+    if (noteEl && !noteEl.querySelector('.tts-btn')) {
+        const word = noteEl.dataset.word; // 假設你有存 word
+        const btn = document.createElement('button');
+        btn.className = 'tts-btn';
+        btn.textContent = '🔊 播放';
+        btn.onclick = () => {
+            // 直接呼叫你既有的 TTS 播放函式
+            // 例如: window.playTTS(word); 
+            console.log("正在為 " + word + " 播放語音...");
+        };
+        noteEl.appendChild(btn);
+    }
+}
+// 監聽閃卡出現事件
+setInterval(addTTSButtonToFlashcard, 500);
