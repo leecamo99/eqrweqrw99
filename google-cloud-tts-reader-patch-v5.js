@@ -213,8 +213,8 @@
     p.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:99989;background:#1f2937;color:#fff8e8;padding:10px;font:13px/1.45 Microsoft JhengHei,system-ui,sans-serif;box-shadow:0 -8px 28px rgba(0,0,0,.28)';
     const s=load();
     
-    p.innerHTML=`
-      <!-- 第二層：控制按鈕區 (倒數第二層) -->
+ p.innerHTML = `
+      <!-- 第二層 (倒數第二層)：控制按鈕與設定區 -->
       <div id="gcttsControls" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px; position:relative; z-index:2;">
         <b style="color:#f4d27a">TTS v5</b>
         <select id="gcttsVoice" style="max-width:140px;">${VOICES.map(v=>`<option value="${v[0]}" ${(s.voice||'en-US-Chirp3-HD-Aoede')===v[0]?'selected':''}>${v[1]}</option>`).join('')}</select>
@@ -226,11 +226,13 @@
         </select>
         <input id="gcttsProgress" type="range" min="0" max="0" value="0" step="1" style="flex:1">
         <span id="gcttsProgressLabel" style="min-width:40px;">0 / 0</span>
+        
+        <!-- 操作按鈕 -->
         <button id="gcttsPlay">▶ 全文</button>
         <button id="gcttsPause">暫停</button>
         <button id="gcttsResume">繼續</button>
         <button id="gcttsStop">停止</button>
-         <button id="gcttsKey">Key</button>
+        <button id="gcttsKey">Key</button>
       </div>
 
       <!-- 第一層 (最底層)：狀態顯示區 -->
