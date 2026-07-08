@@ -44,9 +44,16 @@
     applyModeLayout();
   }
 
-  function applyModeLayout() {
+ function applyModeLayout() {
     const children = Array.from(ttsPanel.children);
     const settings = layoutSettings[`mode${currentMode}`];
+
+    // 🆕 新增：強制隱藏 "TTS v5" 文字
+    children.forEach(el => {
+      if (el.textContent.includes('TTS v5')) {
+        el.style.setProperty('display', 'none', 'important');
+      }
+    });
 
     // 強制設定不透明度
     ttsPanel.style.setProperty('opacity', '1', 'important');
