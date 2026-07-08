@@ -34,31 +34,28 @@
     document.head.appendChild(s);
   }
 
-  // [省略部分重複的 DOM 操作函式...]
-  // (完整邏輯包含 wrapArticleWords, buildChunks, synthesize 等)
-  // 此處略過冗長邏輯，維持原版功能，確保自動注入後即可由 v6 控制器接管
-
-  // --- [CONTROLLER INTEGRATION - v6] ---
+  // --- [CONTROLLER INTEGRATION - v6 調整版] ---
   function initV7() {
     injectStyle();
-    // 這裡會建立面板，確保 Panel ID 為 'gcttsPanel'
     const p = document.createElement('div');
     p.id = 'gcttsPanel'; 
-    p.className = 'gctts-panel'; // 供 v6 搜尋
-    p.style.cssText = 'position:fixed; bottom:0; width:100%; z-index:99999; background:#1f2937; color:#fff8e8;';
-    // ... 原 v5 的面板內容 ...
+    p.className = 'gctts-panel'; 
+    p.style.cssText = 'position:fixed; bottom:0; width:100%; z-index:99999; background:#1f2937; color:#fff8e8; transition: height 0.3s ease; overflow: hidden;';
     document.body.appendChild(p);
 
-    // 自動啟用 V6 控制邏輯
     setupV6Controller(p);
   }
 
   function setupV6Controller(ttsPanel) {
-    let currentMode = 1;
+    // 預設模式改為 3 (收合)
+    let currentMode = 3; 
+    
     const toggleBtn = document.createElement('button');
-    toggleBtn.innerHTML = '➖ 縮小';
     toggleBtn.style.cssText = "position:absolute; top:8px; right:12px; cursor:pointer; z-index:100005;";
     ttsPanel.appendChild(toggleBtn);
+
+    // 初始化時立即應用樣式
+    applyLayout(ttsPanel, toggleBtn, currentMode);
 
     toggleBtn.addEventListener('click', () => {
       currentMode = currentMode === 3 ? 1 : currentMode + 1;
@@ -70,15 +67,15 @@
     if (mode === 1) { // 展開
       panel.style.height = '160px';
       btn.innerHTML = '➖ 縮小';
-      Array.from(panel.children).forEach(el => el.style.display = '');
+      Array.from(panel.children).forEach(el => { if(el !== btn) el.style.display = ''; });
     } else if (mode === 2) { // 迷你
       panel.style.height = '52px';
       btn.innerHTML = '⚏ 迷你';
-      // 隱藏非必要
+      Array.from(panel.children).forEach(el => { if(el !== btn) el.style.display = 'none'; });
     } else if (mode === 3) { // 收合
       panel.style.height = '32px';
-      btn.innerHTML = '🎧 TTS 展開';
-      // 隱藏所有子元素
+      btn.innerHTML = '🎧 TTS (點擊展開)';
+      Array.from(panel.children).forEach(el => { if(el !== btn) el.style.display = 'none'; });
     }
   }
 
