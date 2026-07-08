@@ -264,7 +264,7 @@
 
     const prog = document.getElementById('gcttsProgress');
     
-    // 拖動時僅高亮預覽，不觸發播放以避免頻繁請求
+    // 拖動時僅高亮預覽，不觸發請求
     prog.oninput = e => {
         if (!words.length) buildChunks();
         const idx = Number(e.target.value) || 0;
@@ -282,11 +282,10 @@
     console.log('Google Cloud TTS reader patch v5.1 loaded with seek fix');
   }
 
-  // 確保 seekWord 函式在作用域內 (放在 inject 函式外部或內部皆可，建議放 inject 內或作為全域)
-  window.seekWord = seekWord; // 暴露給外部方便測試
+  // 強制暴露 seekWord 供外部呼叫
+  window.seekWord = seekWord;
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inject); else inject();
-  
   window.openGoogleCloudTTSKey = setKey;
   window.googleCloudTTSPlayAll = playAll;
   window.googleCloudTTSSplitDebug = () => { const cs = buildChunks(); return cs.map((c, i) => ({ i: i + 1, bytes: byteLen(c.text), start: c.start, end: c.end, text: c.text })); };
