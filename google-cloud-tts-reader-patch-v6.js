@@ -102,7 +102,7 @@
       });
 
 } else if (currentMode === 2) {
-      // 🟡 模式 2：迷你
+     // 🟡 模式 2：迷你
       ttsPanel.style.setProperty('height', '52px', 'important');
       ttsPanel.style.setProperty('padding', '0 16px', 'important');
       ttsPanel.style.setProperty('display', 'flex', 'important');
@@ -111,8 +111,12 @@
       children.forEach(el => {
         if (el === toggleBtn) return;
         
-        // 增加判斷：如果 ID 是 gcttsProgress，直接隱藏
-        if (el.id === 'gcttsProgress' || ['SELECT', 'BR', 'SPAN'].includes(el.tagName) || el.textContent.includes('Google Cloud') || el.style.position === 'absolute') {
+        // 修正：現在讓 gcttsProgress 顯示，且讓它填滿剩餘空間
+        if (el.id === 'gcttsProgress') {
+          el.style.setProperty('display', 'flex', 'important');
+          el.style.setProperty('flex', '1', 'important'); // 確保長度延展
+        } else if (['SELECT', 'BR', 'SPAN'].includes(el.tagName) && el.id !== 'gcttsProgressLabel') {
+          // 若有其他元件想隱藏可在此調整，這裡保留了對 Label 的顯示
           el.style.setProperty('display', 'none', 'important');
         } else {
           el.style.setProperty('display', 'flex', 'important');
