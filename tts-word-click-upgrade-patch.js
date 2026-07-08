@@ -1,4 +1,24 @@
 /* Google Cloud TTS: 單字發音按鈕全面真人升級補丁 (完美備援音訊版) */
+// 在最頂端宣告
+window.isTTSPlaying = false; 
+
+// 在執行播放邏輯時加入判斷
+async function playAudio(blobOrUrl) {
+    // 檢查是否有其他模組（如 v5）正在播放
+    if (window.isTTSPlaying) {
+        console.log("偵測到其他語音正在播放，單字發音暫緩...");
+        return; 
+    }
+    
+    window.isTTSPlaying = true; // 上鎖
+    // ... 原本的播放邏輯 ...
+    
+    // 播放結束時解鎖
+    audio.onended = () => { window.isTTSPlaying = false; };
+}
+
+
+
 (function() {
   const TAG = '[TTS Word Upgrade]';
   let lastClickedWord = ''; 
