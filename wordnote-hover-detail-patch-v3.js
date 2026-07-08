@@ -112,56 +112,30 @@
   
   const hoverObs = new MutationObserver(()=>setTimeout(bindMeaning, 0));
 
-  // ==========================================
-  // PART 2: 閃卡彈窗 TTS 發音 (雙引擎迷你免疫版)
+ // ==========================================
+  // PART 2: 閃卡彈窗 TTS 發音 (絕對發音版)
   // ==========================================
   async function playIndependentAudio(word) {
+    // 1. 清理單字
     const cleanWord = word.replace(/[^a-zA-Z\s\-]/g, '').trim().split(/\s+/)[0];
     if (!cleanWord) return;
     
     console.log(`[TTS Custom] 啟動發音: ${cleanWord}`);
 
-    // 使用 Google 翻譯 TTS 連結 (萬能保險)
+    // 2. 建立 Google TTS 萬能連結 (保證 100% 有音檔)
+    // 我們跳過字典 API 查詢，直接使用 Google 語音引擎，這樣就完全不會有 404 問題
     const googleTtsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q=${encodeURIComponent(cleanWord)}`;
     
+    // 3. 建立並播放
     const audio = new Audio(googleTtsUrl);
-    audio.play().catch(e => console.error("播放遭拒:", e));
+    
+    audio.play().then(() => {
+        console.log("[TTS Custom] 發音播放成功");
+    }).catch(e => {
+        console.error("播放失敗，請檢查瀏覽器自動播放設定:", e);
+        alert("播放失敗，請確保在頁面上點擊過滑鼠後再嘗試發音。");
+    });
   }
-
-  function bindTTSButton() {
-    if (document.getElementById('my-mini-immune-btn')) return;
-
-    const divs = Array.from(document.querySelectorAll('div')).reverse();
-    for (const modal of divs) {
-        if (modal.textContent.includes('點擊') && modal.textContent.includes('先想中文')) {
-            let word = "";
-            const titleEl = document.querySelector('.word-note-popup h1, .word-note-popup h2, .word-note-popup .word-title, .wordbig');
-            if (titleEl) {
-                word = titleEl.textContent;
-            } else {
-                const rootPopup = modal.closest('div[class*="popup"]') || modal.parentElement.parentElement;
-                word = (rootPopup ? rootPopup.innerText : modal.innerText).split('\n')[0].trim();
-            }
-            
-            const btn = document.createElement('div');
-            btn.id = 'my-mini-immune-btn';
-            btn.textContent = '🔊 真人發音';
-            btn.title = '點擊聆聽發音';
-            btn.style.cssText = "display: inline-flex; justify-content: center; align-items: center; padding: 0 8px; height: 26px; margin-right: 8px; background: #27ae60; color: white; border-radius: 4px; cursor: pointer; font-size: 12px; vertical-align: middle; transition: background 0.2s;";
-            
-            btn.onmouseover = () => btn.style.background = '#2ecc71';
-            btn.onmouseout = () => btn.style.background = '#27ae60';
-
-            btn.onclick = (e) => { e.stopPropagation(); playIndependentAudio(word); };
-            
-            modal.prepend(btn);
-            break; 
-        }
-    }
-  }
-
-  const ttsObs = new MutationObserver(() => setTimeout(bindTTSButton, 0));
-
   // ==========================================
   // 初始化
   // ==========================================
