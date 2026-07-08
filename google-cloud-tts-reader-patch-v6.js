@@ -74,7 +74,7 @@
       ttsPanel.style.setProperty('height', '32px', 'important');
       ttsPanel.style.setProperty('padding', '0', 'important');
       ttsPanel.style.setProperty('background', '#34495e', 'important');
-      toggleBtn.innerHTML = '🎧 TTS (展開)';
+      toggleBtn.innerHTML = '🎧 全文播放 (展開)';
       toggleBtn.style.cssText = `width: 100%; height: 100%; background: transparent; color: white; border: none; cursor: pointer; font-size: 14px;`;
       children.forEach(el => { if (el !== toggleBtn) el.style.setProperty('display', 'none', 'important'); });
     }
