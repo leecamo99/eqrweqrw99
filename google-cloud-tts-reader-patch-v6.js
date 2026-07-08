@@ -7,10 +7,10 @@
   // 🛠️ 集中設定區：背景色已改為強制不透明
   const layoutSettings = {
     mode1: { // 🟢 展開
-      panelHeight: '160px',
-      panelPadding: '12px 16px',
-      panelBg: '#34495e', // 強制設定，避免透明
-      progressBarWidth: 'calc(100% - 2px)',
+  panelHeight: '160px',
+  panelPadding: '12px 16px',
+  panelBg: '#34495e',
+  progressBarWidth: '100%', // 直接設為 100%
       btnCss: 'position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;'
     },
     mode2: { // 🟡 迷你
@@ -63,10 +63,14 @@
       children.forEach(el => {
         if (el === toggleBtn) return;
         el.style.setProperty('display', '', '');
+        
         if (el.id === 'gcttsProgress') {
+          // 強制使用 display: block 並將寬度撐開
           el.style.setProperty('display', 'block', 'important');
-          el.style.setProperty('width', settings.progressBarWidth, 'important');
+          el.style.setProperty('width', '100%', 'important'); 
+          el.style.setProperty('max-width', '100%', 'important'); // 確保沒有被 max-width 限制
           el.style.setProperty('margin', '8px 0', 'important');
+          el.style.setProperty('box-sizing', 'border-box', 'important'); // 防止 padding 導致撐破
         } else if (el.id === 'gcttsProgressLabel') {
           el.style.setProperty('display', 'block', 'important');
         }
