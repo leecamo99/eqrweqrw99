@@ -143,9 +143,9 @@
           "color": "c1"
         },
         "leftover": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "剩飯",
+          "tip": "Auto translated by MyMemory｜Something left behind; an excess or remainder.",
           "color": "c1",
           "lemma": "leftover"
         },
@@ -5260,7 +5260,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783510698939,
+  "updatedAt": 1783516159254,
   "learn": {
     "github": {
       "word": "github",
@@ -5743,25 +5743,25 @@
       "pos": "adverb",
       "tw": "自發地",
       "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
-      "clicks": 20,
+      "clicks": 21,
       "strength": 10,
       "captured": true,
       "known": false,
       "dueAt": 1783445622139,
-      "updatedAt": 1783498641271,
+      "updatedAt": 1783516159239,
       "variants": {
-        "spontaneously": 16
+        "spontaneously": 17
       },
       "lastSurface": "spontaneously",
       "lastForm": "base form",
       "engine": "MyMemory",
       "loading": false,
       "firstSeenAt": 1783352941134,
-      "lastSeenAt": 1783498641267,
+      "lastSeenAt": 1783516159235,
       "lastReviewedAt": 1783359222139,
-      "lifetimeClicks": 9,
-      "sessionClicks": 9,
-      "maxClickStreak": 19,
+      "lifetimeClicks": 10,
+      "sessionClicks": 10,
+      "maxClickStreak": 20,
       "reviewHistory": [
         {
           "ts": 1783359222139,
@@ -5777,7 +5777,8 @@
       "ease": 2.4,
       "lapses": 0,
       "status": "learning",
-      "totalResets": 0
+      "totalResets": 0,
+      "isWeak": true
     },
     "welcome": {
       "word": "welcome",
