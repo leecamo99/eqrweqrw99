@@ -9,14 +9,14 @@
     mode1: { // 🟢 展開
       panelHeight: '160px',
       panelPadding: '12px 16px',
-      panelBg: '#ffffff', // 強制設定為白色，避免透明
+      panelBg: '#34495e', // 強制設定，避免透明
       progressBarWidth: 'calc(100% - 32px)',
       btnCss: 'position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;'
     },
     mode2: { // 🟡 迷你
       panelHeight: '52px',
       panelPadding: '0 16px',
-      panelBg: '#ffffff', // 強制設定為白色
+      panelBg: '#34495e', // 強制設定
       btnCss: 'position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;'
     },
     mode3: { // 🔴 收合
