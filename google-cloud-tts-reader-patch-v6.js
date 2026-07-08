@@ -81,7 +81,7 @@
   function applyModeLayout() {
     const children = Array.from(ttsPanel.children);
 
-    if (currentMode === 1) {
+   } else if (currentMode === 1) {
      // 🟢 模式 1：展開
       ttsPanel.style.setProperty('height', '160px', 'important');
       ttsPanel.style.setProperty('padding', '12px 16px', 'important');
@@ -95,8 +95,12 @@
         // 強制恢復所有子元素的顯示
         el.style.setProperty('display', '', ''); 
         
-        // 確保進度條容器或元素本身是以 flex 顯示（如果你的結構是 flex）
-        if (el.id === 'gcttsProgress' || el.id === 'gcttsProgressLabel') {
+        // 確保進度條容器顯示並強制拉伸至最長
+        if (el.id === 'gcttsProgress') {
+           el.style.setProperty('display', 'flex', 'important');
+           el.style.setProperty('width', '100%', 'important'); // 強制拉伸寬度
+           el.style.setProperty('flex', '1', 'important');     // 若父層為 flex，確保佔滿空間
+        } else if (el.id === 'gcttsProgressLabel') {
            el.style.setProperty('display', 'flex', 'important');
         }
       });
@@ -111,12 +115,10 @@
       children.forEach(el => {
         if (el === toggleBtn) return;
         
-        // 修正：現在讓 gcttsProgress 顯示，且讓它填滿剩餘空間
+        // 修改：強制隱藏進度條
         if (el.id === 'gcttsProgress') {
-          el.style.setProperty('display', 'flex', 'important');
-          el.style.setProperty('flex', '1', 'important'); // 確保長度延展
+          el.style.setProperty('display', 'none', 'important');
         } else if (['SELECT', 'BR', 'SPAN'].includes(el.tagName) && el.id !== 'gcttsProgressLabel') {
-          // 若有其他元件想隱藏可在此調整，這裡保留了對 Label 的顯示
           el.style.setProperty('display', 'none', 'important');
         } else {
           el.style.setProperty('display', 'flex', 'important');
