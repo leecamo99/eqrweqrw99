@@ -118,7 +118,6 @@
           el.style.setProperty('display', 'flex', 'important');
         }
       });
-    }
 
     } else if (currentMode === 3) {
       // 🔴 模式 3：收合
