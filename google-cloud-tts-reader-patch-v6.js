@@ -90,20 +90,24 @@
       toggleBtn.style.cssText = `position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;`;
       children.forEach(el => { if (el !== toggleBtn) el.style.setProperty('display', '', ''); });
 
-    } else if (currentMode === 2) {
+} else if (currentMode === 2) {
       // 🟡 模式 2：迷你
       ttsPanel.style.setProperty('height', '52px', 'important');
       ttsPanel.style.setProperty('padding', '0 16px', 'important');
       ttsPanel.style.setProperty('display', 'flex', 'important');
       toggleBtn.innerHTML = '＝';
+      
       children.forEach(el => {
         if (el === toggleBtn) return;
-        if (['SELECT', 'BR', 'SPAN'].includes(el.tagName) || el.textContent.includes('Google Cloud') || el.style.position === 'absolute') {
+        
+        // 增加判斷：如果 ID 是 gcttsProgress，直接隱藏
+        if (el.id === 'gcttsProgress' || ['SELECT', 'BR', 'SPAN'].includes(el.tagName) || el.textContent.includes('Google Cloud') || el.style.position === 'absolute') {
           el.style.setProperty('display', 'none', 'important');
         } else {
           el.style.setProperty('display', 'flex', 'important');
         }
       });
+    }
 
     } else if (currentMode === 3) {
       // 🔴 模式 3：收合
