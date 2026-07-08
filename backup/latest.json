@@ -474,10 +474,11 @@
           "color": "c1"
         },
         "speaking": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "語音",
+          "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy.",
+          "color": "c1",
+          "lemma": "speak"
         },
         "spontaneously": {
           "pos": "adverb",
@@ -2681,10 +2682,11 @@
           "color": "c1"
         },
         "speak": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "語音",
+          "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy.",
+          "color": "c1",
+          "lemma": "speak"
         },
         "spot": {
           "pos": "",
@@ -5254,7 +5256,7 @@
     }
   ],
   "dark": true,
-  "updatedAt": 1783486714889,
+  "updatedAt": 1783486780239,
   "learn": {
     "github": {
       "word": "github",
@@ -5737,25 +5739,25 @@
       "pos": "adverb",
       "tw": "自發地",
       "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
-      "clicks": 17,
+      "clicks": 18,
       "strength": 10,
       "captured": true,
       "known": false,
       "dueAt": 1783445622139,
-      "updatedAt": 1783486714871,
+      "updatedAt": 1783486780222,
       "variants": {
-        "spontaneously": 13
+        "spontaneously": 14
       },
       "lastSurface": "spontaneously",
       "lastForm": "base form",
       "engine": "MyMemory",
       "loading": false,
       "firstSeenAt": 1783352941134,
-      "lastSeenAt": 1783486714867,
+      "lastSeenAt": 1783486780218,
       "lastReviewedAt": 1783359222139,
-      "lifetimeClicks": 6,
-      "sessionClicks": 6,
-      "maxClickStreak": 16,
+      "lifetimeClicks": 7,
+      "sessionClicks": 7,
+      "maxClickStreak": 17,
       "reviewHistory": [
         {
           "ts": 1783359222139,
@@ -6116,6 +6118,38 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday."
+    },
+    "speak": {
+      "word": "speak",
+      "lemma": "speak",
+      "firstSeenAt": 1783486753208,
+      "lastSeenAt": 1783486753208,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783490353212,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "speaking",
+      "lastForm": "-ing form",
+      "variants": {
+        "speaking": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783486757185,
+      "loading": false,
+      "tw": "語音",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy."
     }
   }
 }
