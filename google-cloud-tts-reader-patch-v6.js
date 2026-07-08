@@ -82,13 +82,24 @@
     const children = Array.from(ttsPanel.children);
 
     if (currentMode === 1) {
-      // 🟢 模式 1：展開
+     // 🟢 模式 1：展開
       ttsPanel.style.setProperty('height', '160px', 'important');
       ttsPanel.style.setProperty('padding', '12px 16px', 'important');
       ttsPanel.style.setProperty('display', 'block', 'important');
       toggleBtn.innerHTML = '☰';
       toggleBtn.style.cssText = `position: absolute !important; top: 8px !important; right: 12px !important; background: var(--accent, #a68a56) !important; color: white !important; border: none !important; padding: 6px 12px !important; border-radius: 4px !important; font-size: 14px !important; cursor: pointer !important; z-index: 100005 !important; width: auto !important;`;
-      children.forEach(el => { if (el !== toggleBtn) el.style.setProperty('display', '', ''); });
+      
+      children.forEach(el => { 
+        if (el === toggleBtn) return;
+        
+        // 強制恢復所有子元素的顯示
+        el.style.setProperty('display', '', ''); 
+        
+        // 確保進度條容器或元素本身是以 flex 顯示（如果你的結構是 flex）
+        if (el.id === 'gcttsProgress' || el.id === 'gcttsProgressLabel') {
+           el.style.setProperty('display', 'flex', 'important');
+        }
+      });
 
 } else if (currentMode === 2) {
       // 🟡 模式 2：迷你
