@@ -5260,7 +5260,7 @@
     }
   ],
   "dark": true,
-  "updatedAt": 1783701320619,
+  "updatedAt": 1783701631920,
   "learn": {
     "github": {
       "word": "github",
@@ -5748,7 +5748,7 @@
       "captured": true,
       "known": false,
       "dueAt": 1783445622139,
-      "updatedAt": 1783701320601,
+      "updatedAt": 1783701631913,
       "variants": {
         "spontaneously": 19
       },
@@ -5757,7 +5757,7 @@
       "engine": "MyMemory",
       "loading": false,
       "firstSeenAt": 1783352941134,
-      "lastSeenAt": 1783701320594,
+      "lastSeenAt": 1783701631909,
       "lastReviewedAt": 1783359222139,
       "lifetimeClicks": 12,
       "sessionClicks": 12,
@@ -6206,7 +6206,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 1,
+      "maxClickStreak": 0,
       "reviewHistory": [],
       "dueAt": 1783514280016,
       "intervalDays": 0,
@@ -6238,7 +6238,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 1,
+      "maxClickStreak": 0,
       "reviewHistory": [],
       "dueAt": 1783514285324,
       "intervalDays": 0,
@@ -6270,7 +6270,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 1,
+      "maxClickStreak": 0,
       "reviewHistory": [],
       "dueAt": 1783514297505,
       "intervalDays": 0,
