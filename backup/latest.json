@@ -22,10 +22,11 @@
           "lemma": "morn"
         },
         "everyone": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "pronoun",
+          "tw": "所有人",
+          "tip": "Auto translated by MyMemory｜Every person.",
+          "color": "c1",
+          "lemma": "everyone"
         },
         "worked": {
           "pos": "",
@@ -411,10 +412,11 @@
           "color": "c3"
         },
         "everyone": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "pronoun",
+          "tw": "所有人",
+          "tip": "Auto translated by MyMemory｜Every person.",
+          "color": "c1",
+          "lemma": "everyone"
         },
         "welcome": {
           "pos": "noun",
@@ -472,9 +474,9 @@
           "color": "c1"
         },
         "learning": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "學",
+          "tip": "Auto translated by MyMemory｜The act of learning something",
           "color": "c1",
           "lemma": "learn"
         },
@@ -502,7 +504,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "preparation"
         },
         "recently": {
           "pos": "",
@@ -3189,9 +3192,9 @@
           "color": "c1"
         },
         "learn": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "學",
+          "tip": "Auto translated by MyMemory｜The act of learning something",
           "color": "c1",
           "lemma": "learn"
         },
@@ -5264,7 +5267,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783707263501,
+  "updatedAt": 1783708446799,
   "learn": {
     "github": {
       "word": "github",
@@ -5790,24 +5793,24 @@
       "pos": "noun",
       "tw": "歡迎",
       "tip": "Auto translated by MyMemory｜The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
-      "clicks": 0,
-      "strength": 0,
-      "captured": false,
-      "known": true,
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
       "dueAt": 1783445640098,
-      "updatedAt": 1783359240098,
+      "updatedAt": 1783708433431,
       "variants": {
-        "welcome": 1
+        "welcome": 2
       },
       "lastSurface": "welcome",
       "lastForm": "base form",
       "engine": "MyMemory",
       "loading": false,
       "firstSeenAt": 1783353354870,
-      "lastSeenAt": 1783353354870,
+      "lastSeenAt": 1783708433427,
       "lastReviewedAt": 1783359240098,
-      "lifetimeClicks": 0,
-      "sessionClicks": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
       "maxClickStreak": 1,
       "reviewHistory": [
         {
@@ -6395,6 +6398,70 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜The act of learning something"
+    },
+    "everyone": {
+      "word": "everyone",
+      "lemma": "everyone",
+      "firstSeenAt": 1783708436564,
+      "lastSeenAt": 1783708436564,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783712036569,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "everyone",
+      "lastForm": "base form",
+      "variants": {
+        "everyone": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783708439404,
+      "loading": false,
+      "tw": "所有人",
+      "engine": "MyMemory",
+      "pos": "pronoun",
+      "tip": "Auto translated by MyMemory｜Every person."
+    },
+    "preparation": {
+      "word": "preparation",
+      "lemma": "preparation",
+      "firstSeenAt": 1783708444934,
+      "lastSeenAt": 1783708444935,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783712044939,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "preparation",
+      "lastForm": "base form",
+      "variants": {
+        "preparation": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783708446782,
+      "loading": false,
+      "tw": "準備工作",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The act of preparing or getting ready."
     }
   }
 }
