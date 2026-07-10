@@ -1,661 +1,626 @@
-/* article-audio-cloud-cache-patch.js v20260711-1
+/* article-audio-cloud-cache-patch.js v20260711-2
+   Safe clean JS version
    Mode C: Auto generate + auto upload to GitHub /audio/
-   Added:
-     1. Sidebar notebook title shows "✓ 已 Cache"
-     2. Cached label is light gray and small
-     3. After upload success, badge updates immediately
-     4. Existing GitHub audio will be detected by HEAD check
+   Fixes:
+     1. Removes all HTML-link pollution risk
+     2. Restores floating Cache button
+     3. Shows light-gray "已 Cache" behind notebook title
+     4. Updates badge after upload success
+     5. Button self-heal every 2s
 */
 
 (function () {
   'use strict';
-*  const OWNER  = 'leecamo99';
-  co*st REPO   = 'eqrweqrw99';
-  const *RANCH = 'main';
-  const DIR    = '*udio';
 
-  const STORE       = 'not*book_platform_v3';
-  const KEY_TTS*LS  = 'notebook_google_cloud_tts_k*y_v1';
-  const KEY_SET_LS  = 'note*ook_google_cloud_tts_settings_v1';*  const KEY_GH_TOKEN = 'notebook_g*thub_token_v1';
+  var OWNER = 'leecamo99';
+  var REPO = 'eqrweqrw99';
+  var BRANCH = 'main';
+  var DIR = 'audio';
 
-  const CACHE_IND*X_KEY = 'notebook_article_audio_ca*he_index_v1';
+  var STORE = 'notebook_platform_v3';
+  var KEY_TTS_LS = 'notebook_google_cloud_tts_key_v1';
+  var KEY_SET_LS = 'notebook_google_cloud_tts_settings_v1';
+  var KEY_GH_TOKEN = 'notebook_github_token_v1';
+  var CACHE_INDEX_KEY = 'notebook_article_audio_cache_index_v2';
 
-  let currentAudio * null;
-  const checkingIds = new S*t();
+  var currentAudio = null;
+  var cacheBtn = null;
+  var refreshTimer = null;
 
-  function log(...a) {
-    c*nsole.log('[ArticleAudioC]', ...a)*
-  }
-
-  function esc(s) {
-    retu*n String(s || '').replace(/[<>&"']*g, c => ({
-      '<': '&lt;',
-    * '>': '&gt;',
-      '&': '&amp;',
-*     '"': '&quot;',
-      "'": ''
-*   }[c]));
-  }
-
-  function getDB()*{
+  function log() {
     try {
-      const d = JSON.p*rse(localStorage.getItem(STORE) ||*'{}');
-      d.notebooks = d.noteb*oks || [];
-      d.learn = d.learn*|| {};
+      var args = Array.prototype.slice.call(arguments);
+      args.unshift('[ArticleAudioC v20260711-2]');
+      console.log.apply(console, args);
+    } catch (e) {}
+  }
+
+  function warn() {
+    try {
+      var args = Array.prototype.slice.call(arguments);
+      args.unshift('[ArticleAudioC v20260711-2]');
+      console.warn.apply(console, args);
+    } catch (e) {}
+  }
+
+  function getDB() {
+    try {
+      var d = JSON.parse(localStorage.getItem(STORE) || '{}');
+      d.notebooks = d.notebooks || [];
+      d.learn = d.learn || {};
       return d;
-    } catch*(e) {
-      return { notebooks: []* learn: {} };
+    } catch (e) {
+      return { notebooks: [], learn: {} };
     }
   }
 
-  functio* getCacheIndex() {
+  function getCacheIndex() {
     try {
-     *return JSON.parse(localStorage.get*tem(CACHE_INDEX_KEY) || '{}');
-   *} catch (e) {
+      return JSON.parse(localStorage.getItem(CACHE_INDEX_KEY) || '{}');
+    } catch (e) {
       return {};
-   *}
+    }
   }
 
-  function saveCacheIndex(x* {
-    localStorage.setItem(CACHE_*NDEX_KEY, JSON.stringify(x || {}))*
-  }
-
-  function markCached(id, me*a) {
-    const idx = getCacheIndex*);
-
-    idx[id] = Object.assign({
-*     cached: true,
-      id,
-     *at: Date.now()
-    }, meta || {});*
-    saveCacheIndex(idx);
-    refr*shCacheBadgesSoon();
-  }
-
-  functi*n notebookText(nb) {
-    if (!nb) *eturn '';
-
-    return (nb.cards ||*[]).map(c => {
-      return [
-        c.title || '',
-        String(c.text || '').replace(/\{\{|\}\}/g, *')
-      ].join('\n');
-    }).join*'\n\n').replace(/\s+/g, ' ').trim(*;
-  }
-
-  function getCurrentNotebo*k() {
+  function saveCacheIndex(x) {
     try {
-      if (typeof d* !== 'undefined' && typeof cur !==*'undefined') {
-        return db.n*tebooks.find(x => x.id === cur) ||*null;
+      localStorage.setItem(CACHE_INDEX_KEY, JSON.stringify(x || {}));
+    } catch (e) {}
+  }
+
+  function rawAudioUrl(id) {
+    return 'https://raw.githubusercontent.com/' + OWNER + '/' + REPO + '/' + BRANCH + '/' + DIR + '/' + id + '.mp3';
+  }
+
+  function apiAudioUrl(id) {
+    return 'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + DIR + '/' + id + '.mp3';
+  }
+
+  function cleanMarkedText(s) {
+    return String(s || '').replace(/\{\{|\}\}/g, '');
+  }
+
+  function getCurrentNotebookId() {
+    try {
+      if (typeof cur !== 'undefined' && cur) return cur;
+    } catch (e) {}
+    return null;
+  }
+
+  function getCurrentNotebook() {
+    var d = getDB();
+    var cid = getCurrentNotebookId();
+    var i;
+
+    if (cid) {
+      for (i = 0; i < d.notebooks.length; i++) {
+        if (d.notebooks[i].id === cid) return d.notebooks[i];
+      }
+    }
+
+    return d.notebooks[0] || null;
+  }
+
+  function notebookText(nb) {
+    if (!nb) return '';
+
+    var cards = nb.cards || [];
+    var out = [];
+    var i;
+
+    for (i = 0; i < cards.length; i++) {
+      out.push(cards[i].title || '');
+      out.push(cleanMarkedText(cards[i].text || ''));
+    }
+
+    return out.join('\n').replace(/\s+/g, ' ').trim();
+  }
+
+  function getCurrentArticleText() {
+    var nb = getCurrentNotebook();
+    var t = notebookText(nb);
+
+    if (t) return t;
+
+    var el = document.getElementById('view') || document.querySelector('.card') || document.body;
+    return String(el && el.innerText ? el.innerText : '').trim();
+  }
+
+  async function articleId(text) {
+    text = String(text || '').slice(0, 400);
+
+    var enc = new TextEncoder().encode(text);
+    var hash = await crypto.subtle.digest('SHA-256', enc);
+    var arr = Array.from(new Uint8Array(hash));
+    var hex = arr.map(function (b) {
+      return b.toString(16).padStart(2, '0');
+    }).join('');
+
+    return 'a_' + hex.slice(0, 20);
+  }
+
+  function setButtonState(text, color) {
+    if (!cacheBtn) return;
+    cacheBtn.textContent = text || '\u25B6 \u5168\u6587\uFF08Cache\uFF09';
+    cacheBtn.style.background = color || '#f4d27a';
+  }
+
+  function markCached(id, url) {
+    if (!id) return;
+
+    var idx = getCacheIndex();
+    idx[id] = {
+      cached: true,
+      id: id,
+      url: url || rawAudioUrl(id),
+      at: Date.now()
+    };
+
+    saveCacheIndex(idx);
+    updateCurrentButtonState();
+    refreshSidebarLabelsSoon();
+  }
+
+  async function checkGitHubAudio(id) {
+    if (!id) return null;
+
+    var idx = getCacheIndex();
+    if (idx[id] && idx[id].cached) {
+      return idx[id].url || rawAudioUrl(id);
+    }
+
+    var url = rawAudioUrl(id);
+
+    try {
+      var res = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+      if (res && res.ok) {
+        markCached(id, url);
+        return url;
       }
     } catch (e) {}
 
-*   const d = getDB();
-    return d*notebooks && d.notebooks[0] ? d.no*ebooks[0] : null;
+    return null;
   }
 
-  function *etCurrentArticleText() {
-    const*nb = getCurrentNotebook();
-
-    co*st textFromNotebook = notebookText*nb);
-    if (textFromNotebook) ret*rn textFromNotebook;
-
-    const ar*icle =
-      document.getElementBy*d('cardContent') ||
-      document*querySelector('.article-body') ||
-*     document.querySelector('.card*) ||
-      document.body;
-
-    ret*rn String(article?.innerText || ''*.trim();
-  }
-
-  async function art*cleId(text) {
-    const enc = new *extEncoder().encode(String(text ||*'').slice(0, 400));
-    const hash*= await crypto.subtle.digest('SHA-*56', enc);
-    const arr = Array.f*om(new Uint8Array(hash));
-    cons* hex = arr.map(b => b.toString(16)*padStart(2, '0')).join('');
-    re*urn 'a_' + hex.slice(0, 20);
-  }
-
-* function rawAudioUrl(id) {
-    re*urn `https://raw.githubusercontent*com/${OWNER}/${REPO}/${BRANCH}/${D*R}/${id}.mp3`;
-  }
-
-  function api*udioUrl(id) {
-    return `https://*pi.github.com/repos/${OWNER}/${REP*}/contents/${DIR}/${id}.mp3`;
-  }
-*  async function checkGitHubAudio(*d, nbName) {
-    if (!id) return n*ll;
-
-    const idx = getCacheIndex*);
-    if (idx[id] && idx[id].cach*d) {
-      return idx[id].url || r*wAudioUrl(id);
-    }
-
-    if (chec*ingIds.has(id)) return null;
-    c*eckingIds.add(id);
-
-    const url * rawAudioUrl(id);
-
+  function loadTTSSettings() {
     try {
-     *const res = await fetch(url, { met*od: 'HEAD', cache: 'no-store' });
-*      if (res.ok) {
-        markCa*hed(id, {
-          url,
-         *name: nbName || ''
-        });
-   *    return url;
-      }
-
-      ret*rn null;
+      return JSON.parse(localStorage.getItem(KEY_SET_LS) || '{}');
     } catch (e) {
-      r*turn null;
-    } finally {
-      c*eckingIds.delete(id);
+      return {};
     }
   }
 
- *function loadTTSSettings() {
-    t*y {
-      return JSON.parse(localS*orage.getItem(KEY_SET_LS) || '{}')*
-    } catch (e) {
-      return {}*
-    }
+  async function synthesizeGoogle(text) {
+    var key = localStorage.getItem(KEY_TTS_LS) || '';
+    if (!key) throw new Error('No Google Cloud TTS API Key');
+
+    var s = loadTTSSettings();
+    var voiceName = s.voice || 'en-US-Chirp3-HD-Aoede';
+    var lang = voiceName.split('-').slice(0, 2).join('-') || 'en-US';
+
+    var body = {
+      input: { text: text },
+      voice: { languageCode: lang, name: voiceName },
+      audioConfig: {
+        audioEncoding: 'MP3',
+        speakingRate: Number(s.rate || 0.92)
+      }
+    };
+
+    var url = 'https://texttospeech.googleapis.com/v1/text:synthesize?key=' + encodeURIComponent(key);
+
+    var res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    var raw = await res.text();
+    if (!res.ok) throw new Error('TTS ' + res.status + ': ' + raw.slice(0, 180));
+
+    var data = JSON.parse(raw);
+    if (!data.audioContent) throw new Error('No audioContent');
+
+    var bin = atob(data.audioContent);
+    var bytes = new Uint8Array(bin.length);
+    var i;
+
+    for (i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+
+    return new Blob([bytes], { type: 'audio/mpeg' });
   }
 
-  async function synth*sizeGoogle(text) {
-    const key =*localStorage.getItem(KEY_TTS_LS) |* '';
-    if (!key) throw new Error*'No TTS API Key');
+  function splitText(text) {
+    text = String(text || '').replace(/\s+/g, ' ').trim();
 
-    const s = *oadTTSSettings();
-    const voiceN*me = s.voice || 'en-US-Chirp3-HD-A*ede';
-    const lang = voiceName.s*lit('-').slice(0, 2).join('-') || *en-US';
+    var CHUNK = 400;
+    var out = [];
+    var i = 0;
 
-    const body = {
-      *nput: { text },
-      voice: { lan*uageCode: lang, name: voiceName },*      audioConfig: {
-        audio*ncoding: 'MP3',
-        speakingRa*e: Number(s.rate || 0.92)
-      }
-*   };
+    while (i < text.length) {
+      var end = Math.min(i + CHUNK, text.length);
 
-    const res = await fetch*
-      'https://texttospeech.googleapis.com/v1/text:synthesize?key=' * encodeURIComponent(key),
-      {
-*       method: 'POST',
-        hea*ers: { 'Content-Type': 'applicatio*/json' },
-        body: JSON.strin*ify(body)
-      }
-    );
+      if (end < text.length) {
+        var dot = text.lastIndexOf('.', end);
+        var comma = text.lastIndexOf(',', end);
+        var semi = text.lastIndexOf(';', end);
+        var cut = Math.max(dot, comma, semi);
 
-    cons* raw = await res.text();
-    if (!*es.ok) throw new Error('TTS ' + re*.status + ': ' + raw.slice(0, 160)*;
-
-    const data = JSON.parse(raw*;
-    if (!data.audioContent) thro* new Error('No audioContent');
-
-  * const bin = atob(data.audioConten*);
-    const bytes = new Uint8Arra*(bin.length);
-
-    for (let i = 0;*i < bin.length; i++) {
-      bytes*i] = bin.charCodeAt(i);
-    }
-
-   *return new Blob([bytes], { type: '*udio/mpeg' });
-  }
-
-  function spl*tText(text) {
-    text = String(te*t || '').replace(/\s+/g, ' ').trim*);
-
-    const CHUNK = 400;
-    con*t out = [];
-
-    let i = 0;
-
-    w*ile (i < text.length) {
-      let *nd = Math.min(i + CHUNK, text.leng*h);
-
-      if (end < text.length) *
-        const dot = text.lastInde*Of('.', end);
-        const comma * text.lastIndexOf(',', end);
-     *  const cut = Math.max(dot, comma)*
-
-        if (cut > i + 120) end =*cut + 1;
+        if (cut > i + 120) end = cut + 1;
       }
 
-      const part*= text.slice(i, end).trim();
-     *if (part) out.push(part);
-
-      i*= end;
+      var part = text.slice(i, end).trim();
+      if (part) out.push(part);
+      i = end;
     }
 
     return out;
   }
-*  async function mergeBlobs(blobs)*{
-    const buffers = [];
 
-    for*(const b of blobs) {
-      buffers*push(new Uint8Array(await b.arrayB*ffer()));
+  async function mergeBlobs(blobs) {
+    var buffers = [];
+    var i;
+
+    for (i = 0; i < blobs.length; i++) {
+      buffers.push(new Uint8Array(await blobs[i].arrayBuffer()));
     }
 
-    return new Bl*b(buffers, { type: 'audio/mpeg' })*
+    return new Blob(buffers, { type: 'audio/mpeg' });
   }
 
-  async function blobToBase6*(blob) {
-    return new Promise((r*solve, reject) => {
-      const r * new FileReader();
-
-      r.onload*= () => {
-        const s = String*r.result || '');
-        resolve(s*split(',')[1] || '');
+  function blobToBase64(blob) {
+    return new Promise(function (resolve, reject) {
+      var r = new FileReader();
+      r.onload = function () {
+        var s = String(r.result || '');
+        resolve(s.split(',')[1] || '');
       };
-
-  *   r.onerror = reject;
-      r.rea*AsDataURL(blob);
+      r.onerror = reject;
+      r.readAsDataURL(blob);
     });
   }
 
-  as*nc function uploadToGitHub(id, blo*) {
-    const token = localStorage*getItem(KEY_GH_TOKEN);
+  async function uploadToGitHub(id, blob) {
+    var token = localStorage.getItem(KEY_GH_TOKEN) || '';
+    if (!token) throw new Error('missing GitHub Token');
 
-    if (!t*ken) {
-      throw new Error('缺 Gi*Hub Token。請先在選單設定 Token。');
-    }
-*    const b64 = await blobToBase64*blob);
-    const url = apiAudioUrl*id);
+    var url = apiAudioUrl(id);
+    var sha = null;
 
-    let sha = undefined;
-
-  * try {
-      const check = await f*tch(url + `?ref=${BRANCH}`, {
-    *   headers: {
-          Authorizat*on: `Bearer ${token}`,
-          A*cept: 'application/vnd.github+json*
+    try {
+      var check = await fetch(url + '?ref=' + encodeURIComponent(BRANCH), {
+        headers: {
+          Authorization: 'Bearer ' + token,
+          Accept: 'application/vnd.github+json'
         }
       });
 
-      if (ch*ck.ok) {
-        const j = await c*eck.json();
+      if (check.ok) {
+        var j = await check.json();
         sha = j.sha;
- *    }
+      }
     } catch (e) {}
 
-    cons* body = {
-      message: `auto: ad* audio ${id}`,
-      content: b64,*      branch: BRANCH
+    var body = {
+      message: 'auto: add audio ' + id,
+      content: await blobToBase64(blob),
+      branch: BRANCH
     };
 
-    i* (sha) body.sha = sha;
+    if (sha) body.sha = sha;
 
-    const *es = await fetch(url, {
-      meth*d: 'PUT',
+    var res = await fetch(url, {
+      method: 'PUT',
       headers: {
-       *Authorization: `Bearer ${token}`,
-*       Accept: 'application/vnd.gi*hub+json',
-        'Content-Type':*'application/json'
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/vnd.github+json',
+        'Content-Type': 'application/json'
       },
-      *ody: JSON.stringify(body)
-    });
-*    const raw = await res.text();
-*   if (!res.ok) throw new Error('G*tHub PUT ' + res.status + ': ' + r*w.slice(0, 200));
-
-    markCached(*d, {
-      url: rawAudioUrl(id),
- *    source: 'upload'
+      body: JSON.stringify(body)
     });
 
-    *og('uploaded ✓', id);
+    var raw = await res.text();
+    if (!res.ok) throw new Error('GitHub PUT ' + res.status + ': ' + raw.slice(0, 220));
+
+    markCached(id, rawAudioUrl(id));
   }
 
-  funct*on playURL(url) {
-    return new P*omise((resolve, reject) => {
-     *stopCurrent();
+  function stopCurrent() {
+    try {
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+    } catch (e) {}
 
-      const audio * new Audio(url);
-      currentAudi* = audio;
+    if (currentAudio) {
+      try {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      } catch (e) {}
+      currentAudio = null;
+    }
+  }
 
-      audio.onended = (* => {
-        if (currentAudio ===*audio) currentAudio = null;
-      * resolve();
+  function playURL(url) {
+    return new Promise(function (resolve, reject) {
+      stopCurrent();
+
+      var audio = new Audio(url);
+      currentAudio = audio;
+
+      audio.onended = function () {
+        if (currentAudio === audio) currentAudio = null;
+        resolve();
       };
 
-      audio.*nerror = e => {
-        if (curren*Audio === audio) currentAudio = nu*l;
+      audio.onerror = function (e) {
+        if (currentAudio === audio) currentAudio = null;
         reject(e);
       };
 
-  *   audio.play().catch(reject);
-   *});
+      audio.play().catch(reject);
+    });
   }
 
-  function playBlob(blob)*{
-    const url = URL.createObject*RL(blob);
-    return playURL(url);*  }
-
-  function stopCurrent() {
-  * try {
-      window.speechSynthesi*?.cancel();
-    } catch (e) {}
-
-  * if (currentAudio) {
-      try {
- *      currentAudio.pause();
-      * currentAudio.currentTime = 0;
-   *  } catch (e) {}
-
-      currentAud*o = null;
-    }
+  function playBlob(blob) {
+    var url = URL.createObjectURL(blob);
+    return playURL(url);
   }
 
-  async funct*on playCurrentArticle() {
-    cons* nb = getCurrentNotebook();
-    co*st text = getCurrentArticleText();*
+  async function playCurrentArticle() {
+    var text = getCurrentArticleText();
+
     if (!text) {
-      alert('讀不到*章文字');
+      alert('\u8B80\u4E0D\u5230\u6587\u7AE0\u6587\u5B57');
       return;
     }
 
-    co*st id = await articleId(text);
-   *log('article id:', id);
+    var id = await articleId(text);
+    log('article id', id);
 
-    setFl*atingButtonState('checking');
+    setButtonState('\u6AA2\u67E5 Cache\u2026', '#d9d0bc');
 
-   *const cachedUrl = await checkGitHu*Audio(id, nb?.name || '');
-
-    if*(cachedUrl) {
-      log('cache hit*→ play GitHub audio');
-      markC*ched(id, {
-        url: cachedUrl,*        name: nb?.name || '',
-    *   source: 'github'
-      });
-
-   *  setFloatingButtonState('cached')*
+    var cachedUrl = await checkGitHubAudio(id);
+    if (cachedUrl) {
+      setButtonState('\u25B6 \u5168\u6587\uFF08\u5DF2 Cache\uFF09', '#b7d7a8');
       await playURL(cachedUrl);
- *    return;
+      return;
     }
 
-    log('cache *iss → generate via Google TTS');
- *  setFloatingButtonState('generati*g');
+    var segments = splitText(text);
+    var blobs = [];
+    var i;
 
-    const segments = splitTe*t(text);
-    const blobs = [];
+    if (!segments.length) {
+      setButtonState('\u25B6 \u5168\u6587\uFF08Cache\uFF09', '#f4d27a');
+      alert('\u6587\u7AE0\u6C92\u6709\u53EF\u5408\u6210\u7684\u6587\u5B57');
+      return;
+    }
 
-  * let i = 0;
-
-    for (const seg of*segments) {
-      i++;
-      setFl*atingButtonState('generating', i, *egments.length);
-      log(`synth *{i}/${segments.length}`);
-
-      t*y {
-        const b = await synthe*izeGoogle(seg);
-        blobs.push*b);
+    for (i = 0; i < segments.length; i++) {
+      setButtonState('\u751F\u6210\u97F3\u6A94 ' + (i + 1) + '/' + segments.length, '#f4d27a');
+      try {
+        var b = await synthesizeGoogle(segments[i]);
+        blobs.push(b);
       } catch (e) {
-        co*sole.warn('[ArticleAudioC] synth f*il:', e);
+        warn('synth fail', e);
       }
     }
 
-    if (!*lobs.length) {
-      setFloatingBu*tonState('default');
-      alert('*部段落合成失敗');
+    if (!blobs.length) {
+      setButtonState('\u25B6 \u5168\u6587\uFF08Cache\uFF09', '#f4d27a');
+      alert('\u5168\u90E8\u6BB5\u843D\u5408\u6210\u5931\u6557');
       return;
     }
 
-  * const merged = await mergeBlobs(b*obs);
+    var merged = await mergeBlobs(blobs);
 
     try {
-      setFloating*uttonState('uploading');
-      awa*t uploadToGitHub(id, merged);
-    * catch (e) {
-      console.warn('[ArticleAudioC] upload skipped:', e.*essage);
+      setButtonState('\u4E0A\u50B3 Cache\u2026', '#f4d27a');
+      await uploadToGitHub(id, merged);
+      setButtonState('\u25B6 \u5168\u6587\uFF08\u5DF2 Cache\uFF09', '#b7d7a8');
+    } catch (e) {
+      warn('upload skipped', e && e.message);
+      setButtonState('\u25B6 \u5168\u6587\uFF08\u672A\u4E0A\u50B3\uFF09', '#f4d27a');
     }
 
-    setFloatingBut*onState('cached');
-    await playB*ob(merged);
+    await playBlob(merged);
   }
 
-  function inject*tyle() {
-    if (document.getEleme*tById('articleAudioCacheStyle')) r*turn;
-
-    const style = document.*reateElement('style');
-    style.i* = 'articleAudioCacheStyle';
-
-    *tyle.textContent = `
-      .nb-cac*e-label {
-        margin-left: 6px*
-        color: #b8b8b8;
-        f*nt-size: 11px;
-        font-weight* normal;
-        letter-spacing: 0*
-        opacity: .88;
-        whi*e-space: nowrap;
-      }
-
-      .n*-cache-label::before {
-        con*ent: "✓ ";
-      }
-
-      body.dar* .nb-cache-label {
-        color: *8f8f8f;
-        opacity: .9;
-     *}
-
-      .nb.cache-ready b {
-     *  color: #d8d0bc;
-      }
-
-      .*b.cache-ready small {
-        colo*: #aaa18f;
-      }
-
-      .nb-cach*-miss {
-        display: none;
-   *  }
-    `;
-
-    document.head.appe*dChild(style);
-  }
-
-  function cac*eLabelHTML(id) {
-    const idx = g*tCacheIndex();
-    const hit = id *& idx[id] && idx[id].cached;
-
-    *eturn hit
-      ? `<span class="nb*cache-label" title="此文章音檔已上傳到 GitH*b audio cache">已 Cache</span>`
-   *  : `<span class="nb-cache-miss" d*ta-cache-miss="${esc(id || '')}"><*span>`;
-  }
-
-  async function note*ookAudioId(nb) {
-    const text = *otebookText(nb);
-    if (!text) re*urn '';
-    return await articleId*text);
-  }
-
-  async function rende*NotebookCacheBadges() {
-    const * = getDB();
-
-    for (const nb of *.notebooks || []) {
-      const te*t = notebookText(nb);
-      if (!t*xt) continue;
-
-      const id = aw*it articleId(text);
-      const el*= document.querySelector(`.nb[data*nbid="${CSS.escape(nb.id)}"]`);
-  *   if (!el) continue;
-
-      const*labelHost = el.querySelector('.nb-*ache-host');
-      if (!labelHost)*continue;
-
-      const idx = getCa*heIndex();
-
-      if (idx[id] && i*x[id].cached) {
-        labelHost.*nnerHTML = cacheLabelHTML(id);
-   *    el.classList.add('cache-ready'*;
-        continue;
-      }
-
-     *checkGitHubAudio(id, nb.name).then*url => {
-        if (!url) return;*
-        const el2 = document.quer*Selector(`.nb[data-nbid="${CSS.esc*pe(nb.id)}"]`);
-        if (!el2) *eturn;
-
-        const host2 = el2.*uerySelector('.nb-cache-host');
-  *     if (host2) host2.innerHTML = *acheLabelHTML(id);
-
-        el2.cl*ssList.add('cache-ready');
-      }*;
-    }
-  }
-
-  let badgeTimer = nu*l;
-
-  function refreshCacheBadgesS*on() {
-    clearTimeout(badgeTimer*;
-    badgeTimer = setTimeout(rend*rNotebookCacheBadges, 80);
-  }
-
-  *unction patchRenderSide() {
-    if*(window.__articleAudioCacheRenderS*dePatched__) return;
-    window.__*rticleAudioCacheRenderSidePatched_* = true;
-
+  async function updateCurrentButtonState() {
     try {
-      if (type*f renderSide !== 'function') retur*;
+      var text = getCurrentArticleText();
+      if (!text) {
+        setButtonState('\u25B6 \u5168\u6587\uFF08Cache\uFF09', '#f4d27a');
+        return;
+      }
 
-      renderSide = function () *
-        const d = getDB();
+      var id = await articleId(text);
+      var idx = getCacheIndex();
 
-     *  const activeId = (typeof cur !==*'undefined') ? cur : null;
-       *const capturedCount = Object.value*(d.learn || {}).filter(x => x.capt*red && !x.known).length;
-
-        *f (!document.getElementById('nblis*')) return;
-
-        nblist.innerH*ML = d.notebooks.length
-          * d.notebooks.map(n => `
-          *   <div class="nb ${n.id == active*d ? 'active' : ''}" 
-             *     data-nbid="${esc(n.id)}"
-    *              onclick="cur='${esc(*.id)}';render()">
-                *button class="del" onclick="event.*topPropagation();delNB('${esc(n.id*}')">×</button>
-                <b*${esc(n.name)}</b>
-               *<span class="nb-cache-host"></span*
-                <br>
-            *   <small>${esc(n.date)} · ${(n.ca*ds || []).length} 段 · ${capturedCo*nt} 捕獲</small>
-              </div*
-            `).join('')
-         *: '<p style="font-size:12px;color:*bfb5a0">尚無筆記本</p>';
-
-        refre*hCacheBadgesSoon();
-      };
-
-    * log('renderSide patched ✓');
-    * catch (e) {
-      console.warn('[ArticleAudioC] patchRenderSide fail*d:', e);
+      if (idx[id] && idx[id].cached) {
+        setButtonState('\u25B6 \u5168\u6587\uFF08\u5DF2 Cache\uFF09', '#b7d7a8');
+      } else {
+        setButtonState('\u25B6 \u5168\u6587\uFF08Cache\uFF09', '#f4d27a');
+      }
+    } catch (e) {
+      setButtonState('\u25B6 \u5168\u6587\uFF08Cache\uFF09', '#f4d27a');
     }
   }
 
-  let floating*tn = null;
+  function addFloatingButton() {
+    var old = document.getElementById('articleAudioCacheBtn');
 
-  function setFloating*uttonState(state, i, total) {
-    *f (!floatingBtn) return;
-
-    if (*tate === 'checking') {
-      float*ngBtn.textContent = '檢查 Cache…';
- *    floatingBtn.style.background =*'#d9d0bc';
+    if (old) {
+      cacheBtn = old;
+      old.style.display = 'block';
+      old.style.visibility = 'visible';
+      old.style.opacity = '1';
       return;
     }
 
-  * if (state === 'cached') {
-      f*oatingBtn.textContent = '▶ 全文（已 Ca*he）';
-      floatingBtn.style.back*round = '#b7d7a8';
-      return;
- *  }
+    cacheBtn = document.createElement('button');
+    cacheBtn.id = 'articleAudioCacheBtn';
+    cacheBtn.textContent = '\u25B6 \u5168\u6587\uFF08Cache\uFF09';
 
-    if (state === 'generating*) {
-      floatingBtn.textContent * total ? `生成音檔 ${i}/${total}` : '生*音檔…';
-      floatingBtn.style.back*round = '#f4d27a';
-      return;
- *  }
+    cacheBtn.style.cssText =
+      'position:fixed;' +
+      'right:8px;' +
+      'bottom:72px;' +
+      'z-index:2147483647;' +
+      'padding:8px 12px;' +
+      'border:none;' +
+      'border-radius:8px;' +
+      'background:#f4d27a;' +
+      'color:#111827;' +
+      'cursor:pointer;' +
+      'font-size:13px;' +
+      'font-weight:bold;' +
+      'box-shadow:0 4px 12px rgba(0,0,0,.18);' +
+      'display:block;' +
+      'visibility:visible;' +
+      'opacity:1;';
 
-    if (state === 'uploading'* {
-      floatingBtn.textContent =*'上傳 Cache…';
-      floatingBtn.sty*e.background = '#f4d27a';
-      re*urn;
-    }
-
-    floatingBtn.textCo*tent = '▶ 全文（Cache）';
-    floating*tn.style.background = '#f4d27a';
- *}
-
-  function addFloatingButton() *
-    if (document.getElementById('*rticleAudioCacheBtn')) return;
-
-  * const btn = document.createElemen*('button');
-    btn.id = 'articleA*dioCacheBtn';
-    btn.textContent * '▶ 全文（Cache）';
-
-    btn.style.css*ext = `
-      position: fixed;
-   *  right: 8px;
-      bottom: 8px;
- *    z-index: 2147483647;
-      pad*ing: 8px 12px;
-      border: none;*      border-radius: 8px;
-      ba*kground: #f4d27a;
-      color: #11*827;
-      cursor: pointer;
-      *ont-size: 13px;
-      font-weight:*bold;
-      box-shadow: 0 4px 12px*rgba(0,0,0,.18);
-    `;
-
-    btn.o*click = () => {
-      playCurrentA*ticle().catch(err => {
-        set*loatingButtonState('default');
-   *    alert('播放失敗：' + err.message);
-*     });
+    cacheBtn.onclick = function () {
+      playCurrentArticle().catch(function (err) {
+        setButtonState('\u25B6 \u5168\u6587\uFF08Cache\uFF09', '#f4d27a');
+        alert('\u64AD\u653E\u5931\u6557\uFF1A' + (err && err.message ? err.message : err));
+      });
     };
 
-    document.body*appendChild(btn);
-    floatingBtn * btn;
+    document.body.appendChild(cacheBtn);
   }
 
-  function patchRenderH*ok() {
+  function addStyle() {
+    if (document.getElementById('articleAudioCacheStyleV2')) return;
+
+    var style = document.createElement('style');
+    style.id = 'articleAudioCacheStyleV2';
+    style.textContent =
+      '.nb-cache-label-v2{' +
+      'margin-left:6px;' +
+      'color:#b8b8b8;' +
+      'font-size:11px;' +
+      'font-weight:normal;' +
+      'white-space:nowrap;' +
+      'opacity:.9;' +
+      '}' +
+      'body.dark .nb-cache-label-v2{' +
+      'color:#8f8f8f;' +
+      '}' +
+      '#articleAudioCacheBtn:hover{' +
+      'filter:brightness(.96);' +
+      '}';
+
+    document.head.appendChild(style);
+  }
+
+  function findNotebookElementById(id) {
+    var list = document.querySelectorAll('.nb');
+    var i;
+
+    for (i = 0; i < list.length; i++) {
+      var el = list[i];
+      var click = el.getAttribute('onclick') || '';
+      if (click.indexOf(id) >= 0) return el;
+    }
+
+    return null;
+  }
+
+  async function refreshSidebarLabels() {
     try {
-      if (typeof *ender !== 'function') return;
-    * if (window.__articleAudioCacheRen*erHookPatched__) return;
+      var d = getDB();
+      var idx = getCacheIndex();
+      var i;
 
-      wi*dow.__articleAudioCacheRenderHookP*tched__ = true;
+      for (i = 0; i < d.notebooks.length; i++) {
+        var nb = d.notebooks[i];
+        var text = notebookText(nb);
+        if (!text) continue;
 
-      const oldRe*der = render;
+        var id = await articleId(text);
+        var el = findNotebookElementById(nb.id);
+        if (!el) continue;
 
-      render = func*ion () {
-        oldRender.apply(t*is, arguments);
-        refreshCac*eBadgesSoon();
-      };
+        var old = el.querySelector('.nb-cache-label-v2');
+        if (old && old.parentNode) old.parentNode.removeChild(old);
 
-      log*'render hook patched ✓');
-    } ca*ch (e) {
-      console.warn('[ArticleAudioC] patchRenderHook failed:'* e);
+        if (idx[id] && idx[id].cached) {
+          var title = el.querySelector('b');
+          if (title) {
+            var span = document.createElement('span');
+            span.className = 'nb-cache-label-v2';
+            span.textContent = ' \u2713 \u5DF2 Cache';
+            title.parentNode.insertBefore(span, title.nextSibling);
+          }
+        }
+      }
+    } catch (e) {
+      warn('refreshSidebarLabels fail', e);
     }
   }
 
-  function init() *
-    injectStyle();
-    patchRende*Side();
-    patchRenderHook();
-    addFloatingButton();
+  function refreshSidebarLabelsSoon() {
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(function () {
+      refreshSidebarLabels();
+    }, 120);
+  }
 
-    setTimeout(() => {
+  function hookRender() {
+    try {
+      if (typeof render !== 'function') return;
+      if (window.__articleAudioCacheV2Hooked__) return;
+
+      window.__articleAudioCacheV2Hooked__ = true;
+      var oldRender = render;
+
+      render = function () {
+        var r = oldRender.apply(this, arguments);
+        setTimeout(function () {
+          refreshSidebarLabels();
+          updateCurrentButtonState();
+        }, 150);
+        return r;
+      };
+    } catch (e) {
+      warn('hookRender fail', e);
+    }
+  }
+
+  function forceButtonAlive() {
+    setInterval(function () {
       try {
-        if (typeof renderSide === 'function') renderSide();
-        refreshCacheBadgesSoon();
-      } catch (e) {
-        console.warn('[ArticleAudioC] initial badge render failed:', e);
-      }
-    }, 300);
+        var b = document.getElementById('articleAudioCacheBtn');
+        if (!b) {
+          addFloatingButton();
+          updateCurrentButtonState();
+        } else {
+          b.style.display = 'block';
+          b.style.visibility = 'visible';
+          b.style.opacity = '1';
+          b.style.zIndex = '2147483647';
+        }
+      } catch (e) {}
+    }, 2000);
+  }
+
+  function init() {
+    addStyle();
+    addFloatingButton();
+    hookRender();
+    forceButtonAlive();
 
     window.__playCurrentArticleWithCache__ = playCurrentArticle;
-    window.__refreshArticleAudioCacheBadges__ = renderNotebookCacheBadges;
+    window.__refreshArticleAudioCacheBadges__ = refreshSidebarLabels;
+    window.__articleAudioCacheCheckCurrent__ = updateCurrentButtonState;
+    window.__articleAudioCacheId__ = articleId;
 
-    log('ready v20260711-1');
+    setTimeout(function () {
+      refreshSidebarLabels();
+      updateCurrentButtonState();
+    }, 300);
+
+    log('ready');
   }
 
   if (document.readyState === 'loading') {
@@ -663,5 +628,4 @@
   } else {
     init();
   }
-
 })();
