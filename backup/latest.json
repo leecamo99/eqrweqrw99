@@ -5262,7 +5262,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783704964799,
+  "updatedAt": 1783705151367,
   "learn": {
     "github": {
       "word": "github",
@@ -6140,11 +6140,11 @@
       "word": "speak",
       "lemma": "speak",
       "firstSeenAt": 1783486753208,
-      "lastSeenAt": 1783704964773,
+      "lastSeenAt": 1783705151347,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 5,
-      "sessionClicks": 5,
-      "maxClickStreak": 4,
+      "lifetimeClicks": 6,
+      "sessionClicks": 6,
+      "maxClickStreak": 5,
       "reviewHistory": [],
       "dueAt": 1783490353212,
       "intervalDays": 0,
@@ -6155,14 +6155,14 @@
       "lastSurface": "speaking",
       "lastForm": "-ing form",
       "variants": {
-        "speaking": 4,
+        "speaking": 5,
         "speak": 1
       },
-      "clicks": 5,
-      "strength": 5,
+      "clicks": 6,
+      "strength": 6,
       "captured": true,
       "known": false,
-      "updatedAt": 1783704964777,
+      "updatedAt": 1783705151352,
       "loading": false,
       "tw": "語音",
       "engine": "MyMemory",
