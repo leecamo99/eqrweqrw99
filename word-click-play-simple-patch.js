@@ -102,25 +102,22 @@
     });
   }
 
-  async function speakOne(word) {
+ async function speakOne(word) {
+  stopAll();
 
-    stopAll();
-
-    if (cache.has(word)) {
-      try {
-        await playBlob(cache.get(word));
-        return;
-      } catch (e) {}
-    }
-
-    try {
-      const blob = await synthesizeGoogle(word);
-      cache.set(word, blob);
-      await playBlob(blob);
-    } catch (e) {
-      console.warn('[WordClick] fail:', word, e);
-    }
+  if (typeof window.__TTS_GLOBAL_SYNTH__ !== 'function') {
+    console.warn('[WordClick] global TTS not ready');
+    return;
   }
+
+  try {
+    const blob = await window.__TTS_GLOBAL_SYNTH__(word);
+    await playBlob(blob);
+  } catch (e) {
+    console.warn('[WordClick] fail:', word, e);
+  }
+}
+
 
   // 對外供其他 patch 呼叫（例如三態區）
   window.__speakOneWord__ = speakOne;
