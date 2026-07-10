@@ -564,9 +564,9 @@
           "color": "c1"
         },
         "beforehand": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "adjective",
+          "tw": "事先",
+          "tip": "Auto translated by MyMemory｜In comfortable circumstances as regards property; forehanded.",
           "color": "c1",
           "lemma": "beforehand"
         },
@@ -5262,7 +5262,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783704478984,
+  "updatedAt": 1783704916428,
   "learn": {
     "github": {
       "word": "github",
@@ -6140,11 +6140,11 @@
       "word": "speak",
       "lemma": "speak",
       "firstSeenAt": 1783486753208,
-      "lastSeenAt": 1783704478962,
+      "lastSeenAt": 1783704916419,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 4,
-      "sessionClicks": 4,
-      "maxClickStreak": 3,
+      "lifetimeClicks": 5,
+      "sessionClicks": 5,
+      "maxClickStreak": 4,
       "reviewHistory": [],
       "dueAt": 1783490353212,
       "intervalDays": 0,
@@ -6155,14 +6155,14 @@
       "lastSurface": "speaking",
       "lastForm": "-ing form",
       "variants": {
-        "speaking": 3,
+        "speaking": 4,
         "speak": 1
       },
-      "clicks": 4,
-      "strength": 4,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
-      "updatedAt": 1783704478967,
+      "updatedAt": 1783704916421,
       "loading": false,
       "tw": "語音",
       "engine": "MyMemory",
