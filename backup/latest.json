@@ -475,7 +475,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "learn"
         },
         "speaking": {
           "pos": "noun",
@@ -3191,7 +3192,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "learn"
         },
         "step": {
           "pos": "",
@@ -5262,7 +5264,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783707209889,
+  "updatedAt": 1783707263501,
   "learn": {
     "github": {
       "word": "github",
@@ -5750,7 +5752,7 @@
       "captured": true,
       "known": false,
       "dueAt": 1783445622139,
-      "updatedAt": 1783707191017,
+      "updatedAt": 1783707229008,
       "variants": {
         "spontaneously": 29
       },
@@ -5759,7 +5761,7 @@
       "engine": "MyMemory",
       "loading": false,
       "firstSeenAt": 1783352941134,
-      "lastSeenAt": 1783707191014,
+      "lastSeenAt": 1783707229004,
       "lastReviewedAt": 1783359222139,
       "lifetimeClicks": 22,
       "sessionClicks": 22,
@@ -6140,11 +6142,11 @@
       "word": "speak",
       "lemma": "speak",
       "firstSeenAt": 1783486753208,
-      "lastSeenAt": 1783706687027,
+      "lastSeenAt": 1783707237816,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 9,
-      "sessionClicks": 9,
-      "maxClickStreak": 8,
+      "lifetimeClicks": 10,
+      "sessionClicks": 10,
+      "maxClickStreak": 9,
       "reviewHistory": [],
       "dueAt": 1783490353212,
       "intervalDays": 0,
@@ -6152,22 +6154,23 @@
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "speak",
-      "lastForm": "base form",
+      "lastSurface": "speaking",
+      "lastForm": "-ing form",
       "variants": {
-        "speaking": 6,
+        "speaking": 7,
         "speak": 3
       },
-      "clicks": 9,
-      "strength": 9,
+      "clicks": 10,
+      "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783706687030,
+      "updatedAt": 1783707237822,
       "loading": false,
       "tw": "語音",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy."
+      "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy.",
+      "isWeak": true
     },
     "count": {
       "word": "count",
@@ -6301,28 +6304,28 @@
       "word": "spot",
       "lemma": "spot",
       "firstSeenAt": 1783704314043,
-      "lastSeenAt": 1783707209879,
+      "lastSeenAt": 1783704314043,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 2,
-      "sessionClicks": 2,
-      "maxClickStreak": 1,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
       "reviewHistory": [],
       "dueAt": 1783707914046,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
+      "status": "new",
       "totalResets": 0,
       "lastSurface": "spot",
       "lastForm": "base form",
       "variants": {
-        "spot": 2
+        "spot": 1
       },
-      "clicks": 2,
-      "strength": 2,
+      "clicks": 1,
+      "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783707209882,
+      "updatedAt": 1783704316321,
       "loading": false,
       "tw": "聚光點",
       "engine": "MyMemory",
@@ -6360,6 +6363,38 @@
       "engine": "MyMemory",
       "pos": "adjective",
       "tip": "Auto translated by MyMemory｜In comfortable circumstances as regards property; forehanded."
+    },
+    "learn": {
+      "word": "learn",
+      "lemma": "learn",
+      "firstSeenAt": 1783707260820,
+      "lastSeenAt": 1783707260820,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783710860822,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "learning",
+      "lastForm": "-ing form",
+      "variants": {
+        "learning": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783707263481,
+      "loading": false,
+      "tw": "學",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The act of learning something"
     }
   }
 }
