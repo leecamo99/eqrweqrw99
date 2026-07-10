@@ -252,3 +252,7 @@
   window.seekWord = seekWord;
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',inject); else inject();
 })();
+// 在 v5 末尾加
+if (typeof window.__TTS_GLOBAL_SYNTH__ === 'function') {
+  console.log('[v5] using global TTS queue');
+}
