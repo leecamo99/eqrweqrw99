@@ -567,7 +567,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "beforehand"
         },
         "pretty": {
           "pos": "",
@@ -2693,10 +2694,11 @@
           "lemma": "speak"
         },
         "spot": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "聚光點",
+          "tip": "Auto translated by MyMemory｜A round or irregular patch on the surface of a thing having a different color, texture etc. and generally round in shape.",
+          "color": "c1",
+          "lemma": "spot"
         },
         "about": {
           "pos": "",
@@ -5260,7 +5262,7 @@
     }
   ],
   "dark": true,
-  "updatedAt": 1783704264142,
+  "updatedAt": 1783704327095,
   "learn": {
     "github": {
       "word": "github",
@@ -5748,7 +5750,7 @@
       "captured": true,
       "known": false,
       "dueAt": 1783445622139,
-      "updatedAt": 1783704264132,
+      "updatedAt": 1783704286469,
       "variants": {
         "spontaneously": 24
       },
@@ -5757,7 +5759,7 @@
       "engine": "MyMemory",
       "loading": false,
       "firstSeenAt": 1783352941134,
-      "lastSeenAt": 1783704264129,
+      "lastSeenAt": 1783704286462,
       "lastReviewedAt": 1783359222139,
       "lifetimeClicks": 17,
       "sessionClicks": 17,
@@ -6138,28 +6140,29 @@
       "word": "speak",
       "lemma": "speak",
       "firstSeenAt": 1783486753208,
-      "lastSeenAt": 1783486753208,
+      "lastSeenAt": 1783704306765,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
-      "maxClickStreak": 1,
+      "lifetimeClicks": 3,
+      "sessionClicks": 3,
+      "maxClickStreak": 2,
       "reviewHistory": [],
       "dueAt": 1783490353212,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "speaking",
       "lastForm": "-ing form",
       "variants": {
-        "speaking": 1
+        "speaking": 2,
+        "speak": 1
       },
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 3,
+      "strength": 3,
       "captured": true,
       "known": false,
-      "updatedAt": 1783486757185,
+      "updatedAt": 1783704306769,
       "loading": false,
       "tw": "語音",
       "engine": "MyMemory",
@@ -6293,6 +6296,70 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜Something left behind; an excess or remainder."
+    },
+    "spot": {
+      "word": "spot",
+      "lemma": "spot",
+      "firstSeenAt": 1783704314043,
+      "lastSeenAt": 1783704314043,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783707914046,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "spot",
+      "lastForm": "base form",
+      "variants": {
+        "spot": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783704316321,
+      "loading": false,
+      "tw": "聚光點",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A round or irregular patch on the surface of a thing having a different color, texture etc. and generally round in shape."
+    },
+    "beforehand": {
+      "word": "beforehand",
+      "lemma": "beforehand",
+      "firstSeenAt": 1783704325541,
+      "lastSeenAt": 1783704325541,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783707925546,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "beforehand",
+      "lastForm": "base form",
+      "variants": {
+        "beforehand": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783704327080,
+      "loading": false,
+      "tw": "事先",
+      "engine": "MyMemory",
+      "pos": "adjective",
+      "tip": "Auto translated by MyMemory｜In comfortable circumstances as regards property; forehanded."
     }
   }
 }
