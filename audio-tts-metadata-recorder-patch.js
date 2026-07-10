@@ -1,115 +1,171 @@
-/* audio-tts-metadata-recorder-patch.js v20260710-1
-   Records segment metadata (text, words, durationMs) for each TTS synthesis.
-   Reads from __TTS_GLOBAL_SYNTH__ so it works with the existing global queue.
+/* audio-tts-metadata-recorder-patch.js v20260710-2
+   Attach at fetch level to catch every text:synthesize call.
+   Works regardless of whether v5 uses __TTS_GLOBAL_SYNTH__ or not.
+
+   Records per-segment metadata:
+     text, words, durMs, blobSize
    Exposes:
-     window.__TTS_SEG_METADATA__ = Map(text -> { words, durMs, blobURL })
-     window.__TTS_GET_SEG_META__(text) → { words, durMs }
+     window.__TTS_SEG_METADATA__   Map(text -> {text, words, durMs, order})
+     window.__TTS_GET_SEG_META__   (text) -> object or null
+     window.__TTS_LAST_ORDER__     增量計數，用來記錄合成順序
 */
 
 (function () {
 
   'use strict';
 
-  const STORE = new Map();
-
+  var STORE = new Map();
   window.__TTS_SEG_METADATA__ = STORE;
-
   window.__TTS_GET_SEG_META__ = function (text) {
     return STORE.get(text) || null;
   };
 
-  function tokenizeWords(text) {
+  var ORDER = 0;
 
-    // 保留原文順序，抽出英文單字（去掉純標點）
-    const arr = [];
-    const re = /[A-Za-z][A-Za-z'’-]*/g;
-    let m;
-    while ((m = re.exec(text)) !== null) {
-      arr.push(m[0]);
-    }
+  function tokenizeWords(text) {
+    var arr = [];
+    var re = /[A-Za-z][A-Za-z'\u2019-]*/g;
+    var m;
+    while ((m = re.exec(text)) !== null) arr.push(m[0]);
     return arr;
   }
 
-  async function measureDurationMs(blob) {
+  function measureDurationFromBase64(b64) {
 
-    return new Promise((resolve) => {
+    return new Promise(function (resolve) {
 
       try {
-        const url = URL.createObjectURL(blob);
-        const a = new Audio();
+
+        // b64 是純 base64（不含 data: prefix）
+        var binary = atob(b64);
+        var bytes = new Uint8Array(binary.length);
+        for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+        var blob = new Blob([bytes], { type: 'audio/mp3' });
+        var url = URL.createObjectURL(blob);
+        var a = new Audio();
 
         a.preload = 'metadata';
 
-        a.onloadedmetadata = () => {
-          const ms = Math.round((a.duration || 0) * 1000);
+        a.onloadedmetadata = function () {
+          var ms = Math.round((a.duration || 0) * 1000);
           URL.revokeObjectURL(url);
-          resolve(ms);
+          resolve({ ms: ms, size: blob.size });
         };
 
-        a.onerror = () => {
+        a.onerror = function () {
           URL.revokeObjectURL(url);
-          resolve(0);
+          resolve({ ms: 0, size: blob.size });
         };
 
         a.src = url;
 
       } catch (e) {
-        resolve(0);
+        resolve({ ms: 0, size: 0 });
       }
     });
   }
 
-  // ---- Wrap __TTS_GLOBAL_SYNTH__ ----
+  var origFetch = window.fetch;
 
-  const orig = window.__TTS_GLOBAL_SYNTH__;
+  window.fetch = function (input, init) {
 
-  if (typeof orig !== 'function') {
-    console.warn('[TTSMetaRec] __TTS_GLOBAL_SYNTH__ not found, patch idle');
-    return;
-  }
+    var url = typeof input === 'string' ? input : (input && input.url) || '';
 
-  window.__TTS_GLOBAL_SYNTH__ = async function (text, ...rest) {
+    var isSynth = /texttospeech\.googleapis\.com.*text:synthesize/i.test(url);
 
-    const blob = await orig.call(this, text, ...rest);
+    // 抓 request body 的 text（用於配對記錄）
+    var reqText = '';
 
-    // 只記英文段落，且長度合理
-    if (
-      typeof text === 'string' &&
-      text.length > 1 &&
-      /[A-Za-z]/.test(text) &&
-      blob instanceof Blob
-    ) {
+    if (isSynth) {
 
       try {
 
-        if (!STORE.has(text)) {
+        var body = init && init.body;
 
-          const durMs = await measureDurationMs(blob);
+        if (body) {
 
-          const words = tokenizeWords(text);
+          var raw = null;
 
-          STORE.set(text, {
-            text,
-            words,
-            durMs,
-            recordedAt: Date.now()
-          });
+          if (typeof body === 'string') raw = body;
+          else if (body instanceof Blob) raw = null; // 難以簡單同步讀
+          else if (body instanceof FormData) raw = null;
+          else if (body && typeof body === 'object') raw = JSON.stringify(body);
 
-          console.log('[TTSMetaRec] recorded seg', {
-            len: text.length,
-            words: words.length,
-            durMs
-          });
+          if (raw) {
+            try {
+              var j = JSON.parse(raw);
+              // Google Cloud TTS：input.text 或 input.ssml
+              reqText =
+                (j && j.input && (j.input.text || j.input.ssml)) || '';
+              // 若 SSML，把標籤去掉
+              reqText = String(reqText).replace(/<[^>]+>/g, '');
+            } catch (e) {}
+          }
         }
 
-      } catch (e) {
-        console.warn('[TTSMetaRec] measure err', e);
-      }
+      } catch (e) {}
     }
 
-    return blob;
+    var p = origFetch.apply(this, arguments);
+
+    if (!isSynth) return p;
+
+    return p.then(function (res) {
+
+      // 我們要保留原本的 response 不被消耗，所以先 clone
+      try {
+
+        res.clone().json().then(function (json) {
+
+          try {
+
+            var audioB64 = json && json.audioContent;
+            if (!audioB64) return;
+
+            var text = reqText || '(unknown)';
+
+            if (!STORE.has(text)) {
+
+              ORDER++;
+              window.__TTS_LAST_ORDER__ = ORDER;
+
+              measureDurationFromBase64(audioB64).then(function (info) {
+
+                STORE.set(text, {
+                  text: text,
+                  words: tokenizeWords(text),
+                  durMs: info.ms,
+                  blobSize: info.size,
+                  order: ORDER,
+                  recordedAt: Date.now()
+                });
+
+                console.log('[TTSMetaRec v2] recorded seg', {
+                  order: ORDER,
+                  chars: text.length,
+                  words: STORE.get(text).words.length,
+                  durMs: info.ms
+                });
+              });
+            }
+
+          } catch (e) {
+            console.warn('[TTSMetaRec v2] parse err', e);
+          }
+
+        }).catch(function (e) {
+          console.warn('[TTSMetaRec v2] json err', e);
+        });
+
+      } catch (e) {
+        console.warn('[TTSMetaRec v2] clone err', e);
+      }
+
+      return res;
+    });
   };
 
-  console.log('[TTSMetaRec] ready');
+  console.log('[TTSMetaRec v2] ready (fetch-level hook)');
 
 })();
