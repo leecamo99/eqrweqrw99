@@ -40,10 +40,11 @@
           "color": "c1"
         },
         "programs": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "程序",
+          "tip": "Auto translated by MyMemory｜A set of structured activities.",
+          "color": "c1",
+          "lemma": "program"
         },
         "Supercharge": {
           "pos": "noun",
@@ -59,10 +60,11 @@
           "color": "c1"
         },
         "global": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "全域",
+          "tip": "Auto translated by MyMemory｜A globally scoped identifier.",
+          "color": "c1",
+          "lemma": "global"
         },
         "perspectives": {
           "pos": "",
@@ -266,10 +268,11 @@
           "color": "c1"
         },
         "Global": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "全域",
+          "tip": "Auto translated by MyMemory｜A globally scoped identifier.",
+          "color": "c1",
+          "lemma": "global"
         },
         "guarantee": {
           "pos": "",
@@ -326,10 +329,11 @@
           "color": "c1"
         },
         "included": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "包括",
+          "tip": "Auto translated by MyMemory｜A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+          "color": "c1",
+          "lemma": "include"
         },
         "next": {
           "pos": "noun",
@@ -4392,7 +4396,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783797015775,
+  "updatedAt": 1783797099495,
   "learn": {
     "github": {
       "word": "github",
@@ -5752,11 +5756,11 @@
       "word": "immers",
       "lemma": "immers",
       "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783797015768,
+      "lastSeenAt": 1783797096332,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 3,
-      "sessionClicks": 3,
-      "maxClickStreak": 2,
+      "lifetimeClicks": 5,
+      "sessionClicks": 5,
+      "maxClickStreak": 4,
       "reviewHistory": [],
       "dueAt": 1783734976885,
       "intervalDays": 0,
@@ -5767,13 +5771,13 @@
       "lastSurface": "immersing",
       "lastForm": "-ing form",
       "variants": {
-        "immersing": 3
+        "immersing": 5
       },
-      "clicks": 3,
-      "strength": 3,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
-      "updatedAt": 1783797015772,
+      "updatedAt": 1783797096335,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -5811,6 +5815,134 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜The one that follows after this one."
+    },
+    "include": {
+      "word": "include",
+      "lemma": "include",
+      "firstSeenAt": 1783797079306,
+      "lastSeenAt": 1783797079306,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783800679309,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "included",
+      "lastForm": "-ed / past participle",
+      "variants": {
+        "included": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783797081763,
+      "loading": false,
+      "tw": "包括",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A piece of source code or other content that is dynamically retrieved for inclusion in another item."
+    },
+    "program": {
+      "word": "program",
+      "lemma": "program",
+      "firstSeenAt": 1783797089467,
+      "lastSeenAt": 1783797089467,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783800689469,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "programs",
+      "lastForm": "plural / 3rd person -s",
+      "variants": {
+        "programs": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783797090624,
+      "loading": false,
+      "tw": "程序",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A set of structured activities."
+    },
+    "global": {
+      "word": "global",
+      "lemma": "global",
+      "firstSeenAt": 1783797093090,
+      "lastSeenAt": 1783797093090,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783800693093,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "global",
+      "lastForm": "base form",
+      "variants": {
+        "global": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783797094325,
+      "loading": false,
+      "tw": "全域",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A globally scoped identifier."
+    },
+    "yourself": {
+      "word": "yourself",
+      "lemma": "yourself",
+      "firstSeenAt": 1783797098260,
+      "lastSeenAt": 1783797098260,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783800698262,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "yourself",
+      "lastForm": "base form",
+      "variants": {
+        "yourself": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783797099491,
+      "loading": false,
+      "tw": "您自己",
+      "engine": "MyMemory",
+      "pos": "pronoun",
+      "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular)."
     }
   }
 }
