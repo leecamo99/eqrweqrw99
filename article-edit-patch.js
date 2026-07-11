@@ -1,5 +1,5 @@
-/* article-edit-patch.js v20260711-1
-   Adds edit mode to article. Click "✏️ 編輯" to modify original text.
+/* article-edit-patch.js v20260711-3
+   Fix findCurrentCardData with prefix matching.
 */
 
 (function () {
@@ -24,7 +24,6 @@
     localStorage.setItem(STORE, JSON.stringify(d));
   }
 
-  // 找當前 notebook 和文章 element
   function findCurrentArticle() {
 
     var card = document.querySelector('.card');
@@ -36,7 +35,6 @@
     return { card: card, enEl: enEl };
   }
 
-  // 找當前 notebook 和 card data
   function findCurrentCardData() {
 
     var db = getDB();
@@ -46,14 +44,21 @@
     if (!card) return null;
 
     var cardId = card.dataset.cid;
-    if (!cardId) return null;
+    if (!cardId) {
+      log('card.dataset.cid 不存在');
+      return null;
+    }
 
+    log('尋找 cardId:', cardId);
+
+    // 第一次：直接匹配
     for (var i = 0; i < db.notebooks.length; i++) {
       var nb = db.notebooks[i];
       if (!nb.cards) continue;
 
       for (var j = 0; j < nb.cards.length; j++) {
         if (nb.cards[j].id === cardId) {
+          log('找到 (直接匹配):', i, j);
           return {
             notebook: nb,
             card: nb.cards[j],
@@ -64,6 +69,51 @@
       }
     }
 
+    // 第二次：cardId 開頭匹配 notebook.id
+    // cardId 格式：nb_XXXXcY
+    var nbIdMatch = cardId.match(/^(nb_\d+)/);
+    if (nbIdMatch) {
+      var possibleNbId = nbIdMatch[1];
+      var cardIdxMatch = cardId.match(/c(\d+)$/);
+      var possibleCardIdx = cardIdxMatch ? parseInt(cardIdxMatch[1], 10) : 0;
+
+      log('嘗試前綴匹配:', possibleNbId, 'card idx:', possibleCardIdx);
+
+      for (var k = 0; k < db.notebooks.length; k++) {
+        var nb2 = db.notebooks[k];
+        if (nb2.id === possibleNbId && nb2.cards && nb2.cards[possibleCardIdx]) {
+          log('找到 (前綴匹配):', k, possibleCardIdx);
+          return {
+            notebook: nb2,
+            card: nb2.cards[possibleCardIdx],
+            nbIdx: k,
+            cardIdx: possibleCardIdx
+          };
+        }
+      }
+    }
+
+    // 第三次：找當前 active notebook
+    var activeNb = document.querySelector('.notebook.active');
+    if (activeNb) {
+      var activeIdx = Array.prototype.indexOf.call(activeNb.parentNode.children, activeNb);
+      if (db.notebooks[activeIdx] && db.notebooks[activeIdx].cards) {
+        log('用 active notebook:', activeIdx);
+        // 找 card index (在 DOM 中的順序)
+        var cardsInDom = document.querySelectorAll('.card');
+        var currentCardIdx = Array.prototype.indexOf.call(cardsInDom, card);
+        if (db.notebooks[activeIdx].cards[currentCardIdx]) {
+          return {
+            notebook: db.notebooks[activeIdx],
+            card: db.notebooks[activeIdx].cards[currentCardIdx],
+            nbIdx: activeIdx,
+            cardIdx: currentCardIdx
+          };
+        }
+      }
+    }
+
+    log('都找不到');
     return null;
   }
 
@@ -80,16 +130,14 @@
 
     var cardData = findCurrentCardData();
     if (!cardData) {
-      alert('沒有找到 card 資料');
+      alert('沒有找到 card 資料。\n請重新載入頁面。');
       return;
     }
 
     isEditing = true;
 
-    // 取得原始純文字（把 mark 去掉，保留純內容）
     var originalText = extractPlainText(cardData.card.text);
 
-    // 建立 textarea
     var textarea = document.createElement('textarea');
     textarea.id = 'articleEditTextarea';
     textarea.value = originalText;
@@ -107,89 +155,102 @@
       + 'resize: vertical;'
       + 'box-sizing: border-box;';
 
-    // 替換 .en 為 textarea
     found.enEl.style.display = 'none';
     found.enEl.parentNode.insertBefore(textarea, found.enEl);
 
-    // 建立控制按鈕
     var controls = document.createElement('div');
     controls.id = 'articleEditControls';
     controls.style.cssText = ''
       + 'margin-top: 10px;'
       + 'display: flex;'
+      + 'flex-wrap: wrap;'
       + 'gap: 8px;';
 
     controls.innerHTML =
-      '<button id="articleEditSaveBtn" style="' +
-        'padding: 8px 16px;' +
+      '<button id="articleEditSaveKeepBtn" style="' +
+        'padding: 8px 12px;' +
         'background: #a68a56;' +
         'color: white;' +
         'border: none;' +
         'border-radius: 4px;' +
         'cursor: pointer;' +
-        'font-size: 14px;' +
-      '">💾 儲存</button>' +
+        'font-size: 13px;' +
+      '">💾 儲存 (保留標記)</button>' +
+      '<button id="articleEditSaveRemarkBtn" style="' +
+        'padding: 8px 12px;' +
+        'background: #7a6547;' +
+        'color: white;' +
+        'border: none;' +
+        'border-radius: 4px;' +
+        'cursor: pointer;' +
+        'font-size: 13px;' +
+      '">🔄 儲存 (重新標註)</button>' +
       '<button id="articleEditCancelBtn" style="' +
-        'padding: 8px 16px;' +
+        'padding: 8px 12px;' +
         'background: #666;' +
         'color: white;' +
         'border: none;' +
         'border-radius: 4px;' +
         'cursor: pointer;' +
-        'font-size: 14px;' +
+        'font-size: 13px;' +
       '">✖ 取消</button>' +
       '<div style="flex: 1;"></div>' +
-      '<div style="color: #666; font-size: 12px; align-self: center;">' +
-        '編輯後儲存會重新標註單字（可能需要重新翻譯）' +
+      '<div id="articleEditStatus" style="color: #666; font-size: 12px; align-self: center;">' +
       '</div>';
 
     textarea.parentNode.insertBefore(controls, textarea.nextSibling);
 
     editControls = { textarea: textarea, controls: controls, enEl: found.enEl };
 
-    // 綁定按鈕
-    document.getElementById('articleEditSaveBtn').onclick = saveEdit;
+    document.getElementById('articleEditSaveKeepBtn').onclick = function () {
+      doSave(true);
+    };
+    document.getElementById('articleEditSaveRemarkBtn').onclick = function () {
+      doSave(false);
+    };
     document.getElementById('articleEditCancelBtn').onclick = cancelEdit;
 
-    // 隱藏編輯按鈕
     var editBtn = document.getElementById('articleEditBtn');
     if (editBtn) editBtn.style.display = 'none';
 
     log('entered edit mode');
   }
 
-  function saveEdit() {
+  function doSave(keepMarks) {
 
-    if (!editControls) return;
+    if (!editControls) {
+      log('editControls not found');
+      return;
+    }
+
+    var status = document.getElementById('articleEditStatus');
+    if (status) status.textContent = '儲存中...';
+
+    log('doSave keepMarks:', keepMarks);
 
     var newText = editControls.textarea.value.trim();
     if (!newText) {
       alert('文章不能為空');
+      if (status) status.textContent = '';
       return;
     }
 
     var cardData = findCurrentCardData();
     if (!cardData) {
       alert('沒有找到 card 資料');
+      if (status) status.textContent = '';
       return;
     }
 
-    // 決定保留還是重新標註
-    var keepMarks = confirm(
-      '儲存後選擇：\n\n' +
-      '「確定」= 保留現有單字標記 (只更新文字)\n' +
-      '「取消」= 重新標註單字（會清除現有標記，重新分析）'
-    );
+    log('cardData found:', cardData.nbIdx, cardData.cardIdx);
 
     var db = getDB();
     var newTextWithMarks;
 
     if (keepMarks) {
-      // 保留舊 marks
       newTextWithMarks = newText;
       log('saved with existing marks');
     } else {
-      // 重新標註（呼叫主 JS 的 markText）
       if (typeof window.markText === 'function') {
         var nb = db.notebooks[cardData.nbIdx];
         newTextWithMarks = window.markText(newText, nb);
@@ -200,16 +261,20 @@
       }
     }
 
-    // 更新 db
     db.notebooks[cardData.nbIdx].cards[cardData.cardIdx].text = newTextWithMarks;
     setDB(db);
+    log('db saved');
 
-    // 觸發主 JS 重新渲染
     if (typeof window.render === 'function') {
       window.render();
+      log('render called');
+    } else {
+      log('window.render not available');
     }
 
     exitEditMode();
+
+    if (status) status.textContent = '';
 
     alert('已儲存');
 
@@ -233,12 +298,10 @@
 
     editControls = null;
 
-    // 顯示編輯按鈕
     var editBtn = document.getElementById('articleEditBtn');
     if (editBtn) editBtn.style.display = '';
   }
 
-  // 從 markText 產生的內容中抽出純文字（把 {{word}} 標記去掉）
   function extractPlainText(text) {
     if (!text) return '';
     return text.replace(/\{\{(.+?)\}\}/g, '$1');
@@ -251,7 +314,6 @@
     var found = findCurrentArticle();
     if (!found) return;
 
-    // 找 card h3 上的位置
     var h3 = found.card.querySelector('h3');
     if (!h3) return;
 
@@ -281,14 +343,12 @@
 
       if (isEditing) return;
 
-      // 如果沒有編輯按鈕，加上去
       if (!document.getElementById('articleEditBtn')) {
         addEditButton();
       }
     }, 1000);
   }
 
-  // 初始化
   var attempts = 0;
   var timer = setInterval(function () {
     attempts++;
@@ -300,6 +360,6 @@
 
   startWatchdog();
 
-  log('ready v20260711-1');
+  log('ready v20260711-3');
 
 })();
