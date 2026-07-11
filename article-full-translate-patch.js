@@ -1,7 +1,6 @@
-/* article-full-translate-patch.js v20260711-2
-   Adds full article translation using Google Translate API.
-   Places translate box OUTSIDE .card to survive re-renders.
-   Supports sync highlight with audio playback.
+/* article-full-translate-patch.js v20260711-3
+   Split view: EN top, ZH bottom.
+   Sync highlight without jumping.
 */
 
 (function () {
@@ -159,7 +158,7 @@
     }
   }
 
-  function findCurrentEnParaByAudio() {
+  function findCurrentParaIndex() {
 
     var audio = document.getElementById('__V5_MASTER_AUDIO__');
     if (!audio || !currentTranslation) return -1;
@@ -175,40 +174,61 @@
     return Math.min(currentTranslation.enParas.length - 1, Math.max(0, idx));
   }
 
+  // 智能滾動：只在視線範圍外才滾動
+  function scrollIntoViewIfNeeded(el, container) {
+
+    if (!el) return;
+
+    var elRect = el.getBoundingClientRect();
+    var containerRect = container ? container.getBoundingClientRect() : {
+      top: 0,
+      bottom: window.innerHeight
+    };
+
+    var buffer = 60;
+
+    var isAbove = elRect.top < containerRect.top + buffer;
+    var isBelow = elRect.bottom > containerRect.bottom - buffer;
+
+    if (isAbove || isBelow) {
+      el.scrollIntoView({
+        block: 'center',
+        behavior: 'smooth'
+      });
+    }
+  }
+
   function highlightSyncPara() {
 
     if (!syncEnabled || !currentTranslation) return;
 
-    var idx = findCurrentEnParaByAudio();
+    var idx = findCurrentParaIndex();
+    if (idx < 0) return;
 
-    var translateBox = document.getElementById('fullTranslateBox');
-    if (!translateBox) return;
+    var zhSide = document.getElementById('translateZhSide');
 
-    translateBox.querySelectorAll('.zh-para').forEach(function (el, i) {
-      if (i === idx) {
-        el.style.background = 'rgba(166, 138, 86, 0.15)';
-        el.style.borderLeft = '3px solid #a68a56';
-      } else {
-        el.style.background = '';
-        el.style.borderLeft = '3px solid transparent';
-      }
-    });
+    if (zhSide) {
+      // 只更新中文側的高亮
+      zhSide.querySelectorAll('.zh-para').forEach(function (el, i) {
+        if (i === idx) {
+          el.style.background = 'rgba(166, 138, 86, 0.15)';
+          el.style.borderLeft = '3px solid #a68a56';
+        } else {
+          el.style.background = '';
+          el.style.borderLeft = '3px solid transparent';
+        }
+      });
 
-    var current = translateBox.querySelector('.zh-para[data-idx="' + idx + '"]');
-    if (current) {
-      var rect = current.getBoundingClientRect();
-      if (rect.bottom < 60 || rect.top > (window.innerHeight - 100)) {
-        current.scrollIntoView({ block: 'center', behavior: 'smooth' });
-      }
+      // 智能滾動中文側到當前段
+      var currentZh = zhSide.querySelector('.zh-para[data-idx="' + idx + '"]');
+      scrollIntoViewIfNeeded(currentZh, zhSide);
     }
   }
 
   function renderTranslation() {
 
-    var box = document.getElementById('fullTranslateBox');
-    if (!box) return;
-
-    if (!currentTranslation) return;
+    var zhSide = document.getElementById('translateZhSide');
+    if (!zhSide || !currentTranslation) return;
 
     var html = '';
 
@@ -220,24 +240,21 @@
         'padding: 10px 12px;' +
         'margin-bottom: 6px;' +
         'border-left: 3px solid transparent;' +
-        'transition: all 0.3s;' +
+        'transition: background 0.3s, border-left-color 0.3s;' +
         'border-radius: 3px;' +
-        'cursor: pointer;' +
         '">' +
         '<div style="color: #888; font-size: 11px; margin-bottom: 4px;">' + (i + 1) + '</div>' +
-        '<div style="color: #333; font-size: 14px; line-height: 1.6;">' + zh + '</div>' +
+        '<div style="color: #333; font-size: 14px; line-height: 1.7;">' + zh + '</div>' +
         '</div>';
     });
 
-    var content = box.querySelector('.translate-content');
-    if (content) content.innerHTML = html;
+    zhSide.innerHTML = html;
   }
 
   function createTranslateBox() {
 
     if (document.getElementById('fullTranslateBox')) return;
 
-    // 找 .card 但把 box 加在 .card 的 parent 內、.card 之後
     var card = document.querySelector('.card');
     if (!card) return;
 
@@ -248,55 +265,61 @@
     box.id = 'fullTranslateBox';
     box.style.cssText = ''
       + 'margin-top: 20px;'
-      + 'padding: 16px;'
+      + 'padding: 12px;'
       + 'background: #faf6ed;'
       + 'border: 1px solid #d9cfbc;'
       + 'border-radius: 6px;'
       + 'font-family: "Microsoft JhengHei", sans-serif;';
 
-    box.innerHTML = 
-      '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #d9cfbc;">' +
+    box.innerHTML =
+      // 標題列
+      '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #d9cfbc;">' +
         '<div style="color: #a68a56; font-weight: bold; font-size: 14px;">' +
-          '📖 全文翻譯' +
+          '📖 中文翻譯' +
           '<span id="translateStatus" style="color: #888; font-size: 12px; margin-left: 8px;"></span>' +
         '</div>' +
-        '<div style="display: flex; gap: 8px;">' +
+        '<div style="display: flex; gap: 6px;">' +
           '<button id="translateBtn" style="' +
-            'padding: 6px 12px;' +
+            'padding: 5px 10px;' +
             'background: #a68a56;' +
             'color: white;' +
             'border: none;' +
             'border-radius: 3px;' +
             'cursor: pointer;' +
-            'font-size: 13px;' +
+            'font-size: 12px;' +
           '">翻譯全文</button>' +
           '<button id="syncToggleBtn" style="' +
-            'padding: 6px 12px;' +
+            'padding: 5px 10px;' +
             'background: #666;' +
             'color: white;' +
             'border: none;' +
             'border-radius: 3px;' +
             'cursor: pointer;' +
-            'font-size: 13px;' +
+            'font-size: 12px;' +
           '">🔗 同步: 關</button>' +
           '<button id="translateClearBtn" style="' +
-            'padding: 6px 12px;' +
+            'padding: 5px 10px;' +
             'background: transparent;' +
             'color: #999;' +
             'border: 1px solid #ccc;' +
             'border-radius: 3px;' +
             'cursor: pointer;' +
-            'font-size: 13px;' +
+            'font-size: 12px;' +
           '">清除</button>' +
         '</div>' +
       '</div>' +
-      '<div class="translate-content" style="color: #333; font-size: 14px;">' +
+
+      // 中文翻譯區
+      '<div id="translateZhSide" style="' +
+        'max-height: 400px;' +
+        'overflow-y: auto;' +
+        'padding-right: 8px;' +
+      '">' +
         '<div style="color: #999; padding: 20px; text-align: center;">' +
           '點擊「翻譯全文」開始' +
         '</div>' +
       '</div>';
 
-    // 插入 .card 之後（parent 內）
     if (card.nextSibling) {
       parent.insertBefore(box, card.nextSibling);
     } else {
@@ -330,9 +353,9 @@
 
     document.getElementById('translateClearBtn').onclick = function () {
       currentTranslation = null;
-      var content = box.querySelector('.translate-content');
-      if (content) {
-        content.innerHTML = 
+      var zhSide = document.getElementById('translateZhSide');
+      if (zhSide) {
+        zhSide.innerHTML =
           '<div style="color: #999; padding: 20px; text-align: center;">' +
             '點擊「翻譯全文」開始' +
           '</div>';
@@ -344,7 +367,6 @@
 
     log('translate box created');
 
-    // 如果之前有 currentTranslation，還原
     if (currentTranslation) {
       renderTranslation();
       document.getElementById('translateBtn').textContent = '重新翻譯';
@@ -364,7 +386,6 @@
     }, 500);
   }
 
-  // 定期檢查 box 是否消失，如果消失就重新建立
   function startBoxWatchdog() {
 
     setInterval(function () {
@@ -392,6 +413,6 @@
   startSyncMonitor();
   startBoxWatchdog();
 
-  log('ready v20260711-2');
+  log('ready v20260711-3');
 
 })();
