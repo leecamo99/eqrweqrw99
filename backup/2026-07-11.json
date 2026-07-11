@@ -4405,7 +4405,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783800712904,
+  "updatedAt": 1783801014196,
   "learn": {
     "github": {
       "word": "github",
@@ -5893,10 +5893,10 @@
       "word": "immerse",
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783799840955,
+      "lastSeenAt": 1783801014189,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 18,
-      "sessionClicks": 18,
+      "lifetimeClicks": 19,
+      "sessionClicks": 19,
       "maxClickStreak": 14,
       "reviewHistory": [],
       "dueAt": 1783734976885,
@@ -5905,16 +5905,17 @@
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "immersing",
-      "lastForm": "-ing form",
+      "lastSurface": "immerse",
+      "lastForm": "base form",
       "variants": {
-        "immersing": 14
+        "immersing": 14,
+        "immerse": 1
       },
-      "clicks": 14,
+      "clicks": 15,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783797964019,
+      "updatedAt": 1783801014193,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -6088,22 +6089,18 @@
       "lapses": 0,
       "status": "new",
       "totalResets": 0,
-      "lastSurface": "winning",
+      "lastSurface": "win",
       "lastForm": "base form",
       "variants": {
-        "win": 1,
-        "winning": 1
+        "win": 1
       },
       "clicks": 1,
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783800712901,
-      "loading": false,
-      "tw": "贏",
-      "engine": "MyMemory",
-      "pos": "verb",
-      "tip": "Auto translated by MyMemory｜To conquer, defeat."
+      "updatedAt": 1783800711683,
+      "loading": true,
+      "tw": "查詢中..."
     }
   }
 }
