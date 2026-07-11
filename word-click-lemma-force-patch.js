@@ -1,6 +1,6 @@
-/* word-click-lemma-force-patch.js v20260711-1
-   Force clickWord to receive the correct lemma before patch scope processes it.
-   Prevents wrong entries like perspectif in db.learn.
+/* word-click-lemma-force-patch.js v20260711-2
+   Forces correct lemma to be used in clickWord.
+   Preserves original surface in x.lastSurface.
 */
 
 (function () {
@@ -25,19 +25,45 @@
 
   var origClickWord = window.clickWord;
 
-  window.clickWord = function (surface) {
+  window.clickWord = function (originalSurface) {
 
-    // 用 window.lemmatizeWord (有 patch chain) 拿正確 lemma
-    var info = window.lemmatizeWord(surface);
-    var correctLemma = info && info.lemma ? info.lemma : surface;
+    // 用 window.lemmatizeWord (經過 patch chain) 拿正確 lemma
+    var info = window.lemmatizeWord(originalSurface);
+    var correctLemma = info && info.lemma ? info.lemma : originalSurface;
 
-    log('surface:', surface, '→ lemma:', correctLemma);
+    log('surface:', originalSurface, '→ lemma:', correctLemma);
 
-    // 用 lemma 而不是 surface 呼叫 clickWord
-    // 這樣 ensureLemma 內部 lemmatize 不會再錯誤還原
-    return origClickWord.call(this, correctLemma);
+    // 用 lemma 呼叫 clickWord
+    // patch scope 內部的 lemmatize 對 lemma 已經是 lemma，不會再錯
+    var result = origClickWord.call(this, correctLemma);
+
+    // 修正 db.learn 內的 lastSurface
+    // 因為 clickWord 傳入 lemma，所以 lastSurface 會變 lemma
+    // 我們要把它改回原始 surface
+    setTimeout(function () {
+
+      try {
+        var db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
+        if (db.learn && db.learn[correctLemma]) {
+          db.learn[correctLemma].lastSurface = originalSurface;
+
+          // 記錄變形
+          db.learn[correctLemma].variants = db.learn[correctLemma].variants || {};
+          db.learn[correctLemma].variants[originalSurface] = 
+            (db.learn[correctLemma].variants[originalSurface] || 0) + 1;
+
+          localStorage.setItem('notebook_platform_v3', JSON.stringify(db));
+
+          log('preserved lastSurface:', originalSurface);
+        }
+      } catch (e) {
+        log('preserve err:', e);
+      }
+    }, 50);
+
+    return result;
   };
 
-  log('ready v20260711-1');
+  log('ready v20260711-2');
 
 })();
