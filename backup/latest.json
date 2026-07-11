@@ -4401,7 +4401,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783798422559,
+  "updatedAt": 1783798545142,
   "learn": {
     "github": {
       "word": "github",
@@ -5889,11 +5889,11 @@
       "word": "yourself",
       "lemma": "yourself",
       "firstSeenAt": 1783797098260,
-      "lastSeenAt": 1783798409043,
+      "lastSeenAt": 1783798544211,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 4,
-      "sessionClicks": 4,
-      "maxClickStreak": 3,
+      "lifetimeClicks": 5,
+      "sessionClicks": 5,
+      "maxClickStreak": 4,
       "reviewHistory": [],
       "dueAt": 1783800698262,
       "intervalDays": 0,
@@ -5904,13 +5904,13 @@
       "lastSurface": "yourself",
       "lastForm": "base form",
       "variants": {
-        "yourself": 4
+        "yourself": 5
       },
-      "clicks": 4,
-      "strength": 4,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
-      "updatedAt": 1783798409044,
+      "updatedAt": 1783798544215,
       "loading": false,
       "tw": "您自己",
       "engine": "MyMemory",
@@ -5921,10 +5921,10 @@
       "word": "immerse",
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783798408041,
+      "lastSeenAt": 1783798545136,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 9,
-      "sessionClicks": 9,
+      "lifetimeClicks": 10,
+      "sessionClicks": 10,
       "maxClickStreak": 14,
       "reviewHistory": [],
       "dueAt": 1783734976885,
@@ -5947,7 +5947,8 @@
       "tw": "深度體驗",
       "engine": "MyMemory",
       "pos": "",
-      "tip": "Auto translated by MyMemory"
+      "tip": "Auto translated by MyMemory",
+      "isWeak": true
     },
     "immers": {
       "word": "immers",
@@ -5955,14 +5956,14 @@
       "pos": "",
       "tw": "深度體驗",
       "tip": "Auto translated by MyMemory",
-      "clicks": 4,
-      "strength": 4,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
       "dueAt": 1783801644915,
-      "updatedAt": 1783798408043,
+      "updatedAt": 1783798545139,
       "variants": {
-        "immersing": 4
+        "immersing": 5
       },
       "lastSurface": "immersing",
       "lastForm": "-ing form",
