@@ -1,6 +1,5 @@
-/* article-full-translate-patch.js v20260711-5
-   Chinese translation box FIXED at bottom of screen.
-   No jumping between EN and ZH.
+/* article-full-translate-patch.js v20260711-6
+   Remove paragraph number.
 */
 
 (function () {
@@ -230,15 +229,17 @@
 
       var zh = currentTranslation.zhParas[i] || '(翻譯中)';
 
+      // 移除段落編號，只顯示中文
       html += '<div class="zh-para" data-idx="' + i + '" style="' +
         'padding: 8px 10px;' +
         'margin-bottom: 4px;' +
         'border-left: 3px solid transparent;' +
         'transition: background 0.3s, border-left-color 0.3s;' +
         'border-radius: 3px;' +
-        '">' +
-        '<div style="color: #333; font-size: 13px; line-height: 1.6;">' + zh + '</div>' +
-        '</div>';
+        'color: #333;' +
+        'font-size: 13px;' +
+        'line-height: 1.6;' +
+        '">' + zh + '</div>';
     });
 
     zhSide.innerHTML = html;
@@ -328,7 +329,6 @@
 
     document.body.appendChild(box);
 
-    // 綁定事件
     document.getElementById('translateBtn').onclick = async function () {
 
       var btn = this;
@@ -412,6 +412,6 @@
 
   window.addEventListener('resize', updateBodyPadding);
 
-  log('ready v20260711-5');
+  log('ready v20260711-6');
 
 })();
