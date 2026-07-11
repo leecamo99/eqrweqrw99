@@ -1,6 +1,5 @@
-/* multi-definition-patch.js v20260711-1
-   Fetches multiple definitions from Free Dictionary API
-   and updates x.tip with structured definitions.
+/* multi-definition-patch.js v20260711-2
+   Fixes infinite loop bug in v1.
 */
 
 (function () {
@@ -25,6 +24,8 @@
 
   var fetchQueue = new Set();
   var fetchedLemmas = new Set();
+  var mo = null;
+  var lastLemma = null;
 
   async function fetchDefinitions(lemma) {
 
@@ -52,16 +53,12 @@
         return;
       }
 
-      // 收集所有義項
       var meanings = data[0].meanings || [];
       var definitions = [];
 
       meanings.forEach(function (m) {
-
         var pos = m.partOfSpeech;
         var defs = m.definitions || [];
-
-        // 每個詞性取前 2 個定義
         defs.slice(0, 2).forEach(function (d) {
           if (d.definition) {
             definitions.push('[' + pos + '] ' + d.definition);
@@ -75,7 +72,6 @@
         return;
       }
 
-      // 存到 db.learn[lemma].definitions
       var db = getDB();
       if (db.learn && db.learn[lemma]) {
         db.learn[lemma].definitions = definitions;
@@ -88,7 +84,6 @@
       fetchQueue.delete(lemma);
       fetchedLemmas.add(lemma);
 
-      // 更新 Word Note 顯示
       updateWordNote(lemma);
 
     } catch (e) {
@@ -99,90 +94,115 @@
 
   function updateWordNote(lemma) {
 
-    // 找到 Word Note 內的當前字
-    var wordbig = document.querySelector('#dockBody .wordbig');
-    if (!wordbig) return;
+    // 暫停 observer
+    if (mo) mo.disconnect();
 
-    var currentSurface = wordbig.textContent;
-
-    // 用 window.lemmatizeWord 確認是這個 lemma
-    if (typeof window.lemmatizeWord === 'function') {
-      var info = window.lemmatizeWord(currentSurface);
-      if (info.lemma !== lemma) return;
-    }
-
-    var db = getDB();
-    var x = db.learn && db.learn[lemma];
-    if (!x || !x.definitions) return;
-
-    // 找到 Word Note 中 meaning div 之後的位置
-    var body = document.getElementById('dockBody');
-    var meaning = body.querySelector('.meaning');
-    if (!meaning) return;
-
-    // 移除舊的 multi-def
-    var oldDef = body.querySelector('.multi-def');
-    if (oldDef) oldDef.remove();
-
-    // 建立新的
-    var defDiv = document.createElement('div');
-    defDiv.className = 'multi-def';
-    defDiv.style.cssText = ''
-      + 'margin: 8px 0;'
-      + 'padding: 8px;'
-      + 'background: rgba(0,0,0,0.03);'
-      + 'border-left: 3px solid #a68a56;'
-      + 'font-size: 13px;'
-      + 'line-height: 1.6;'
-      + 'color: #444;';
-
-    var defs = x.definitions.slice(0, 5);
-    defDiv.innerHTML = '<strong>字典釋義：</strong>' +
-      '<div style="margin-top:4px">' +
-      defs.map(function (d) {
-        return '• ' + d;
-      }).join('<br>') +
-      '</div>';
-
-    meaning.parentNode.insertBefore(defDiv, meaning.nextSibling);
-  }
-
-  // 監聽 Word Note 打開
-  var target = document.getElementById('dockBody');
-  if (target) {
-
-    var mo = new MutationObserver(function () {
+    try {
 
       var wordbig = document.querySelector('#dockBody .wordbig');
       if (!wordbig) return;
 
-      var surface = wordbig.textContent;
+      var currentSurface = wordbig.textContent;
 
       if (typeof window.lemmatizeWord === 'function') {
-        var info = window.lemmatizeWord(surface);
-        var lemma = info.lemma;
-
-        var db = getDB();
-        var x = db.learn && db.learn[lemma];
-
-        if (x) {
-          if (x.definitions) {
-            // 已有 definitions，直接顯示
-            updateWordNote(lemma);
-          } else {
-            // 沒有 → fetch
-            fetchDefinitions(lemma);
-          }
-        }
+        var info = window.lemmatizeWord(currentSurface);
+        if (info.lemma !== lemma) return;
       }
-    });
 
+      var db = getDB();
+      var x = db.learn && db.learn[lemma];
+      if (!x || !x.definitions) return;
+
+      var body = document.getElementById('dockBody');
+      var meaning = body.querySelector('.meaning');
+      if (!meaning) return;
+
+      // 移除舊的
+      var oldDef = body.querySelector('.multi-def');
+      if (oldDef) oldDef.remove();
+
+      var defDiv = document.createElement('div');
+      defDiv.className = 'multi-def';
+      defDiv.style.cssText = ''
+        + 'margin: 8px 0;'
+        + 'padding: 8px;'
+        + 'background: rgba(0,0,0,0.03);'
+        + 'border-left: 3px solid #a68a56;'
+        + 'font-size: 13px;'
+        + 'line-height: 1.6;'
+        + 'color: #444;';
+
+      var defs = x.definitions.slice(0, 5);
+      defDiv.innerHTML = '<strong>字典釋義：</strong>' +
+        '<div style="margin-top:4px">' +
+        defs.map(function (d) {
+          return '• ' + d;
+        }).join('<br>') +
+        '</div>';
+
+      meaning.parentNode.insertBefore(defDiv, meaning.nextSibling);
+
+    } finally {
+
+      // 重新開啟 observer（500ms 後，避免馬上觸發）
+      setTimeout(function () {
+        if (mo && target) {
+          mo.observe(target, {
+            childList: true,
+            subtree: false   // ★ 只監聽直接子元素，不深入
+          });
+        }
+      }, 500);
+    }
+  }
+
+  // Debounce
+  var debounceTimer = null;
+  function debouncedCheck() {
+
+    if (debounceTimer) clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(function () {
+
+      var wordbig = document.querySelector('#dockBody .wordbig');
+      if (!wordbig) {
+        lastLemma = null;
+        return;
+      }
+
+      var surface = wordbig.textContent;
+
+      if (typeof window.lemmatizeWord !== 'function') return;
+
+      var info = window.lemmatizeWord(surface);
+      var lemma = info.lemma;
+
+      // 如果 lemma 沒變，不動作
+      if (lemma === lastLemma) return;
+      lastLemma = lemma;
+
+      var db = getDB();
+      var x = db.learn && db.learn[lemma];
+
+      if (!x) return;
+
+      if (x.definitions) {
+        updateWordNote(lemma);
+      } else {
+        fetchDefinitions(lemma);
+      }
+    }, 200);
+  }
+
+  var target = document.getElementById('dockBody');
+  if (target) {
+    mo = new MutationObserver(debouncedCheck);
     mo.observe(target, {
       childList: true,
-      subtree: true
+      subtree: false   // ★ 只監聽直接子元素，不深入
     });
   }
 
-  log('ready v20260711-1');
+  log('ready v20260711-2');
 
 })();
