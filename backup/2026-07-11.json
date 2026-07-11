@@ -78,7 +78,7 @@
           "tw": "深度體驗",
           "tip": "Auto translated by MyMemory",
           "color": "c1",
-          "lemma": "immers"
+          "lemma": "immerse"
         },
         "yourself": {
           "pos": "pronoun",
@@ -1443,9 +1443,10 @@
         },
         "immerse": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "tw": "深度體驗",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "immerse"
         },
         "comfortable": {
           "pos": "",
@@ -4398,7 +4399,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783797964022,
+  "updatedAt": 1783798046239,
   "learn": {
     "github": {
       "word": "github",
@@ -5754,38 +5755,6 @@
       "pos": "",
       "tip": "Auto translated by MyMemory"
     },
-    "immers": {
-      "word": "immers",
-      "lemma": "immers",
-      "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783797096332,
-      "lastReviewedAt": 0,
-      "lifetimeClicks": 5,
-      "sessionClicks": 5,
-      "maxClickStreak": 4,
-      "reviewHistory": [],
-      "dueAt": 1783734976885,
-      "intervalDays": 0,
-      "ease": 2.5,
-      "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
-      "lastSurface": "immersing",
-      "lastForm": "-ing form",
-      "variants": {
-        "immersing": 14
-      },
-      "clicks": 14,
-      "strength": 10,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783797964019,
-      "loading": false,
-      "tw": "深度體驗",
-      "engine": "MyMemory",
-      "pos": "",
-      "tip": "Auto translated by MyMemory"
-    },
     "next": {
       "word": "next",
       "lemma": "next",
@@ -5949,19 +5918,54 @@
     "immerse": {
       "word": "immerse",
       "lemma": "immerse",
-      "firstSeenAt": 1783797517162,
-      "lastSeenAt": 1783797964018,
+      "firstSeenAt": 1783731376881,
+      "lastSeenAt": 1783798044913,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 9,
-      "sessionClicks": 9,
-      "maxClickStreak": 0,
+      "lifetimeClicks": 6,
+      "sessionClicks": 6,
+      "maxClickStreak": 14,
       "reviewHistory": [],
-      "dueAt": 0,
+      "dueAt": 1783734976885,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "immersing",
+      "lastForm": "-ing form",
+      "variants": {
+        "immersing": 14
+      },
+      "clicks": 14,
+      "strength": 10,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783797964019,
+      "loading": false,
+      "tw": "深度體驗",
+      "engine": "MyMemory",
+      "pos": "",
+      "tip": "Auto translated by MyMemory"
+    },
+    "immers": {
+      "word": "immers",
+      "lemma": "immers",
+      "pos": "",
+      "tw": "深度體驗",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783801644915,
+      "updatedAt": 1783798046237,
+      "variants": {
+        "immersing": 1
+      },
+      "lastSurface": "immersing",
+      "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false
     }
   }
 }
