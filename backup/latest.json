@@ -32,7 +32,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "win"
         },
         "overseas": {
           "pos": "",
@@ -216,10 +217,11 @@
           "color": "c1"
         },
         "utilizing": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "利用",
+          "tip": "Auto translated by MyMemory｜To make use of; to use.",
+          "color": "c1",
+          "lemma": "utilize"
         },
         "highly": {
           "pos": "",
@@ -4405,7 +4407,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783803043110,
+  "updatedAt": 1783803799227,
   "learn": {
     "github": {
       "word": "github",
@@ -5605,11 +5607,11 @@
       "word": "horizon",
       "lemma": "horizon",
       "firstSeenAt": 1783731120938,
-      "lastSeenAt": 1783798410613,
+      "lastSeenAt": 1783803769378,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 4,
-      "sessionClicks": 4,
-      "maxClickStreak": 3,
+      "lifetimeClicks": 5,
+      "sessionClicks": 5,
+      "maxClickStreak": 4,
       "reviewHistory": [],
       "dueAt": 1783734720941,
       "intervalDays": 0,
@@ -5618,20 +5620,40 @@
       "status": "learning",
       "totalResets": 0,
       "lastSurface": "horizons",
-      "lastForm": "plural / 3rd person -s",
+      "lastForm": "base form",
       "variants": {
-        "horizons": 4
+        "horizons": 5,
+        "horizon": 1
       },
-      "clicks": 4,
-      "strength": 4,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
-      "updatedAt": 1783798410617,
+      "updatedAt": 1783803769381,
       "loading": false,
       "tw": "地平線",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜The visible horizontal line or point (in all directions) that appears to connect the Earth to the sky."
+      "tip": "",
+      "translationSource": "Google Translate",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "The visible horizontal line or point (in all directions) that appears to connect the Earth to the sky.",
+          "example": "A tall building was visible on the horizon."
+        },
+        {
+          "pos": "noun",
+          "def": "The range or limit of one's knowledge, experience or interest; a boundary or threshold.",
+          "example": "Some students take a gap year after finishing high school to broaden their horizons."
+        },
+        {
+          "pos": "noun",
+          "def": "The range or limit of any dimension in which one exists.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "award": {
       "word": "award",
@@ -5701,28 +5723,28 @@
       "word": "gain",
       "lemma": "gain",
       "firstSeenAt": 1783731169616,
-      "lastSeenAt": 1783731169616,
+      "lastSeenAt": 1783803799221,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
       "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1783734769620,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "gain",
       "lastForm": "base form",
       "variants": {
-        "gain": 1
+        "gain": 2
       },
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 2,
+      "strength": 2,
       "captured": true,
       "known": false,
-      "updatedAt": 1783731170929,
+      "updatedAt": 1783803799224,
       "loading": false,
       "tw": "增益",
       "engine": "MyMemory",
@@ -5829,11 +5851,11 @@
       "word": "global",
       "lemma": "global",
       "firstSeenAt": 1783797093090,
-      "lastSeenAt": 1783797961484,
+      "lastSeenAt": 1783803739866,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 4,
-      "sessionClicks": 4,
-      "maxClickStreak": 3,
+      "lifetimeClicks": 5,
+      "sessionClicks": 5,
+      "maxClickStreak": 4,
       "reviewHistory": [],
       "dueAt": 1783800693093,
       "intervalDays": 0,
@@ -5841,21 +5863,51 @@
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "global",
+      "lastSurface": "Global",
       "lastForm": "base form",
       "variants": {
-        "global": 4
+        "global": 5,
+        "Global": 1
       },
-      "clicks": 4,
-      "strength": 4,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
-      "updatedAt": 1783797961486,
+      "updatedAt": 1783803739872,
       "loading": false,
-      "tw": "全域",
+      "tw": "全球的",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A globally scoped identifier."
+      "tip": "",
+      "translationSource": "Google Translate",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "A globally scoped identifier.",
+          "example": null
+        },
+        {
+          "pos": "adjective",
+          "def": "Concerning all parts of the world.",
+          "example": "Pollution is a global problem."
+        },
+        {
+          "pos": "adjective",
+          "def": "Pertaining to the whole of something; total, universal:",
+          "example": null
+        },
+        {
+          "pos": "adjective",
+          "def": "Spherical, ball-shaped.",
+          "example": "In the center was a small, global mass."
+        },
+        {
+          "pos": "adverb",
+          "def": "In the global manner; world-wide.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "yourself": {
       "word": "yourself",
@@ -5893,11 +5945,11 @@
       "word": "immerse",
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783802917521,
+      "lastSeenAt": 1783803732308,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 22,
-      "sessionClicks": 22,
-      "maxClickStreak": 17,
+      "lifetimeClicks": 23,
+      "sessionClicks": 23,
+      "maxClickStreak": 18,
       "reviewHistory": [],
       "dueAt": 1783734976885,
       "intervalDays": 0,
@@ -5908,14 +5960,14 @@
       "lastSurface": "immersing",
       "lastForm": "base form",
       "variants": {
-        "immersing": 16,
-        "immerse": 4
+        "immersing": 17,
+        "immerse": 5
       },
-      "clicks": 18,
+      "clicks": 19,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783802917527,
+      "updatedAt": 1783803732314,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -6107,6 +6159,58 @@
       "updatedAt": 1783800711683,
       "loading": true,
       "tw": "查詢中..."
+    },
+    "utilize": {
+      "word": "utilize",
+      "lemma": "utilize",
+      "firstSeenAt": 1783803789661,
+      "lastSeenAt": 1783803789661,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783807389667,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "utilizing",
+      "lastForm": "base form",
+      "variants": {
+        "utilize": 1,
+        "utilizing": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783803791477,
+      "loading": false,
+      "tw": "利用",
+      "translationSource": "Google Translate",
+      "tip": "Auto translated by MyMemory｜To make use of; to use.",
+      "definitions": [
+        {
+          "pos": "verb",
+          "def": "To make use of; to use.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To make useful; to find a practical use for.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To make best use of; to use to its fullest extent, potential, or ability.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev",
+      "engine": "MyMemory",
+      "pos": "verb"
     }
   }
 }
