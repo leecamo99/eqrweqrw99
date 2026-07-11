@@ -1,5 +1,5 @@
-/* article-full-translate-patch.js v20260711-7
-   Fix max-height bug.
+/* article-full-translate-patch.js v20260711-8
+   Add paragraph separator so sync highlight is visually clear.
 */
 
 (function () {
@@ -206,11 +206,13 @@
 
     zhSide.querySelectorAll('.zh-para').forEach(function (el, i) {
       if (i === idx) {
-        el.style.background = 'rgba(166, 138, 86, 0.15)';
-        el.style.borderLeft = '3px solid #a68a56';
+        el.style.background = 'rgba(166, 138, 86, 0.20)';
+        el.style.borderLeft = '4px solid #a68a56';
+        el.style.paddingLeft = '10px';
       } else {
         el.style.background = '';
         el.style.borderLeft = '3px solid transparent';
+        el.style.paddingLeft = '11px';
       }
     });
 
@@ -228,16 +230,18 @@
     currentTranslation.enParas.forEach(function (en, i) {
 
       var zh = currentTranslation.zhParas[i] || '(翻譯中)';
+      var isLast = i === currentTranslation.enParas.length - 1;
 
       html += '<div class="zh-para" data-idx="' + i + '" style="' +
-        'padding: 8px 10px;' +
-        'margin-bottom: 4px;' +
+        'padding: 10px 14px;' +
+        'margin-bottom: 12px;' +
         'border-left: 3px solid transparent;' +
-        'transition: background 0.3s, border-left-color 0.3s;' +
+        'transition: background 0.3s, border-left-color 0.3s, padding-left 0.3s;' +
         'border-radius: 3px;' +
         'color: #333;' +
-        'font-size: 13px;' +
-        'line-height: 1.6;' +
+        'font-size: 14px;' +
+        'line-height: 1.7;' +
+        (isLast ? '' : 'border-bottom: 1px dashed #d9cfbc; padding-bottom: 14px;') +
         '">' + zh + '</div>';
     });
 
@@ -263,7 +267,6 @@
       if (body) body.style.display = 'none';
       if (toggleBtn) toggleBtn.textContent = '▲';
     } else {
-      // ★ 這裡不再清空，明確設 40vh
       box.style.maxHeight = '40vh';
       if (body) body.style.display = 'flex';
       if (toggleBtn) toggleBtn.textContent = '▼';
@@ -291,7 +294,6 @@
     var box = document.createElement('div');
     box.id = 'fullTranslateBox';
 
-    // ★ 直接用個別 style 屬性（不用 cssText 混合）
     box.style.position = 'fixed';
     box.style.bottom = '0';
     box.style.left = '0';
@@ -301,11 +303,11 @@
     box.style.borderTop = '2px solid #a68a56';
     box.style.boxShadow = '0 -4px 12px rgba(0,0,0,0.08)';
     box.style.fontFamily = '"Microsoft JhengHei", sans-serif';
-    box.style.maxHeight = '40vh';                    // ★ 明確設 40vh
+    box.style.maxHeight = '40vh';
     box.style.display = 'flex';
     box.style.flexDirection = 'column';
     box.style.transition = 'max-height 0.3s';
-    box.style.overflow = 'hidden';                   // ★ 加這個避免溢出
+    box.style.overflow = 'hidden';
 
     box.innerHTML =
       '<div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #d9cfbc; flex-shrink: 0;">' +
@@ -414,6 +416,6 @@
 
   window.addEventListener('resize', updateBodyPadding);
 
-  log('ready v20260711-7');
+  log('ready v20260711-8');
 
 })();
