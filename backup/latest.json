@@ -4405,7 +4405,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783800711685,
+  "updatedAt": 1783801014196,
   "learn": {
     "github": {
       "word": "github",
@@ -5893,10 +5893,10 @@
       "word": "immerse",
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783799840955,
+      "lastSeenAt": 1783801014189,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 18,
-      "sessionClicks": 18,
+      "lifetimeClicks": 19,
+      "sessionClicks": 19,
       "maxClickStreak": 14,
       "reviewHistory": [],
       "dueAt": 1783734976885,
@@ -5905,16 +5905,17 @@
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "immersing",
-      "lastForm": "-ing form",
+      "lastSurface": "immerse",
+      "lastForm": "base form",
       "variants": {
-        "immersing": 14
+        "immersing": 14,
+        "immerse": 1
       },
-      "clicks": 14,
+      "clicks": 15,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783797964019,
+      "updatedAt": 1783801014193,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
