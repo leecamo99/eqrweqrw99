@@ -4407,7 +4407,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783804086015,
+  "updatedAt": 1783804190962,
   "learn": {
     "github": {
       "word": "github",
@@ -5738,7 +5738,7 @@
       "lastSurface": "gain",
       "lastForm": "base form",
       "variants": {
-        "gain": 3
+        "gain": 4
       },
       "clicks": 3,
       "strength": 3,
@@ -5746,10 +5746,18 @@
       "known": false,
       "updatedAt": 1783804086007,
       "loading": false,
-      "tw": "增益",
+      "tw": "獲得",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜The act of gaining; acquisition."
+      "tip": "",
+      "translationSource": "Google Translate",
+      "definitions": [
+        "[noun] The act of gaining; acquisition.",
+        "[noun] What is gained.",
+        "[verb] To acquire possession of.",
+        "[verb] To have or receive advantage or profit; to acquire gain; to grow rich; to advance in interest, health, or happiness; to make progress."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "next": {
       "word": "next",
@@ -6049,11 +6057,11 @@
       "word": "perspective",
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
-      "lastSeenAt": 1783803043103,
+      "lastSeenAt": 1783804190950,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 9,
-      "sessionClicks": 9,
-      "maxClickStreak": 3,
+      "lifetimeClicks": 10,
+      "sessionClicks": 10,
+      "maxClickStreak": 4,
       "reviewHistory": [],
       "dueAt": 1783804057620,
       "intervalDays": 0,
@@ -6064,19 +6072,20 @@
       "lastSurface": "perspective",
       "lastForm": "base form",
       "variants": {
-        "perspective": 4,
+        "perspective": 5,
         "perspectives": 2
       },
-      "clicks": 4,
-      "strength": 4,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
-      "updatedAt": 1783803043107,
+      "updatedAt": 1783804190955,
       "loading": false,
       "tw": "透視",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A view, vista or outlook."
+      "tip": "Auto translated by MyMemory｜A view, vista or outlook.",
+      "isWeak": true
     },
     "perspectif": {
       "word": "perspectif",
