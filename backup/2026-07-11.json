@@ -55,10 +55,11 @@
           "lemma": "supercharge"
         },
         "studies": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
         },
         "global": {
           "pos": "noun",
@@ -358,10 +359,11 @@
           "lemma": "award"
         },
         "study": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
         },
         "gain": {
           "pos": "noun",
@@ -378,10 +380,11 @@
           "lemma": "over"
         },
         "Study": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
         },
         "under": {
           "pos": "",
@@ -4242,10 +4245,11 @@
           "color": "c1"
         },
         "study": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
         },
         "life": {
           "pos": "",
@@ -4401,7 +4405,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783800594554,
+  "updatedAt": 1783800712904,
   "learn": {
     "github": {
       "word": "github",
@@ -5889,11 +5893,11 @@
       "word": "immerse",
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783800594544,
+      "lastSeenAt": 1783799840955,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 20,
-      "sessionClicks": 20,
-      "maxClickStreak": 15,
+      "lifetimeClicks": 18,
+      "sessionClicks": 18,
+      "maxClickStreak": 14,
       "reviewHistory": [],
       "dueAt": 1783734976885,
       "intervalDays": 0,
@@ -5901,17 +5905,16 @@
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "immerse",
-      "lastForm": "base form",
+      "lastSurface": "immersing",
+      "lastForm": "-ing form",
       "variants": {
-        "immersing": 15,
-        "immerse": 2
+        "immersing": 14
       },
-      "clicks": 16,
+      "clicks": 14,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783800594547,
+      "updatedAt": 1783797964019,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -5987,29 +5990,29 @@
       "word": "perspective",
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
-      "lastSeenAt": 1783800588542,
+      "lastSeenAt": 1783800457615,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 8,
-      "sessionClicks": 8,
-      "maxClickStreak": 2,
+      "lifetimeClicks": 6,
+      "sessionClicks": 6,
+      "maxClickStreak": 0,
       "reviewHistory": [],
       "dueAt": 1783804057620,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
+      "status": "new",
       "totalResets": 0,
       "lastSurface": "perspectives",
       "lastForm": "base form",
       "variants": {
-        "perspective": 3,
-        "perspectives": 3
+        "perspective": 1,
+        "perspectives": 1
       },
-      "clicks": 3,
-      "strength": 3,
+      "clicks": 1,
+      "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783800588546,
+      "updatedAt": 1783800464824,
       "loading": false,
       "tw": "透視",
       "engine": "MyMemory",
@@ -6035,6 +6038,72 @@
       "lastForm": "plural -ves",
       "engine": "MyMemory",
       "loading": false
+    },
+    "study": {
+      "word": "study",
+      "lemma": "study",
+      "firstSeenAt": 1783800679334,
+      "lastSeenAt": 1783800679334,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783804279338,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "studies",
+      "lastForm": "base form",
+      "variants": {
+        "study": 1,
+        "studies": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783800681192,
+      "loading": false,
+      "tw": "閱讀室",
+      "engine": "MyMemory",
+      "pos": "verb",
+      "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination."
+    },
+    "win": {
+      "word": "win",
+      "lemma": "win",
+      "firstSeenAt": 1783800711672,
+      "lastSeenAt": 1783800711672,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783804311678,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "winning",
+      "lastForm": "base form",
+      "variants": {
+        "win": 1,
+        "winning": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783800712901,
+      "loading": false,
+      "tw": "贏",
+      "engine": "MyMemory",
+      "pos": "verb",
+      "tip": "Auto translated by MyMemory｜To conquer, defeat."
     }
   }
 }
