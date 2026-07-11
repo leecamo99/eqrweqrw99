@@ -7,26 +7,57 @@
 
   'use strict';
 
-  const ITEMS = [
-    {
-      label: 'GitHub Token',
-      key:   'notebook_github_token_v1',
-      hint:  '用於上傳 audio/*.mp3（Fine-grained token）',
-      match: /^(ghp_|github_pat_)/
-    },
-    {
-      label: 'Google Cloud TTS API Key',
-      key:   'notebook_google_cloud_tts_key_v1',
-      hint:  'Google Cloud Text-to-Speech API Key',
-      match: /^AIza/
-    },
-    {
-      label: 'Gemini API Key',
-      key:   'notebook_gemini_key_v1',
-      hint:  '（可選）Gemini 弱點文章生成',
-      match: /^AIza/
-    }
-  ];
+ const ITEMS = [
+2
+{
+3
+label: 'GitHub Token',
+4
+key: 'notebook_github_token_v1',
+5
+hint: '用於上傳 audio/*.mp3（Fine-grained token）',
+6
+match: /^(ghp_|github_pat_)/
+7
+},
+8
+{
+9
+label: 'Google Cloud TTS API Key',
+10
+key: 'notebook_google_cloud_tts_key_v1',
+11
+hint: 'Google Cloud Text-to-Speech API Key',
+12
+match: /^AIza/
+13
+},
+14
+{
+15
+label: 'Gemini API Key',
+16
+key: 'notebook_gemini_key_v1',
+17
+hint: '（可選）Gemini 弱點文章生成',
+18
+match: /^AIza/
+19
+},
+20
+{
+21
+label: 'Google Translate API Key',
+22
+key: 'google_translate_api_key',
+23
+hint: '用於高品質單字翻譯（Cloud Translation API）',
+24
+match: /^AIza/
+25
+}
+26
+];
 
   function preview(v) {
     if (!v) return '（未設定）';
