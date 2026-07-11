@@ -21,10 +21,11 @@
           "color": "c1"
         },
         "horizons": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "地平線",
+          "tip": "Auto translated by MyMemory｜The visible horizontal line or point (in all directions) that appears to connect the Earth to the sky.",
+          "color": "c1",
+          "lemma": "horizon"
         },
         "winning": {
           "pos": "",
@@ -45,10 +46,11 @@
           "color": "c1"
         },
         "Supercharge": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "增壓",
+          "tip": "Auto translated by MyMemory｜A charge borne upon an ordinary or other charge.",
+          "color": "c1",
+          "lemma": "supercharge"
         },
         "studies": {
           "pos": "",
@@ -237,10 +239,11 @@
           "color": "c1"
         },
         "gained": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "增益",
+          "tip": "Auto translated by MyMemory｜The act of gaining; acquisition.",
+          "color": "c1",
+          "lemma": "gain"
         },
         "moving": {
           "pos": "",
@@ -339,10 +342,11 @@
           "color": "c1"
         },
         "award": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "Auto translated by MyMemory｜A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
         },
         "study": {
           "pos": "",
@@ -351,16 +355,18 @@
           "color": "c1"
         },
         "gain": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "增益",
+          "tip": "Auto translated by MyMemory｜The act of gaining; acquisition.",
+          "color": "c1",
+          "lemma": "gain"
         },
         "over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
         },
         "Study": {
           "pos": "",
@@ -961,9 +967,9 @@
           "color": "c1"
         },
         "preparation": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
+          "pos": "noun",
+          "tw": "準備工作",
+          "tip": "Auto translated by MyMemory｜The act of preparing or getting ready.",
           "color": "c1",
           "lemma": "preparation"
         },
@@ -4382,7 +4388,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783730975357,
+  "updatedAt": 1783731187528,
   "learn": {
     "github": {
       "word": "github",
@@ -5577,6 +5583,166 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜The act of preparing or getting ready."
+    },
+    "horizon": {
+      "word": "horizon",
+      "lemma": "horizon",
+      "firstSeenAt": 1783731120938,
+      "lastSeenAt": 1783731120938,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783734720941,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "horizons",
+      "lastForm": "plural / 3rd person -s",
+      "variants": {
+        "horizons": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783731123111,
+      "loading": false,
+      "tw": "地平線",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The visible horizontal line or point (in all directions) that appears to connect the Earth to the sky."
+    },
+    "award": {
+      "word": "award",
+      "lemma": "award",
+      "firstSeenAt": 1783731140962,
+      "lastSeenAt": 1783731140962,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783734740967,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "award",
+      "lastForm": "base form",
+      "variants": {
+        "award": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783731142363,
+      "loading": false,
+      "tw": "獎",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted."
+    },
+    "supercharge": {
+      "word": "supercharge",
+      "lemma": "supercharge",
+      "firstSeenAt": 1783731158391,
+      "lastSeenAt": 1783731158391,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783734758395,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "Supercharge",
+      "lastForm": "base form",
+      "variants": {
+        "Supercharge": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783731159873,
+      "loading": false,
+      "tw": "增壓",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A charge borne upon an ordinary or other charge."
+    },
+    "gain": {
+      "word": "gain",
+      "lemma": "gain",
+      "firstSeenAt": 1783731169616,
+      "lastSeenAt": 1783731169616,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783734769620,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "gain",
+      "lastForm": "base form",
+      "variants": {
+        "gain": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783731170929,
+      "loading": false,
+      "tw": "增益",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The act of gaining; acquisition."
+    },
+    "perspectif": {
+      "word": "perspectif",
+      "lemma": "perspectif",
+      "firstSeenAt": 1783731185590,
+      "lastSeenAt": 1783731185590,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783734785593,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "perspectives",
+      "lastForm": "plural -ves",
+      "variants": {
+        "perspectives": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783731187519,
+      "loading": false,
+      "tw": "perspectif",
+      "engine": "MyMemory",
+      "pos": "",
+      "tip": "Auto translated by MyMemory"
     }
   }
 }
