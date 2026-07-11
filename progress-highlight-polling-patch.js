@@ -24,7 +24,6 @@
     if (!p) return;
     if (!isFinite(m.duration) || m.duration <= 0) return;
 
-    // 統一 max 用 audio.duration（秒）
     var pmax = parseFloat(p.max);
     if (!isFinite(pmax) || pmax <= 0 || pmax === 1) {
       p.max  = String(m.duration);
