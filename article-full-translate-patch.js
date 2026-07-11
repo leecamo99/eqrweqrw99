@@ -1,5 +1,6 @@
-/* article-full-translate-patch.js v20260711-1
+/* article-full-translate-patch.js v20260711-2
    Adds full article translation using Google Translate API.
+   Places translate box OUTSIDE .card to survive re-renders.
    Supports sync highlight with audio playback.
 */
 
@@ -30,7 +31,6 @@
     localStorage.setItem(CACHE_STORAGE, JSON.stringify(c));
   }
 
-  // 計算文字的 hash 作為 cache key
   function hashText(text) {
     var h = 0;
     for (var i = 0; i < text.length; i++) {
@@ -40,7 +40,6 @@
     return String(h);
   }
 
-  // Google Translate API - 批次翻譯
   async function googleTranslateBatch(texts) {
 
     var key = getApiKey();
@@ -81,13 +80,10 @@
     }
   }
 
-  // 把英文段落切割（用句號、換行、雙空行分割）
   function splitEnglishParagraphs(fullText) {
 
-    // 按段落（雙換行或連續 4 個以上空格）分割
     var paras = fullText.split(/\n\s*\n/).filter(function (p) { return p.trim(); });
 
-    // 如果只有一段，用句號分割
     if (paras.length === 1) {
       paras = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
       paras = paras.map(function (p) { return p.trim(); }).filter(function (p) { return p; });
@@ -96,17 +92,14 @@
     return paras;
   }
 
-  // 取得文章文字（保留段落結構）
   function getArticleText() {
 
     var article = document.querySelector('.card .en');
     if (!article) return null;
 
-    // 用 innerHTML → text 保留段落
     var clone = article.cloneNode(true);
     clone.querySelectorAll('button, script').forEach(function (el) { el.remove(); });
 
-    // 段落間用兩個換行
     var text = clone.innerText || clone.textContent || '';
     return text.trim();
   }
@@ -146,7 +139,6 @@
 
     log('translated', zhParas.length, 'paragraphs');
 
-    // 存 cache
     cache[hash] = zhParas;
     setCache(cache);
 
@@ -202,7 +194,6 @@
       }
     });
 
-    // scroll to current
     var current = translateBox.querySelector('.zh-para[data-idx="' + idx + '"]');
     if (current) {
       var rect = current.getBoundingClientRect();
@@ -246,8 +237,12 @@
 
     if (document.getElementById('fullTranslateBox')) return;
 
+    // 找 .card 但把 box 加在 .card 的 parent 內、.card 之後
     var card = document.querySelector('.card');
     if (!card) return;
+
+    var parent = card.parentElement;
+    if (!parent) return;
 
     var box = document.createElement('div');
     box.id = 'fullTranslateBox';
@@ -301,7 +296,12 @@
         '</div>' +
       '</div>';
 
-    card.appendChild(box);
+    // 插入 .card 之後（parent 內）
+    if (card.nextSibling) {
+      parent.insertBefore(box, card.nextSibling);
+    } else {
+      parent.appendChild(box);
+    }
 
     // 綁定事件
     document.getElementById('translateBtn').onclick = async function () {
@@ -343,9 +343,14 @@
     };
 
     log('translate box created');
+
+    // 如果之前有 currentTranslation，還原
+    if (currentTranslation) {
+      renderTranslation();
+      document.getElementById('translateBtn').textContent = '重新翻譯';
+    }
   }
 
-  // 監聽 audio 播放，同步高亮
   function startSyncMonitor() {
 
     setInterval(function () {
@@ -359,6 +364,21 @@
     }, 500);
   }
 
+  // 定期檢查 box 是否消失，如果消失就重新建立
+  function startBoxWatchdog() {
+
+    setInterval(function () {
+
+      if (document.getElementById('fullTranslateBox')) return;
+
+      var card = document.querySelector('.card');
+      if (card) {
+        log('box missing, recreating...');
+        createTranslateBox();
+      }
+    }, 1000);
+  }
+
   // 初始化
   var attempts = 0;
   var timer = setInterval(function () {
@@ -370,7 +390,8 @@
   }, 500);
 
   startSyncMonitor();
+  startBoxWatchdog();
 
-  log('ready v20260711-1');
+  log('ready v20260711-2');
 
 })();
