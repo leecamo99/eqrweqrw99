@@ -1,5 +1,5 @@
-/* fthl-fade-animation-patch.js v20260711-2
-   Stronger fade animation with visible ghost trail.
+/* fthl-fade-animation-patch.js v20260711-3
+   Longer fade + trailing ghost effect (up to 8 trailing words).
 */
 
 (function () {
@@ -13,6 +13,8 @@
   }
 
   var CSS_ID = 'fthl-fade-style';
+  var TRAIL_SIZE = 8;
+  var TRAIL_TIMEOUT = 2400;
 
   function ensureCss() {
 
@@ -22,24 +24,25 @@
     s.id = CSS_ID;
 
     s.textContent = ''
+      // 全部字都有慢速 transition
       + '.card .en .mark, .card .en .hl-target {'
-      + '  transition: background-color 380ms ease-out, box-shadow 380ms ease-out, color 380ms ease-out !important;'
+      + '  transition: background-color 600ms ease-out, box-shadow 600ms ease-out, color 300ms ease-out !important;'
       + '}'
-      // 目前唸的字：鮮亮
+      // 當下唸的字：明亮黃
       + '.card .en .mark.hl-force,'
-      + '.card .en .hl-target.hl-force,'
-      + '.card .en .mark.speaking,'
-      + '.card .en .mark.hl-refresh {'
+      + '.card .en .hl-target.hl-force {'
       + '  background-color: #ffdb26 !important;'
       + '  color: #000 !important;'
       + '  box-shadow: 0 0 0 2px #ff8800 inset !important;'
+      + '  transition: background-color 200ms ease-in !important;'
       + '}'
-      // 剛唸過的殘影：綠色，慢慢淡出
+      // 剛過去的殘影：綠色，慢慢淡出
       + '.card .en .mark.hl-recent,'
       + '.card .en .hl-target.hl-recent {'
-      + '  background-color: rgba(140, 220, 140, 0.55) !important;'
-      + '  box-shadow: 0 0 0 1px rgba(90, 180, 90, 0.5) inset !important;'
-      + '  transition: background-color 800ms ease-out, box-shadow 800ms ease-out !important;'
+      + '  background-color: rgba(120, 200, 120, 0.65) !important;'
+      + '  color: #000 !important;'
+      + '  box-shadow: 0 0 0 1px rgba(80, 160, 80, 0.55) inset !important;'
+      + '  transition: background-color 1200ms ease-out, box-shadow 1200ms ease-out !important;'
       + '}';
 
     document.head.appendChild(s);
@@ -48,8 +51,7 @@
   ensureCss();
 
   var lastEl = null;
-  var recentEls = [];  // 殘影佇列
-  var MAX_RECENT = 3;
+  var trail = [];  // 殘影佇列
 
   function observe() {
 
@@ -63,26 +65,26 @@
 
       if (current === lastEl) return;
 
-      // 舊的 last 變殘影
+      // 舊的 lastEl 變殘影
       if (lastEl && lastEl !== current) {
 
         lastEl.classList.add('hl-recent');
-        recentEls.push(lastEl);
+        trail.push(lastEl);
 
         // 排出多餘的殘影
-        while (recentEls.length > MAX_RECENT) {
-          var old = recentEls.shift();
+        while (trail.length > TRAIL_SIZE) {
+          var old = trail.shift();
           if (old) old.classList.remove('hl-recent');
         }
 
-        // 700ms 後單獨清除
+        // 用 timeout 淡出這一個
         setTimeout((function (el) {
           return function () {
             if (el) el.classList.remove('hl-recent');
-            var idx = recentEls.indexOf(el);
-            if (idx >= 0) recentEls.splice(idx, 1);
+            var idx = trail.indexOf(el);
+            if (idx >= 0) trail.splice(idx, 1);
           };
-        })(lastEl), 700);
+        })(lastEl), TRAIL_TIMEOUT);
       }
 
       lastEl = current;
@@ -94,7 +96,7 @@
       attributeFilter: ['class']
     });
 
-    log('observing article for class changes');
+    log('observing article, trail size', TRAIL_SIZE);
   }
 
   var tries = 0;
@@ -108,6 +110,6 @@
     if (tries > 60) clearInterval(t);
   }, 500);
 
-  log('ready v20260711-2 (stronger fade + ghost trail)');
+  log('ready v20260711-3 (long fade + 8-word trail)');
 
 })();
