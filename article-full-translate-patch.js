@@ -1,6 +1,8 @@
-/* article-full-translate-patch.js v20260711-3
-   Split view: EN top, ZH bottom.
-   Sync highlight without jumping.
+/* article-full-translate-patch.js v20260711-4
+   Layout order:
+   1. Article (.card content)
+   2. Chinese translation box
+   3. STUDY NOTES (.note)
 */
 
 (function () {
@@ -150,7 +152,6 @@
   var syncEnabled = false;
 
   function updateSyncState() {
-
     var btn = document.getElementById('syncToggleBtn');
     if (btn) {
       btn.textContent = syncEnabled ? '🔗 同步: 開' : '🔗 同步: 關';
@@ -174,27 +175,27 @@
     return Math.min(currentTranslation.enParas.length - 1, Math.max(0, idx));
   }
 
-  // 智能滾動：只在視線範圍外才滾動
   function scrollIntoViewIfNeeded(el, container) {
 
     if (!el) return;
 
     var elRect = el.getBoundingClientRect();
-    var containerRect = container ? container.getBoundingClientRect() : {
-      top: 0,
-      bottom: window.innerHeight
-    };
 
-    var buffer = 60;
+    if (container) {
+      var containerRect = container.getBoundingClientRect();
+      var buffer = 40;
 
-    var isAbove = elRect.top < containerRect.top + buffer;
-    var isBelow = elRect.bottom > containerRect.bottom - buffer;
+      var relTop = elRect.top - containerRect.top;
+      var relBottom = elRect.bottom - containerRect.top;
 
-    if (isAbove || isBelow) {
-      el.scrollIntoView({
-        block: 'center',
-        behavior: 'smooth'
-      });
+      if (relTop < buffer || relBottom > containerRect.height - buffer) {
+        // 在 container 內滾動到中間
+        var offset = el.offsetTop - container.offsetTop - (container.clientHeight / 2) + (el.clientHeight / 2);
+        container.scrollTo({
+          top: offset,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 
@@ -206,23 +207,20 @@
     if (idx < 0) return;
 
     var zhSide = document.getElementById('translateZhSide');
+    if (!zhSide) return;
 
-    if (zhSide) {
-      // 只更新中文側的高亮
-      zhSide.querySelectorAll('.zh-para').forEach(function (el, i) {
-        if (i === idx) {
-          el.style.background = 'rgba(166, 138, 86, 0.15)';
-          el.style.borderLeft = '3px solid #a68a56';
-        } else {
-          el.style.background = '';
-          el.style.borderLeft = '3px solid transparent';
-        }
-      });
+    zhSide.querySelectorAll('.zh-para').forEach(function (el, i) {
+      if (i === idx) {
+        el.style.background = 'rgba(166, 138, 86, 0.15)';
+        el.style.borderLeft = '3px solid #a68a56';
+      } else {
+        el.style.background = '';
+        el.style.borderLeft = '3px solid transparent';
+      }
+    });
 
-      // 智能滾動中文側到當前段
-      var currentZh = zhSide.querySelector('.zh-para[data-idx="' + idx + '"]');
-      scrollIntoViewIfNeeded(currentZh, zhSide);
-    }
+    var currentZh = zhSide.querySelector('.zh-para[data-idx="' + idx + '"]');
+    scrollIntoViewIfNeeded(currentZh, zhSide);
   }
 
   function renderTranslation() {
@@ -251,6 +249,34 @@
     zhSide.innerHTML = html;
   }
 
+  // 把 .note (STUDY NOTES) 移到 fullTranslateBox 之後
+  function moveNoteAfterBox() {
+
+    var box = document.getElementById('fullTranslateBox');
+    if (!box) return;
+
+    var card = document.querySelector('.card');
+    if (!card) return;
+
+    var note = card.querySelector('.note');
+    if (!note) return;
+
+    // 檢查 note 是否已經在 box 之後
+    if (note.previousElementSibling === box) return;
+
+    // 移動 note 到 box 之後
+    var parent = box.parentElement;
+    if (!parent) return;
+
+    if (box.nextSibling) {
+      parent.insertBefore(note, box.nextSibling);
+    } else {
+      parent.appendChild(note);
+    }
+
+    log('note moved after translate box');
+  }
+
   function createTranslateBox() {
 
     if (document.getElementById('fullTranslateBox')) return;
@@ -272,54 +298,25 @@
       + 'font-family: "Microsoft JhengHei", sans-serif;';
 
     box.innerHTML =
-      // 標題列
       '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #d9cfbc;">' +
         '<div style="color: #a68a56; font-weight: bold; font-size: 14px;">' +
           '📖 中文翻譯' +
           '<span id="translateStatus" style="color: #888; font-size: 12px; margin-left: 8px;"></span>' +
         '</div>' +
         '<div style="display: flex; gap: 6px;">' +
-          '<button id="translateBtn" style="' +
-            'padding: 5px 10px;' +
-            'background: #a68a56;' +
-            'color: white;' +
-            'border: none;' +
-            'border-radius: 3px;' +
-            'cursor: pointer;' +
-            'font-size: 12px;' +
-          '">翻譯全文</button>' +
-          '<button id="syncToggleBtn" style="' +
-            'padding: 5px 10px;' +
-            'background: #666;' +
-            'color: white;' +
-            'border: none;' +
-            'border-radius: 3px;' +
-            'cursor: pointer;' +
-            'font-size: 12px;' +
-          '">🔗 同步: 關</button>' +
-          '<button id="translateClearBtn" style="' +
-            'padding: 5px 10px;' +
-            'background: transparent;' +
-            'color: #999;' +
-            'border: 1px solid #ccc;' +
-            'border-radius: 3px;' +
-            'cursor: pointer;' +
-            'font-size: 12px;' +
-          '">清除</button>' +
+          '<button id="translateBtn" style="padding: 5px 10px; background: #a68a56; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">翻譯全文</button>' +
+          '<button id="syncToggleBtn" style="padding: 5px 10px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">🔗 同步: 關</button>' +
+          '<button id="translateClearBtn" style="padding: 5px 10px; background: transparent; color: #999; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; font-size: 12px;">清除</button>' +
         '</div>' +
       '</div>' +
 
-      // 中文翻譯區
-      '<div id="translateZhSide" style="' +
-        'max-height: 400px;' +
-        'overflow-y: auto;' +
-        'padding-right: 8px;' +
-      '">' +
+      '<div id="translateZhSide" style="max-height: 400px; overflow-y: auto; padding-right: 8px;">' +
         '<div style="color: #999; padding: 20px; text-align: center;">' +
           '點擊「翻譯全文」開始' +
         '</div>' +
       '</div>';
 
+    // 插入 .card 之後
     if (card.nextSibling) {
       parent.insertBefore(box, card.nextSibling);
     } else {
@@ -365,6 +362,9 @@
       updateSyncState();
     };
 
+    // 移動 STUDY NOTES 到 box 之後
+    moveNoteAfterBox();
+
     log('translate box created');
 
     if (currentTranslation) {
@@ -386,16 +386,28 @@
     }, 500);
   }
 
-  function startBoxWatchdog() {
+  // 定期檢查
+  function startWatchdog() {
 
     setInterval(function () {
 
-      if (document.getElementById('fullTranslateBox')) return;
+      // Box 是否消失
+      if (!document.getElementById('fullTranslateBox')) {
+        var card = document.querySelector('.card');
+        if (card) {
+          log('box missing, recreating...');
+          createTranslateBox();
+          return;
+        }
+      }
 
-      var card = document.querySelector('.card');
-      if (card) {
-        log('box missing, recreating...');
-        createTranslateBox();
+      // STUDY NOTES 是否回到 .card 內
+      var box = document.getElementById('fullTranslateBox');
+      if (!box) return;
+
+      var noteInCard = document.querySelector('.card .note');
+      if (noteInCard) {
+        moveNoteAfterBox();
       }
     }, 1000);
   }
@@ -411,8 +423,8 @@
   }, 500);
 
   startSyncMonitor();
-  startBoxWatchdog();
+  startWatchdog();
 
-  log('ready v20260711-3');
+  log('ready v20260711-4');
 
 })();
