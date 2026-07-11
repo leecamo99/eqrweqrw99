@@ -4401,7 +4401,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783799645877,
+  "updatedAt": 1783799713146,
   "learn": {
     "github": {
       "word": "github",
@@ -5958,7 +5958,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1783802014505,
       "intervalDays": 0,
@@ -5982,6 +5982,23 @@
       "pos": "verb",
       "tip": "Auto translated by MyMemory｜To change (something) from a smaller form and/or size to a larger one; to spread out or lay open."
     },
+    "perspective": {
+      "word": "perspective",
+      "lemma": "perspective",
+      "firstSeenAt": 1783799685949,
+      "lastSeenAt": 1783799710859,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 0,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0
+    },
     "perspectife": {
       "word": "perspectife",
       "lemma": "perspectife",
@@ -6001,13 +6018,13 @@
       "lastSurface": "perspectives",
       "lastForm": "plural -ves",
       "variants": {
-        "perspectives": 4
+        "perspectives": 5
       },
-      "clicks": 4,
-      "strength": 4,
+      "clicks": 5,
+      "strength": 5,
       "captured": true,
       "known": false,
-      "updatedAt": 1783799430953,
+      "updatedAt": 1783799685951,
       "loading": false,
       "tw": "perspectif",
       "engine": "MyMemory",
@@ -6017,34 +6034,22 @@
     "perspectif": {
       "word": "perspectif",
       "lemma": "perspectif",
-      "firstSeenAt": 1783799643856,
-      "lastSeenAt": 1783799643856,
-      "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
-      "maxClickStreak": 0,
-      "reviewHistory": [],
-      "dueAt": 1783803243861,
-      "intervalDays": 0,
-      "ease": 2.5,
-      "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
-      "lastSurface": "perspectives",
-      "lastForm": "plural -ves",
-      "variants": {
-        "perspectives": 1
-      },
+      "pos": "",
+      "tw": "perspectif",
+      "tip": "Auto translated by MyMemory",
       "clicks": 1,
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783799645870,
-      "loading": false,
-      "tw": "perspectif",
+      "dueAt": 1783803310863,
+      "updatedAt": 1783799713143,
+      "variants": {
+        "perspectives": 1
+      },
+      "lastSurface": "perspectives",
+      "lastForm": "plural -ves",
       "engine": "MyMemory",
-      "pos": "",
-      "tip": "Auto translated by MyMemory"
+      "loading": false
     }
   }
 }
