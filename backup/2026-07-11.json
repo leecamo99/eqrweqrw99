@@ -4401,7 +4401,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783799430957,
+  "updatedAt": 1783799713146,
   "learn": {
     "github": {
       "word": "github",
@@ -5725,38 +5725,6 @@
       "pos": "noun",
       "tip": "Auto translated by MyMemory｜The act of gaining; acquisition."
     },
-    "perspectif": {
-      "word": "perspectif",
-      "lemma": "perspectif",
-      "firstSeenAt": 1783731185590,
-      "lastSeenAt": 1783799430950,
-      "lastReviewedAt": 0,
-      "lifetimeClicks": 4,
-      "sessionClicks": 4,
-      "maxClickStreak": 3,
-      "reviewHistory": [],
-      "dueAt": 1783734785593,
-      "intervalDays": 0,
-      "ease": 2.5,
-      "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
-      "lastSurface": "perspectives",
-      "lastForm": "plural -ves",
-      "variants": {
-        "perspectives": 4
-      },
-      "clicks": 4,
-      "strength": 4,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783799430953,
-      "loading": false,
-      "tw": "perspectif",
-      "engine": "MyMemory",
-      "pos": "",
-      "tip": "Auto translated by MyMemory"
-    },
     "next": {
       "word": "next",
       "lemma": "next",
@@ -5990,7 +5958,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1783802014505,
       "intervalDays": 0,
@@ -6013,6 +5981,75 @@
       "engine": "MyMemory",
       "pos": "verb",
       "tip": "Auto translated by MyMemory｜To change (something) from a smaller form and/or size to a larger one; to spread out or lay open."
+    },
+    "perspective": {
+      "word": "perspective",
+      "lemma": "perspective",
+      "firstSeenAt": 1783799685949,
+      "lastSeenAt": 1783799710859,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 0,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0
+    },
+    "perspectife": {
+      "word": "perspectife",
+      "lemma": "perspectife",
+      "firstSeenAt": 1783731185590,
+      "lastSeenAt": 1783799430950,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 4,
+      "sessionClicks": 4,
+      "maxClickStreak": 3,
+      "reviewHistory": [],
+      "dueAt": 1783734785593,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "perspectives",
+      "lastForm": "plural -ves",
+      "variants": {
+        "perspectives": 5
+      },
+      "clicks": 5,
+      "strength": 5,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783799685951,
+      "loading": false,
+      "tw": "perspectif",
+      "engine": "MyMemory",
+      "pos": "",
+      "tip": "Auto translated by MyMemory"
+    },
+    "perspectif": {
+      "word": "perspectif",
+      "lemma": "perspectif",
+      "pos": "",
+      "tw": "perspectif",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783803310863,
+      "updatedAt": 1783799713143,
+      "variants": {
+        "perspectives": 1
+      },
+      "lastSurface": "perspectives",
+      "lastForm": "plural -ves",
+      "engine": "MyMemory",
+      "loading": false
     }
   }
 }
