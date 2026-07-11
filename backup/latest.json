@@ -81,10 +81,11 @@
           "lemma": "immers"
         },
         "yourself": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "pronoun",
+          "tw": "您自己",
+          "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular).",
+          "color": "c1",
+          "lemma": "yourself"
         },
         "foreign": {
           "pos": "",
@@ -1368,10 +1369,11 @@
           "color": "c1"
         },
         "yourself": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "pronoun",
+          "tw": "您自己",
+          "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular).",
+          "color": "c1",
+          "lemma": "yourself"
         },
         "practical": {
           "pos": "",
@@ -4396,7 +4398,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783797099495,
+  "updatedAt": 1783797575693,
   "learn": {
     "github": {
       "word": "github",
@@ -5771,13 +5773,13 @@
       "lastSurface": "immersing",
       "lastForm": "-ing form",
       "variants": {
-        "immersing": 5
+        "immersing": 8
       },
-      "clicks": 5,
-      "strength": 5,
+      "clicks": 8,
+      "strength": 8,
       "captured": true,
       "known": false,
-      "updatedAt": 1783797096335,
+      "updatedAt": 1783797545625,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -5884,28 +5886,28 @@
       "word": "global",
       "lemma": "global",
       "firstSeenAt": 1783797093090,
-      "lastSeenAt": 1783797093090,
+      "lastSeenAt": 1783797575688,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "lifetimeClicks": 3,
+      "sessionClicks": 3,
+      "maxClickStreak": 2,
       "reviewHistory": [],
       "dueAt": 1783800693093,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "global",
       "lastForm": "base form",
       "variants": {
-        "global": 1
+        "global": 3
       },
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 3,
+      "strength": 3,
       "captured": true,
       "known": false,
-      "updatedAt": 1783797094325,
+      "updatedAt": 1783797575690,
       "loading": false,
       "tw": "全域",
       "engine": "MyMemory",
@@ -5943,6 +5945,23 @@
       "engine": "MyMemory",
       "pos": "pronoun",
       "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular)."
+    },
+    "immerse": {
+      "word": "immerse",
+      "lemma": "immerse",
+      "firstSeenAt": 1783797517162,
+      "lastSeenAt": 1783797545624,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 3,
+      "sessionClicks": 3,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 0,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0
     }
   }
 }
