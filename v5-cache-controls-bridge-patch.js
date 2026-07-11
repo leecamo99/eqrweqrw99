@@ -1,5 +1,8 @@
-/* v5-cache-controls-bridge-patch.js v20260710-1
-   Bridge #gcttsPause / #gcttsStop / #gcttsProgress to __V5_MASTER_AUDIO__.
+/* v5-cache-controls-bridge-patch.js v20260710-3
+   - #gcttsPause = single toggle (暫停 <-> 繼續)
+   - #gcttsResume = permanently hidden
+   - #gcttsStop  = stop + reset progress
+   - #gcttsProgress = seek __V5_MASTER_AUDIO__
 */
 
 (function () {
@@ -30,33 +33,60 @@
     clone.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      handler();
+      handler(clone);
     }, true);
 
     return clone;
   }
 
+  function refreshPauseLabel(btn) {
+
+    if (!btn) return;
+
+    var m = master();
+
+    if (!m || !m.src) {
+      btn.textContent = '\u23EF 播/暫';
+      return;
+    }
+
+    if (m.paused) {
+      if (m.currentTime > 0) {
+        btn.textContent = '\u25B6 繼續';
+      } else {
+        btn.textContent = '\u23EF 播/暫';
+      }
+    } else {
+      btn.textContent = '\u23F8 暫停';
+    }
+  }
+
   function bridgePause() {
 
-    return replaceBtn('#gcttsPause', function () {
+    var btn = replaceBtn('#gcttsPause', function (btn) {
 
       var m = master();
       if (!m) return;
 
       if (m.paused) {
 
-        // Toggle: 若被暫停 → 繼續播（許多人期待暫停鍵也能繼續）
-        m.play().catch(function (err) {
+        m.play().then(function () {
+          log('resumed');
+          refreshPauseLabel(btn);
+        }).catch(function (err) {
           console.warn('[V5CtrlBridge] resume err', err);
         });
-        log('resumed');
 
       } else {
 
         m.pause();
         log('paused at', m.currentTime.toFixed(2));
+        refreshPauseLabel(btn);
       }
     });
+
+    if (btn) refreshPauseLabel(btn);
+    return btn;
   }
 
   function bridgeStop() {
@@ -72,8 +102,24 @@
       } catch (e) {}
 
       updateProgress(0, 1);
+      refreshPauseLabel(document.querySelector('#gcttsPause'));
       log('stopped');
     });
+  }
+
+  function hideResume() {
+
+    var r = document.getElementById('gcttsResume');
+    if (!r) return;
+
+    if (r.dataset.ctrlHidden === '1') return;
+    r.dataset.ctrlHidden = '1';
+
+    // 完全隱藏（保留在 DOM，避免 v5 內部有 code 找不到會出錯）
+    r.style.setProperty('display', 'none', 'important');
+    r.style.setProperty('visibility', 'hidden', 'important');
+    r.setAttribute('aria-hidden', 'true');
+    r.disabled = true;
   }
 
   function bridgeProgress() {
@@ -84,46 +130,26 @@
     if (p.dataset.ctrlBridged === '1') return p;
     p.dataset.ctrlBridged = '1';
 
-    // 讓拖曳 range 更新 currentTime
-    p.addEventListener('input', function () {
+    function seekFrom(v) {
 
       var m = master();
       if (!m || !isFinite(m.duration) || m.duration <= 0) return;
 
-      var v = parseFloat(p.value);
-      if (isNaN(v)) return;
-
-      var ratio;
-
-      // 支援 max=1 或 max=100 或 max=duration
-      var pmax = parseFloat(p.max);
-      if (!isFinite(pmax) || pmax <= 0) pmax = 1;
-
-      ratio = v / pmax;
-      if (ratio < 0) ratio = 0;
-      if (ratio > 1) ratio = 1;
-
-      m.currentTime = m.duration * ratio;
-    });
-
-    // 拖完直接跳（部分瀏覽器不觸發 input 觸發 change）
-    p.addEventListener('change', function () {
-
-      var m = master();
-      if (!m || !isFinite(m.duration) || m.duration <= 0) return;
-
-      var v = parseFloat(p.value);
-      if (isNaN(v)) return;
+      var num = parseFloat(v);
+      if (isNaN(num)) return;
 
       var pmax = parseFloat(p.max);
       if (!isFinite(pmax) || pmax <= 0) pmax = 1;
 
-      var ratio = v / pmax;
+      var ratio = num / pmax;
       if (ratio < 0) ratio = 0;
       if (ratio > 1) ratio = 1;
 
       m.currentTime = m.duration * ratio;
-    });
+    }
+
+    p.addEventListener('input',  function () { seekFrom(p.value); });
+    p.addEventListener('change', function () { seekFrom(p.value); });
 
     return p;
   }
@@ -144,7 +170,7 @@
     p.value = String(pmax * (current / duration));
   }
 
-  function bindTimeupdate() {
+  function bindAudioEvents() {
 
     var m = master();
     if (!m) return false;
@@ -153,13 +179,21 @@
     m.dataset.ctrlBound = '1';
 
     m.addEventListener('timeupdate', function () {
-
       if (!isFinite(m.duration) || m.duration <= 0) return;
       updateProgress(m.currentTime, m.duration);
     });
 
+    m.addEventListener('play',  function () {
+      refreshPauseLabel(document.querySelector('#gcttsPause'));
+    });
+
+    m.addEventListener('pause', function () {
+      refreshPauseLabel(document.querySelector('#gcttsPause'));
+    });
+
     m.addEventListener('ended', function () {
       updateProgress(0, 1);
+      refreshPauseLabel(document.querySelector('#gcttsPause'));
       log('ended');
     });
 
@@ -167,21 +201,25 @@
     return true;
   }
 
-  // 定期嘗試綁定（因為 v5 有時候會在你進不同頁時重新 render）
   var tries = 0;
+
   var timer = setInterval(function () {
 
     tries++;
 
     bridgePause();
     bridgeStop();
+    hideResume();
     bridgeProgress();
-    bindTimeupdate();
+    bindAudioEvents();
 
-    if (tries > 40) clearInterval(timer);
+    // v5 有時會更新按鈕文字，我們每 loop 幫忙同步
+    refreshPauseLabel(document.querySelector('#gcttsPause'));
+
+    if (tries > 60) clearInterval(timer);
 
   }, 500);
 
-  log('ready');
+  log('ready v3 (single pause/resume toggle)');
 
 })();
