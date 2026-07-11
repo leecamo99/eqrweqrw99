@@ -1,6 +1,5 @@
-/* article-audio-cloud-cache-patch.js v20260710-3
-   Cache MP3 + metadata JSON on GitHub.
-   Uses __TTS_SEG_METADATA__ to build segment timeline.
+/* article-audio-cloud-cache-patch.js v20260710-3.1
+   Add forceRegen(text) to always run fresh + overwrite GitHub mp3 + json.
 */
 
 (function () {
@@ -16,8 +15,8 @@
   var KEY_SET_LS   = 'notebook_google_cloud_tts_settings_v1';
   var KEY_GH_TOKEN = 'notebook_github_token_v1';
 
-  var availabilityCache = new Map();  // id -> false | { mp3, meta? }
-  var metaCache = new Map();          // id -> metaObj
+  var availabilityCache = new Map();
+  var metaCache = new Map();
 
   function log() {
     try {
@@ -26,7 +25,6 @@
   }
 
   async function articleId(text) {
-
     var enc = new TextEncoder().encode(String(text || '').slice(0, 400));
     var hash = await crypto.subtle.digest('SHA-256', enc);
     var arr = Array.from(new Uint8Array(hash));
@@ -87,9 +85,7 @@
   }
 
   function measureBlobDuration(blob) {
-
     return new Promise(function (resolve) {
-
       try {
         var url = URL.createObjectURL(blob);
         var a = new Audio();
@@ -155,8 +151,8 @@
 
     var CHUNK = 400;
     var out = [];
-
     var i = 0;
+
     while (i < text.length) {
       var end = Math.min(i + CHUNK, text.length);
       if (end < text.length) {
@@ -224,131 +220,4 @@
       body: JSON.stringify({
         message: message,
         content: contentB64,
-        branch: BRANCH,
-        sha: sha
-      })
-    });
-
-    var raw = await res.text();
-    if (!res.ok) throw new Error('GitHub PUT ' + res.status + ': ' + raw.slice(0, 200));
-  }
-
-  function buildMetadata(id, segments, blobs, durationMsArr) {
-
-    var out = {
-      id: id,
-      version: 1,
-      createdAt: new Date().toISOString(),
-      segments: [],
-      totalMs: 0
-    };
-
-    var cursorMs = 0;
-    var wordCursor = 0;
-
-    for (var i = 0; i < segments.length; i++) {
-
-      var text = segments[i];
-      var words = tokenizeWords(text);
-      var durMs = durationMsArr[i] || 0;
-
-      var seg = {
-        i: i,
-        text: text,
-        words: words,
-        durMs: durMs,
-        startMs: cursorMs,
-        wordIndexStart: wordCursor,
-        wordIndexEnd: wordCursor + words.length
-      };
-
-      out.segments.push(seg);
-
-      cursorMs += durMs;
-      wordCursor += words.length;
-    }
-
-    out.totalMs = cursorMs;
-    return out;
-  }
-
-  async function play(text, forcedId) {
-
-    text = String(text || '').trim();
-    if (!text) throw new Error('沒有文章文字');
-
-    var id = forcedId || await articleId(text);
-
-    var cached = await checkGitHubAudio(id);
-
-    if (cached) {
-      log('cache hit, play url:', cached.mp3, cached.meta ? '(meta ok)' : '(no meta)');
-      return { mode: 'cache', url: cached.mp3, id: id, meta: cached.meta };
-    }
-
-    log('cache miss, generate via Google TTS');
-
-    var segments = splitText(text);
-    var blobs = [];
-    var durs = [];
-
-    for (var i = 0; i < segments.length; i++) {
-      try {
-        var b = await synthesizeGoogle(segments[i]);
-        var d = await measureBlobDuration(b);
-        blobs.push(b);
-        durs.push(d);
-      } catch (e) {
-        log('synth fail', e);
-      }
-    }
-
-    if (!blobs.length) throw new Error('全部段落合成失敗');
-
-    var merged = await mergeBlobs(blobs);
-
-    // 產出 metadata
-    var meta = buildMetadata(id, segments, blobs, durs);
-
-    // 上傳 mp3 + json
-    try {
-      var b64 = await blobToBase64(merged);
-      await githubPutFile(DIR + '/' + id + '.mp3', b64, 'auto: add audio ' + id);
-
-      var metaJson = JSON.stringify(meta);
-      var metaB64 = btoa(unescape(encodeURIComponent(metaJson)));
-      await githubPutFile(DIR + '/' + id + '.mp3.json', metaB64, 'auto: add audio meta ' + id);
-
-      var mp3Url  = 'https://raw.githubusercontent.com/' + OWNER + '/' + REPO + '/' + BRANCH + '/' + DIR + '/' + id + '.mp3';
-      availabilityCache.set(id, { mp3: mp3Url, meta: meta });
-      metaCache.set(id, meta);
-
-      log('uploaded ✓', id);
-    } catch (e) {
-      console.warn('[ArticleAudioC] upload skipped:', e.message);
-    }
-
-    var url = URL.createObjectURL(merged);
-    return { mode: 'fresh', url: url, id: id, meta: meta };
-  }
-
-  async function has(text, forcedId) {
-    var id = forcedId || await articleId(text);
-    var v = await checkGitHubAudio(id);
-    return !!v;
-  }
-
-  function getMeta(id) {
-    return metaCache.get(id) || null;
-  }
-
-  window.__articleAudioCache__ = {
-    play: play,
-    has: has,
-    id: articleId,
-    getMeta: getMeta
-  };
-
-  log('ready v3 (mp3 + json metadata)');
-
-})();
+        branch: BRANCH
