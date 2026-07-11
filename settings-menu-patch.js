@@ -1,4 +1,4 @@
-/* settings-menu-patch.js v20260710-3
+/* settings-menu-patch.js v20260710-4
    Integrates API keys/tokens into the existing #sync sidebar section.
    Fallback: floating ⚙️ button top-right.
 */
@@ -7,57 +7,32 @@
 
   'use strict';
 
- const ITEMS = [
-2
-{
-3
-label: 'GitHub Token',
-4
-key: 'notebook_github_token_v1',
-5
-hint: '用於上傳 audio/*.mp3（Fine-grained token）',
-6
-match: /^(ghp_|github_pat_)/
-7
-},
-8
-{
-9
-label: 'Google Cloud TTS API Key',
-10
-key: 'notebook_google_cloud_tts_key_v1',
-11
-hint: 'Google Cloud Text-to-Speech API Key',
-12
-match: /^AIza/
-13
-},
-14
-{
-15
-label: 'Gemini API Key',
-16
-key: 'notebook_gemini_key_v1',
-17
-hint: '（可選）Gemini 弱點文章生成',
-18
-match: /^AIza/
-19
-},
-20
-{
-21
-label: 'Google Translate API Key',
-22
-key: 'google_translate_api_key',
-23
-hint: '用於高品質單字翻譯（Cloud Translation API）',
-24
-match: /^AIza/
-25
-}
-26
-];
+  const ITEMS = [
+    {
+      label: 'GitHub Token',
+      key:   'notebook_github_token_v1',
+      hint:  '用於上傳 audio/*.mp3（Fine-grained token）',
+      match: /^(ghp_|github_pat_)/
+    },
+    {
+      label: 'Google Cloud TTS API Key',
+      key:   'notebook_google_cloud_tts_key_v1',
+      hint:  'Google Cloud Text-to-Speech API Key',
+      match: /^AIza/
+    },
+    {
+      label: 'Gemini API Key',
+      key:   'notebook_gemini_key_v1',
+      hint:  '（可選）Gemini 弱點文章生成',
+      match: /^AIza/
+    },
+    {
+      label: 'Google Translate API Key',
+      key:   'google_translate_api_key',
+      hint:  '用於高品質單字翻譯（Cloud Translation API）',
+      match: /^AIza/
+    }
+  ];
 
   function preview(v) {
     if (!v) return '（未設定）';
@@ -142,7 +117,6 @@ match: /^AIza/
     const sync = document.getElementById('sync');
     if (!sync) return false;
 
-    // 已裝過就不再重裝
     if (sync.querySelector('#settings-menu-block')) return true;
 
     const block = document.createElement('div');
@@ -186,7 +160,7 @@ match: /^AIza/
 
     sync.appendChild(block);
 
-    console.log('[SettingsMenu v3] installed inside #sync');
+    console.log('[SettingsMenu v4] installed inside #sync');
 
     return true;
   }
@@ -262,10 +236,9 @@ match: /^AIza/
 
     }, true);
 
-    console.log('[SettingsMenu v3] fallback floating gear installed');
+    console.log('[SettingsMenu v4] fallback floating gear installed');
   }
 
-  // 動態偵測（有些主程式在 DOMContentLoaded 之後才把 #sync 生出來）
   let tries = 0;
 
   const timer = setInterval(() => {
@@ -286,6 +259,6 @@ match: /^AIza/
 
   installInSync();
 
-  console.log('[SettingsMenu v3] ready');
+  console.log('[SettingsMenu v4] ready');
 
 })();
