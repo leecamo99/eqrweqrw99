@@ -1,5 +1,5 @@
-/* article-full-translate-patch.js v20260711-6
-   Remove paragraph number.
+/* article-full-translate-patch.js v20260711-7
+   Fix max-height bug.
 */
 
 (function () {
@@ -229,7 +229,6 @@
 
       var zh = currentTranslation.zhParas[i] || '(翻譯中)';
 
-      // 移除段落編號，只顯示中文
       html += '<div class="zh-para" data-idx="' + i + '" style="' +
         'padding: 8px 10px;' +
         'margin-bottom: 4px;' +
@@ -264,8 +263,9 @@
       if (body) body.style.display = 'none';
       if (toggleBtn) toggleBtn.textContent = '▲';
     } else {
-      box.style.maxHeight = '';
-      if (body) body.style.display = '';
+      // ★ 這裡不再清空，明確設 40vh
+      box.style.maxHeight = '40vh';
+      if (body) body.style.display = 'flex';
       if (toggleBtn) toggleBtn.textContent = '▼';
     }
 
@@ -290,20 +290,22 @@
 
     var box = document.createElement('div');
     box.id = 'fullTranslateBox';
-    box.style.cssText = ''
-      + 'position: fixed;'
-      + 'bottom: 0;'
-      + 'left: 0;'
-      + 'right: 0;'
-      + 'z-index: 100;'
-      + 'background: #faf6ed;'
-      + 'border-top: 2px solid #a68a56;'
-      + 'box-shadow: 0 -4px 12px rgba(0,0,0,0.08);'
-      + 'font-family: "Microsoft JhengHei", sans-serif;'
-      + 'max-height: 40vh;'
-      + 'display: flex;'
-      + 'flex-direction: column;'
-      + 'transition: max-height 0.3s;';
+
+    // ★ 直接用個別 style 屬性（不用 cssText 混合）
+    box.style.position = 'fixed';
+    box.style.bottom = '0';
+    box.style.left = '0';
+    box.style.right = '0';
+    box.style.zIndex = '100';
+    box.style.background = '#faf6ed';
+    box.style.borderTop = '2px solid #a68a56';
+    box.style.boxShadow = '0 -4px 12px rgba(0,0,0,0.08)';
+    box.style.fontFamily = '"Microsoft JhengHei", sans-serif';
+    box.style.maxHeight = '40vh';                    // ★ 明確設 40vh
+    box.style.display = 'flex';
+    box.style.flexDirection = 'column';
+    box.style.transition = 'max-height 0.3s';
+    box.style.overflow = 'hidden';                   // ★ 加這個避免溢出
 
     box.innerHTML =
       '<div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #d9cfbc; flex-shrink: 0;">' +
@@ -319,8 +321,8 @@
         '</div>' +
       '</div>' +
 
-      '<div id="translateBody" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">' +
-        '<div id="translateZhSide" style="flex: 1; overflow-y: auto; padding: 8px 12px;">' +
+      '<div id="translateBody" style="flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 0;">' +
+        '<div id="translateZhSide" style="flex: 1; overflow-y: auto; padding: 8px 12px; min-height: 0;">' +
           '<div style="color: #999; padding: 20px; text-align: center; font-size: 12px;">' +
             '點擊「翻譯全文」開始' +
           '</div>' +
@@ -412,6 +414,6 @@
 
   window.addEventListener('resize', updateBodyPadding);
 
-  log('ready v20260711-6');
+  log('ready v20260711-7');
 
 })();
