@@ -4401,7 +4401,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783799713146,
+  "updatedAt": 1783799753956,
   "learn": {
     "github": {
       "word": "github",
@@ -5986,10 +5986,10 @@
       "word": "perspective",
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
-      "lastSeenAt": 1783799710859,
+      "lastSeenAt": 1783799753951,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 2,
-      "sessionClicks": 2,
+      "lifetimeClicks": 3,
+      "sessionClicks": 3,
       "maxClickStreak": 0,
       "reviewHistory": [],
       "dueAt": 0,
@@ -6037,14 +6037,14 @@
       "pos": "",
       "tw": "perspectif",
       "tip": "Auto translated by MyMemory",
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 2,
+      "strength": 2,
       "captured": true,
       "known": false,
       "dueAt": 1783803310863,
-      "updatedAt": 1783799713143,
+      "updatedAt": 1783799753953,
       "variants": {
-        "perspectives": 1
+        "perspectives": 2
       },
       "lastSurface": "perspectives",
       "lastForm": "plural -ves",
