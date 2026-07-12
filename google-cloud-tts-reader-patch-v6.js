@@ -16,7 +16,7 @@
   const layoutSettings = {
     mode1: { panelHeight: '160px', panelPadding: '12px 16px', panelBg: '#34495e' },
     mode2: { panelHeight: '52px', panelPadding: '0 16px', panelBg: '#34495e' },
-    mode3: { panelHeight: '20px', panelPadding: '0', panelBg: '#34495e' }
+    mode3: { panelHeight: '30px', panelPadding: '0', panelBg: '#34495e' }
   };
 
   // 3. 面板偵測與初始化
