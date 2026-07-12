@@ -1,30 +1,30 @@
-/* article-ai-chat-patch.js v20260712-3
-   v3: Auto try multiple models if 429.
+/* article-ai-chat-patch.js v20260712-6
+   v6: Suppress Markdown output.
+   - System prompt tells Gemini to use plain text
+   - Post-process cleans residual Markdown symbols
 */
 
 (function () {
 
   'use strict';
 
-  var API_KEY_STORAGE = 'notebook_gemini_key_v1';
   var MODEL_KEY = 'notebook_gemini_model_v1';
   var LAST_WORKING_MODEL_KEY = 'notebook_gemini_last_working_model';
 
-  // 模型嘗試順序（每分鐘 RPM 由大到小）
   var MODEL_LIST = [
-  'gemini-3.5-flash',
-  'gemini-flash-latest',
-  'gemini-2.5-flash',
-  'gemini-2.5-pro',
-  'gemini-2.0-flash',
-  'gemini-2.0-flash-001',
-  'gemini-flash-lite-latest',
-  'gemini-3.1-flash-lite',
-  'gemini-2.5-flash-lite',
-  'gemini-2.0-flash-lite',
-  'gemini-3-flash-preview',
-  'gemini-3-pro-preview'
-];
+    'gemini-3.5-flash',
+    'gemini-flash-latest',
+    'gemini-2.5-flash',
+    'gemini-2.5-pro',
+    'gemini-2.0-flash',
+    'gemini-2.0-flash-001',
+    'gemini-flash-lite-latest',
+    'gemini-3.1-flash-lite',
+    'gemini-2.5-flash-lite',
+    'gemini-2.0-flash-lite',
+    'gemini-3-flash-preview',
+    'gemini-3-pro-preview'
+  ];
 
   function log() {
     try {
@@ -32,12 +32,30 @@
     } catch (e) {}
   }
 
-  function getKey() {
-    return localStorage.getItem(API_KEY_STORAGE) || '';
+  // 清除 Markdown 殘留符號
+  function cleanMarkdown(text) {
+
+    if (!text) return text;
+
+    return text
+      // 移除粗體 **word** 和 __word__
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/__([^_]+)__/g, '$1')
+      // 移除單斜體 *word* 和 _word_
+      .replace(/(?<![*])\*([^*\n]+)\*(?![*])/g, '$1')
+      .replace(/(?<![_])_([^_\n]+)_(?![_])/g, '$1')
+      // 移除標題 #
+      .replace(/^#{1,6}\s+/gm, '')
+      // 移除行內 code
+      .replace(/`([^`]+)`/g, '$1')
+      // 移除連結
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      // 移除水平線
+      .replace(/^-{3,}$/gm, '')
+      .replace(/^={3,}$/gm, '');
   }
 
   function getPreferredModel() {
-    // 使用者手動設定的 > 上次成功的 > 清單第一個
     return localStorage.getItem(MODEL_KEY) ||
            localStorage.getItem(LAST_WORKING_MODEL_KEY) ||
            MODEL_LIST[0];
@@ -47,7 +65,6 @@
     localStorage.setItem(LAST_WORKING_MODEL_KEY, model);
   }
 
-  // 建立嘗試順序：從偏好模型開始，然後試其他
   function buildAttemptOrder() {
 
     var preferred = getPreferredModel();
@@ -79,40 +96,35 @@
     return new Promise(function (r) { setTimeout(r, ms); });
   }
 
-  async function callGeminiWithModel(userMessage, model) {
-
-    var key = getKey();
-    if (!key) {
-      throw new Error('請先在設定選單設定 Gemini API Key');
-    }
+  async function callGeminiWithKeyAndModel(userMessage, key, model) {
 
     var article = getArticleText();
     var contents = [];
 
-  if (chatHistory.length === 0) {
-  contents.push({
-    role: 'user',
-    parts: [{
-      text:
-        '以下是一篇英文文章，接下來我會針對這篇文章問你問題。\n\n' +
-        '請用繁體中文回答，簡潔明瞭。\n\n' +
-        '重要規則：\n' +
-        '1. 輸出純文字，不要使用任何 Markdown 語法\n' +
-        '2. 不要用 **, __, *, #, [], 等符號\n' +
-        '3. 需要強調時用引號「」或全形括號（）\n' +
-        '4. 需要列表時用 1. 2. 3. 或 、 、 、\n' +
-        '5. 單字直接以純文字呈現，不做粗體或斜體標記\n\n' +
-        '文章：\n' + article +
-        '\n\n請確認你已理解這篇文章與規則。'
-    }]
-  });
-  contents.push({
-    role: 'model',
-    parts: [{
-      text: '好的，我已經閱讀了這篇文章，並會用純文字回答，不使用任何 Markdown 符號。請問你有什麼問題？'
-    }]
-  });
-}
+    if (chatHistory.length === 0) {
+      contents.push({
+        role: 'user',
+        parts: [{
+          text:
+            '以下是一篇英文文章，接下來我會針對這篇文章問你問題。\n\n' +
+            '請用繁體中文回答，簡潔明瞭。\n\n' +
+            '重要規則：\n' +
+            '1. 輸出純文字，不要使用任何 Markdown 語法\n' +
+            '2. 不要用 **, __, *, #, [], 等符號\n' +
+            '3. 需要強調時用引號「」或全形括號（）\n' +
+            '4. 需要列表時用 1. 2. 3. 或 、 、 、\n' +
+            '5. 單字直接以純文字呈現，不做粗體或斜體標記\n\n' +
+            '文章：\n' + article +
+            '\n\n請確認你已理解這篇文章與規則。'
+        }]
+      });
+      contents.push({
+        role: 'model',
+        parts: [{
+          text: '好的，我已經閱讀了這篇文章，並會用純文字回答，不使用任何 Markdown 符號。請問你有什麼問題？'
+        }]
+      });
+    }
 
     chatHistory.forEach(function (msg) {
       contents.push({
@@ -149,94 +161,134 @@
       err.status = res.status;
       err.body = errText;
       err.model = model;
+      err.key = key;
       throw err;
     }
 
     var data = await res.json();
-   var reply = data.candidates?.[0]?.content?.parts?.map(function (p) { return p.text; }).join('\n') || '';
+    var reply = data.candidates?.[0]?.content?.parts?.map(function (p) { return p.text; }).join('\n') || '';
 
-if (!reply) throw new Error('AI 沒有回應');
+    if (!reply) throw new Error('AI 沒有回應');
 
-// 清除 Markdown 殘留符號（保險機制）
-reply = cleanMarkdown(reply);
+    // 清除 Markdown 殘留符號
+    reply = cleanMarkdown(reply);
 
-return reply;
+    return reply;
   }
 
   async function callGeminiWithAutoSwitch(userMessage, statusCallback) {
 
-    var attemptOrder = buildAttemptOrder();
+    var keys;
+    if (typeof window.getGeminiKeys === 'function') {
+      keys = window.getGeminiKeys();
+    } else {
+      var single = localStorage.getItem('notebook_gemini_key_v1');
+      keys = single ? [single] : [];
+    }
+
+    if (keys.length === 0) {
+      throw new Error('請先在設定選單設定 Gemini API Key');
+    }
+
+    var models = buildAttemptOrder();
     var errors = [];
 
-    for (var i = 0; i < attemptOrder.length; i++) {
+    for (var ki = 0; ki < keys.length; ki++) {
 
-      var model = attemptOrder[i];
+      var key = keys[ki];
 
-      if (statusCallback) {
-        if (i === 0) {
-          statusCallback('🤖 使用 ' + model + ' 中...');
-        } else {
-          statusCallback('⚠️ 上一個模型限額，改用 ' + model + '...');
+      if (typeof window.getGeminiKeyStatus === 'function') {
+        var statuses = window.getGeminiKeyStatus();
+        var status = statuses.find(function (s) { return s.keyFull === key; });
+        if (status && !status.available) {
+          log('skip key (cooldown):', key.slice(0, 10) + '...');
+          continue;
         }
       }
 
-      try {
+      for (var mi = 0; mi < models.length; mi++) {
 
-        log('trying model:', model);
+        var model = models[mi];
 
-        var reply = await callGeminiWithModel(userMessage, model);
-
-        // 成功
-        log('success with model:', model);
-        saveWorkingModel(model);
-
-        // 更新歷史
-        chatHistory.push({ role: 'user', text: userMessage });
-        chatHistory.push({ role: 'model', text: reply });
-
-        return { reply: reply, model: model };
-
-      } catch (e) {
-
-        errors.push({ model: model, status: e.status, message: e.message });
-
-        // 429 或 404 才切換模型（403 API key 錯不切換）
-        if (e.status === 429) {
-          log('429 rate limit for', model, ', trying next...');
-          continue;
+        if (statusCallback) {
+          var keyLabel = 'Key ' + (ki + 1) + '/' + keys.length;
+          statusCallback('🤖 ' + keyLabel + ' + ' + model + '...');
         }
 
-        if (e.status === 404) {
-          log('404 model not found:', model, ', trying next...');
-          continue;
-        }
+        try {
 
-        // 500 系列可能是暫時錯誤，等等再切
-        if (e.status >= 500 && e.status < 600) {
-          log('5xx error for', model, ', trying next...');
-          await sleep(1000);
-          continue;
-        }
+          log('trying key', ki + 1, 'model:', model);
 
-        // 其他錯誤（401, 403）直接拋出
-        throw e;
+          var reply = await callGeminiWithKeyAndModel(userMessage, key, model);
+
+          log('success with model:', model);
+          saveWorkingModel(model);
+
+          if (typeof window.markGeminiKeyOk === 'function') {
+            window.markGeminiKeyOk(key);
+          }
+
+          chatHistory.push({ role: 'user', text: userMessage });
+          chatHistory.push({ role: 'model', text: reply });
+
+          return { reply: reply, model: model, keyIndex: ki };
+
+        } catch (e) {
+
+          errors.push({ 
+            keyIndex: ki,
+            model: model, 
+            status: e.status
+          });
+
+          if (e.status === 429) {
+            log('429 for key', ki + 1, 'model:', model);
+
+            if (typeof window.markGeminiKey429 === 'function') {
+              window.markGeminiKey429(key);
+            }
+
+            break;
+          }
+
+          if (e.status === 404) {
+            log('404 model not found:', model);
+            continue;
+          }
+
+          if (e.status >= 500 && e.status < 600) {
+            await sleep(1000);
+            continue;
+          }
+
+          throw e;
+        }
       }
     }
 
-    // 所有模型都失敗
-    var errorSummary = errors.map(function (e) {
-      return e.model + ' (' + e.status + ')';
-    }).join(', ');
+    var summary = 'Keys 嘗試: ' + keys.length + '個，Models 嘗試: ' + models.length + '個\n';
+    summary += '失敗次數: ' + errors.length + '\n';
+
+    var errorTypes = {};
+    errors.forEach(function (e) {
+      var type = 'HTTP ' + e.status;
+      errorTypes[type] = (errorTypes[type] || 0) + 1;
+    });
+
+    Object.keys(errorTypes).forEach(function (type) {
+      summary += '  ' + type + ': ' + errorTypes[type] + ' 次\n';
+    });
 
     throw new Error(
-      '所有模型都限額用完：\n' + errorSummary + '\n\n' +
-      '建議：\n' +
+      '⚠️ 所有 API Key 和模型都限額用完\n\n' + summary +
+      '\n建議：\n' +
       '1. 等 60 秒讓限額重置\n' +
-      '2. 或升級到付費層'
+      '2. 加入更多 API Key\n' +
+      '3. 或升級到付費層'
     );
   }
 
-  function appendMessage(role, text, modelUsed) {
+  function appendMessage(role, text, meta) {
 
     var chatBody = document.getElementById('aiChatBody');
     if (!chatBody) return;
@@ -261,11 +313,17 @@ return reply;
       msg.style.marginRight = '30px';
       msg.style.border = '1px solid #d9cfbc';
 
-      var modelBadge = modelUsed ? 
-        '<span style="background: #d9cfbc; color: #666; padding: 1px 6px; border-radius: 3px; font-size: 10px; margin-left: 6px;">' + modelUsed + '</span>' : 
-        '';
+      var metaBadge = '';
+      if (meta) {
+        var parts = [];
+        if (meta.model) parts.push(meta.model);
+        if (typeof meta.keyIndex === 'number') parts.push('K' + (meta.keyIndex + 1));
+        if (parts.length > 0) {
+          metaBadge = '<span style="background: #d9cfbc; color: #666; padding: 1px 6px; border-radius: 3px; font-size: 10px; margin-left: 6px;">' + parts.join(' · ') + '</span>';
+        }
+      }
 
-      msg.innerHTML = '<div style="font-weight: bold; margin-bottom: 4px; color: #a68a56;">🤖 AI ' + modelBadge + '</div>' + escapeHtml(text).replace(/\n/g, '<br>');
+      msg.innerHTML = '<div style="font-weight: bold; margin-bottom: 4px; color: #a68a56;">🤖 AI ' + metaBadge + '</div>' + escapeHtml(text).replace(/\n/g, '<br>');
     }
 
     chatBody.appendChild(msg);
@@ -316,6 +374,7 @@ return reply;
 
         '<div style="display: flex; gap: 8px; align-items: center; margin-bottom: 10px; flex-shrink: 0;">' +
           '<h2 style="flex: 1; margin: 0; font-size: 18px;">💬 與 AI 討論文章</h2>' +
+          '<button id="aiChatKeysBtn" style="padding: 5px 10px; background: transparent; border: 1px solid #aaa; border-radius: 4px; cursor: pointer; font-size: 12px;">🔑 Keys</button>' +
           '<button id="aiChatClearBtn" style="padding: 5px 10px; background: transparent; border: 1px solid #aaa; border-radius: 4px; cursor: pointer; font-size: 12px;">🗑️ 清空</button>' +
           '<button id="aiChatCloseBtn" style="padding: 5px 10px; background: transparent; border: 1px solid #aaa; border-radius: 4px; cursor: pointer; font-size: 12px;">Close</button>' +
         '</div>' +
@@ -331,8 +390,7 @@ return reply;
         '">' +
           '<div style="color: #999; text-align: center; padding: 20px; font-size: 12px;">' +
             '請問任何關於這篇文章的問題...<br>' +
-            '例如：解釋 "overtime"、造 3 個句子、翻譯這段、討論主題<br><br>' +
-            '<span style="color: #a68a56;">系統會自動選擇最合適的 Gemini 模型</span>' +
+            '<span style="color: #a68a56;">系統會自動切換 API Key 和模型</span>' +
           '</div>' +
         '</div>' +
 
@@ -376,6 +434,14 @@ return reply;
       }
     };
 
+    document.getElementById('aiChatKeysBtn').onclick = function () {
+      if (typeof window.openGeminiKeyManager === 'function') {
+        window.openGeminiKeyManager();
+      } else {
+        alert('請先加載 gemini-multi-key-patch.js');
+      }
+    };
+
     var sendMessage = async function () {
 
       var input = document.getElementById('aiChatInput');
@@ -409,12 +475,15 @@ return reply;
         loading.remove();
 
         if (result && result.reply) {
-          appendMessage('ai', result.reply, result.model);
+          appendMessage('ai', result.reply, {
+            model: result.model,
+            keyIndex: result.keyIndex
+          });
         }
 
       } catch (e) {
         loading.remove();
-        appendMessage('ai', '⚠️ ' + e.message);
+        appendMessage('ai', e.message);
       } finally {
         sendBtn.disabled = false;
         sendBtn.textContent = '送出';
@@ -490,6 +559,6 @@ return reply;
 
   window.openAIChat = openChat;
 
-  log('ready v20260712-3');
+  log('ready v20260712-6');
 
 })();
