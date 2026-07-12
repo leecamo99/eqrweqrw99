@@ -4407,7 +4407,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783817450910,
+  "updatedAt": 1783817547358,
   "learn": {
     "github": {
       "word": "github",
@@ -6058,34 +6058,82 @@
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
       "lastSeenAt": 1783817450894,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1783817517197,
       "lifetimeClicks": 11,
       "sessionClicks": 11,
       "maxClickStreak": 5,
-      "reviewHistory": [],
-      "dueAt": 1783804057620,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1783817503055,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 6,
+          "strength": 6,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1783817517197,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 6,
+          "strength": 6,
+          "intervalDays": 1
+        }
+      ],
+      "dueAt": 1783903917197,
+      "intervalDays": 1,
+      "ease": 2.3,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "perspective",
+      "lastSurface": "perspectives",
       "lastForm": "base form",
       "variants": {
         "perspective": 6,
-        "perspectives": 2
+        "perspectives": 3
       },
       "clicks": 6,
       "strength": 6,
       "captured": true,
       "known": false,
-      "updatedAt": 1783817450902,
+      "updatedAt": 1783817517198,
       "loading": false,
-      "tw": "透視",
+      "tw": "看法",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A view, vista or outlook.",
-      "isWeak": true
+      "tip": "",
+      "isWeak": true,
+      "translationSource": "Google Translate",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "A view, vista or outlook.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "The appearance of depth in objects, especially as perceived using binocular vision.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "The technique of representing three-dimensional objects on a two-dimensional surface.",
+          "example": null
+        },
+        {
+          "pos": "adjective",
+          "def": "Of, in or relating to perspective.",
+          "example": "a perspective drawing"
+        },
+        {
+          "pos": "adjective",
+          "def": "Providing visual aid; of or relating to the science of vision; optical.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "perspectif": {
       "word": "perspectif",
@@ -6232,6 +6280,40 @@
       "definitionSource": "dictionaryapi.dev",
       "engine": "MyMemory",
       "pos": "verb"
+    },
+    "prestigiou": {
+      "word": "prestigiou",
+      "lemma": "prestigiou",
+      "firstSeenAt": 1783817545776,
+      "lastSeenAt": 1783817545776,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783821145781,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "prestigious",
+      "lastForm": "base form",
+      "variants": {
+        "prestigiou": 1,
+        "prestigious": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783817547352,
+      "loading": false,
+      "tw": "prestigiou",
+      "translationSource": "Google Translate",
+      "tip": "Auto translated by MyMemory",
+      "engine": "MyMemory",
+      "pos": ""
     }
   }
 }
