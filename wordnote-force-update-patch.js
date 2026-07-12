@@ -1,6 +1,5 @@
-/* wordnote-force-update-patch.js v20260711-2
-   Forces window.showWord to render dockBody directly.
-   Bypasses patch scope issues where showWordPatched is not executed.
+/* wordnote-force-update-patch.js v20260712-3
+   v3: New template with colored boxes (definition/synonyms/example)
 */
 
 (function () {
@@ -27,7 +26,6 @@
     }
   }
 
-  // 強制版 showWord
   function forceShowWord(surfaceOrLemma) {
 
     var db = getDB();
@@ -53,17 +51,34 @@
       .map(function (kv) { return esc(kv[0]) + ' ×' + kv[1]; })
       .join(', ');
 
-    dockBody.innerHTML =
+    var html =
       '<div class="wordbig">' + esc(x.lastSurface || surfaceOrLemma) + '</div>' +
       '<div style="color:var(--muted)">原形：<b>' + esc(x.lemma || x.word) + '</b> · ' +
       esc(x.pos || '') + ' · 點擊 ' + (x.clicks || 0) + ' 次 · 亮度 ' + (x.strength || 0) + '/10</div>' +
       '<div style="color:var(--muted)">型態：' + esc(x.lastForm || 'base form') + '</div>' +
-      '<div class="meaning">' + esc(x.tw || '') + '</div>' +
-      '<div style="color:var(--muted)">' + esc(x.tip || '') + '</div>' +
-      '<div style="font-size:12px;color:var(--muted);margin-top:6px">變形：' + (variants || '—') + '</div>' +
-      '<button class="btn" onclick="known(\'' + esc(x.lemma || x.word) + '\')">已熟，歸零</button>' +
-      '<button class="btn" onclick="hard(\'' + esc(x.lemma || x.word) + '\')">還不熟</button>' +
-      '<button class="btn" onclick="document.getElementById(\'dock\').classList.remove(\'show\')">關閉</button>';
+      '<div class="meaning">' + esc(x.tw || '') + '</div>';
+
+    if (x.tip) {
+      html += '<div style="margin-top:8px;padding:6px 10px;background:rgba(0,0,0,0.03);border-left:3px solid #a68a56;border-radius:3px;font-size:12px;color:#555">' +
+              '<b style="color:#a68a56">定義</b> ' + esc(x.tip) + '</div>';
+    }
+
+    if (x.synonyms) {
+      html += '<div style="margin-top:4px;padding:6px 10px;background:rgba(0,0,0,0.03);border-left:3px solid #7a9;border-radius:3px;font-size:12px;color:#555">' +
+              '<b style="color:#7a9">同義</b> ' + esc(x.synonyms) + '</div>';
+    }
+
+    if (x.example) {
+      html += '<div style="margin-top:4px;padding:6px 10px;background:rgba(0,0,0,0.03);border-left:3px solid #b57;border-radius:3px;font-size:12px;color:#555">' +
+              '<b style="color:#b57">例句</b> ' + esc(x.example) + '</div>';
+    }
+
+    html += '<div style="font-size:12px;color:var(--muted);margin-top:6px">變形：' + (variants || '—') + '</div>' +
+            '<button class="btn" onclick="known(\'' + esc(x.lemma || x.word) + '\')">已熟，歸零</button>' +
+            '<button class="btn" onclick="hard(\'' + esc(x.lemma || x.word) + '\')">還不熟</button>' +
+            '<button class="btn" onclick="document.getElementById(\'dock\').classList.remove(\'show\')">關閉</button>';
+
+    dockBody.innerHTML = html;
 
     dock.classList.add('show');
     dock.style.display = '';
@@ -71,10 +86,8 @@
     log('updated dockBody for', lemma);
   }
 
-  // 覆蓋 window.showWord
   window.showWord = forceShowWord;
 
-  // Hook clickWord 之後自動呼叫 showWord
   var origClick = window.clickWord;
 
   if (typeof origClick === 'function') {
@@ -88,6 +101,6 @@
     };
   }
 
-  log('ready v20260711-2');
+  log('ready v20260712-3 (colored boxes)');
 
 })();
