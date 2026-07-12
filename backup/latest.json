@@ -4408,7 +4408,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783866535824,
+  "updatedAt": 1783866624572,
   "learn": {
     "github": {
       "word": "github",
@@ -5860,7 +5860,7 @@
       "word": "global",
       "lemma": "global",
       "firstSeenAt": 1783797093090,
-      "lastSeenAt": 1783866535819,
+      "lastSeenAt": 1783866624556,
       "lastReviewedAt": 0,
       "lifetimeClicks": 6,
       "sessionClicks": 6,
@@ -5882,7 +5882,7 @@
       "strength": 6,
       "captured": true,
       "known": false,
-      "updatedAt": 1783866535821,
+      "updatedAt": 1783866624562,
       "loading": false,
       "tw": "全球的",
       "engine": "MyMemory",
