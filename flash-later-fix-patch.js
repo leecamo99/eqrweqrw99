@@ -1,13 +1,21 @@
-/* flash-later-fix-patch.js  v20260713-3
-   🚨 關鍵修正：移除 MutationObserver（避免無限迴圈）
-   - 改用 setInterval 800ms 輪詢
-   - 加入節流：最多每 500ms 掃一次
-   - 只在狀態真的改變時才做事（避免重複注入）
+/* flash-later-fix-patch.js  v20260713-4
+   關鍵修正：解決 fullTranslateBox 遮罩問題（z-index 2147483000）
+   功能：
+   1) ⭐ 閃卡開啟時：隱藏會蓋住的元素（fullTranslateBox 等）
+   2) ⭐ 閃卡關閉時：還原它們
+   3) ⭐ 強制閃卡 z-index 到最上層
+   4) 關閉按鈕 + ESC
+   5) 稍後修正（不改 SRS）
+   6) 進度顯示
+   7) 無 MutationObserver（避免無限迴圈）
 */
 (function () {
   'use strict';
   var TAG = '[FlashEnhance]';
-  var VER = 'v20260713-3';
+  var VER = 'v20260713-4';
+
+  // 會蓋住閃卡的元素 ID 清單
+  var BLOCKERS = ['fullTranslateBox'];
 
   var seenWords = [];
   var totalGuess = 0;
@@ -16,6 +24,7 @@
   var lastScanTime = 0;
   var closeBtnInjected = false;
   var laterBtnBound = false;
+  var savedBlockerStyles = {};
 
   function resetProgress() {
     seenWords = [];
@@ -23,6 +32,36 @@
     lastWord = '';
     closeBtnInjected = false;
     laterBtnBound = false;
+  }
+
+  function hideBlockers() {
+    BLOCKERS.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && !savedBlockerStyles[id]) {
+        savedBlockerStyles[id] = el.style.display || '';
+        el.style.display = 'none';
+        console.log(TAG, 'hide blocker:', id);
+      }
+    });
+  }
+
+  function restoreBlockers() {
+    Object.keys(savedBlockerStyles).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.style.display = savedBlockerStyles[id];
+        console.log(TAG, 'restore blocker:', id);
+      }
+    });
+    savedBlockerStyles = {};
+  }
+
+  function boostFlashZIndex() {
+    var flash = document.getElementById('flash');
+    if (!flash) return;
+    if (flash.style.zIndex !== '999999') {
+      flash.style.zIndex = '999999';
+    }
   }
 
   function guessTotal() {
@@ -49,7 +88,6 @@
     var word = (flashQ.textContent || '').trim().toLowerCase();
     if (!word || !/^[a-z][a-z\-']*$/i.test(word)) return;
 
-    // 只在字換了才更新
     if (word === lastWord) return;
     lastWord = word;
 
@@ -73,15 +111,15 @@
     var word = flashQ && flashQ.textContent.trim();
     if (!word) { console.warn(TAG, '沒有當前字'); return; }
 
-    console.log(TAG, '\u23ed\ufe0f 跳過:', word);
+    console.log(TAG, '\u23ED\uFE0F 跳過:', word);
 
     var origHard = window.hard;
     if (typeof origHard === 'function') {
-      window.hard = function () {};  // 靜默攔截
+      window.hard = function () {};
       var found = false;
       var btns = document.querySelectorAll('button');
       for (var i = 0; i < btns.length; i++) {
-        if (btns[i].textContent.trim() === '\u9084\u4e0d\u719f') {
+        if (btns[i].textContent.trim() === '\u9084\u4E0D\u719F') {
           btns[i].click();
           found = true;
           break;
@@ -98,8 +136,10 @@
     var flash = document.getElementById('flash');
     if (flash) {
       flash.classList.remove('show');
-      console.log(TAG, '\ud83d\udd1a 關閉閃卡');
+      flash.style.zIndex = '';
+      console.log(TAG, '\uD83D\uDD1A 關閉閃卡');
       cleanupUI();
+      restoreBlockers();
       resetProgress();
     }
   }
@@ -134,7 +174,7 @@
     var btn = document.createElement('button');
     btn.className = 'flash-close-btn';
     btn.textContent = '\u2715';
-    btn.title = '\u95dc\u9589 (ESC)';
+    btn.title = '\u95DC\u9589 (ESC)';
     btn.style.cssText = 
       'position:absolute;top:8px;right:8px;' +
       'width:28px;height:28px;padding:0;' +
@@ -160,11 +200,11 @@
     var btns = flash.querySelectorAll('button');
     for (var i = 0; i < btns.length; i++) {
       var b = btns[i];
-      if (b.textContent.trim() === '\u7a0d\u5f8c' && !b.__laterBound) {
+      if (b.textContent.trim() === '\u7A0D\u5F8C' && !b.__laterBound) {
         b.onclick = flashLater;
         b.__laterBound = true;
         laterBtnBound = true;
-        console.log(TAG, '\u23ed\ufe0f 稍後按鈕已重綁');
+        console.log(TAG, '\u23ED\uFE0F 稍後按鈕已重綁');
         return;
       }
     }
@@ -180,7 +220,6 @@
   });
 
   function scan() {
-    // ⭐ 節流：最多每 500ms 掃一次
     var now = Date.now();
     if (now - lastScanTime < 500) return;
     lastScanTime = now;
@@ -190,21 +229,23 @@
 
     var isShown = flash.classList.contains('show');
 
-    // 狀態改變才做事
     if (isShown && !wasShown) {
-      console.log(TAG, '\ud83c\udfaf 閃卡開啟');
+      console.log(TAG, '\uD83C\uDFAF 閃卡開啟');
       resetProgress();
+      hideBlockers();        // ⭐ 隱藏遮罩物
+      boostFlashZIndex();    // ⭐ 提高 z-index
     }
     if (!isShown && wasShown) {
-      console.log(TAG, '\ud83d\udd1a 閃卡關閉，清理');
+      console.log(TAG, '\uD83D\uDD1A 閃卡關閉');
       cleanupUI();
+      restoreBlockers();     // ⭐ 還原遮罩物
+      flash.style.zIndex = '';
       resetProgress();
     }
     wasShown = isShown;
 
     if (!isShown) return;
 
-    // 只在需要時才注入
     if (!closeBtnInjected) injectCloseBtn();
     if (!laterBtnBound) bindLaterBtn();
     updateProgress();
@@ -212,12 +253,14 @@
 
   function boot() {
     setTimeout(function () {
-      // ⭐ 只用 setInterval，不用 MutationObserver（避免無限迴圈）
       setInterval(scan, 800);
-
       console.log(TAG, 'ready', VER);
-      console.log(TAG, '\u26a0\ufe0f 使用 800ms polling（無 MutationObserver）');
-    }, 2000);  // 延遲 2 秒避免與其他 patch 衝突
+      console.log(TAG, '功能：');
+      console.log(TAG, '  \u2715 關閉按鈕（ESC）');
+      console.log(TAG, '  \uD83D\uDCCA 進度顯示');
+      console.log(TAG, '  \u23ED\uFE0F 稍後修正');
+      console.log(TAG, '  \uD83D\uDEE1\uFE0F 遮罩物隔離 (fullTranslateBox)');
+    }, 2000);
   }
 
   if (document.readyState === 'loading') {
