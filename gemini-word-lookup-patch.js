@@ -1,169 +1,195 @@
-/* gemini-word-lookup-patch.js  v20260713-3
+/* gemini-word-lookup-patch.js  v20260713-4
    修正：
    1) 移除不存在的 model (3.5-flash / flash-latest)
    2) 強化 JSON 解析（剝 ```json fence）
-   3) 429 冷卻：單 key 冷卻 20 分鐘、全域 60 秒節流
+   3) 429 冷卻：單 key 冷卻 20 分鐘
    4) 批次查詢降速：每字間隔 800ms、失敗立即停止批次
    5) 本地快取 24 小時，避免重複查同一字
-   6) 整合 __geminiQuota 監控面板記錄（optional chaining 安全呼叫）
-*/
-(function () {
+   6) 整合 __geminiQuota 監控面板記錄
+   7) 讀取實際的 notebook_gemini_api_key_v1 / notebook_gemini_keys_v1
+*/*(function () {
   'use strict';
- *const TAG = '[GeminiLookup]';
-  co*st VER = 'v20260713-3';
+  c*nst TAG = '[GeminiLookup]';
+  cons* VER = 'v20260713-4';
 
-  // ✅ 只留*方合法 model
-  const MODELS = ['gemini-2.0-flash', 'gemini-2.5-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-flash'];
+  const MOD*LS*= ['gemini-2.0-flash', 'gemini-2.5-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-flash'];
 
-  const KEY_COOLDOWN_MS = *0 * 60 * 1000;
-  const CACHE_TTL_M*    = 24 * 60 * 60 * 1000;
-  const*BATCH_GAP_MS    = 800;   // 批次每字間隔*  const CALL_GAP_MS     = 300;   /* 單次呼叫間隔
-
+  const KEY_COOL*OWN_MS = 20 * 60 * 1000;
+  const C*CHE_TTL_MS    = 24 * 60 * 60** 1000;
+  const BATCH_GAP_MS    = *00;
+  const CALL_GAP_MS     = 300;*
   const _cool = {};
-  con*t isCool = i => _cool[i] && (Date.*ow() - _cool[i] < KEY_COOLDOWN_MS)*
-  const markCool = i => { _cool[i] = Date.now(); console.warn(TAG, `*ey ${i+1} 冷卻 20 分鐘`); };
+  const*isCool = i => _cool[i] && (Date.no*() - _cool[i] < KEY_COOLDOWN_MS);
+* const markCool = i => { _*ool[i] = Date.now(); console.warn(*AG, 'key ' + (i+1) + ' 冷* 20 分鐘'); };
 
-  // ---* 本地快取 ----
-  function cacheGet(wor*) {
+  function cacheGet(*ord) {
     try {
-      const raw = lo*al*torage.getItem('gemini_lookup_cach*_' + word.toLowerCase());
-      if*(!raw) {
-        window.__geminiQu*ta?.recordCache(false);   */ 👈 快取 miss
-        return null;
+      const raw =*localStorage.getItem('gemini_looku*_cache_'*+ word.toLowerCase());
+      if (!*aw) { window.__geminiQuota && wind*w.__geminiQuota.recordCache(false)* return null; }
+      const*o = JSON.parse(raw);
+      if (Dat*.now() - o.t > CACHE_TTL_MS) { win*ow.__geminiQuota && window.__gemin*Quota.recordCache(*alse); return null; }
+      window*__geminiQuota && window.__geminiQu*ta.recordCache(true);
+      return*o.d;
+    } catch (e) {
+      windo*.__gemini*uota && window.__geminiQuota.recor*Cache(false);
+      return null;
+ *  }
+  }
+  function cacheSet(word, *ata) {
+    try {
+      localStorag*.setItem('gemini*lookup_cache_' + word.toLowerCase(*,
+        JSON.stringify({ t: Date*now(), d: data }));
+    } catch (e* {}
+  }
+
+  function*getKeys() {
+    var candidates = [
+      'notebook_gemini_api_key_v1',
+      'notebook_gemini_keys_v1',
+      'notebook_gemini_key_v1',
+      'gemini_api_keys',
+      'gemini_api_key'
+    ];
+    var keys = [];*    for (var idx = 0; idx * candidates.length; idx++) {
+     *var raw = localStorage.getItem(can*idates[idx]);
+      if (!raw) cont*nue;
+      if (raw.trim().charAt(0* === '[') {
+        try {
+        * var arr = JSON.parse(raw);
+      *   if (Array.isArray(arr)) {
+     *      for (var j = 0; j < arr.leng*h; j++) {
+              if (arr[j]* keys.push(String(arr[j]).trim());*            }
+          }
+        * continue;
+        } catch (e) {}
 *     }
-      const o = JSON.parse(*aw);
-      if (*ate.now() - o.t > CACHE_TTL_MS) {
-*       window.__geminiQuota?.recor*Cache(false);   // 👈 過期也* miss
-        return null;
-      }*      window.__geminiQuota?.record*ache(true);      // 👈 命中
-      re*urn o.d;
-    } catch {
-      windo**__geminiQuota?.recordCache(false);*      return null;
+      var parts = raw.split*/[\n,;]+/);
+      for (var k = 0; * < parts.length; k++) {
+        va* t = parts[k].trim();
+        if (*) keys.push(t);*      }
     }
-  }
-  fun*tion cacheSet(word, data) {
-    tr* {
-      localStorage.setItem('gem*ni_lookup*cache_' + word.toLowerCase(),
-    *   JSON.stringify({ t: Date.now(),*d: data }));
-    } catch {}
-  }
+    var seen = {};
+ *  var valid = [];
+    for (var m =*0; m < keys.length; m++) {
+      v*r kk = keys[m];*      if (kk.indexOf('AIza') === 0*&& !seen[kk]) {
+        seen[kk] =*1;
+        valid.push(kk);
+      }*    }
+    return valid;*  }
 
- *function getKeys() {
-    const ra* = localStorage.getItem('gemini_ap*_keys') || localStorage.getItem('g*mini_api_key') || '';
-    return r*w.split(/[\n,;]+/).map(s => s.trim*)).filter(Boolean);
-  }
-
-  functio* safeParseJSON(text) {
-    if (!te*t) return null;*    let t = String(text).trim()
-  *   .replace(/^```(?:json)?\s*/i, '*)
-      .replace(/\s*```$*, '')
+  function safeParseJSON(text* {
+    if (!text) return null;
+   *var t = String(text).trim()
+      *replace(/^```*?:json)?\s*/i, '')
+      .replace(*\s*```$/, '')
       .trim();
-    const m = t.match(/\{[\s\S]*\}/);
+    v*r m = t.match(/\*[\s\S]*\}/);
     if (m) t = m[0];
     t = t.replace(/,\s*([}\]])/g, '$1');
-    try { retu*n JSON.parse(t); } catch { return *ull; }
-  }
-
-  async function*callGemini(word, key, keyIdx, mode*) {
-    const url = `https://gener*tivelanguage.googleapis.com/v1beta*models/${model}:generateContent?ke*=*{key}`;
-    const prompt = `請以 JSO* 回答英文*字 "${word}"，只回 JSON：
-{"pos":"詞性 *./v./adj. 等","tw":"繁中最*見意思","ex":"英文例句","tw*ex":"例句繁中翻譯"}`;
-    const res = aw*it fetch(url, {
-      method: 'POS*',
-      headers* { 'Content-Type': 'application/js*n' },
-      body: JSON.stringify({*        contents: [{ parts: [{ text: prompt }] }],
-        generation*onfig: { temperature: 0.2, maxOutp*tTokens: 300 }
+    try { return*JSON.parse(t*; } catch (e) { return null; }
+  }*
+  async function callGemini(word,*key, keyIdx, model) {
+    var url * 'https://generativelanguage.googleapis.com/v1beta/models/' + model +*':generateContent?key=' + key;
+   *var prompt = '請以 JSON 回答英文單字 "' + *ord + '"，只回 JSON：\*{"pos":"詞性 n./v./adj.*等","tw":"繁中最常見意思","*x":"英文例句","tw_ex":"例句繁中翻譯"}';
+    *ar res = await fetch(url, {
+      *ethod: 'POST',
+      headers: { 'C*ntent-Type': 'application/json' },*      body: JSON.stringify({
+     *  contents: [{ parts: [{ text: prompt }] }],
+        generationConfig* { temperature: 0.2, maxOutputToke*s: 300 }
       })
     });
 
- *  if (res.status === 429) {
-      *indow.__geminiQuota?.recordCall(ke*Idx, '429');   // 👈 記錄 429
-      *arkCool(keyIdx);
-      throw new E*ror('RATE_LIMIT');
+    if *res.status === 429) {
+      window*__geminiQuota && window.__geminiQu*ta.recordCall(keyIdx, '429');
+    * markCool(keyIdx);
+      throw new*Error('RATE_LIMIT');
     }
-    if (r*s.status === 404)*{
-      window.__geminiQuota?.reco*dCall(keyIdx, 'fail');  // 👈 記錄失敗*      throw new Error('MODEL_N*T_FOUND');
+    if **es.status === 404) {
+      window.*_geminiQuota && window.__geminiQuo*a.recordCall(keyIdx, 'fail');
+    * throw new Error('MODEL_NOT_F*UND');
     }
-    if (!res.ok) *
-      window.__geminiQuota?.recor*Call(keyIdx, 'fail');  // 👈 記錄失*
-      throw new Error('HTTP_' + r*s.status);
-    }
-
-    const data =*await res.json();
-    const text =*data?.candidates?.[0]?.content?.pa**s?.[0]?.text || '';
-    const pars*d = safeParseJSON(text);
-    if (!*arsed) {
-      window.__geminiQuot*?.recordCall(keyIdx, *fail');  // 👈 解析失敗
-      throw ne* Error('PARSE_FAIL');
+    if (!res.ok) {
+  *   window.__geminiQuota && window.*_geminiQuota.recordCall(keyIdx, 'f*il');
+      throw new Error('*TTP_' + res.status);
     }
 
-    w*ndow.__geminiQuota?.recordCall(key*dx, *ok');      // 👈 記錄成功
-    return p*rsed;
+    va* data = await res.json();
+    var *ext = (data && data.candidates && *ata.candidates[0] && data.candidat*s[0].content && data.candidates[0]*content.parts && data.candidates[0].content.parts[0] && data.candidat*s[0].content.parts[0].text) || '';*    var parsed = safeParseJSON(tex*);
+    if (!parsed) {
+      window*__geminiQuota && window.__geminiQu*ta.recordCall(keyIdx, 'fail');
+   *  throw new Error('PARSE_F*IL');
+    }
+
+    window.__geminiQu*ta && window.__geminiQuota.recordC*ll(keyIdx, 'ok');
+    return parse*;
   }
 
-  // ---- 單字查詢 ----
-  a*ync function lookupWordWithGemini(*ord* {
-    if (!word) return null;
-   *const cached = cacheGet(word);
-   *if (cached) { console.log(TAG, `📦*快取命中: ${word}`); return c*ched; }
+  async function lookupWord*ithGemini(word) {
+    if (!word) r*turn null;
+    var cached = cacheG*t(word);
+    if (cached) { console*log(TAG, '📦*快取命中: ' + word); return cached; }
+*    var keys = getKeys();
+    if (*keys.length) { console.warn(TAG* '沒有 API key'); return null; }
 
-    const keys = getKeys(*;
-    if (!keys.length) { console.*arn(TAG, '沒有 API key'); return nul*; }
-
-    for (let i = 0;*i < keys.length; i++) {
-      if (*sCool(i)) { console.log(TAG, `跳過冷卻*key ${i+1}`); continue; }
-      fo* (const model of MODELS)*{
-        console.log(TAG, `查詢: ${*ord} 用 key ${i+1} model: ${model}`*;
-        *ry {
-          const r = await cal*Gemini(word, keys[i], i, model);
- *        cacheSet(word, r);
-       *  console.log(TAG, `✅ ${word} 成功 (*{model})`);*          return r;
-        } catc* (e) {
-          if (e.message ===*'RATE_LIMIT') break;
-          if *e.message === 'MODEL_NOT_FOUND') c*ntinue;*          console.warn(TAG, `${mod*l} 失敗:`, e.message);
+  * for (var i = 0; i < keys.length; *++) {
+      if (isCool(i)) { conso*e.*og(TAG, '跳過冷卻 key ' + (i+1)); cont*nue; }
+      for (var m = 0; m < M*DELS.length; m++) {
+        var mo*el = MODELS[m];*        console.log(TAG, '查詢: ' + *ord + ' 用 key ' + (i+1) + ' model:*' + model);
+        try*{
+          var r = await callGemi*i(word, keys[i], i, model);
+      *   cacheSet(word, r);
+          co*sole.log(TAG, '✅ ' + word + ' 成* (' + model + ')');
+          retu*n r;
+        } catch (e) {
+       *  if (e.message === 'RATE_LIMIT') *reak;
+          if (e.message === *MODEL_NOT*FOUND') continue;
+          consol*.warn(TAG, model + ' 失敗: ' + e.mes*age);
         }
-   *    await new Promise(r => setTime*ut(r, CALL_GAP_MS));
+        await new *romise(function (r) { setTimeout(*, CALL_GAP_MS); });
       }
-    }*    console.warn(TAG, `❌ ${word} 全*失敗`);
+    }
+*   console.warn(TAG, '❌ ' + word +*' 全部失敗');
     return null;
   }
 
-  // -*-- 批次查詢（弱點單字）----
-  async function*bat*hLookupWithGemini(words) {
-    if *!Array.isArray(words) || !words.le*gth) return {};
-    const result =*{};
-    const total = words.length*
-    console.log(TAG, `*� 批次啟動：${total} 字`);
+  *sync function batchL*okupWithGemini(words) {
+    if (!A*ray.isArray(words) || !words.lengt*) return {};
+    var result = {};
+*   var total = words.length;
+    c*nsole.log(T*G, '🔍 批次啟動：' + total + ' 字');
 
-    // 先扣掉已快*的
-    const todo = [];
-    words.f*rEach(w => {
-      const c = c*cheGet(w);
-      if (c) result[w] * c;
-      else todo.push(w);
-    }*;
-    console.log(TAG, `📦 快取命中 ${*otal*- todo.length} / ${total}，剩 ${todo*length} 字要查`);
-
-    let rateLimitH*t = 0;
-    for (let i = 0; i < tod*.length; i++) {
-      const w = to*o[i];
-      console.log(TAG, `${i+*}/${todo.length} - 查詢: ${w}`);
-   *  const*r = await lookupWordWithGemini(w);*      if (r) { result[w] = r; rate*imitHit = 0; }
-      else {
-      * rateLimitHit++;
-        // 連* 3 個失敗就中斷批次（大概全 key 都冷卻了）
-        *f (rateLimitHit >= 3* {
-          console.warn(TAG, `⛔ *續 ${rateLimitHit} 個失敗，中斷批次以保護 quot*`);*          break;
-        }
-      }*      await new Promise(r => setTi*eout(r, BATCH_GAP_MS));
+  * var todo = [];
+    for (var i = 0* i < words.length; i++) {
+      va**w = words[i];
+      var c = cacheG*t(w);
+      if (c) result[w] = c;
+*     else todo.push(w);
     }
-    *onsole.log(TAG, `🎉 批次完成，*功 ${Object.keys(result).length} / *{total}`);
+    *onsole.log(TAG, '📦 快取命中 * + (total - todo.length) + ' / ' +*total + '，剩 ' + todo.length + ' 字要*');
+
+    var rateLimit*it = 0;
+    for (var j = 0; j < to*o.length; j++) {
+      var w2 = to*o[j];
+      console.log(TAG, (j+1)*+ '/' + todo.length +*' - 查詢: ' + w2);
+      var r2 = aw*it lookupWordWithGemini(w2);
+     *if (r2) { result[w2] = r2* rateLimitHit = 0; }
+      else {
+*       rateLimitHit++;
+        if *rateLimitHit >= 3) {
+          con*ole.warn(TAG, '* 連續 ' + rateLimitHit + ' 個失敗，中斷批次'*;
+          break;
+        }
+     *}
+      await new*Promise(function (r) { setTimeout(*, BATCH_GAP_MS); });
+    }
+    con*ole.log(TAG, '🎉 批次完成，成功 ' + Objec*.*eys(result).length + ' / ' + total*;
     return result;
   }
-*  window.lookupWordWithGemini  = l*okupWordWithGemini;
-  window.batch**okupWithGemini = batchLookupWithGe*ini;
-  console.log(TAG, 'ready', V*R);
-  console.log(TAG, '全域函式:');
- *console.log(TAG,*'  lookupWordWithGemini("word")  -*查詢單字');
-  console.log(TAG, '  batc*LookupWithGemini([...])  - 批次查*');
-})();
+
+  window*lookupWordWithGemini  = lookupWord*ithGemini;
+  window.batchLookupWit*G*mini = batchLookupWithGemini;
+  co*sole.log(TAG, 'ready', VER);
+  con*ole.log(TAG, '全域函式*');
+  console.log(TAG, '  lookupWo*dWithGemini("word")  - 查詢單字');
+  c*nsole.log(TAG, '  batch*ookupWithGemini([...])  - 批次查詢');
+*)();
