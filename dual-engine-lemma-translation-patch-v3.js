@@ -48,5 +48,5 @@
   window.lemmatizeWord=lemmatize;window.autoTranslateLemma=autoTranslateLemma;
   window.setGoogleTranslateKey=function(){const old=localStorage.getItem(GOOGLE_KEY)||'';const k=prompt('貼上 Google Cloud Translation API Key（留空＝清除，只用 MyMemory）',old);if(k===null)return;if(k.trim())localStorage.setItem(GOOGLE_KEY,k.trim());else localStorage.removeItem(GOOGLE_KEY);alert(k.trim()?'已儲存 Google API Key，翻譯會優先用 Google。':'已清除 Google API Key，將只用 MyMemory。');};
   window.debugLearn=function(word){const key=lemmatize(word).lemma;return getDB().learn[key];};
-  setTimeout(()=>{const side=document.getElementById('side');if(side&&!document.getElementById('googleKeyBtn')){const b=document.createElement('button');b.id='googleKeyBtn';b.className='sidebtn';b.textContent='Google 翻譯 Key';b.onclick=window.setGoogleTranslateKey;const hr=side.querySelector('hr');side.insertBefore(b,hr?hr.nextSibling:side.firstChild);}refreshUI();console.log('Dual Engine Lemma Translation patch v3 loaded');},500);
+  setTimeout(()=>{refreshUI();console.log('Dual Engine Lemma Translation patch v3 loaded');},500);
 })();
