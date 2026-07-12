@@ -1,24 +1,24 @@
-/* flash-later-fix-patch.js  v20260713-4
-   關鍵修正：解決 fullTranslateBox 遮罩問題（z-index 2147483000）
-   功能：
-   1) ⭐ 閃卡開啟時：隱藏會蓋住的元素（fullTranslateBox 等）
-   2) ⭐ 閃卡關閉時：還原它們
-   3) ⭐ 強制閃卡 z-index 到最上層
-   4) 關閉按鈕 + ESC
-   5) 稍後修正（不改 SRS）
-   6) 進度顯示
-   7) 無 MutationObserver（避免無限迴圈）
+/* flash-later-fix-patch.js  v20260713-5
+   關鍵修正：進度分母 bug
+   - 舊版：totalGuess = guessTotal() + seenWords.length，多加 1 且永不更新
+   - 新版：閃卡開啟時拍快照 initialTotal，關閉還原，重開重算
+
+   保留功能：
+   - 隱藏 fullTranslateBox 遮罩
+   - z-index: 999999
+   - ✕ 關閉按鈕 / ESC
+   - 稍後修正（不改 SRS）
+   - 無 MutationObserver
 */
 (function () {
   'use strict';
   var TAG = '[FlashEnhance]';
-  var VER = 'v20260713-4';
+  var VER = 'v20260713-5';
 
-  // 會蓋住閃卡的元素 ID 清單
   var BLOCKERS = ['fullTranslateBox'];
 
   var seenWords = [];
-  var totalGuess = 0;
+  var initialTotal = 0;      // ⭐ 開啟時的快照
   var lastWord = '';
   var wasShown = false;
   var lastScanTime = 0;
@@ -28,7 +28,7 @@
 
   function resetProgress() {
     seenWords = [];
-    totalGuess = 0;
+    initialTotal = 0;
     lastWord = '';
     closeBtnInjected = false;
     laterBtnBound = false;
@@ -48,10 +48,7 @@
   function restoreBlockers() {
     Object.keys(savedBlockerStyles).forEach(function (id) {
       var el = document.getElementById(id);
-      if (el) {
-        el.style.display = savedBlockerStyles[id];
-        console.log(TAG, 'restore blocker:', id);
-      }
+      if (el) el.style.display = savedBlockerStyles[id];
     });
     savedBlockerStyles = {};
   }
@@ -64,7 +61,8 @@
     }
   }
 
-  function guessTotal() {
+  // 計算目前 db.learn 中到期可複習的字數
+  function countDueWords() {
     try {
       var db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
       var learn = db.learn || {};
@@ -88,21 +86,27 @@
     var word = (flashQ.textContent || '').trim().toLowerCase();
     if (!word || !/^[a-z][a-z\-']*$/i.test(word)) return;
 
-    if (word === lastWord) return;
-    lastWord = word;
-
-    if (seenWords.indexOf(word) === -1) {
-      seenWords.push(word);
+    // 字換了才更新
+    if (word !== lastWord) {
+      lastWord = word;
+      if (seenWords.indexOf(word) === -1) {
+        seenWords.push(word);
+      }
     }
-    if (totalGuess === 0) totalGuess = guessTotal() + seenWords.length;
 
+    // 移除舊標記
     var oldTag = flashMeta.querySelector('.flash-progress');
     if (oldTag) oldTag.remove();
+
+    // ⭐ 分母用 initialTotal（開啟時的快照）
+    // 分子 = seenWords.length
+    // 保底：分母至少要 >= 分子
+    var denominator = Math.max(initialTotal, seenWords.length);
 
     var tag = document.createElement('span');
     tag.className = 'flash-progress';
     tag.style.cssText = 'color:#a68a56;margin-left:10px;font-weight:bold';
-    tag.textContent = '\u00b7 \uD83D\uDCCA ' + seenWords.length + ' / ' + Math.max(totalGuess, seenWords.length);
+    tag.textContent = '\u00b7 \uD83D\uDCCA ' + seenWords.length + ' / ' + denominator;
     flashMeta.appendChild(tag);
   }
 
@@ -229,16 +233,21 @@
 
     var isShown = flash.classList.contains('show');
 
+    // ⭐ 從關閉→開啟：拍快照 initialTotal
     if (isShown && !wasShown) {
-      console.log(TAG, '\uD83C\uDFAF 閃卡開啟');
       resetProgress();
-      hideBlockers();        // ⭐ 隱藏遮罩物
-      boostFlashZIndex();    // ⭐ 提高 z-index
+      hideBlockers();
+      boostFlashZIndex();
+      // 延遲 200ms 拍快照，等 db 讀取穩定
+      setTimeout(function () {
+        initialTotal = countDueWords();
+        console.log(TAG, '\uD83C\uDFAF 閃卡開啟，本輪總計 ' + initialTotal + ' 字');
+      }, 200);
     }
     if (!isShown && wasShown) {
-      console.log(TAG, '\uD83D\uDD1A 閃卡關閉');
+      console.log(TAG, '\uD83D\uDD1A 閃卡關閉，已完成 ' + seenWords.length + ' 字');
       cleanupUI();
-      restoreBlockers();     // ⭐ 還原遮罩物
+      restoreBlockers();
       flash.style.zIndex = '';
       resetProgress();
     }
@@ -255,11 +264,7 @@
     setTimeout(function () {
       setInterval(scan, 800);
       console.log(TAG, 'ready', VER);
-      console.log(TAG, '功能：');
-      console.log(TAG, '  \u2715 關閉按鈕（ESC）');
-      console.log(TAG, '  \uD83D\uDCCA 進度顯示');
-      console.log(TAG, '  \u23ED\uFE0F 稍後修正');
-      console.log(TAG, '  \uD83D\uDEE1\uFE0F 遮罩物隔離 (fullTranslateBox)');
+      console.log(TAG, '\u2705 分母 bug 已修正（開啟時拍快照）');
     }, 2000);
   }
 
