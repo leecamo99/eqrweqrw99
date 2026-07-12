@@ -1,24 +1,26 @@
-/* ai-chat-drawer-patch.js  v20260713-1
-   ChatGPT 風格 AI 對話介面
+/* ai-chat-drawer-patch.js  v20260713-2 Phase A
+   AI 駐站助理 - Phase A（Level 1 + 部分 Level 2）
 
-   功能：
-   1) 右下角 💬 按鈕開啟右側抽屜
-   2) 5 個預設角色 + 自訂 prompt
-   3) 對話清單 + 新對話 + 改名 + 刪除
-   4) 自動存檔（每則訊息即時存）
-   5) 智慧摘要壓縮（訊息 > 20 則自動摘要）
-   6) 開啟時自動載入最後對話
-   7) 手機 RWD
-   8) 用 Gemini API (讀 notebook_gemini_keys_v1 / notebook_gemini_api_key_v1)
+   新增功能（相對 v1）：
+   1) 📎 上下文按鈕：勾選要附加什麼給 AI
+      - 📖 當前文章
+      - 📝 選取文字（自動偵測）
+      - 📚 單字庫統計
+      - 🎯 今天要複習
+      - 📓 最近筆記
+   2) 訊息送出時自動附加上下文
+   3) 輸入框下方顯示啟用的上下文標籤
+   4) 上下文設定跟隨對話儲存
 */
 (function () {
   'use strict';
   var TAG = '[AIChatDrawer]';
-  var VER = 'v20260713-1';
+  var VER = 'v20260713-2';
   var STORAGE_KEY = 'notebook_ai_chats_v1';
   var MODEL_FALLBACK = ['gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-3-flash-preview'];
+  var MAX_ARTICLE_CHARS = 3000;
+  var MAX_DUE_LIST = 30;
 
-  // 5 個預設角色
   var ROLES = {
     english_tutor: {
       name: '📚 英語學習助教',
@@ -40,6 +42,18 @@
       name: '💬 自由對話',
       prompt: ''
     }
+  };
+
+  var CONTEXT_TYPES = [
+    { key: 'article',   label: '📖 當前文章',   desc: '文章標題與內文' },
+    { key: 'selection', label: '📝 選取文字',   desc: '目前反白的文字' },
+    { key: 'wordbank',  label: '📚 單字庫統計', desc: '總數與最近新增' },
+    { key: 'due',       label: '🎯 今天要複習', desc: 'SRS 到期字清單' },
+    { key: 'notes',     label: '📓 最近筆記',   desc: '近 5 個筆記標題' }
+  ];
+
+  var DEFAULT_CONTEXTS = {
+    article: false, selection: false, wordbank: false, due: false, notes: false
   };
 
   // ---- 資料層 ----
@@ -85,12 +99,150 @@
     return valid;
   }
 
+  // ---- 上下文提取 ----
+  function getPlatformDB() {
+    try { return JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}'); }
+    catch (e) { return {}; }
+  }
+
+  function extractArticle() {
+    // 找當前文章：多種可能選擇器
+    var candidates = [
+      document.querySelector('#chapters .chapter'),
+      document.querySelector('.chapter'),
+      document.querySelector('#article'),
+      document.querySelector('article'),
+      document.querySelector('.notebook-content'),
+      document.querySelector('#chapters')
+    ];
+    var el = null;
+    for (var i = 0; i < candidates.length; i++) {
+      if (candidates[i]) { el = candidates[i]; break; }
+    }
+    if (!el) return null;
+
+    // 找標題
+    var title = '';
+    var titleEl = el.querySelector('h1, h2, h3, .chapter-title, [class*="title"]');
+    if (titleEl) title = titleEl.textContent.trim();
+
+    // 抓內文（去掉標題、按鈕、控制元素）
+    var clone = el.cloneNode(true);
+    clone.querySelectorAll('button, script, style, .flash-close-btn, .gsync-btn, [class*="btn"]').forEach(function (n) {
+      n.remove();
+    });
+    var text = clone.textContent.replace(/\s+/g, ' ').trim();
+    if (title && text.indexOf(title) === 0) text = text.slice(title.length).trim();
+    if (text.length > MAX_ARTICLE_CHARS) text = text.slice(0, MAX_ARTICLE_CHARS) + '\n...(內文已截斷)';
+
+    return { title: title || '(無標題)', content: text };
+  }
+
+  function extractSelection() {
+    var s = window.getSelection && window.getSelection().toString().trim();
+    return s || null;
+  }
+
+  function extractWordbank() {
+    var db = getPlatformDB();
+    var learn = db.learn || {};
+    var words = Object.keys(learn);
+    var total = words.length;
+    var now = Date.now();
+    var week = 7 * 24 * 60 * 60 * 1000;
+    var recent7 = 0;
+    words.forEach(function (w) {
+      var e = learn[w];
+      var t = e.createdAt || e.firstSeenAt || e.addedAt || 0;
+      if (t && now - t < week) recent7++;
+    });
+    return { total: total, recent7: recent7 };
+  }
+
+  function extractDue() {
+    var db = getPlatformDB();
+    var learn = db.learn || {};
+    var now = Date.now();
+    var due = [];
+    Object.keys(learn).forEach(function (w) {
+      var e = learn[w];
+      if (!e) return;
+      var d = e.due || e.dueAt || (e.srs && e.srs.due) || 0;
+      if (!d || d <= now) due.push(w);
+    });
+    return {
+      count: due.length,
+      list: due.slice(0, MAX_DUE_LIST),
+      truncated: due.length > MAX_DUE_LIST
+    };
+  }
+
+  function extractNotes() {
+    var db = getPlatformDB();
+    var notebooks = db.notebooks || db.chapters || {};
+    var titles = [];
+    var keys = Object.keys(notebooks);
+    // 用 updatedAt 排序（如果有）
+    keys.sort(function (a, b) {
+      var ta = (notebooks[a] && notebooks[a].updatedAt) || 0;
+      var tb = (notebooks[b] && notebooks[b].updatedAt) || 0;
+      return tb - ta;
+    });
+    for (var i = 0; i < Math.min(5, keys.length); i++) {
+      var n = notebooks[keys[i]];
+      var title = (n && (n.title || n.name)) || keys[i];
+      titles.push(title);
+    }
+    return titles;
+  }
+
+  function buildContextText(contexts) {
+    var parts = [];
+
+    if (contexts.article) {
+      var art = extractArticle();
+      if (art) {
+        parts.push('【當前文章】\n標題: ' + art.title + '\n' + art.content);
+      }
+    }
+
+    if (contexts.selection) {
+      var sel = extractSelection();
+      if (sel) {
+        parts.push('【選取文字】\n"' + sel + '"');
+      }
+    }
+
+    if (contexts.wordbank) {
+      var wb = extractWordbank();
+      parts.push('【單字庫】\n共 ' + wb.total + ' 字，7 天內新增 ' + wb.recent7 + ' 個');
+    }
+
+    if (contexts.due) {
+      var due = extractDue();
+      var listStr = due.list.join(', ');
+      if (due.truncated) listStr += ' ... (共 ' + due.count + ' 個，僅列前 ' + MAX_DUE_LIST + ')';
+      parts.push('【今天要複習】\n共 ' + due.count + ' 字：' + listStr);
+    }
+
+    if (contexts.notes) {
+      var notes = extractNotes();
+      if (notes.length) {
+        parts.push('【最近筆記】\n' + notes.map(function (t) { return '- ' + t; }).join('\n'));
+      }
+    }
+
+    if (!parts.length) return '';
+    return '===== 📎 上下文（來自使用者的網頁）=====\n' +
+           parts.join('\n\n') +
+           '\n===== 使用者問題 =====\n';
+  }
+
   // ---- Gemini 呼叫 ----
   async function callGeminiChat(messages, systemPrompt) {
     var keys = getKeys();
     if (!keys.length) throw new Error('沒有 API key');
 
-    // 建立 contents 陣列（Gemini 格式）
     var contents = [];
     if (systemPrompt) {
       contents.push({ role: 'user', parts: [{ text: systemPrompt }] });
@@ -140,9 +292,9 @@
   // ---- 智慧摘要 ----
   async function summarizeIfNeeded(chat) {
     if (!chat || !chat.messages || chat.messages.length <= 20) return chat;
-    if (chat.summarized) return chat;  // 已摘要過就跳過
+    if (chat.summarized) return chat;
 
-    console.log(TAG, '📝 訊息 ' + chat.messages.length + ' 則，開始摘要前 15 則');
+    console.log(TAG, '📝 訊息 ' + chat.messages.length + ' 則，開始摘要');
     var toSummarize = chat.messages.slice(0, 15);
     var summaryPrompt = '請用繁體中文簡潔摘要以下對話（150 字內），保留關鍵資訊：\n\n' +
       toSummarize.map(function (m) {
@@ -151,10 +303,8 @@
 
     try {
       var summary = await callGeminiChat(
-        [{ role: 'user', content: summaryPrompt }],
-        ''
+        [{ role: 'user', content: summaryPrompt }], ''
       );
-      // 用摘要 + 最後 5 則替代
       chat.messages = [
         { role: 'model', content: '[前情提要] ' + summary, ts: chat.messages[0].ts }
       ].concat(chat.messages.slice(-5));
@@ -181,14 +331,29 @@
     '#aiChatDrawer.open{right:0}' +
     '' +
     '#aiChatDrawer .aiHead{padding:12px 16px;background:#a68a56;color:#fff;' +
-    '  display:flex;align-items:center;justify-content:space-between;gap:8px}' +
-    '#aiChatDrawer .aiTitle{font-weight:bold;font-size:14px;flex:1;cursor:pointer}' +
+    '  display:flex;align-items:center;justify-content:space-between;gap:6px}' +
+    '#aiChatDrawer .aiTitle{font-weight:bold;font-size:14px;flex:1;cursor:pointer;' +
+    '  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}' +
     '#aiChatDrawer .aiTitle:hover{opacity:0.85}' +
     '#aiChatDrawer .aiTitle input{background:rgba(255,255,255,0.2);border:none;color:#fff;' +
     '  padding:4px 8px;border-radius:4px;font-size:14px;font-weight:bold;width:100%}' +
     '#aiChatDrawer .aiHeadBtn{background:none;border:none;color:#fff;cursor:pointer;' +
-    '  font-size:16px;padding:4px 8px;border-radius:4px}' +
+    '  font-size:16px;padding:4px 8px;border-radius:4px;position:relative}' +
     '#aiChatDrawer .aiHeadBtn:hover{background:rgba(255,255,255,0.2)}' +
+    '#aiChatDrawer .aiHeadBtn.on{background:rgba(255,255,255,0.25)}' +
+    '#aiChatDrawer .aiHeadBtn .aiCtxDot{position:absolute;top:2px;right:2px;' +
+    '  width:8px;height:8px;background:#5cd45c;border-radius:50%;border:1px solid #fff}' +
+    '' +
+    '#aiChatDrawer .aiCtxPop{position:absolute;top:52px;right:12px;width:280px;' +
+    '  background:#fff;border:1px solid #a68a56;border-radius:8px;padding:8px;' +
+    '  box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:100001;display:none}' +
+    '#aiChatDrawer .aiCtxPop.open{display:block}' +
+    '#aiChatDrawer .aiCtxPop h4{margin:4px 0 8px;font-size:12px;color:#a68a56}' +
+    '#aiChatDrawer .aiCtxItem{display:flex;align-items:center;padding:6px;' +
+    '  cursor:pointer;border-radius:4px;font-size:12px}' +
+    '#aiChatDrawer .aiCtxItem:hover{background:#f5f1e8}' +
+    '#aiChatDrawer .aiCtxItem input{margin-right:8px}' +
+    '#aiChatDrawer .aiCtxItem .aiCtxDesc{color:#999;font-size:10px;margin-left:4px}' +
     '' +
     '#aiChatDrawer .aiRoleBar{padding:8px 12px;background:#ebe4d1;' +
     '  border-bottom:1px solid #d5c9a8;display:flex;gap:6px;align-items:center;flex-wrap:wrap}' +
@@ -230,7 +395,15 @@
     '#aiChatDrawer .aiMsg.model{background:#ebe4d1;color:#333;margin-right:auto;' +
     '  border-bottom-left-radius:4px}' +
     '#aiChatDrawer .aiMsg.typing{background:#ebe4d1;color:#999;font-style:italic}' +
+    '#aiChatDrawer .aiMsg .aiCtxTag{display:inline-block;background:rgba(255,255,255,0.3);' +
+    '  color:inherit;padding:1px 6px;border-radius:3px;font-size:10px;margin-right:4px}' +
     '#aiChatDrawer .aiEmpty{color:#999;text-align:center;padding:40px 20px;font-size:12px}' +
+    '' +
+    '#aiChatDrawer .aiCtxBadges{padding:4px 8px;background:#f0e9d5;font-size:11px;' +
+    '  color:#a68a56;border-top:1px solid #d5c9a8;min-height:20px;display:none}' +
+    '#aiChatDrawer .aiCtxBadges.show{display:block}' +
+    '#aiChatDrawer .aiCtxBadges .aiCtxBadge{display:inline-block;background:#a68a56;' +
+    '  color:#fff;padding:1px 6px;border-radius:3px;margin:2px;font-size:10px}' +
     '' +
     '#aiChatDrawer .aiInputBar{padding:8px;border-top:1px solid #d5c9a8;' +
     '  background:#f5f1e8;display:flex;gap:6px}' +
@@ -244,6 +417,7 @@
     '@media (max-width:600px){' +
     '  #aiChatDrawer{width:100vw;right:-100vw}' +
     '  #aiChatDrawer .aiListPanel{width:100px}' +
+    '  #aiChatDrawer .aiCtxPop{width:calc(100vw - 24px);right:12px}' +
     '  #aiChatBtn{bottom:200px;right:8px;width:44px;height:44px;font-size:20px}' +
     '}';
 
@@ -260,37 +434,38 @@
   var currentChatId = null;
   var sending = false;
 
-  function getCurrentChat() {
-    return data.chats[currentChatId];
-  }
+  function getCurrentChat() { return data.chats[currentChatId]; }
 
   function ensureCurrentChat() {
+    if (!currentChatId || !data.chats[currentChatId]) currentChatId = data.currentId;
     if (!currentChatId || !data.chats[currentChatId]) {
-      currentChatId = data.currentId;
-    }
-    if (!currentChatId || !data.chats[currentChatId]) {
-      // 找最新的一個
       var ids = Object.keys(data.chats).sort(function (a, b) {
         return data.chats[b].updatedAt - data.chats[a].updatedAt;
       });
       currentChatId = ids[0];
     }
-    if (!currentChatId) {
-      // 建新的
-      currentChatId = createNewChat();
-    }
+    if (!currentChatId) currentChatId = createNewChat();
     data.currentId = currentChatId;
+    // 保底：舊 chat 補 contexts 欄位
+    var c = getCurrentChat();
+    if (c && !c.contexts) {
+      c.contexts = {};
+      for (var k in DEFAULT_CONTEXTS) c.contexts[k] = DEFAULT_CONTEXTS[k];
+    }
     saveData(data);
     return getCurrentChat();
   }
 
   function createNewChat() {
     var id = newChatId();
+    var contexts = {};
+    for (var k in DEFAULT_CONTEXTS) contexts[k] = DEFAULT_CONTEXTS[k];
     data.chats[id] = {
       id: id,
       title: todayTitle(),
       role: 'english_tutor',
       customPrompt: '',
+      contexts: contexts,
       createdAt: Date.now(),
       updatedAt: Date.now(),
       messages: []
@@ -306,10 +481,77 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  function anyContextActive(contexts) {
+    for (var k in contexts) if (contexts[k]) return true;
+    return false;
+  }
+
   function renderTitle() {
     var chat = getCurrentChat();
     var titleEl = document.getElementById('aiChatTitle');
     if (titleEl && chat) titleEl.textContent = '💬 ' + chat.title;
+  }
+
+  function renderCtxBtn() {
+    var btn = document.getElementById('aiBtnCtx');
+    if (!btn) return;
+    var chat = getCurrentChat();
+    var oldDot = btn.querySelector('.aiCtxDot');
+    if (oldDot) oldDot.remove();
+    if (chat && anyContextActive(chat.contexts)) {
+      var dot = document.createElement('span');
+      dot.className = 'aiCtxDot';
+      btn.appendChild(dot);
+    }
+  }
+
+  function renderCtxBadges() {
+    var el = document.getElementById('aiCtxBadges');
+    if (!el) return;
+    var chat = getCurrentChat();
+    if (!chat || !anyContextActive(chat.contexts)) {
+      el.classList.remove('show');
+      el.innerHTML = '';
+      return;
+    }
+    var html = '📎 附加上下文：';
+    CONTEXT_TYPES.forEach(function (t) {
+      if (chat.contexts[t.key]) {
+        html += '<span class="aiCtxBadge">' + t.label + '</span>';
+      }
+    });
+    el.innerHTML = html;
+    el.classList.add('show');
+  }
+
+  function renderCtxPop() {
+    var pop = document.getElementById('aiCtxPop');
+    if (!pop) return;
+    var chat = getCurrentChat();
+    if (!chat) return;
+    var html = '<h4>📎 附加什麼給 AI？</h4>';
+    CONTEXT_TYPES.forEach(function (t) {
+      var checked = chat.contexts[t.key] ? 'checked' : '';
+      html += '<label class="aiCtxItem">' +
+              '  <input type="checkbox" data-key="' + t.key + '" ' + checked + '>' +
+              '  <span>' + t.label + '</span>' +
+              '  <span class="aiCtxDesc">' + t.desc + '</span>' +
+              '</label>';
+    });
+    pop.innerHTML = html;
+    // 綁勾選
+    var inputs = pop.querySelectorAll('input[type=checkbox]');
+    for (var i = 0; i < inputs.length; i++) {
+      (function (inp) {
+        inp.onchange = function () {
+          chat.contexts[inp.getAttribute('data-key')] = inp.checked;
+          chat.updatedAt = Date.now();
+          saveData(data);
+          renderCtxBtn();
+          renderCtxBadges();
+        };
+      })(inputs[i]);
+    }
   }
 
   function renderList() {
@@ -328,7 +570,6 @@
               '</div>';
     }
     listEl.innerHTML = html;
-    // 綁事件
     var items = listEl.querySelectorAll('.aiListItem');
     for (var j = 0; j < items.length; j++) {
       (function (it) {
@@ -343,9 +584,7 @@
       (function (d) {
         d.onclick = function (e) {
           e.stopPropagation();
-          if (confirm('刪除這個對話？')) {
-            deleteChat(d.getAttribute('data-id'));
-          }
+          if (confirm('刪除這個對話？')) deleteChat(d.getAttribute('data-id'));
         };
       })(dels[k]);
     }
@@ -356,13 +595,20 @@
     if (!msgsEl) return;
     var chat = getCurrentChat();
     if (!chat || !chat.messages.length) {
-      msgsEl.innerHTML = '<div class="aiEmpty">開始新對話...<br>選擇左側角色 or 直接輸入</div>';
+      msgsEl.innerHTML = '<div class="aiEmpty">開始新對話...<br>💡 點右上 📎 加入上下文<br>讓 AI 看到你的文章/單字庫</div>';
       return;
     }
     var html = '';
     for (var i = 0; i < chat.messages.length; i++) {
       var m = chat.messages[i];
-      html += '<div class="aiMsg ' + m.role + '">' + escapeHtml(m.content) + '</div>';
+      var content = m.content;
+      // 使用者訊息如果有 raw 就顯示 raw（不含 context），沒 raw 就直接顯示 content
+      var display = (m.role === 'user' && m.raw) ? m.raw : content;
+      var ctxTag = '';
+      if (m.role === 'user' && m.ctxUsed && m.ctxUsed.length) {
+        ctxTag = '<span class="aiCtxTag">📎 ' + m.ctxUsed.join('·') + '</span>';
+      }
+      html += '<div class="aiMsg ' + m.role + '">' + ctxTag + escapeHtml(display) + '</div>';
     }
     msgsEl.innerHTML = html;
     msgsEl.scrollTop = msgsEl.scrollHeight;
@@ -376,7 +622,6 @@
     if (!chat) return;
     if (sel) sel.value = chat.role;
     if (customTa) customTa.value = chat.customPrompt || '';
-    // 顯示/隱藏自訂區
     if (custom) {
       if (chat.customPrompt) custom.classList.add('show');
       else custom.classList.remove('show');
@@ -388,6 +633,9 @@
     renderList();
     renderMessages();
     renderRoleBar();
+    renderCtxBtn();
+    renderCtxBadges();
+    renderCtxPop();
   }
 
   // ---- 動作 ----
@@ -464,11 +712,35 @@
     var chat = getCurrentChat();
     if (!chat) return;
 
-    // 加使用者訊息
-    chat.messages.push({ role: 'user', content: text, ts: Date.now() });
+    // ⭐ 智慧自動偵測選取
+    var effectiveCtx = {};
+    for (var k in chat.contexts) effectiveCtx[k] = chat.contexts[k];
+    var sel = extractSelection();
+    if (sel && !effectiveCtx.selection) {
+      effectiveCtx.selection = true;
+      console.log(TAG, '智慧偵測：自動附加選取文字');
+    }
+
+    // ⭐ 建立上下文文字
+    var ctxText = buildContextText(effectiveCtx);
+    var fullContent = ctxText ? (ctxText + text) : text;
+
+    // 記錄用了哪些上下文（用來顯示標籤）
+    var ctxUsed = [];
+    CONTEXT_TYPES.forEach(function (t) {
+      if (effectiveCtx[t.key]) ctxUsed.push(t.label.replace(/^\S+\s/, ''));  // 去掉 emoji
+    });
+
+    // 存訊息（content 是含上下文的完整內容給 AI，raw 是原始輸入給顯示）
+    chat.messages.push({ 
+      role: 'user', 
+      content: fullContent, 
+      raw: text,
+      ctxUsed: ctxUsed,
+      ts: Date.now() 
+    });
     chat.updatedAt = Date.now();
 
-    // 如果標題還是預設日期，用第一句改標題
     if (/^\d+\/\d+ \d+:\d+$/.test(chat.title) && chat.messages.length === 1) {
       chat.title = text.slice(0, 20) + (text.length > 20 ? '...' : '');
     }
@@ -480,7 +752,6 @@
     renderList();
     renderTitle();
 
-    // 顯示 typing
     var msgsEl = document.getElementById('aiChatMessages');
     var typing = document.createElement('div');
     typing.className = 'aiMsg model typing';
@@ -493,23 +764,14 @@
     if (sendBtn) sendBtn.disabled = true;
 
     try {
-      // 智慧摘要
       chat = await summarizeIfNeeded(chat);
-
-      // 決定 system prompt
       var systemPrompt = chat.customPrompt || (ROLES[chat.role] && ROLES[chat.role].prompt) || '';
-
       var reply = await callGeminiChat(chat.messages, systemPrompt);
-
       chat.messages.push({ role: 'model', content: reply, ts: Date.now() });
       chat.updatedAt = Date.now();
       saveData(data);
     } catch (e) {
-      chat.messages.push({ 
-        role: 'model', 
-        content: '❌ 錯誤：' + e.message, 
-        ts: Date.now() 
-      });
+      chat.messages.push({ role: 'model', content: '❌ 錯誤：' + e.message, ts: Date.now() });
       saveData(data);
     }
 
@@ -522,15 +784,6 @@
   function build() {
     if (document.getElementById('aiChatDrawer')) return;
 
-    // 浮動按鈕
-    var btn = document.createElement('button');
-    btn.id = 'aiChatBtn';
-    btn.title = 'AI 對話';
-    btn.textContent = '💬';
-    btn.onclick = openDrawer;
-    document.body.appendChild(btn);
-
-    // 抽屜
     var drawer = document.createElement('div');
     drawer.id = 'aiChatDrawer';
     var roleOptions = '';
@@ -541,9 +794,11 @@
     drawer.innerHTML = '' +
       '<div class="aiHead">' +
       '  <div class="aiTitle" id="aiChatTitle" title="雙擊改名">💬 對話</div>' +
+      '  <button class="aiHeadBtn" id="aiBtnCtx" title="上下文">📎</button>' +
       '  <button class="aiHeadBtn" id="aiBtnRename" title="改名">✏️</button>' +
       '  <button class="aiHeadBtn" id="aiBtnClose" title="關閉">✕</button>' +
       '</div>' +
+      '<div class="aiCtxPop" id="aiCtxPop"></div>' +
       '<div class="aiRoleBar">' +
       '  <label style="color:#555;font-size:12px">🎭 角色:</label>' +
       '  <select id="aiRoleSelect">' + roleOptions + '</select>' +
@@ -556,6 +811,7 @@
       '  <div class="aiListPanel" id="aiChatList"></div>' +
       '  <div class="aiChatPanel">' +
       '    <div class="aiMessages" id="aiChatMessages"></div>' +
+      '    <div class="aiCtxBadges" id="aiCtxBadges"></div>' +
       '    <div class="aiInputBar">' +
       '      <textarea id="aiChatInput" placeholder="Enter 送出，Shift+Enter 換行" rows="1"></textarea>' +
       '      <button id="aiChatSend">送出</button>' +
@@ -565,10 +821,25 @@
 
     document.body.appendChild(drawer);
 
-    // 綁事件
     document.getElementById('aiBtnClose').onclick = closeDrawer;
     document.getElementById('aiBtnRename').onclick = renameChat;
     document.getElementById('aiChatTitle').ondblclick = renameChat;
+    document.getElementById('aiBtnCtx').onclick = function (e) {
+      e.stopPropagation();
+      var pop = document.getElementById('aiCtxPop');
+      pop.classList.toggle('open');
+      if (pop.classList.contains('open')) renderCtxPop();
+    };
+    // 點外面關掉 pop
+    document.addEventListener('click', function (e) {
+      var pop = document.getElementById('aiCtxPop');
+      var btn = document.getElementById('aiBtnCtx');
+      if (!pop || !btn) return;
+      if (pop.classList.contains('open') && 
+          !pop.contains(e.target) && !btn.contains(e.target)) {
+        pop.classList.remove('open');
+      }
+    });
     document.getElementById('aiRoleSelect').onchange = function (e) {
       setRole(e.target.value);
     };
@@ -598,24 +869,33 @@
     ensureCurrentChat();
     document.getElementById('aiChatDrawer').classList.add('open');
     renderAll();
-    // Focus input
     setTimeout(function () {
-      document.getElementById('aiChatInput').focus();
+      var i = document.getElementById('aiChatInput');
+      if (i) i.focus();
     }, 300);
   }
 
   function closeDrawer() {
     var d = document.getElementById('aiChatDrawer');
     if (d) d.classList.remove('open');
+    var pop = document.getElementById('aiCtxPop');
+    if (pop) pop.classList.remove('open');
   }
 
-  // 對外 API
   window.__aiChat = {
     open: openDrawer,
     close: closeDrawer,
     newChat: function () { newChat(); },
     switchChat: switchChat,
     getData: function () { return data; },
+    testContext: function () {
+      console.log('=== 上下文提取測試 ===');
+      console.log('article:', extractArticle());
+      console.log('selection:', extractSelection());
+      console.log('wordbank:', extractWordbank());
+      console.log('due:', extractDue());
+      console.log('notes:', extractNotes());
+    },
     reset: function () {
       if (confirm('刪除全部對話？')) {
         data = { chats: {} };
@@ -630,19 +910,20 @@
   function boot() {
     setTimeout(function () {
       injectCSS();
-      // 只建按鈕，抽屜點按鈕才建
       var btn = document.createElement('button');
       btn.id = 'aiChatBtn';
-      btn.title = 'AI 對話';
+      btn.title = 'AI 對話（駐站助理）';
       btn.textContent = '💬';
       btn.onclick = openDrawer;
       document.body.appendChild(btn);
 
-      console.log(TAG, 'ready', VER);
+      console.log(TAG, 'ready', VER, 'Phase A');
+      console.log(TAG, '📎 支援 5 種上下文附加');
       console.log(TAG, '手動 API:');
-      console.log(TAG, '  __aiChat.open()      開啟抽屜');
-      console.log(TAG, '  __aiChat.newChat()   新對話');
-      console.log(TAG, '  __aiChat.reset()     清空全部');
+      console.log(TAG, '  __aiChat.open()          開啟');
+      console.log(TAG, '  __aiChat.newChat()       新對話');
+      console.log(TAG, '  __aiChat.testContext()   測試上下文提取');
+      console.log(TAG, '  __aiChat.reset()         清空全部');
     }, 1500);
   }
 
