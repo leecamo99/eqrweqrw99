@@ -1,344 +1,144 @@
-/* gemini-word-lookup-patch.js v20260712-2
-   v2: Robust JSON parsing with multiple fallback strategies
+/* gemini-word-lookup-patch.js  v20260713-2
+   修正：
+   1) 移除不存在的 model (3.5-flash / flash-latest)
+   2) 強化 JSON 解析（剝 ```json fence）
+   3) 429 冷卻：單 key 冷卻 20 分鐘、全域 60 秒節流
+   4) 批次查詢降速：每字間隔 800ms、失敗立即停止批次
+   5) 本地快取 24 小時，避免重複查同一字
 */
-
 (function () {
-
   'use strict';
+ *const*TAG = '[GeminiLookup]';
+  const VE* = 'v20260713-2';
 
-  var GEMINI_KEY_STORAGE = 'notebook_gemini_key_v1';
+  // ✅ 只留官方合* model
+  const MODELS = ['gemini-2.0-flash', 'gemini-2.5-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-flash'];
 
-  var MODEL_LIST = [
-    'gemini-3.5-flash',
-    'gemini-flash-latest',
-    'gemini-2.5-flash',
-    'gemini-2.0-flash',
-    'gemini-flash-lite-latest',
-    'gemini-2.5-flash-lite'
-  ];
+  const KEY_COOLDOWN_MS = 20 * 60 * 1000;
+  const CAC*E_TTL_MS    = 24 * 60 * 60 * 1000;*  const BATCH_GAP_MS    = 800;   */ 批次每字間隔
+  const CALL_GAP_MS     =*300;   // 單次呼叫間隔
 
-  function log() {
+  const _cool*= {};
+  const isCool = i => _cool[i] && (Date.now() - _cool[i] < KEY_*OOLD*WN_MS);
+  const markCool = i => { *cool[i] = Date.now(); console.warn*TAG, `key ${i+1} 冷卻*20 分鐘`); };
+
+  // ---- 本地快取 ----
+ *function cacheGet(word) {
+    try *
+      const ra* = localStorage.getItem('gemini_lo*kup_cache_' + word.toLowerCase());*      if (!raw) return null;
+     *const o = JSON.parse(*aw);
+      if (Date.now() - o.t > *ACHE_TTL_MS) return null;
+      re*urn o.d;
+    } catch { return null* }
+  }
+  function cacheSet(*ord, data) {
     try {
-      console.log.apply(console, ['[GeminiLookup]'].concat([].slice.call(arguments)));
-    } catch (e) {}
+      local*torage.setItem('gemini_lookup_cach*_' + word.toLowerCase(),
+        J*ON.stringify({*t: Date.now(), d: data }));
+    } *atch {}
   }
 
-  function sleep(ms) {
-    return new Promise(function (r) { setTimeout(r, ms); });
-  }
+  function getKeys() *
+    const raw = localStorage.getI*em('gemini_api_keys') || localStor*ge.getItem('gemini_api_key') || ''*
+    return raw.split(/[\n,;]+/).m*p(s => s.trim()).filter(Boolean);
+* }
 
-  function buildPrompt(word) {
+  function safeParseJS*N(text) {
+    if (!text) return nu*l;
+    let t = String(text).trim()*      .replace(/^```(?:json)?\s**i, '')
+      .replace(/\s*```$/, '')
+      .trim();
+    const m = t.match(/\{[\s\S]*\}/);
+    if (m) t = m[0];
+    t = t.replace(/,\s*([}\]])/g, '$1');
+    try { return*JSON.parse(t); } catch { return nu*l; }*  }
 
-    return '請針對英文單字「' + word + '」提供資訊，以純 JSON 格式回應，不要有任何其他文字或 Markdown 符號。\n\n' +
-      '需要的欄位：\n' +
-      '- pos：詞性縮寫（n. v. adj. adv. 等）\n' +
-      '- tw：繁體中文翻譯（最多 3 個意思，用「；」分隔）\n' +
-      '- definition：簡潔英文定義\n' +
-      '- synonyms：3-5 個同義字，用「, 」分隔\n' +
-      '- example：一個自然的例句\n\n' +
-      '規則：\n' +
-      '1. 直接輸出 JSON，不要用 ```json 包裝\n' +
-      '2. 不要用 Markdown 符號（**, __, [] 等）\n' +
-      '3. 所有欄位都用純文字\n' +
-      '4. 例句要用完整雙引號括住，內部沒有雙引號\n' +
-      '5. 如果內文需要引號，用「」代替\n\n' +
-      '範例格式：\n' +
-      '{"pos":"n.","tw":"章節；部分","definition":"A distinct part of something","synonyms":"part, portion, segment","example":"The book has ten sections."}\n\n' +
-      '請立刻輸出「' + word + '」的 JSON：';
-  }
-
-  function robustParseJSON(text) {
-
-    if (!text) return null;
-
-    // 移除常見包裝
-    text = text.trim();
-    text = text.replace(/^```json\s*/i, '').replace(/```\s*$/, '');
-    text = text.replace(/^```\s*/, '').replace(/```\s*$/, '');
-    text = text.trim();
-
-    // 找到第一個 { 和最後一個 }
-    var start = text.indexOf('{');
-    var end = text.lastIndexOf('}');
-
-    if (start === -1 || end === -1) return null;
-
-    var jsonText = text.slice(start, end + 1);
-
-    // 策略 1：直接 parse
-    try {
-      return JSON.parse(jsonText);
-    } catch (e) {}
-
-    // 策略 2：修復常見錯誤（單引號、多餘逗號、換行）
-    try {
-      var fixed = jsonText
-        .replace(/\r?\n/g, ' ')           // 移除換行
-        .replace(/,\s*}/g, '}')            // 移除物件尾多餘逗號
-        .replace(/,\s*]/g, ']')            // 移除陣列尾多餘逗號
-        .replace(/'/g, '"');               // 單引號轉雙引號
-
-      return JSON.parse(fixed);
-    } catch (e) {}
-
-    // 策略 3：用 regex 抽出各個欄位
-    try {
-      var result = {};
-
-      var fields = ['pos', 'tw', 'definition', 'synonyms', 'example'];
-      fields.forEach(function (f) {
-        // 匹配 "field":"..." 或 "field": "..."
-        var re = new RegExp('"' + f + '"\\s*:\\s*"([^"]*)"', 'i');
-        var m = jsonText.match(re);
-        if (m) result[f] = m[1];
-      });
-
-      if (Object.keys(result).length > 0) return result;
-    } catch (e) {}
-
-    return null;
-  }
-
-  async function callGemini(word, key, model) {
-
-    var prompt = buildPrompt(word);
-    var url = 'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent';
-
-    var res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-goog-api-key': key
-      },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.2,
-          maxOutputTokens: 500,
-          responseMimeType: 'application/json'   // ★ 強制 JSON 格式（Gemini 2.0+ 支援）
-        }
-      })
+  async function callGemini(w*rd, key, keyIdx, model) {
+    cons* url = `https://generativelanguage*google*pis.com/v1beta/models/${model}:gen*rateContent?key=${key}`;
+    const*prompt = `請以 JSON 回*英文單字 "${word}"，只回 JSON：
+{"pos":"詞性*n*/v./adj. 等","tw":"繁中最常見*思","ex":"英文例句","tw_ex":"例句繁中翻譯"}`;*    const res = await*fetch(url, {
+      method: 'POST',*      headers: { 'Content-Type': '*pplication/json' },
+      body: JS*N.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+    *   generationConfig: { temperature* 0.2, maxOutputTokens: 300 }
+     *})
     });
-
-    if (!res.ok) {
-      var errText = await res.text();
-      var err = new Error('API ' + res.status);
-      err.status = res.status;
-      err.body = errText;
-      throw err;
-    }
-
-    var data = await res.json();
-    var text = data.candidates?.[0]?.content?.parts?.map(function (p) { return p.text; }).join('') || '';
-
-    if (!text) throw new Error('Gemini 沒有回應');
-
-    var parsed = robustParseJSON(text);
-
-    if (!parsed) {
-      log('解析失敗，原始回應:', text.slice(0, 200));
-      throw new Error('無法解析 Gemini 回應');
-    }
-
+    if (res.status === *29) { markCool(keyIdx); throw new *rror('RATE_LIMIT'); }
+    if (res.*tatus === 404) throw new Error('MO*EL_NOT_FO*ND');
+    if (!res.ok) throw new E*ror('HTTP_' + res.status);
+    con*t data = await res.json();
+    con*t text = data?.candidates?.[0]?.co*tent?.parts?.[0]?.text || '';
+    *onst parsed = safeParseJSON(text);*    if (!parsed) throw new Error('*ARSE_FAIL');
     return parsed;
-  }
+  *
 
-  async function lookupWord(word) {
+  // ---- 單字查詢 ----
+  async func*ion lookupWordWithGemini(word) {
+ *  if (!word) return null;
+    cons* cached = cacheGet(word);
+    if (*ached) { console.log(TAG, `📦 快取命中* ${word}`); return cached; }
 
-    var keys;
-    if (typeof window.getGeminiKeys === 'function') {
-      keys = window.getGeminiKeys();
-    } else {
-      var single = localStorage.getItem(GEMINI_KEY_STORAGE);
-      keys = single ? [single] : [];
-    }
+    *onst*keys = getKeys();
+    if (!keys.le*gth) { console.warn(TAG, '沒有 API k*y'); return null; }
 
-    if (keys.length === 0) {
-      throw new Error('請先設定 Gemini API Key');
-    }
-
-    var errors = [];
-
-    for (var ki = 0; ki < keys.length; ki++) {
-
-      var key = keys[ki];
-
-      if (typeof window.getGeminiKeyStatus === 'function') {
-        var statuses = window.getGeminiKeyStatus();
-        var status = statuses.find(function (s) { return s.keyFull === key; });
-        if (status && !status.available) continue;
-      }
-
-      for (var mi = 0; mi < MODEL_LIST.length; mi++) {
-
-        var model = MODEL_LIST[mi];
-
+    for (let * = 0; i < keys.length; i++) {*      if (isCool(i)) { console.log*TAG, `跳過冷卻 key ${i+1}`); continue;*}
+      for (const model of MODELS* {
+        console.log(T*G, `查詢: ${word} 用 key ${i+1} model* ${model}`);
         try {
-
-          log('查詢:', word, '用 key', ki + 1, 'model:', model);
-
-          var result = await callGemini(word, key, model);
-
-          if (typeof window.markGeminiKeyOk === 'function') {
-            window.markGeminiKeyOk(key);
-          }
-
-          return result;
-
-        } catch (e) {
-
-          errors.push({ ki: ki, model: model, status: e.status, msg: e.message });
-
-          if (e.status === 429) {
-            if (typeof window.markGeminiKey429 === 'function') {
-              window.markGeminiKey429(key);
-            }
-            break;
-          }
-
-          if (e.status === 404) continue;
-          if (e.status >= 500) { await sleep(1000); continue; }
-
-          // JSON parse 失敗，換個 model 試
-          if (e.message.indexOf('無法解析') !== -1 || e.message.indexOf('parse') !== -1) {
-            continue;
-          }
-
-          throw e;
+       *  const r = await callGemini(word,*keys[i], i, model);
+          cach*Set(word, r);
+          console.lo*(TAG, `✅ ${word} 成功 (${model})`);
+*         return r;
+        } catch*(e) {
+          if (e.message === *RATE_LIMIT') break;
+          if (*.message === 'MODEL_NOT_FOUND') co*tinue;
+          console.warn(TAG,*`${model} 失敗:*, e.message);
         }
+        aw*it new Promise(r => setTimeout(r, *ALL_GAP_MS));
       }
     }
+    co*sole.warn(TAG, `❌*${word} 全部失敗`);
+    return null;
+ *}
 
-    throw new Error('所有 API Key 都無法使用');
-  }
+  // ---- 批次查詢（弱點單字*----
+  async function batchLookupW*thGemini(words) {
+    if (!Array.i*Array(words) || !words.length) ret*rn {*;
+    const result = {};
+    const*total = words.length;
+    console.*og(TAG, `🔍 批次啟動*${total} 字`);
 
-  async function updateWordData(surfaceOrLemma) {
-
-    var db;
-    try {
-      db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
-    } catch (e) { return; }
-
-    if (!db.learn) return;
-
-    var lemma = surfaceOrLemma;
-    if (typeof window.lemmatizeWord === 'function') {
-      var info = window.lemmatizeWord(surfaceOrLemma);
-      lemma = info.lemma || surfaceOrLemma;
-    }
-
-    var x = db.learn[lemma] || db.learn[surfaceOrLemma];
-    if (!x) return;
-
-    var hasTw = x.tw && !String(x.tw).includes('未建') && !String(x.tw).includes('查詢中');
-    if (hasTw && x.example && x.synonyms && x.pos) {
-      log('已完整，跳過:', lemma);
-      return;
-    }
-
-    if (x.loading) return;
-
-    x.loading = true;
-    x.updatedAt = Date.now();
-    localStorage.setItem('notebook_platform_v3', JSON.stringify(db));
-
-    try {
-
-      var result = await lookupWord(lemma);
-
-      var db2 = JSON.parse(localStorage.getItem('notebook_platform_v3'));
-      if (db2.learn[lemma]) {
-
-        if (result.tw) db2.learn[lemma].tw = result.tw;
-        if (result.pos) db2.learn[lemma].pos = result.pos;
-        if (result.definition) db2.learn[lemma].tip = result.definition;
-        if (result.example) db2.learn[lemma].example = result.example;
-        if (result.synonyms) db2.learn[lemma].synonyms = result.synonyms;
-
-        db2.learn[lemma].loading = false;
-        db2.learn[lemma].source = 'Gemini';
-        db2.learn[lemma].updatedAt = Date.now();
-
-        localStorage.setItem('notebook_platform_v3', JSON.stringify(db2));
-
-        log('已更新:', lemma, '→', result.tw);
-
-        if (typeof window.showWord === 'function') {
-          try { window.showWord(lemma); } catch (e) {}
-        }
-        if (typeof window.renderCapture === 'function') {
-          try { window.renderCapture(); } catch (e) {}
-        }
-      }
-
-    } catch (e) {
-
-      log('查詢失敗:', lemma, e.message);
-
-      var db3 = JSON.parse(localStorage.getItem('notebook_platform_v3'));
-      if (db3.learn[lemma]) {
-        db3.learn[lemma].loading = false;
-        localStorage.setItem('notebook_platform_v3', JSON.stringify(db3));
-      }
-    }
-  }
-
-  var origClickWord = window.clickWord;
-
-  if (typeof origClickWord === 'function') {
-
-    window.clickWord = function (surface) {
-
-      var result = origClickWord.call(this, surface);
-
-      setTimeout(function () {
-        updateWordData(surface);
-      }, 200);
-
-      return result;
-    };
-
-    log('clickWord hooked');
-  }
-
-  window.lookupWordWithGemini = updateWordData;
-
-  window.batchLookupWithGemini = async function (limit) {
-
-    var db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
-    var needCheck = [];
-
-    Object.values(db.learn || {}).forEach(function (word) {
-      var hasTw = word.tw && !String(word.tw).includes('未建') && !String(word.tw).includes('查詢中');
-      if (word.captured && !word.known && (!hasTw || !word.example || !word.synonyms)) {
-        needCheck.push(word.lemma || word.word);
-      }
+    // 先扣掉已快取的
+    *onst tod* = [];
+    words.forEach(w => {
+  *   const c = cacheGet(w);
+      if*(c) result[w] = c;
+      *lse todo.push(w);
     });
+    cons*le.log(TAG, `📦 快取命中 ${total - tod*.length} / ${total}*剩 ${todo.length} 字要查`);
 
-    if (limit) needCheck = needCheck.slice(0, limit);
-
-    console.log('需要查詢的單字:', needCheck.length);
-
-    var success = 0;
-    var failed = 0;
-
-    for (var i = 0; i < needCheck.length; i++) {
-      console.log((i + 1) + '/' + needCheck.length + ' - 查詢:', needCheck[i]);
-      try {
-        await updateWordData(needCheck[i]);
-        success++;
-      } catch (e) {
-        failed++;
+    let r*teLimitHit = *;
+    for (let i = 0; i < todo.len*th; i++) {
+      const w = todo[i]*
+      console.log(TAG, `${i+1}/${*odo.length} - 查*: ${w}`);
+      const r = await lo*kupWordWithGemini(w);
+      if (r)*{ result[w] = r; rateLimitHit = 0;*}
+      else {*        rateLimitHit++;
+        //*連續 3 個失敗就中斷批次（大概全 key 都冷卻了*
+        if (rateLimitHit >= 3) {
+*         console.warn(TAG, `⛔ 連續 $*rateLimitHit} 個失敗，中斷批*以保護 quota`);
+          break;
+    *   }
       }
-      await sleep(1500);
+      await new Promi*e(r => setTimeout(r, B*TCH_GAP_MS));
     }
-
-    console.log('全部完成！成功:', success, '失敗:', failed);
-  };
-
-  log('ready v20260712-2');
-  log('全域函式:');
-  log('  lookupWordWithGemini("word") - 查詢單字');
-  log('  batchLookupWithGemini(10) - 批次查詢前 10 個弱點單字');
-
-})();
+    console.lo*(TAG, `🎉 批次完成，成功 ${Object.keys(re*ult).length} /*${total}`);
+    return result;
+  }*
+  window.lookupWordWithGemini  = *ookupWordWithGemini;
+  window.batc*LookupWithGemini = batchLookup*ithGemini;
+  console.log(TAG, 'rea*y', VER);
+  console.log(TAG, '全域函式*');
+  console.log(T*G, '  lookupWordWithGemini("word")* - 查詢單字');
+  console.log(TAG, '  b*tch*ookupWithGemini([...])  - 批次查詢');
+*)();
