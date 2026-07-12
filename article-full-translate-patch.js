@@ -263,7 +263,7 @@
     if (!box) return;
 
     if (isCollapsed) {
-      box.style.maxHeight = '48px';
+      box.style.maxHeight = '60px';
       if (body) body.style.display = 'none';
       if (toggleBtn) toggleBtn.textContent = '▲';
     } else {
