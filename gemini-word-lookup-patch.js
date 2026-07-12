@@ -14,7 +14,7 @@
   var TAG = '[GeminiLookup]';
   var VER = 'v20260713-5';
 
- var MODELS = ['gemini-3.5-flash', 'gemini-3.1-flash-lite', 'gemini-3-flash-preview'];
+ var MODELS = ['gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-3-flash-preview'];
 
   var KEY_COOLDOWN_MS = 20 * 60 * 1000;
   var CACHE_TTL_MS    = 24 * 60 * 60 * 1000;
@@ -110,7 +110,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.2, maxOutputTokens: 300 }
+        generationConfig: { temperature: 0.2, maxOutputTokens: 800 }
       })
     });
 
