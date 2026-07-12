@@ -4408,7 +4408,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783867036836,
+  "updatedAt": 1783867162695,
   "learn": {
     "github": {
       "word": "github",
@@ -5860,11 +5860,11 @@
       "word": "global",
       "lemma": "global",
       "firstSeenAt": 1783797093090,
-      "lastSeenAt": 1783867036830,
+      "lastSeenAt": 1783867162689,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 7,
-      "sessionClicks": 7,
-      "maxClickStreak": 6,
+      "lifetimeClicks": 8,
+      "sessionClicks": 8,
+      "maxClickStreak": 7,
       "reviewHistory": [],
       "dueAt": 1783800693093,
       "intervalDays": 0,
@@ -5875,14 +5875,14 @@
       "lastSurface": "global",
       "lastForm": "base form",
       "variants": {
-        "global": 7,
+        "global": 8,
         "Global": 1
       },
-      "clicks": 7,
-      "strength": 7,
+      "clicks": 8,
+      "strength": 8,
       "captured": true,
       "known": false,
-      "updatedAt": 1783867036834,
+      "updatedAt": 1783867162693,
       "loading": false,
       "tw": "全球的",
       "engine": "MyMemory",
