@@ -69,9 +69,9 @@
     }
   };
 
-  // ---------- UI 層 ----------
+    // ---------- UI 層 ----------
   const CSS = `
-  #geminiQuotaPanel{position:fixed;right:12px;bottom:12px;z-index:99999;
+  #geminiQuotaPanel{position:fixed;right:12px;bottom:90px;z-index:99999;
     background:#1a1a1a;color:#eee;border:1px solid #444;border-radius:10px;
     font:12px/1.5 -apple-system,'Segoe UI',sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.4);
     min-width:220px;max-width:90vw;user-select:none;transition:all .2s}
@@ -82,7 +82,7 @@
   #geminiQuotaPanel .qTitle{font-weight:bold;color:#4dc9e6}
   #geminiQuotaPanel .qBtn{background:none;border:none;color:#aaa;cursor:pointer;font-size:14px;padding:2px 6px}
   #geminiQuotaPanel .qBtn:hover{color:#fff}
-  #geminiQuotaPanel .qBody{padding:10px 12px;max-height:60vh;overflow:auto}
+  #geminiQuotaPanel .qBody{padding:10px 12px;max-height:50vh;overflow:auto}
   #geminiQuotaPanel.mini .qBody{display:none}
   #geminiQuotaPanel .qRow{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed #333}
   #geminiQuotaPanel .qRow:last-child{border-bottom:none}
@@ -96,8 +96,8 @@
     color:#eee;border-radius:6px;cursor:pointer;font-size:11px}
   #geminiQuotaPanel .qReset:hover{background:#444}
   @media (max-width:600px){
-    #geminiQuotaPanel{right:8px;bottom:8px;font-size:11px}
-    #geminiQuotaPanel .qBody{max-height:50vh}
+    #geminiQuotaPanel{right:8px;bottom:120px;font-size:11px}
+    #geminiQuotaPanel .qBody{max-height:40vh}
   }
   `;
 
