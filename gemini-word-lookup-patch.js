@@ -39,279 +39,306 @@
       '規則：\n' +
       '1. 直接輸出 JSON，不要用 ```json 包裝\n' +
       '2. 不要用 Markdown 符號（**, __, [] 等）\n' +
-      '3. 所有**都用純文字\n' +
-      '4. 例句要用完整雙**括住，內部沒有雙引號\n' +
-      '5. 如果內文需**號，用「」代替\n\n' +
+      '3. 所有欄位都用純文字\n' +
+      '4. 例句要用完整雙引號括住，內部沒有雙引號\n' +
+      '5. 如果內文需要引號，用「」代替\n\n' +
       '範例格式：\n' +
-**    '{"pos":"n**,"tw":"章節；部分","definition":"A dis**nct part of something","synonyms"**part,**ortion, segment","example":"The b**k has ten sections."}\n\n' +
-    **'請**輸出「' + word + '」的 JSON：';
+      '{"pos":"n.","tw":"章節；部分","definition":"A distinct part of something","synonyms":"part, portion, segment","example":"The book has ten sections."}\n\n' +
+      '請立刻輸出「' + word + '」的 JSON：';
   }
 
-  **nction robustParseJSON(text) {**    if (!text) return null;
+  function robustParseJSON(text) {
 
-    ** 移除常見包裝
+    if (!text) return null;
+
+    // 移除常見包裝
     text = text.trim();
- ** text = text.replace(/^```json***/i, '').replace(/```\s*$/, '');
-*** text = text.replace(/^```\s*/, ***.replace(/```\s*$/**'');
+    text = text.replace(/^```json\s*/i, '').replace(/```\s*$/, '');
+    text = text.replace(/^```\s*/, '').replace(/```\s*$/, '');
     text = text.trim();
 
-   **/ 找到第一個 { 和最後一個 }
-    var start =**ext.indexOf('**);
-    var end = text.lastIndexOf**}');
+    // 找到第一個 { 和最後一個 }
+    var start = text.indexOf('{');
+    var end = text.lastIndexOf('}');
 
-    if (start === -1 || end**== -1) return null;
+    if (start === -1 || end === -1) return null;
 
-    var json**xt = text.slice(start, end + 1);
-**   // 策略 **直接 parse
+    var jsonText = text.slice(start, end + 1);
+
+    // 策略 1：直接 parse
     try {
-      return J**N.parse(jsonText);
-    } catch (e**{}
+      return JSON.parse(jsonText);
+    } catch (e) {}
 
-    // 策略 2：修復常**誤（單引號、多餘逗號、換行）
+    // 策略 2：修復常見錯誤（單引號、多餘逗號、換行）
     try {
-      va**f**ed = jsonText
-        .replace(/\**\n/g, ' ')           // 移除換行
-    **  .replace(/,\s*}*** '}')            // 移除物件尾多餘逗號
-  ***   .replace(/,\s***g, ']')            // 移除陣列尾多餘逗號
- **     .replace(/'/g, '"');        **     // 單引號轉雙引號
+      var fixed = jsonText
+        .replace(/\r?\n/g, ' ')           // 移除換行
+        .replace(/,\s*}/g, '}')            // 移除物件尾多餘逗號
+        .replace(/,\s*]/g, ']')            // 移除陣列尾多餘逗號
+        .replace(/'/g, '"');               // 單引號轉雙引號
 
-      return JS**.parse(fixed);
-    } catch (e) {}**    // 策略 3：用 regex 抽出各個欄位
-    tr**{**     var result = {};
+      return JSON.parse(fixed);
+    } catch (e) {}
 
-      var **elds = ['pos', 'tw', 'definition', 'synonyms', 'example'];
-      fie**s.forEach(function (f) {
-        ****配 "field":"..." 或 "field": "..."
-        var re = new RegExp('"' + f + '"\\s***\s*"([^"]*)"', 'i');
-        var *** jsonText.match(re);
-        if *** result[f] = m[1];
+    // 策略 3：用 regex 抽出各個欄位
+    try {
+      var result = {};
+
+      var fields = ['pos', 'tw', 'definition', 'synonyms', 'example'];
+      fields.forEach(function (f) {
+        // 匹配 "field":"..." 或 "field": "..."
+        var re = new RegExp('"' + f + '"\\s*:\\s*"([^"]*)"', 'i');
+        var m = jsonText.match(re);
+        if (m) result[f] = m[1];
       });
 
-  *** if (Object.keys(result).length***0) return result;
-    } catch (e***}
+      if (Object.keys(result).length > 0) return result;
+    } catch (e) {}
 
     return null;
   }
 
-  async***nction callGemini(word, key, mod*** {
+  async function callGemini(word, key, model) {
 
-    var prompt = buildPrompt***rd);
-    var url***'https://generativelanguage.googleapis.com/v1beta/models/' + model ***:generateContent';
+    var prompt = buildPrompt(word);
+    var url = 'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent';
 
-    var res ***wait fetch(url, {
-      method: ***ST',
-      ***ders: {
-        'Content-Type': ***plication/json',
-        'x-goog***i-key': key
+    var res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': key
       },
-      body:***ON.stringify({
-        contents:*** role: 'user', parts: [{ text: prompt }] }],
-        generationConf*** {
+      body: JSON.stringify({
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        generationConfig: {
           temperature: 0.2,
- ***      maxOutputTokens: 500,
-    ***   responseMimeType: 'applicatio***son'   // ★ 強制 JSON 格式（Gemini 2.***支援***       }
+          maxOutputTokens: 500,
+          responseMimeType: 'application/json'   // ★ 強制 JSON 格式（Gemini 2.0+ 支援）
+        }
       })
     });
 
-    i***!res.ok) {
-      var errText = a***t res.text();
-      var err = ne***rror('API ' + res.status);
-     ****.status = res.status;
-      err.***y = errText;
+    if (!res.ok) {
+      var errText = await res.text();
+      var err = new Error('API ' + res.status);
+      err.status = res.status;
+      err.body = errText;
       throw err;
-  ***
+    }
 
-    var data = await res.json(***    var text = data.candidates?.***?.content?.parts?.map(function (***{ return p.text; }).join('') || ***
+    var data = await res.json();
+    var text = data.candidates?.[0]?.content?.parts?.map(function (p) { return p.text; }).join('') || '';
 
-    if (!text) throw new Error***emini 沒有回應');
+    if (!text) throw new Error('Gemini 沒有回應');
 
-    var parsed = ***ustParseJSON(text);
+    var parsed = robustParseJSON(text);
 
-    if (!pa***d) {
-      log('解析失敗，原始回應:', tex***lice(0, 200));
-      throw new E***r('無法解析 Gemini 回應');***  }
+    if (!parsed) {
+      log('解析失敗，原始回應:', text.slice(0, 200));
+      throw new Error('無法解析 Gemini 回應');
+    }
 
     return parsed;
   }
 
-  a***c function lookupWord(word) {
+  async function lookupWord(word) {
 
- ***var keys;
-    if (typeof window.***GeminiKeys === 'function') {
-   ***keys = window.getGe***iKeys();
+    var keys;
+    if (typeof window.getGeminiKeys === 'function') {
+      keys = window.getGeminiKeys();
     } else {
-      var ***gle = localStorage.getItem(GEMIN***EY_STORAGE);
-      keys = single***[single] : [];
-    ***    if (keys.length === 0) {
-   ***throw new Error('請先設定 Gemini API***y');
+      var single = localStorage.getItem(GEMINI_KEY_STORAGE);
+      keys = single ? [single] : [];
     }
 
-    var errors = [];***   for (var ki = 0; ki < keys.le***h; ki++) {
+    if (keys.length === 0) {
+      throw new Error('請先設定 Gemini API Key');
+    }
 
-      var key = keys***];
+    var errors = [];
 
-      if (typeof window.getG***niKeyStatus === 'function') {
-  ***   var statuses = window.getGemi***eyStatus();
-        var status =***atuses.find(function (s) { retur***.keyFull === key; });
-        if***tatus && !status.available) cont***e;
+    for (var ki = 0; ki < keys.length; ki++) {
+
+      var key = keys[ki];
+
+      if (typeof window.getGeminiKeyStatus === 'function') {
+        var statuses = window.getGeminiKeyStatus();
+        var status = statuses.find(function (s) { return s.keyFull === key; });
+        if (status && !status.available) continue;
       }
 
-      for (var mi = ***mi < MODEL_LIST.length; mi++) {
-***      var model = MODEL_LIST[mi]***        try {
+      for (var mi = 0; mi < MODEL_LIST.length; mi++) {
 
-          log('查詢*** word, '用 key', ki + 1, 'model:'***odel);
+        var model = MODEL_LIST[mi];
 
-          var result = a***t callGemini(word, key, model);
-***        if (typeof window.markGe***iKeyOk === 'function') {
-       ***  window.markGeminiKeyOk(key);
- ***      }
+        try {
 
-          return result***        } catch (e) {
+          log('查詢:', word, '用 key', ki + 1, 'model:', model);
 
-         ***rors.push({ ki: ki, model: model***tatus: e.status, msg: e.message ***
+          var result = await callGemini(word, key, model);
 
-          if (e.status === 429***
-            if (typeof window.m***GeminiKey429 === 'function') {
- ***          window.markGeminiKey42***ey);
-            }
-            b***k;
+          if (typeof window.markGeminiKeyOk === 'function') {
+            window.markGeminiKeyOk(key);
           }
 
-          if (e.***tus === 404) continue;
-         *** (e.status >= 500) { await sleep***00); continue; }
+          return result;
 
-          // J*** parse 失敗，換個 model 試
-          i***e.message.indexOf('無法解析') !== -1*** e.message.indexOf('parse') !== *** {
+        } catch (e) {
+
+          errors.push({ ki: ki, model: model, status: e.status, msg: e.message });
+
+          if (e.status === 429) {
+            if (typeof window.markGeminiKey429 === 'function') {
+              window.markGeminiKey429(key);
+            }
+            break;
+          }
+
+          if (e.status === 404) continue;
+          if (e.status >= 500) { await sleep(1000); continue; }
+
+          // JSON parse 失敗，換個 model 試
+          if (e.message.indexOf('無法解析') !== -1 || e.message.indexOf('parse') !== -1) {
             continue;
-       ***}
+          }
 
           throw e;
         }
-***   }
+      }
     }
 
-    throw new Error(*** API Key 都無法使用');
+    throw new Error('所有 API Key 都無法使用');
   }
 
-  async f***tion updateWordData(surfaceOrLem*** {
+  async function updateWordData(surfaceOrLemma) {
 
     var db;
     try {
-      ***= JSON.parse(localStorage.getIte***notebook_platform_v3') || '{}');***  } catch (e) { return; }
+      db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
+    } catch (e) { return; }
 
-    i***!db.learn) return;
+    if (!db.learn) return;
 
-    var lemm*** surfaceOrLemma;
-    if (typeof ***dow.lemmatizeWord === 'function'***
-      var info = window.lemmati***ord(surfaceOrLemma);
-      lemma***info.lemma || surfaceOrLemma;
-  ***
+    var lemma = surfaceOrLemma;
+    if (typeof window.lemmatizeWord === 'function') {
+      var info = window.lemmatizeWord(surfaceOrLemma);
+      lemma = info.lemma || surfaceOrLemma;
+    }
 
-    var x = db.learn[lemma] ||***.learn[surfaceOrLemma];
-    if (*** return;
+    var x = db.learn[lemma] || db.learn[surfaceOrLemma];
+    if (!x) return;
 
-    var hasTw = x.tw &***String(x.tw).includes('未建') && !***ing(x.tw).includes('查詢中');
-    i***hasTw && x.example && x.synonyms*** x.pos) {
-      log('已完整，跳過:', l***a);
+    var hasTw = x.tw && !String(x.tw).includes('未建') && !String(x.tw).includes('查詢中');
+    if (hasTw && x.example && x.synonyms && x.pos) {
+      log('已完整，跳過:', lemma);
       return;
     }
 
-    if ***loading) return;
+    if (x.loading) return;
 
-    x.lo***ng = true;
-    x.updatedAt = Dat***ow();
-    localStorage.setItem('***ebook_platform_v3', JSON.stringi***db));
+    x.loading = true;
+    x.updatedAt = Date.now();
+    localStorage.setItem('notebook_platform_v3', JSON.stringify(db));
 
     try {
 
-      var resu***= await lookup***d(lemma);
+      var result = await lookupWord(lemma);
 
-      var db2 = JSON.***se(localStorage.getItem('noteboo***latform_v3'));
-      if (db2.lea***lemma]) {
+      var db2 = JSON.parse(localStorage.getItem('notebook_platform_v3'));
+      if (db2.learn[lemma]) {
 
-        if***esult.tw) db2.learn[lemma].tw = ***ult.tw;
-        if (result.pos) ***.learn[lemma].pos = result.pos;
-***     if (result.definition) db2.***r***emma].tip = result.definition;
- ***    if (result.example) db2.lear***emma].example = result.example;
-***     if (result.synonyms) db2.le***[lemma].synonyms =***sult.synonyms;
+        if (result.tw) db2.learn[lemma].tw = result.tw;
+        if (result.pos) db2.learn[lemma].pos = result.pos;
+        if (result.definition) db2.learn[lemma].tip = result.definition;
+        if (result.example) db2.learn[lemma].example = result.example;
+        if (result.synonyms) db2.learn[lemma].synonyms = result.synonyms;
 
-        db2.lear***emma].loading = false;
-        d***learn[lemma].source = 'Gemini';
-***     db2.learn[lemma].updatedAt ****te.now();
+        db2.learn[lemma].loading = false;
+        db2.learn[lemma].source = 'Gemini';
+        db2.learn[lemma].updatedAt = Date.now();
 
-        localStorage.***Item('notebook_platform_v3', JSO***tringify(db2));
+        localStorage.setItem('notebook_platform_v3', JSON.stringify(db2));
 
-        log('已更***, lemma, '→', result.tw);
+        log('已更新:', lemma, '→', result.tw);
 
-     ******(typeof window.showWord === 'fun***on') {
-          try { window.sh***ord(lemma); } catch (e) {}
-     ***}
-        if (typeof window.rend***apture === 'function') {
-       ***try { window.renderCapture(); } ***ch (e) {}
+        if (typeof window.showWord === 'function') {
+          try { window.showWord(lemma); } catch (e) {}
+        }
+        if (typeof window.renderCapture === 'function') {
+          try { window.renderCapture(); } catch (e) {}
         }
       }
 
-   ***catch (e) {
+    } catch (e) {
 
-      log('查詢失敗:', ***ma, e.message);
+      log('查詢失敗:', lemma, e.message);
 
-      var db3 =***ON.parse(localStorage.getItem('n***book_platform_v3'));
-      if (d***learn[lemma]) {
-        db3.lear***emma].loading = false;
-        l***lStorage.setItem('notebook_platf***_v3', JSON.stringify(db3));
-    ***
+      var db3 = JSON.parse(localStorage.getItem('notebook_platform_v3'));
+      if (db3.learn[lemma]) {
+        db3.learn[lemma].loading = false;
+        localStorage.setItem('notebook_platform_v3', JSON.stringify(db3));
+      }
     }
   }
 
-  var origClickWord ***indow.clickWord;
+  var origClickWord = window.clickWord;
 
-  if (typ*** origClickWord === 'function') {***   window.clickWord = function (***face) {
+  if (typeof origClickWord === 'function') {
 
-      var result = orig***ckWord.call(this, surface);
+    window.clickWord = function (surface) {
 
-   ***setTimeout(function () {
-       ***dateWord***a(surface);
+      var result = origClickWord.call(this, surface);
+
+      setTimeout(function () {
+        updateWordData(surface);
       }, 200);
 
-    ***eturn result;
+      return result;
     };
 
-    log('c***kWord hooked');
+    log('clickWord hooked');
   }
 
-  window.lo***pWordWithGemini = upd***WordData;
+  window.lookupWordWithGemini = updateWordData;
 
-  window.batchLookupW***Gemini = async function (limit) ***    var db = JSON.parse(localSto***e.getItem('notebook_platform_v3'***| '{}');
-    var needCheck = [];***   Object.values(db.learn || {})***rEach(function (word) {
-      va***asTw = word.tw && !String(word.t***includes('未建') && !String(word.t***includes('查詢中');
-      if (word.***tured && !word.known && (!hasTw ***!word.example || !word.synonyms)***
-        needCheck.push(word.lem***|| word.word);
+  window.batchLookupWithGemini = async function (limit) {
+
+    var db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
+    var needCheck = [];
+
+    Object.values(db.learn || {}).forEach(function (word) {
+      var hasTw = word.tw && !String(word.tw).includes('未建') && !String(word.tw).includes('查詢中');
+      if (word.captured && !word.known && (!hasTw || !word.example || !word.synonyms)) {
+        needCheck.push(word.lemma || word.word);
       }
     });
 
-*** if (limit) needCheck = needChec***lice(0, limit);
+    if (limit) needCheck = needCheck.slice(0, limit);
 
-    console.log***要查詢的單字:', needCheck.length);
+    console.log('需要查詢的單字:', needCheck.length);
 
-  ***ar success = 0;
-    var failed =***
+    var success = 0;
+    var failed = 0;
 
-    for (var i = 0; i < needCh***.length; i++) {
-      console.lo***i + 1) + '/' + needCheck.length *** - 查詢:', needCheck[i]);
-      tr***
-        await updateWordData(ne***heck[i]);
+    for (var i = 0; i < needCheck.length; i++) {
+      console.log((i + 1) + '/' + needCheck.length + ' - 查詢:', needCheck[i]);
+      try {
+        await updateWordData(needCheck[i]);
         success++;
-   ***} catch (e***
+      } catch (e) {
         failed++;
       }
-     ***ait sleep(1500);
+      await sleep(1500);
     }
 
-    cons***.log('全部完成！成功:', success, '失敗:',***iled);
-  ***
+    console.log('全部完成！成功:', success, '失敗:', failed);
+  };
+
   log('ready v20260712-2');
-  l***'全域函式:');
-  log('  lookupWordWit***m***("word") - 查詢單字');
-  log('  batc***okupWithGemini(10) - 批次查詢前 10 個***字');
+  log('全域函式:');
+  log('  lookupWordWithGemini("word") - 查詢單字');
+  log('  batchLookupWithGemini(10) - 批次查詢前 10 個弱點單字');
 
 })();
