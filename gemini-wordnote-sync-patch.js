@@ -1,16 +1,21 @@
-/* gemini-wordnote-sync-patch.js  v20260713-1
-   Word Note ↔ Gemini 資料同步 patch
+/* gemini-wordnote-sync-patch.js  v20260713-2
+   針對 Flash Card UI 的 Word Note ↔ Gemini 同步 patch
+   目標元素：
+   - #flashQ = 單字標題
+   - #flashA = 答案容器（要覆寫這個）
+   - #flash = 整張卡片
+
    功能：
-   1) Word Note 開啟時，自動檢查 db.learn[word] 有沒有 Gemini 資料
-   2) 沒有 → 呼叫 lookupWordWithGemini(word) → 存回 db.learn
-   3) 保留舊欄位（word/lemma/pos/tw/tip）同時新增 Gemini 欄位
-   4) 提供「🔄 用 Gemini 更新」按鈕強制重新查詢
-   5) 用 MutationObserver 偵測 Word Note 開啟
+   1) 監聽 #flashQ 文字變化 → 抓到單字 → 查 Gemini
+   2) 覆寫 #flashA 為 Gemini 版顯示
+   3) 保留原本按鈕列
+   4) 加「🔄 Gemini 更新」按鈕
+   5) 存回 db.learn 供其他頁面使用
 */
 (function () {
   'use strict';
   var TAG = '[GeminiSync]';
-  var VER = 'v20260713-1';
+  var VER = 'v20260713-2';
 
   // ---- 資料層 ----
   function getDB() {
@@ -26,13 +31,11 @@
     return entry && entry.geminiSource === 'gemini' && entry.geminiTw;
   }
 
-  // 更新 db.learn[word] 的 Gemini 欄位
   function updateEntry(word, gemini) {
     var db = getDB();
     if (!db.learn) db.learn = {};
     var entry = db.learn[word] || {};
 
-    // Ultimate 版可能有 defs 陣列，簡短版直接是 pos/tw
     var pos = gemini.pos || (gemini.defs && gemini.defs[0] && gemini.defs[0].pos) || '';
     var tw = gemini.tw || (gemini.defs && gemini.defs[0] && gemini.defs[0].tw) || '';
 
@@ -50,19 +53,18 @@
     entry.geminiTip = gemini.tip || '';
     entry.geminiSource = 'gemini';
     entry.geminiUpdatedAt = Date.now();
-    entry.geminiRaw = gemini;  // 完整原始資料
+    entry.geminiRaw = gemini;
 
     db.learn[word] = entry;
     saveDB(db);
-    console.log(TAG, '✅ 已同步 db.learn[' + word + ']');
+    console.log(TAG, 'db.learn[' + word + '] 已更新');
     return entry;
   }
 
-  // 主同步邏輯：查 Gemini 並更新 db
   async function syncWord(word, force) {
     if (!word) return null;
     if (typeof window.lookupWordWithGemini !== 'function') {
-      console.warn(TAG, '❌ lookupWordWithGemini 未載入');
+      console.warn(TAG, 'lookupWordWithGemini 未載入');
       return null;
     }
 
@@ -70,163 +72,231 @@
     var entry = db.learn && db.learn[word];
 
     if (!force && hasGeminiData(entry)) {
-      console.log(TAG, '📦 ' + word + ' 已有 Gemini 資料，跳過');
+      console.log(TAG, word + ' 已有 Gemini 資料');
       return entry;
     }
 
-    console.log(TAG, '🔍 查詢 Gemini: ' + word);
+    console.log(TAG, '查詢 Gemini: ' + word);
     var gemini = await window.lookupWordWithGemini(word);
     if (!gemini) {
-      console.warn(TAG, '❌ ' + word + ' Gemini 查詢失敗');
+      console.warn(TAG, word + ' 查詢失敗');
       return null;
     }
 
     return updateEntry(word, gemini);
   }
 
-  // 重新渲染 Word Note UI（覆蓋顯示的定義）
-  function rerenderCard(word, entry) {
-    if (!entry) return;
+  // ⭐ 重新渲染 #flashA 內容
+  function renderFlashA(entry) {
+    var flashA = document.getElementById('flashA');
+    if (!flashA || !entry) return false;
 
-    // 找 Word Note 卡片
-    var cards = document.querySelectorAll('h1, h2, .word-title, [class*="title"]');
-    for (var i = 0; i < cards.length; i++) {
-      var titleEl = cards[i];
-      if (titleEl.textContent && titleEl.textContent.trim().toLowerCase() === word.toLowerCase()) {
-        var card = titleEl.closest('div, section, article') || titleEl.parentElement;
-        if (!card) continue;
+    var html = '';
 
-        // 找定義區塊（含「定義」或 pos 標籤的區塊）
-        var defBox = card.querySelector('[class*="definition"], [class*="def"]');
-        if (!defBox) {
-          // 用文字內容找
-          var boxes = card.querySelectorAll('div, p');
-          for (var j = 0; j < boxes.length; j++) {
-            if (/定義|MyMemory|Auto translated/i.test(boxes[j].textContent)) {
-              defBox = boxes[j];
-              break;
-            }
-          }
-        }
-
-        if (defBox) {
-          // 換掉裡面的內容
-          defBox.innerHTML = 
-            '<div style="font-weight:bold;color:#4dc9e6;margin-bottom:6px">' +
-              '<span style="background:#4dc9e6;color:#000;padding:2px 8px;border-radius:4px;font-size:11px;margin-right:6px">' +
-                (entry.geminiPos || '') + '</span>' +
-              (entry.geminiTw || '') +
-            '</div>' +
-            (entry.geminiPhonetic ? 
-              '<div style="color:#888;font-size:12px;margin-bottom:4px">' + entry.geminiPhonetic + '</div>' : '') +
-            (entry.geminiEx ? 
-              '<div style="margin-top:8px;padding:8px;background:rgba(77,201,230,.08);border-left:3px solid #4dc9e6;border-radius:4px">' +
-                '<div style="color:#666;font-style:italic">' + entry.geminiEx + '</div>' +
-                '<div style="color:#333;margin-top:4px">' + (entry.geminiTwEx || '') + '</div>' +
-              '</div>' : '') +
-            '<div style="color:#8f8;font-size:10px;margin-top:6px">✨ Gemini · ' + 
-              new Date(entry.geminiUpdatedAt || Date.now()).toLocaleString('zh-TW') + '</div>';
-
-          console.log(TAG, '🎨 已重新渲染 ' + word + ' 卡片');
-        }
-
-        // 加「更新」按鈕
-        injectRefreshBtn(card, word);
-      }
+    // 詞性 + 中文 + 音標
+    html += '<div style="font-size:16px;margin-bottom:10px">';
+    html +=   '<b style="color:#4dc9e6">' + escapeHtml(entry.geminiPos || '') + '</b> ';
+    html +=   escapeHtml(entry.geminiTw || '');
+    if (entry.geminiPhonetic) {
+      html += '<span style="color:#888;font-size:12px;margin-left:8px">' + 
+              escapeHtml(entry.geminiPhonetic) + '</span>';
     }
+    html += '</div>';
+
+    // 例句
+    if (entry.geminiEx) {
+      html += '<div style="color:#555;font-size:13px;padding:8px 10px;' +
+              'background:rgba(77,201,230,0.08);border-left:3px solid #4dc9e6;' +
+              'border-radius:3px;margin-bottom:4px">';
+      html +=   '<b style="color:#4dc9e6">例句</b> ' + escapeHtml(entry.geminiEx);
+      if (entry.geminiTwEx) {
+        html += '<div style="color:#333;margin-top:4px">' + escapeHtml(entry.geminiTwEx) + '</div>';
+      }
+      html += '</div>';
+    }
+
+    // 同義字（如果有）
+    if (entry.geminiSynonyms && entry.geminiSynonyms.length) {
+      html += '<div style="color:#666;font-size:12px;margin-top:6px">';
+      html +=   '<b style="color:#a68a56">同義</b> ' + 
+                entry.geminiSynonyms.map(escapeHtml).join(' · ');
+      html += '</div>';
+    }
+
+    // 派生字（如果有）
+    if (entry.geminiDerivatives && entry.geminiDerivatives.length) {
+      html += '<div style="color:#666;font-size:12px;margin-top:4px">';
+      html +=   '<b style="color:#a68a56">派生</b> ' + 
+                entry.geminiDerivatives.map(escapeHtml).join(' · ');
+      html += '</div>';
+    }
+
+    // 常見搭配（如果有）
+    if (entry.geminiCollocations && entry.geminiCollocations.length) {
+      html += '<div style="color:#666;font-size:12px;margin-top:4px">';
+      html +=   '<b style="color:#a68a56">搭配</b> ' + 
+                entry.geminiCollocations.map(escapeHtml).join(' · ');
+      html += '</div>';
+    }
+
+    // 記憶技巧（如果有）
+    if (entry.geminiTip) {
+      html += '<div style="color:#555;font-size:12px;margin-top:6px;' +
+              'padding:6px 10px;background:rgba(166,138,86,0.08);border-radius:3px">';
+      html +=   '💡 ' + escapeHtml(entry.geminiTip);
+      html += '</div>';
+    }
+
+    // Level + 時間戳
+    html += '<div style="color:#8f8;font-size:10px;margin-top:8px">';
+    if (entry.geminiLevel) {
+      html += '<span style="background:#4dc9e6;color:#000;padding:1px 6px;' +
+              'border-radius:3px;margin-right:6px">' + escapeHtml(entry.geminiLevel) + '</span>';
+    }
+    html += '✨ Gemini · ' + new Date(entry.geminiUpdatedAt || Date.now()).toLocaleString('zh-TW');
+    html += '</div>';
+
+    flashA.innerHTML = html;
+    return true;
   }
 
-  // 注入「🔄 用 Gemini 更新」按鈕
-  function injectRefreshBtn(card, word) {
-    if (card.querySelector('.gsync-btn')) return;  // 已注入
+  function escapeHtml(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
-    var btnBar = card.querySelector('[class*="button"], [class*="action"], .btn-group') 
-              || card.querySelector('button')?.parentElement;
+  // ⭐ 注入「Gemini 更新」按鈕
+  function injectRefreshBtn(word) {
+    var flash = document.getElementById('flash');
+    if (!flash) return;
+    if (flash.querySelector('.gsync-btn')) return;
+
+    // 找按鈕列（通常有「發音、看答案、還不熟」等）
+    var btns = flash.querySelectorAll('button');
+    if (!btns.length) return;
+    var btnBar = btns[0].parentElement;
     if (!btnBar) return;
 
     var btn = document.createElement('button');
     btn.className = 'gsync-btn';
-    btn.textContent = '🔄 Gemini 更新';
-    btn.style.cssText = 'background:#4dc9e6;color:#000;border:none;padding:6px 12px;' +
-                       'border-radius:6px;cursor:pointer;font-size:12px;margin-left:6px';
+    btn.textContent = '🔄 Gemini';
+    btn.style.cssText = 'background:#4dc9e6;color:#000;border:none;padding:6px 10px;' +
+                       'border-radius:4px;cursor:pointer;font-size:12px;margin-left:4px';
     btn.onclick = async function (e) {
       e.stopPropagation();
-      btn.textContent = '⏳ 查詢中...';
+      btn.textContent = '⏳';
       btn.disabled = true;
-      var entry = await syncWord(word, true);  // force = true
+      var entry = await syncWord(word, true);
       if (entry) {
-        rerenderCard(word, entry);
-        btn.textContent = '✅ 已更新';
+        renderFlashA(entry);
+        btn.textContent = '✅';
       } else {
-        btn.textContent = '❌ 失敗';
+        btn.textContent = '❌';
       }
       setTimeout(function () {
-        btn.textContent = '🔄 Gemini 更新';
+        btn.textContent = '🔄 Gemini';
         btn.disabled = false;
       }, 2000);
     };
     btnBar.appendChild(btn);
   }
 
-  // ---- MutationObserver：偵測 Word Note 開啟 ----
-  var processed = {};  // 避免重複處理同一個字
+  // ⭐ 主處理：偵測 #flashQ 有值時
+  var lastProcessedWord = '';
 
-  function scanAndSync() {
-    // 找 h1/h2 標題（Word Note 標題）
-    var titles = document.querySelectorAll('h1, h2');
-    for (var i = 0; i < titles.length; i++) {
-      var titleText = titles[i].textContent && titles[i].textContent.trim();
-      if (!titleText || titleText.length > 30 || !/^[a-zA-Z\-']+$/.test(titleText)) continue;
+  function processFlashCard() {
+    var flashQ = document.getElementById('flashQ');
+    var flashA = document.getElementById('flashA');
+    if (!flashQ || !flashA) return;
 
-      var word = titleText.toLowerCase();
-      var processKey = word + '_' + Math.floor(Date.now() / 60000);  // 每分鐘可再處理一次
-      if (processed[processKey]) continue;
-      processed[processKey] = 1;
+    var word = (flashQ.textContent || '').trim().toLowerCase();
+    if (!word || !/^[a-z][a-z\-']*$/i.test(word)) return;
+    if (word === lastProcessedWord) return;  // 避免重複處理
 
-      // 檢查有沒有「Auto translated by MyMemory」文字（舊資料標記）
-      var card = titles[i].closest('div, section, article') || titles[i].parentElement;
-      var cardText = card ? card.textContent : '';
-      var hasOldData = /MyMemory|Auto translated/i.test(cardText);
+    lastProcessedWord = word;
+    console.log(TAG, '偵測 Flash Card: ' + word);
 
-      var db = getDB();
-      var entry = db.learn && db.learn[word];
+    var db = getDB();
+    var entry = db.learn && db.learn[word];
 
-      if (hasOldData || !hasGeminiData(entry)) {
-        console.log(TAG, '🎯 偵測到 Word Note 開啟: ' + word + '（需要 Gemini 同步）');
-        (function (w, c) {
-          syncWord(w, false).then(function (e) {
-            if (e) rerenderCard(w, e);
-          });
-        })(word, card);
-      } else {
-        // 已有 Gemini 資料，直接重新渲染
-        rerenderCard(word, entry);
-      }
+    if (hasGeminiData(entry)) {
+      // 已有 Gemini 資料，直接渲染
+      console.log(TAG, '使用已有 Gemini 資料');
+      renderFlashA(entry);
+      injectRefreshBtn(word);
+    } else {
+      // 沒有 → 查 Gemini
+      console.log(TAG, '需要查詢 Gemini');
+      syncWord(word, false).then(function (e) {
+        if (e) {
+          renderFlashA(e);
+          injectRefreshBtn(word);
+        }
+      });
+      // 先注入按鈕（就算還沒查完）
+      injectRefreshBtn(word);
     }
   }
 
-  var observer = new MutationObserver(function (mutations) {
-    // 節流：500ms 內只掃一次
-    if (observer._pending) return;
-    observer._pending = setTimeout(function () {
-      observer._pending = null;
-      scanAndSync();
-    }, 500);
-  });
+  // ⭐ MutationObserver 監聽 #flashQ 變化
+  function boot() {
+    // 首次執行
+    processFlashCard();
+
+    var flash = document.getElementById('flash');
+    if (!flash) {
+      // Flash 卡片還沒渲染，全域監聽
+      var globalObs = new MutationObserver(function () {
+        if (document.getElementById('flashQ')) {
+          processFlashCard();
+        }
+      });
+      globalObs.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // 監聽 #flashQ 文字變化（換下一個字時）
+    var localObs = new MutationObserver(function () {
+      processFlashCard();
+    });
+
+    // 用計時器保險，每 800ms 檢查一次
+    setInterval(function () {
+      processFlashCard();
+    }, 800);
+
+    // 立刻掛載到 body（因為 #flash 可能被重建）
+    localObs.observe(document.body, { 
+      childList: true, 
+      subtree: true, 
+      characterData: true 
+    });
+
+    console.log(TAG, 'ready', VER);
+    console.log(TAG, '手動 API:');
+    console.log(TAG, '  __geminiSync.sync("word", true)  - 強制同步單字');
+    console.log(TAG, '  __geminiSync.syncAll(20)         - 批次同步');
+    console.log(TAG, '  __geminiSync.rerender()          - 手動重新渲染當前卡片');
+  }
 
   // ---- 手動 API ----
   window.__geminiSync = {
     sync: syncWord,
-    scan: scanAndSync,
-    rerender: rerenderCard,
-    // 批次同步 db.learn 所有字
+    render: renderFlashA,
+    rerender: function () {
+      lastProcessedWord = '';  // 重置
+      processFlashCard();
+    },
     syncAll: async function (limit) {
       limit = limit || 10;
       var db = getDB();
       var words = Object.keys(db.learn || {}).filter(function (w) {
         return !hasGeminiData(db.learn[w]);
       }).slice(0, limit);
-      console.log(TAG, '📚 批次同步 ' + words.length + ' 個字（限制 ' + limit + '）');
+      console.log(TAG, '批次同步 ' + words.length + ' 字');
       for (var i = 0; i < words.length; i++) {
         console.log(TAG, (i+1) + '/' + words.length + ' ' + words[i]);
         await syncWord(words[i], false);
@@ -235,17 +305,6 @@
       console.log(TAG, '✅ 批次完成');
     }
   };
-
-  // ---- 啟動 ----
-  function boot() {
-    observer.observe(document.body, { childList: true, subtree: true });
-    scanAndSync();  // 首次掃描
-    console.log(TAG, 'ready', VER);
-    console.log(TAG, '手動 API:');
-    console.log(TAG, '  __geminiSync.sync("word")     - 同步單字');
-    console.log(TAG, '  __geminiSync.syncAll(10)      - 批次同步 (限 10 字)');
-    console.log(TAG, '  __geminiSync.scan()           - 手動掃描頁面');
-  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
