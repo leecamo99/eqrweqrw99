@@ -1,13 +1,16 @@
-/* article-full-translate-patch.js v20260711-8
-   Add paragraph separator so sync highlight is visually clear.
-*/
+/* article-full-translate-patch.js v20260712-1
+   - Header 整列可點展開/收合
+   - 折疊時自動疊在「全文語音」列上方，不會被蓋住
+   - 折疊高度縮小為 48px
+   - Watchdog 每秒自動校正位置
+/
 
 (function () {
 
   'use strict';
 
-  var API_KEY_STORAGE = 'google_translate_api_key';
-  var CACHE_STORAGE = 'article_translation_cache_v1';
+  var API_KEY_STORAGE  = 'google_translate_api_key';
+  var CACHE_STORAGE    = 'article_translation_cache_v1';
   var COLLAPSED_STORAGE = 'article_translate_collapsed';
 
   function log() {
@@ -15,6 +18,8 @@
       console.log.apply(console, ['[FullTranslate]'].concat([].slice.call(arguments)));
     } catch (e) {}
   }
+
+  / ---------- Storage ---------- /
 
   function getApiKey() {
     return localStorage.getItem(API_KEY_STORAGE) || '';
@@ -38,6 +43,8 @@
     }
     return String(h);
   }
+
+  / ---------- Google Translate ---------- /
 
   async function googleTranslateBatch(texts) {
 
@@ -79,9 +86,11 @@
     }
   }
 
+  / ---------- Article ---------- /
+
   function splitEnglishParagraphs(fullText) {
 
-    var paras = fullText.split(/\n\s*\n/).filter(function (p) { return p.trim(); });
+    var paras = fullText.split(/\n\s\n/).filter(function (p) { return p.trim(); });
 
     if (paras.length === 1) {
       paras = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
@@ -117,7 +126,7 @@
       return null;
     }
 
-    var hash = hashText(enText);
+    var hash  = hashText(enText);
     var cache = getCache();
 
     if (cache[hash]) {
@@ -146,9 +155,13 @@
     return { enParas: enParas, zhParas: zhParas };
   }
 
+  /* ---------- State ---------- /
+
   var currentTranslation = null;
   var syncEnabled = false;
   var isCollapsed = localStorage.getItem(COLLAPSED_STORAGE) === '1';
+
+  / ---------- Sync highlight ---------- /
 
   function updateSyncState() {
     var btn = document.getElementById('syncToggleBtn');
@@ -160,16 +173,16 @@
 
   function findCurrentParaIndex() {
 
-    var audio = document.getElementById('__V5_MASTER_AUDIO__');
+    var audio = document.getElementById('V5_MASTER_AUDIO');
     if (!audio || !currentTranslation) return -1;
 
     var currentTime = audio.currentTime;
-    var duration = audio.duration;
+    var duration    = audio.duration;
 
     if (!isFinite(currentTime) || !isFinite(duration) || duration <= 0) return -1;
 
     var ratio = currentTime / duration;
-    var idx = Math.floor(ratio * currentTranslation.enParas.length);
+    var idx   = Math.floor(ratio * currentTranslation.enParas.length);
 
     return Math.min(currentTranslation.enParas.length - 1, Math.max(0, idx));
   }
@@ -179,18 +192,15 @@
     if (!el || !container) return;
 
     var containerRect = container.getBoundingClientRect();
-    var elRect = el.getBoundingClientRect();
+    var elRect        = el.getBoundingClientRect();
 
-    var buffer = 30;
-    var relTop = elRect.top - containerRect.top;
+    var buffer    = 30;
+    var relTop    = elRect.top    - containerRect.top;
     var relBottom = elRect.bottom - containerRect.top;
 
     if (relTop < buffer || relBottom > containerRect.height - buffer) {
       var offset = el.offsetTop - (container.clientHeight / 2) + (el.clientHeight / 2);
-      container.scrollTo({
-        top: offset,
-        behavior: 'smooth'
-      });
+      container.scrollTo({ top: offset, behavior: 'smooth' });
     }
   }
 
@@ -206,13 +216,13 @@
 
     zhSide.querySelectorAll('.zh-para').forEach(function (el, i) {
       if (i === idx) {
-        el.style.background = 'rgba(166, 138, 86, 0.20)';
-        el.style.borderLeft = '4px solid #a68a56';
-        el.style.paddingLeft = '10px';
+        el.style.background   = 'rgba(166, 138, 86, 0.20)';
+        el.style.borderLeft   = '4px solid #a68a56';
+        el.style.paddingLeft  = '10px';
       } else {
-        el.style.background = '';
-        el.style.borderLeft = '3px solid transparent';
-        el.style.paddingLeft = '11px';
+        el.style.background   = '';
+        el.style.borderLeft   = '3px solid transparent';
+        el.style.paddingLeft  = '11px';
       }
     });
 
@@ -229,7 +239,7 @@
 
     currentTranslation.enParas.forEach(function (en, i) {
 
-      var zh = currentTranslation.zhParas[i] || '(翻譯中)';
+      var zh     = currentTranslation.zhParas[i] || '(翻譯中)';
       var isLast = i === currentTranslation.enParas.length - 1;
 
       html += '<div class="zh-para" data-idx="' + i + '" style="' +
@@ -248,6 +258,8 @@
     zhSide.innerHTML = html;
   }
 
+  / ---------- Collapse ---------- /
+
   function toggleCollapsed() {
     isCollapsed = !isCollapsed;
     localStorage.setItem(COLLAPSED_STORAGE, isCollapsed ? '1' : '0');
@@ -256,23 +268,65 @@
 
   function updateCollapsedState() {
 
-    var box = document.getElementById('fullTranslateBox');
+    var box       = document.getElementById('fullTranslateBox');
     var toggleBtn = document.getElementById('translateCollapseBtn');
-    var body = document.getElementById('translateBody');
+    var body      = document.getElementById('translateBody');
 
     if (!box) return;
 
     if (isCollapsed) {
-      box.style.maxHeight = '60px';
-      if (body) body.style.display = 'none';
-      if (toggleBtn) toggleBtn.textContent = '▲';
+      box.style.maxHeight = '48px';
+      if (body)      body.style.display  = 'none';
+      if (toggleBtn) toggleBtn.textContent = '▲ 展開';
     } else {
       box.style.maxHeight = '60vh';
-      if (body) body.style.display = 'flex';
-      if (toggleBtn) toggleBtn.textContent = '▼';
+      if (body)      body.style.display  = 'flex';
+      if (toggleBtn) toggleBtn.textContent = '▼ 收合';
     }
 
     updateBodyPadding();
+  }
+
+  / ---------- Audio bar detection ---------- */
+
+  function getAudioBarHeight() {
+
+    var selectors = [
+      '#gcttsBar',
+      '#ttsBar',
+      '#audioBar',
+      '#playerBar',
+      '.tts-bar',
+      '.audio-bar'
+    ];
+
+    for (var i = 0; i < selectors.length; i++) {
+      var el = document.querySelector(selectors[i]);
+      if (el && el.offsetHeight > 0) {
+        var st = getComputedStyle(el);
+        if (st.position === 'fixed' && parseInt(st.bottom) <= 5) {
+          return el.offsetHeight;
+        }
+      }
+    }
+
+    var all = document.querySelectorAll('body ');
+    for (var j = 0; j < all.length; j++) {
+      var e = all[j];
+      if (e.id === 'fullTranslateBox') continue;
+      var s = getComputedStyle(e);
+      if (
+        s.position === 'fixed' &&
+        parseInt(s.bottom) <= 5 &&
+        e.offsetHeight > 30 &&
+        e.offsetHeight < 200 &&
+        e.offsetWidth > window.innerWidth * 0.7
+      ) {
+        return e.offsetHeight;
+      }
+    }
+
+    return 0;
   }
 
   function updateBodyPadding() {
@@ -283,9 +337,14 @@
       return;
     }
 
+    var audioH = getAudioBarHeight();
+    box.style.bottom = audioH + 'px';
+
     var rect = box.getBoundingClientRect();
-    document.body.style.paddingBottom = (rect.height + 10) + 'px';
+    document.body.style.paddingBottom = (rect.height + audioH + 10) + 'px';
   }
+
+  / ---------- UI ---------- /
 
   function createTranslateBox() {
 
@@ -294,38 +353,40 @@
     var box = document.createElement('div');
     box.id = 'fullTranslateBox';
 
-    box.style.position = 'fixed';
-    box.style.bottom = '0';
-    box.style.left = '0';
-    box.style.right = '0';
-    box.style.zIndex = '100';
-    box.style.background = '#faf6ed';
-    box.style.borderTop = '2px solid #a68a56';
-    box.style.boxShadow = '0 -4px 12px rgba(0,0,0,0.08)';
-    box.style.fontFamily = '"Microsoft JhengHei", sans-serif';
-    box.style.maxHeight = '60vh';
-    box.style.display = 'flex';
-    box.style.flexDirection = 'column';
-    box.style.transition = 'max-height 0.3s';
-    box.style.overflow = 'hidden';
+    box.style.position        = 'fixed';
+    box.style.bottom          = getAudioBarHeight() + 'px';
+    box.style.left            = '0';
+    box.style.right           = '0';
+    box.style.zIndex          = '99';
+    box.style.background      = '#faf6ed';
+    box.style.borderTop       = '2px solid #a68a56';
+    box.style.boxShadow       = '0 -4px 12px rgba(0,0,0,0.08)';
+    box.style.fontFamily      = '"Microsoft JhengHei", sans-serif';
+    box.style.maxHeight       = '60vh';
+    box.style.display         = 'flex';
+    box.style.flexDirection   = 'column';
+    box.style.transition      = 'max-height 0.3s';
+    box.style.overflow        = 'hidden';
 
     box.innerHTML =
-      '<div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #d9cfbc; flex-shrink: 0;">' +
-        '<div style="color: #a68a56; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 8px;">' +
-          '<span id="translateCollapseBtn" style="cursor: pointer; padding: 2px 6px; user-select: none;">' + (isCollapsed ? '▲' : '▼') + '</span>' +
+      '<div id="translateHeader" style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #d9cfbc;flex-shrink:0;cursor:pointer;">' +
+        '<div style="color:#a68a56;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:8px;">' +
+          '<span id="translateCollapseBtn" style="cursor:pointer;padding:4px 10px;user-select:none;font-size:14px;font-weight:bold;border-radius:6px;background:#eee7d8;">' +
+          (isCollapsed ? '▲ 展開' : '▼ 收合') +
+          '</span>' +
           '📖 中文翻譯' +
-          '<span id="translateStatus" style="color: #888; font-size: 11px; font-weight: normal;"></span>' +
+          '<span id="translateStatus" style="color:#888;font-size:11px;font-weight:normal;"></span>' +
         '</div>' +
-        '<div style="display: flex; gap: 4px;">' +
-          '<button id="translateBtn" style="padding: 4px 8px; background: #a68a56; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;">翻譯全文</button>' +
-          '<button id="syncToggleBtn" style="padding: 4px 8px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 11px;">🔗 同步: 關</button>' +
-          '<button id="translateClearBtn" style="padding: 4px 8px; background: transparent; color: #999; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; font-size: 11px;">清除</button>' +
+        '<div style="display:flex;gap:4px;">' +
+          '<button id="translateBtn" style="padding:4px 8px;background:#a68a56;color:white;border:none;border-radius:3px;cursor:pointer;font-size:11px;">翻譯全文</button>' +
+          '<button id="syncToggleBtn" style="padding:4px 8px;background:#666;color:white;border:none;border-radius:3px;cursor:pointer;font-size:11px;">🔗 同步: 關</button>' +
+          '<button id="translateClearBtn" style="padding:4px 8px;background:transparent;color:#999;border:1px solid #ccc;border-radius:3px;cursor:pointer;font-size:11px;">清除</button>' +
         '</div>' +
       '</div>' +
 
-      '<div id="translateBody" style="flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 0;">' +
-        '<div id="translateZhSide" style="flex: 1; overflow-y: auto; padding: 8px 12px; min-height: 0;">' +
-          '<div style="color: #999; padding: 20px; text-align: center; font-size: 12px;">' +
+      '<div id="translateBody" style="flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0;">' +
+        '<div id="translateZhSide" style="flex:1;overflow-y:auto;padding:8px 12px;min-height:0;">' +
+          '<div style="color:#999;padding:20px;text-align:center;font-size:12px;">' +
             '點擊「翻譯全文」開始' +
           '</div>' +
         '</div>' +
@@ -333,7 +394,19 @@
 
     document.body.appendChild(box);
 
-    document.getElementById('translateBtn').onclick = async function () {
+    / --- Header 整列可點 --- /
+    var header = document.getElementById('translateHeader');
+    header.onclick = function (e) {
+      var btn = e.target.closest('button');
+      if (btn) return;
+      toggleCollapsed();
+    };
+
+    / --- Buttons --- /
+
+    document.getElementById('translateBtn').onclick = async function (e) {
+
+      e.stopPropagation();
 
       var btn = this;
       btn.disabled = true;
@@ -349,20 +422,20 @@
       }
     };
 
-    document.getElementById('syncToggleBtn').onclick = function () {
+    document.getElementById('syncToggleBtn').onclick = function (e) {
+      e.stopPropagation();
       syncEnabled = !syncEnabled;
       updateSyncState();
-      if (syncEnabled) {
-        highlightSyncPara();
-      }
+      if (syncEnabled) highlightSyncPara();
     };
 
-    document.getElementById('translateClearBtn').onclick = function () {
+    document.getElementById('translateClearBtn').onclick = function (e) {
+      e.stopPropagation();
       currentTranslation = null;
       var zhSide = document.getElementById('translateZhSide');
       if (zhSide) {
         zhSide.innerHTML =
-          '<div style="color: #999; padding: 20px; text-align: center; font-size: 12px;">' +
+          '<div style="color:#999;padding:20px;text-align:center;font-size:12px;">' +
             '點擊「翻譯全文」開始' +
           '</div>';
       }
@@ -370,8 +443,6 @@
       syncEnabled = false;
       updateSyncState();
     };
-
-    document.getElementById('translateCollapseBtn').onclick = toggleCollapsed;
 
     log('translate box created');
 
@@ -383,13 +454,15 @@
     }
   }
 
+  / ---------- Loops ---------- /
+
   function startSyncMonitor() {
 
     setInterval(function () {
       if (!syncEnabled) return;
       if (!currentTranslation) return;
 
-      var audio = document.getElementById('__V5_MASTER_AUDIO__');
+      var audio = document.getElementById('V5_MASTER_AUDIO');
       if (!audio || audio.paused) return;
 
       highlightSyncPara();
@@ -410,12 +483,14 @@
     }, 1000);
   }
 
+  / ---------- Boot ---------- */
+
   createTranslateBox();
   startSyncMonitor();
   startWatchdog();
 
   window.addEventListener('resize', updateBodyPadding);
 
-  log('ready v20260711-8');
+  log('ready v20260712-1');
 
 })();
