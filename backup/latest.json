@@ -122,9 +122,10 @@
         },
         "prestigious": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "tw": "prestigiou",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "prestigiou"
         },
         "universities": {
           "pos": "",
@@ -4407,7 +4408,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783817547358,
+  "updatedAt": 1783818065065,
   "learn": {
     "github": {
       "word": "github",
@@ -5953,11 +5954,11 @@
       "word": "immerse",
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
-      "lastSeenAt": 1783804044862,
+      "lastSeenAt": 1783818065060,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 24,
-      "sessionClicks": 24,
-      "maxClickStreak": 19,
+      "lifetimeClicks": 25,
+      "sessionClicks": 25,
+      "maxClickStreak": 20,
       "reviewHistory": [],
       "dueAt": 1783734976885,
       "intervalDays": 0,
@@ -5965,17 +5966,17 @@
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "immersing",
+      "lastSurface": "immerse",
       "lastForm": "base form",
       "variants": {
         "immersing": 18,
-        "immerse": 6
+        "immerse": 7
       },
-      "clicks": 20,
+      "clicks": 21,
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783804044863,
+      "updatedAt": 1783818065062,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
