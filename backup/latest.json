@@ -4407,8 +4407,8 @@
       }
     }
   ],
-  "dark": true,
-  "updatedAt": 1783885743008,
+  "dark": false,
+  "updatedAt": 1783885777529,
   "learn": {
     "github": {
       "word": "github",
