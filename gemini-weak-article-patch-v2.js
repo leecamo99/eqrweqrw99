@@ -14,7 +14,7 @@
   const STORE='notebook_platform_v3';
   const KEY='notebook_gemini_api_key_v1';
   const MODEL_KEY='notebook_gemini_model_v1';
-  const DEFAULT_MODEL='gemini-2.5-flash';
+  const DEFAULT_MODEL='gemini-3.5-flash';
   let inFlight=false;
 
   function esc(s){return String(s||'').replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -89,7 +89,7 @@
   }
   function setModel(){
     const old=getModel();
-    const m=prompt('Gemini model，例如 gemini-2.5-flash 或 gemini-1.5-flash',old);
+    const m=prompt('Gemini model，例如 gemini-3.5-flash',old);
     if(m===null)return;
     if(m.trim())localStorage.setItem(MODEL_KEY,m.trim());else localStorage.removeItem(MODEL_KEY);
     alert('模型已設定為：'+getModel());
