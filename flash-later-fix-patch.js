@@ -1,19 +1,21 @@
-/* flash-later-fix-patch.js  v20260713-1
-   閃卡增強 patch
-   功能：
-   1) ⭐ 修正「稍後」按鈕（原本只關視窗）→ 改成模擬點「還不熟」但不改 SRS
-   2) ⭐ 加「×」關閉按鈕（右上角）
-   3) ⭐ 進度顯示（flashMeta 加「📊 3/40」）
+/* flash-later-fix-patch.js  v20260713-2
+   關鍵修正：
+   1) 只在閃卡「真的顯示」時才注入關閉按鈕
+   2) 閃卡關閉時自動移除關閉按鈕（不殘留）
+   3) 嚴格 selector：只找 #flash > .box（避免污染其他 UI）
+   4) 延遲 1 秒才啟動掃描（避免頁面初始化衝突）
+   5) 進度顯示更精準
 */
 (function () {
   'use strict';
   var TAG = '[FlashEnhance]';
-  var VER = 'v20260713-1';
+  var VER = 'v20260713-2';
 
-  // ---- 進度追蹤 ----
-  var seenWords = [];   // 這輪已看過的字（用來算進度）
-  var totalGuess = 0;   // 猜測的總數
+  var seenWords = [];
+  var totalGuess = 0;
   var lastWord = '';
+  var wasShown = false;
+  var origLaterHandler = null;
 
   function resetProgress() {
     seenWords = [];
@@ -21,18 +23,15 @@
     lastWord = '';
   }
 
-  // 從 SRS 資料估算「本輪要複習的字數」
   function guessTotal() {
     try {
       var db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
       var learn = db.learn || {};
       var now = Date.now();
       var due = 0;
-      // 通用邏輯：due < 現在 或無 due 資料 = 需要複習
       Object.keys(learn).forEach(function (w) {
         var e = learn[w];
         if (!e) return;
-        // 猜多種 SRS 欄位名稱
         var d = e.due || e.dueAt || (e.srs && e.srs.due) || 0;
         if (!d || d <= now) due++;
       });
@@ -45,10 +44,9 @@
     var flashMeta = document.getElementById('flashMeta');
     if (!flashQ || !flashMeta) return;
 
-    var word = flashQ.textContent.trim().toLowerCase();
+    var word = (flashQ.textContent || '').trim().toLowerCase();
     if (!word || !/^[a-z][a-z\-']*$/i.test(word)) return;
 
-    // 新字才加進計數
     if (word !== lastWord) {
       lastWord = word;
       if (seenWords.indexOf(word) === -1) {
@@ -57,33 +55,28 @@
       if (totalGuess === 0) totalGuess = guessTotal() + seenWords.length;
     }
 
-    // 移除舊進度標記
     var oldTag = flashMeta.querySelector('.flash-progress');
     if (oldTag) oldTag.remove();
 
-    // 加新進度
     var tag = document.createElement('span');
     tag.className = 'flash-progress';
     tag.style.cssText = 'color:#a68a56;margin-left:10px;font-weight:bold';
-    tag.textContent = '· 📊 ' + seenWords.length + ' / ' + Math.max(totalGuess, seenWords.length);
+    tag.textContent = '· \uD83D\uDCCA ' + seenWords.length + ' / ' + Math.max(totalGuess, seenWords.length);
     flashMeta.appendChild(tag);
   }
 
-  // ---- 稍後按鈕：攔截 hard 讓它不改 SRS ----
   function flashLater() {
     var flashQ = document.getElementById('flashQ');
     var word = flashQ && flashQ.textContent.trim();
     if (!word) { console.warn(TAG, '沒有當前字'); return; }
 
-    console.log(TAG, '跳過:', word);
+    console.log(TAG, '\u23ED\uFE0F 跳過:', word);
 
-    // 攔截 hard() 讓它變成無效
     var origHard = window.hard;
     if (typeof origHard === 'function') {
       window.hard = function () {
         console.log(TAG, '(攔截 hard，不改 SRS)');
       };
-      // 模擬按「還不熟」
       var found = false;
       var btns = document.querySelectorAll('button');
       for (var i = 0; i < btns.length; i++) {
@@ -93,7 +86,6 @@
           break;
         }
       }
-      // 100ms 後還原 hard
       setTimeout(function () { window.hard = origHard; }, 100);
       if (!found) console.warn(TAG, '找不到還不熟按鈕');
     } else {
@@ -101,24 +93,43 @@
     }
   }
 
-  // ---- 關閉按鈕 ----
   function closeFlash() {
     var flash = document.getElementById('flash');
     if (flash) {
       flash.classList.remove('show');
       console.log(TAG, '關閉閃卡');
+      cleanupUI();
       resetProgress();
     }
   }
 
+  // 移除注入的 UI（關閉按鈕、進度）
+  function cleanupUI() {
+    var closeBtn = document.querySelector('.flash-close-btn');
+    if (closeBtn) closeBtn.remove();
+    var progress = document.querySelector('.flash-progress');
+    if (progress) progress.remove();
+  }
+
   function injectCloseBtn() {
     var flash = document.getElementById('flash');
-    if (!flash || flash.querySelector('.flash-close-btn')) return;
+    if (!flash) return;
+    // ⭐ 嚴格檢查：必須是 #flash 且 shown
+    if (!flash.classList.contains('show')) return;
+    // 已注入就不重複
+    if (flash.querySelector('.flash-close-btn')) return;
 
-    var box = flash.querySelector('.box') || flash.firstElementChild;
+    // ⭐ 只找 #flash 直接子層的 .box
+    var box = null;
+    for (var i = 0; i < flash.children.length; i++) {
+      if (flash.children[i].classList && flash.children[i].classList.contains('box')) {
+        box = flash.children[i];
+        break;
+      }
+    }
+    if (!box) box = flash.firstElementChild;
     if (!box) return;
 
-    // 確保 box 有 position:relative
     var boxStyle = window.getComputedStyle(box);
     if (boxStyle.position === 'static') {
       box.style.position = 'relative';
@@ -126,8 +137,8 @@
 
     var btn = document.createElement('button');
     btn.className = 'flash-close-btn';
-    btn.textContent = '✕';
-    btn.title = '關閉閃卡練習';
+    btn.textContent = '\u2715';
+    btn.title = '關閉閃卡練習 (ESC)';
     btn.style.cssText = 
       'position:absolute;top:8px;right:8px;' +
       'width:28px;height:28px;padding:0;' +
@@ -150,23 +161,25 @@
       closeFlash();
     };
     box.appendChild(btn);
-    console.log(TAG, '關閉按鈕已注入');
+    console.log(TAG, '\u2715 關閉按鈕已注入');
   }
 
-  // ---- 稍後按鈕綁定 ----
   function bindLaterBtn() {
-    var btns = document.querySelectorAll('button');
+    var flash = document.getElementById('flash');
+    if (!flash || !flash.classList.contains('show')) return;
+
+    var btns = flash.querySelectorAll('button');
     for (var i = 0; i < btns.length; i++) {
       var b = btns[i];
       if (b.textContent.trim() === '稍後' && !b.__laterBound) {
+        origLaterHandler = b.onclick;  // 保存原本的
         b.onclick = flashLater;
         b.__laterBound = true;
-        console.log(TAG, '「稍後」按鈕已重綁');
+        console.log(TAG, '\u23ED\uFE0F 稍後按鈕已重綁');
       }
     }
   }
 
-  // ---- ESC 快捷鍵關閉 ----
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       var flash = document.getElementById('flash');
@@ -176,24 +189,22 @@
     }
   });
 
-  // ---- 主循環 ----
-  var flashWasShown = false;
   function scan() {
     var flash = document.getElementById('flash');
     if (!flash) return;
 
     var isShown = flash.classList.contains('show');
 
-    // 開啟時初始化
-    if (isShown && !flashWasShown) {
-      console.log(TAG, '閃卡開啟，初始化');
+    if (isShown && !wasShown) {
+      console.log(TAG, '\uD83C\uDFAF 閃卡開啟，初始化');
       resetProgress();
     }
-    // 關閉時重置
-    if (!isShown && flashWasShown) {
+    if (!isShown && wasShown) {
+      console.log(TAG, '\uD83D\uDD1A 閃卡關閉，清理 UI');
+      cleanupUI();
       resetProgress();
     }
-    flashWasShown = isShown;
+    wasShown = isShown;
 
     if (!isShown) return;
 
@@ -203,19 +214,22 @@
   }
 
   function boot() {
-    scan();
-    setInterval(scan, 500);
+    // ⭐ 延遲 1 秒啟動，避免頁面初始化衝突
+    setTimeout(function () {
+      scan();
+      setInterval(scan, 500);
 
-    var obs = new MutationObserver(function () { scan(); });
-    obs.observe(document.body, { 
-      childList: true, subtree: true, characterData: true 
-    });
+      var obs = new MutationObserver(function () { scan(); });
+      obs.observe(document.body, { 
+        childList: true, subtree: true, characterData: true 
+      });
 
-    console.log(TAG, 'ready', VER);
-    console.log(TAG, '功能：');
-    console.log(TAG, '  ✕ 關閉按鈕（右上角 / ESC）');
-    console.log(TAG, '  📊 進度顯示（flashMeta）');
-    console.log(TAG, '  ⏭ 稍後修正（不改 SRS）');
+      console.log(TAG, 'ready', VER);
+      console.log(TAG, '功能：');
+      console.log(TAG, '  \u2715 關閉按鈕（右上角 / ESC）');
+      console.log(TAG, '  \uD83D\uDCCA 進度顯示');
+      console.log(TAG, '  \u23ED\uFE0F 稍後修正（不改 SRS）');
+    }, 1000);
   }
 
   if (document.readyState === 'loading') {
