@@ -89,23 +89,30 @@
     var article = getArticleText();
     var contents = [];
 
-    if (chatHistory.length === 0) {
-      contents.push({
-        role: 'user',
-        parts: [{
-          text:
-            '以下是一篇英文文章，接下來我會針對這篇文章問你問題。請用繁體中文回答，簡潔明瞭。\n\n' +
-            '文章：\n' + article +
-            '\n\n請確認你已理解這篇文章。'
-        }]
-      });
-      contents.push({
-        role: 'model',
-        parts: [{
-          text: '好的，我已經閱讀了這篇文章。請問你有什麼問題？'
-        }]
-      });
-    }
+  if (chatHistory.length === 0) {
+  contents.push({
+    role: 'user',
+    parts: [{
+      text:
+        '以下是一篇英文文章，接下來我會針對這篇文章問你問題。\n\n' +
+        '請用繁體中文回答，簡潔明瞭。\n\n' +
+        '重要規則：\n' +
+        '1. 輸出純文字，不要使用任何 Markdown 語法\n' +
+        '2. 不要用 **, __, *, #, [], 等符號\n' +
+        '3. 需要強調時用引號「」或全形括號（）\n' +
+        '4. 需要列表時用 1. 2. 3. 或 、 、 、\n' +
+        '5. 單字直接以純文字呈現，不做粗體或斜體標記\n\n' +
+        '文章：\n' + article +
+        '\n\n請確認你已理解這篇文章與規則。'
+    }]
+  });
+  contents.push({
+    role: 'model',
+    parts: [{
+      text: '好的，我已經閱讀了這篇文章，並會用純文字回答，不使用任何 Markdown 符號。請問你有什麼問題？'
+    }]
+  });
+}
 
     chatHistory.forEach(function (msg) {
       contents.push({
