@@ -1,7 +1,5 @@
-/* article-ai-chat-patch.js v20260712-6
-   v6: Suppress Markdown output.
-   - System prompt tells Gemini to use plain text
-   - Post-process cleans residual Markdown symbols
+/* article-ai-chat-patch.js v20260712-7
+   v7: Auto-reset chat history when article changes.
 */
 
 (function () {
@@ -32,25 +30,18 @@
     } catch (e) {}
   }
 
-  // 清除 Markdown 殘留符號
   function cleanMarkdown(text) {
 
     if (!text) return text;
 
     return text
-      // 移除粗體 **word** 和 __word__
       .replace(/\*\*([^*]+)\*\*/g, '$1')
       .replace(/__([^_]+)__/g, '$1')
-      // 移除單斜體 *word* 和 _word_
       .replace(/(?<![*])\*([^*\n]+)\*(?![*])/g, '$1')
       .replace(/(?<![_])_([^_\n]+)_(?![_])/g, '$1')
-      // 移除標題 #
       .replace(/^#{1,6}\s+/gm, '')
-      // 移除行內 code
       .replace(/`([^`]+)`/g, '$1')
-      // 移除連結
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-      // 移除水平線
       .replace(/^-{3,}$/gm, '')
       .replace(/^={3,}$/gm, '');
   }
@@ -81,8 +72,32 @@
 
   function getArticleText() {
 
-    var article = document.querySelector('.card .en');
-    if (!article) return '';
+    var selectors = [
+      '.card .en',
+      '.card article',
+      '.card .content',
+      '.card-body',
+      '.article-body',
+      '.article',
+      '.en'
+    ];
+
+    var article = null;
+    var foundSelector = null;
+
+    for (var i = 0; i < selectors.length; i++) {
+      var el = document.querySelector(selectors[i]);
+      if (el && (el.innerText || '').trim().length > 20) {
+        article = el;
+        foundSelector = selectors[i];
+        break;
+      }
+    }
+
+    if (!article) {
+      log('no article found');
+      return '';
+    }
 
     var clone = article.cloneNode(true);
     clone.querySelectorAll('button, script').forEach(function (el) { el.remove(); });
@@ -90,7 +105,15 @@
     return (clone.innerText || clone.textContent || '').trim();
   }
 
+  // 生成文章 hash（用於偵測文章變更）
+  function articleHash(text) {
+    if (!text) return '';
+    // 用前 100 字元和長度作為簡易 hash
+    return text.slice(0, 100).replace(/\s+/g, '') + '_len_' + text.length;
+  }
+
   var chatHistory = [];
+  var currentArticleHash = '';   // 記錄當前對話的文章 hash
 
   function sleep(ms) {
     return new Promise(function (r) { setTimeout(r, ms); });
@@ -99,31 +122,75 @@
   async function callGeminiWithKeyAndModel(userMessage, key, model) {
 
     var article = getArticleText();
+    var newHash = articleHash(article);
+
+    // 如果文章變了，自動重置 chatHistory
+    if (chatHistory.length > 0 && currentArticleHash && currentArticleHash !== newHash) {
+      log('article changed, resetting chat history');
+      chatHistory = [];
+      currentArticleHash = '';
+
+      // 通知使用者
+      var chatBody = document.getElementById('aiChatBody');
+      if (chatBody) {
+        var notice = document.createElement('div');
+        notice.style.cssText = 'color: #a68a56; padding: 8px; font-size: 12px; text-align: center; background: rgba(166, 138, 86, 0.1); border-radius: 4px; margin-bottom: 10px;';
+        notice.textContent = '📄 已切換文章，對話已重置';
+        chatBody.appendChild(notice);
+      }
+    }
+
     var contents = [];
 
     if (chatHistory.length === 0) {
-      contents.push({
-        role: 'user',
-        parts: [{
-          text:
-            '以下是一篇英文文章，接下來我會針對這篇文章問你問題。\n\n' +
-            '請用繁體中文回答，簡潔明瞭。\n\n' +
-            '重要規則：\n' +
-            '1. 輸出純文字，不要使用任何 Markdown 語法\n' +
-            '2. 不要用 **, __, *, #, [], 等符號\n' +
-            '3. 需要強調時用引號「」或全形括號（）\n' +
-            '4. 需要列表時用 1. 2. 3. 或 、 、 、\n' +
-            '5. 單字直接以純文字呈現，不做粗體或斜體標記\n\n' +
-            '文章：\n' + article +
-            '\n\n請確認你已理解這篇文章與規則。'
-        }]
-      });
-      contents.push({
-        role: 'model',
-        parts: [{
-          text: '好的，我已經閱讀了這篇文章，並會用純文字回答，不使用任何 Markdown 符號。請問你有什麼問題？'
-        }]
-      });
+
+      currentArticleHash = newHash;
+
+      if (!article) {
+        contents.push({
+          role: 'user',
+          parts: [{
+            text:
+              '請用繁體中文回答，簡潔明瞭。\n\n' +
+              '重要規則：\n' +
+              '1. 輸出純文字，不要使用任何 Markdown 語法\n' +
+              '2. 不要用 **, __, *, #, [], 等符號\n' +
+              '3. 需要強調時用引號「」或全形括號（）\n' +
+              '4. 需要列表時用 1. 2. 3.\n\n' +
+              '注意：由於目前沒有可用的文章內容，你可以進行一般英文學習相關的討論。\n\n' +
+              '請確認你已理解規則。'
+          }]
+        });
+        contents.push({
+          role: 'model',
+          parts: [{
+            text: '好的，我會用純文字回答。請問你有什麼問題？'
+          }]
+        });
+      } else {
+        contents.push({
+          role: 'user',
+          parts: [{
+            text:
+              '以下是一篇英文文章，接下來我會針對這篇文章問你問題。\n\n' +
+              '請用繁體中文回答，簡潔明瞭。\n\n' +
+              '重要規則：\n' +
+              '1. 輸出純文字，不要使用任何 Markdown 語法\n' +
+              '2. 不要用 **, __, *, #, [], 等符號\n' +
+              '3. 需要強調時用引號「」或全形括號（）\n' +
+              '4. 需要列表時用 1. 2. 3. 或 、 、 、\n' +
+              '5. 單字直接以純文字呈現，不做粗體或斜體標記\n\n' +
+              '文章：\n' + article +
+              '\n\n請確認你已理解這篇文章與規則。'
+          }]
+        });
+        contents.push({
+          role: 'model',
+          parts: [{
+            text: '好的，我已經閱讀了這篇文章，並會用純文字回答，不使用任何 Markdown 符號。請問你有什麼問題？'
+          }]
+        });
+      }
     }
 
     chatHistory.forEach(function (msg) {
@@ -170,7 +237,6 @@
 
     if (!reply) throw new Error('AI 沒有回應');
 
-    // 清除 Markdown 殘留符號
     reply = cleanMarkdown(reply);
 
     return reply;
@@ -338,6 +404,7 @@
 
   function clearHistory() {
     chatHistory = [];
+    currentArticleHash = '';
     var chatBody = document.getElementById('aiChatBody');
     if (chatBody) chatBody.innerHTML = '<div style="color: #999; text-align: center; padding: 20px; font-size: 12px;">對話已清空</div>';
   }
@@ -511,7 +578,18 @@
   }
 
   function openChat() {
+
     ensureModal();
+
+    // 打開對話時檢查文章是否變更
+    var article = getArticleText();
+    var newHash = articleHash(article);
+
+    if (chatHistory.length > 0 && currentArticleHash && currentArticleHash !== newHash) {
+      log('article changed on open, resetting');
+      clearHistory();
+    }
+
     var modal = document.getElementById('aiChatModal');
     modal.style.display = 'block';
 
@@ -559,6 +637,6 @@
 
   window.openAIChat = openChat;
 
-  log('ready v20260712-6');
+  log('ready v20260712-7');
 
 })();
