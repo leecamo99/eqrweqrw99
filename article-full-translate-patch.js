@@ -1,16 +1,18 @@
-/* article-full-translate-patch.js v20260712-1
-   - Header 整列可點展開/收合
-   - 折疊時自動疊在「全文語音」列上方，不會被蓋住
-   - 折疊高度縮小為 48px
-   - Watchdog 每秒自動校正位置
+/* article-full-translate-patch.js v20260712-3
+   保守版：不自動偵測音訊列
+   若翻譯列被音訊列蓋住，改最上面 AUDIO_BAR_HEIGHT 的數字即可
 /
 
 (function () {
 
   'use strict';
 
-  var API_KEY_STORAGE  = 'google_translate_api_key';
-  var CACHE_STORAGE    = 'article_translation_cache_v1';
+  / ====== 你可以調整這裡 ====== /
+  var AUDIO_BAR_HEIGHT = 60;   // 音訊列高度（px）。被蓋住就調大，例如 70、80
+  / =========================== /
+
+  var API_KEY_STORAGE   = 'google_translate_api_key';
+  var CACHE_STORAGE     = 'article_translation_cache_v1';
   var COLLAPSED_STORAGE = 'article_translate_collapsed';
 
   function log() {
@@ -19,16 +21,11 @@
     } catch (e) {}
   }
 
-  / ---------- Storage ---------- /
-
-  function getApiKey() {
-    return localStorage.getItem(API_KEY_STORAGE) || '';
-  }
+  function getApiKey() { return localStorage.getItem(API_KEY_STORAGE) || ''; }
 
   function getCache() {
-    try {
-      return JSON.parse(localStorage.getItem(CACHE_STORAGE) || '{}');
-    } catch (e) { return {}; }
+    try { return JSON.parse(localStorage.getItem(CACHE_STORAGE) || '{}'); }
+    catch (e) { return {}; }
   }
 
   function setCache(c) {
@@ -43,8 +40,6 @@
     }
     return String(h);
   }
-
-  / ---------- Google Translate ---------- /
 
   async function googleTranslateBatch(texts) {
 
@@ -86,8 +81,6 @@
     }
   }
 
-  / ---------- Article ---------- /
-
   function splitEnglishParagraphs(fullText) {
 
     var paras = fullText.split(/\n\s\n/).filter(function (p) { return p.trim(); });
@@ -115,16 +108,10 @@
   async function translateFullArticle() {
 
     var enText = getArticleText();
-    if (!enText) {
-      alert('沒有找到文章');
-      return null;
-    }
+    if (!enText) { alert('沒有找到文章'); return null; }
 
     var enParas = splitEnglishParagraphs(enText);
-    if (enParas.length === 0) {
-      alert('文章沒有段落');
-      return null;
-    }
+    if (enParas.length === 0) { alert('文章沒有段落'); return null; }
 
     var hash  = hashText(enText);
     var cache = getCache();
@@ -155,13 +142,9 @@
     return { enParas: enParas, zhParas: zhParas };
   }
 
-  /* ---------- State ---------- /
-
   var currentTranslation = null;
   var syncEnabled = false;
   var isCollapsed = localStorage.getItem(COLLAPSED_STORAGE) === '1';
-
-  / ---------- Sync highlight ---------- /
 
   function updateSyncState() {
     var btn = document.getElementById('syncToggleBtn');
@@ -258,8 +241,6 @@
     zhSide.innerHTML = html;
   }
 
-  / ---------- Collapse ---------- /
-
   function toggleCollapsed() {
     isCollapsed = !isCollapsed;
     localStorage.setItem(COLLAPSED_STORAGE, isCollapsed ? '1' : '0');
@@ -276,57 +257,15 @@
 
     if (isCollapsed) {
       box.style.maxHeight = '48px';
-      if (body)      body.style.display  = 'none';
+      if (body)      body.style.display    = 'none';
       if (toggleBtn) toggleBtn.textContent = '▲ 展開';
     } else {
       box.style.maxHeight = '60vh';
-      if (body)      body.style.display  = 'flex';
+      if (body)      body.style.display    = 'flex';
       if (toggleBtn) toggleBtn.textContent = '▼ 收合';
     }
 
     updateBodyPadding();
-  }
-
-  / ---------- Audio bar detection ---------- */
-
-  function getAudioBarHeight() {
-
-    var selectors = [
-      '#gcttsBar',
-      '#ttsBar',
-      '#audioBar',
-      '#playerBar',
-      '.tts-bar',
-      '.audio-bar'
-    ];
-
-    for (var i = 0; i < selectors.length; i++) {
-      var el = document.querySelector(selectors[i]);
-      if (el && el.offsetHeight > 0) {
-        var st = getComputedStyle(el);
-        if (st.position === 'fixed' && parseInt(st.bottom) <= 5) {
-          return el.offsetHeight;
-        }
-      }
-    }
-
-    var all = document.querySelectorAll('body ');
-    for (var j = 0; j < all.length; j++) {
-      var e = all[j];
-      if (e.id === 'fullTranslateBox') continue;
-      var s = getComputedStyle(e);
-      if (
-        s.position === 'fixed' &&
-        parseInt(s.bottom) <= 5 &&
-        e.offsetHeight > 30 &&
-        e.offsetHeight < 200 &&
-        e.offsetWidth > window.innerWidth * 0.7
-      ) {
-        return e.offsetHeight;
-      }
-    }
-
-    return 0;
   }
 
   function updateBodyPadding() {
@@ -337,14 +276,9 @@
       return;
     }
 
-    var audioH = getAudioBarHeight();
-    box.style.bottom = audioH + 'px';
-
     var rect = box.getBoundingClientRect();
-    document.body.style.paddingBottom = (rect.height + audioH + 10) + 'px';
+    document.body.style.paddingBottom = (rect.height + AUDIO_BAR_HEIGHT + 10) + 'px';
   }
-
-  / ---------- UI ---------- /
 
   function createTranslateBox() {
 
@@ -353,20 +287,20 @@
     var box = document.createElement('div');
     box.id = 'fullTranslateBox';
 
-    box.style.position        = 'fixed';
-    box.style.bottom          = getAudioBarHeight() + 'px';
-    box.style.left            = '0';
-    box.style.right           = '0';
-    box.style.zIndex          = '99';
-    box.style.background      = '#faf6ed';
-    box.style.borderTop       = '2px solid #a68a56';
-    box.style.boxShadow       = '0 -4px 12px rgba(0,0,0,0.08)';
-    box.style.fontFamily      = '"Microsoft JhengHei", sans-serif';
-    box.style.maxHeight       = '60vh';
-    box.style.display         = 'flex';
-    box.style.flexDirection   = 'column';
-    box.style.transition      = 'max-height 0.3s';
-    box.style.overflow        = 'hidden';
+    box.style.position      = 'fixed';
+    box.style.bottom        = AUDIO_BAR_HEIGHT + 'px';   // ← 疊在音訊列上方
+    box.style.left          = '0';
+    box.style.right         = '0';
+    box.style.zIndex        = '2147483000';              // ← 蓋過所有東西
+    box.style.background    = '#faf6ed';
+    box.style.borderTop     = '2px solid #a68a56';
+    box.style.boxShadow     = '0 -4px 12px rgba(0,0,0,0.08)';
+    box.style.fontFamily    = '"Microsoft JhengHei", sans-serif';
+    box.style.maxHeight     = '60vh';
+    box.style.display       = 'flex';
+    box.style.flexDirection = 'column';
+    box.style.transition    = 'max-height 0.3s';
+    box.style.overflow      = 'hidden';
 
     box.innerHTML =
       '<div id="translateHeader" style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #d9cfbc;flex-shrink:0;cursor:pointer;">' +
@@ -394,7 +328,6 @@
 
     document.body.appendChild(box);
 
-    / --- Header 整列可點 --- /
     var header = document.getElementById('translateHeader');
     header.onclick = function (e) {
       var btn = e.target.closest('button');
@@ -402,24 +335,15 @@
       toggleCollapsed();
     };
 
-    / --- Buttons --- /
-
     document.getElementById('translateBtn').onclick = async function (e) {
-
       e.stopPropagation();
-
       var btn = this;
       btn.disabled = true;
       btn.textContent = '翻譯中...';
-
       currentTranslation = await translateFullArticle();
-
       btn.disabled = false;
       btn.textContent = '重新翻譯';
-
-      if (currentTranslation) {
-        renderTranslation();
-      }
+      if (currentTranslation) renderTranslation();
     };
 
     document.getElementById('syncToggleBtn').onclick = function (e) {
@@ -454,36 +378,25 @@
     }
   }
 
-  / ---------- Loops ---------- /
-
   function startSyncMonitor() {
-
     setInterval(function () {
       if (!syncEnabled) return;
       if (!currentTranslation) return;
-
       var audio = document.getElementById('V5_MASTER_AUDIO');
       if (!audio || audio.paused) return;
-
       highlightSyncPara();
     }, 500);
   }
 
   function startWatchdog() {
-
     setInterval(function () {
-
       if (!document.getElementById('fullTranslateBox')) {
         log('box missing, recreating...');
         createTranslateBox();
       }
-
       updateBodyPadding();
-
     }, 1000);
   }
-
-  / ---------- Boot ---------- */
 
   createTranslateBox();
   startSyncMonitor();
@@ -491,6 +404,6 @@
 
   window.addEventListener('resize', updateBodyPadding);
 
-  log('ready v20260712-1');
+  log('ready v20260712-3');
 
 })();
