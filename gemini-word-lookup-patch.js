@@ -14,7 +14,7 @@
   var TAG = '[GeminiLookup]';
   var VER = 'v20260713-5';
 
-  var MODELS = ['gemini-2.0-flash', 'gemini-2.5-flash', 'gemini-1.5-flash-8b', 'gemini-1.5-flash'];
+ var MODELS = ['gemini-3.5-flash', 'gemini-3.1-flash-lite', 'gemini-3-flash-preview'];
 
   var KEY_COOLDOWN_MS = 20 * 60 * 1000;
   var CACHE_TTL_MS    = 24 * 60 * 60 * 1000;
