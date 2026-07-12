@@ -1,5 +1,5 @@
-/* ai-chat-drawer-patch.js  v20260713-2 Phase A
-   AI 駐站助理 - Phase A（Level 1 + 部分 Level 2）
+/* ai-chat-drawer-patch.js  v20260713-2 Phase A + Blocker Fix
+   AI 駐站助理 - Phase A + Blocker Fix（Level 1 + 部分 Level 2）
 
    新增功能（相對 v1）：
    1) 📎 上下文按鈕：勾選要附加什麼給 AI
@@ -15,7 +15,7 @@
 (function () {
   'use strict';
   var TAG = '[AIChatDrawer]';
-  var VER = 'v20260713-2';
+  var VER = 'v20260713-3';
   var STORAGE_KEY = 'notebook_ai_chats_v1';
   var MODEL_FALLBACK = ['gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-3-flash-preview'];
   var MAX_ARTICLE_CHARS = 3000;
@@ -863,11 +863,37 @@
     document.getElementById('aiChatSend').onclick = sendMessage;
   }
 
+  // ⭐ 遮擋物隔離
+  var BLOCKERS = ['fullTranslateBox', 'gcttsPanel'];
+  var savedBlockerStyles = {};
+
+  function hideBlockers() {
+    BLOCKERS.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && !(id in savedBlockerStyles)) {
+        savedBlockerStyles[id] = el.style.display || '';
+        el.style.display = 'none';
+        console.log(TAG, '\ud83d\udd07 隱藏遮擋物:', id);
+      }
+    });
+  }
+
+  function restoreBlockers() {
+    Object.keys(savedBlockerStyles).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = savedBlockerStyles[id];
+    });
+    savedBlockerStyles = {};
+  }
+
   function openDrawer() {
     injectCSS();
     build();
     ensureCurrentChat();
-    document.getElementById('aiChatDrawer').classList.add('open');
+    var drawer = document.getElementById('aiChatDrawer');
+    drawer.classList.add('open');
+    drawer.style.zIndex = '2147483001';  // 高於 fullTranslateBox
+    hideBlockers();  // ⭐ 隱藏遮擋物
     renderAll();
     setTimeout(function () {
       var i = document.getElementById('aiChatInput');
@@ -880,6 +906,8 @@
     if (d) d.classList.remove('open');
     var pop = document.getElementById('aiCtxPop');
     if (pop) pop.classList.remove('open');
+    restoreBlockers();  // ⭐ 還原遮擋物
+    console.log(TAG, '\ud83d\udd04 已還原遮擋物');
   }
 
   window.__aiChat = {
@@ -917,7 +945,7 @@
       btn.onclick = openDrawer;
       document.body.appendChild(btn);
 
-      console.log(TAG, 'ready', VER, 'Phase A');
+      console.log(TAG, 'ready', VER, 'Phase A + Blocker Fix');
       console.log(TAG, '📎 支援 5 種上下文附加');
       console.log(TAG, '手動 API:');
       console.log(TAG, '  __aiChat.open()          開啟');
