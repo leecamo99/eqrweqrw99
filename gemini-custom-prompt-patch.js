@@ -1,6 +1,5 @@
-/* gemini-custom-prompt-patch.js v20260712-1
-   Adds "Edit Prompt Template" button to Gemini weak article generator.
-   User can customize the prompt template permanently.
+/* gemini-custom-prompt-patch.js v20260712-2
+   Fix: Update textarea immediately after saving new template.
 */
 
 (function () {
@@ -15,7 +14,6 @@
     } catch (e) {}
   }
 
-  // 預設模板
   var DEFAULT_TEMPLATE = 
     '你是一位英文學習教練。請根據以下弱點單字，寫一篇自然、可朗讀、適合中級英文學習者的英文短文。\n\n' +
     '要求：\n' +
@@ -28,7 +26,6 @@
     '7. 輸出純文字，不要使用任何 Markdown 語法（不要用 **, __, *, #, [], 等符號）。單字直接以純文字呈現，不做粗體、斜體或程式碼標記。\n\n' +
     '弱點單字：{WORDS}';
 
-  // 多益範例
   var TOEIC_TEMPLATE = 
     '你是一位多益 (TOEIC) 專家，目標分數 800+。請根據以下弱點單字，寫一篇適合多益考試風格的英文短文。\n\n' +
     '要求：\n' +
@@ -42,7 +39,6 @@
     '8. 輸出純文字，不要使用任何 Markdown 語法（不要用 **, __, *, #, [], 等符號）。單字直接以純文字呈現，不做粗體、斜體或程式碼標記。\n\n' +
     '弱點單字：{WORDS}';
 
-  // 生活會話範例
   var CONVERSATION_TEMPLATE = 
     '你是一位英文口語教練。請根據以下弱點單字，寫一段自然生動的英文會話。\n\n' +
     '要求：\n' +
@@ -67,9 +63,48 @@
     }
   }
 
+  // 立即更新 Gemini modal 的 Prompt textarea
+  function refreshGeminiPrompt() {
+
+    var promptTextarea = document.getElementById('geminiPrompt');
+    if (!promptTextarea) return false;
+
+    var db;
+    try {
+      db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
+    } catch (e) { db = {}; }
+
+    var items = Object.values(db.learn || {})
+      .filter(function (x) {
+        return (x.lifetimeClicks || 0) >= 10 || 
+               (x.maxClickStreak || 0) >= 10 || 
+               x.isWeak || 
+               ((x.clicks || 0) >= 10);
+      })
+      .sort(function (a, b) {
+        return (b.lifetimeClicks || b.clicks || 0) - (a.lifetimeClicks || a.clicks || 0);
+      })
+      .slice(0, 35);
+
+    var list = items.map(function (x) {
+      return (x.lemma || x.word) + (x.tw ? '（' + x.tw + '）' : '');
+    }).join(', ');
+
+    if (!list) {
+      list = '目前沒有足夠弱點單字，請先點擊一些不熟的單字。';
+    }
+
+    var template = getTemplate();
+    var finalPrompt = template.replace(/\{WORDS\}/g, list);
+
+    promptTextarea.value = finalPrompt;
+
+    log('prompt refreshed');
+    return true;
+  }
+
   function openEditor() {
 
-    // 建立編輯對話框
     if (document.getElementById('geminiPromptEditor')) {
       document.getElementById('geminiPromptEditor').remove();
     }
@@ -139,7 +174,7 @@
         '<div style="display: flex; gap: 8px; justify-content: flex-end;">' +
           '<button id="promptEditorReset" style="padding: 8px 16px; background: #999; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px;">重設預設值</button>' +
           '<button id="promptEditorCancel" style="padding: 8px 16px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px;">取消</button>' +
-          '<button id="promptEditorSave" style="padding: 8px 16px; background: #2f6f9f; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: bold;">💾 儲存</button>' +
+          '<button id="promptEditorSave" style="padding: 8px 16px; background: #2f6f9f; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: bold;">💾 儲存並套用</button>' +
         '</div>' +
       '</div>';
 
@@ -148,7 +183,6 @@
     var textarea = document.getElementById('promptEditorText');
     textarea.value = getTemplate();
 
-    // 綁定關閉
     var close = function () {
       modal.remove();
     };
@@ -156,7 +190,6 @@
     document.getElementById('promptEditorClose').onclick = close;
     document.getElementById('promptEditorCancel').onclick = close;
 
-    // 儲存
     document.getElementById('promptEditorSave').onclick = function () {
 
       var text = textarea.value.trim();
@@ -177,18 +210,20 @@
       }
 
       setTemplate(text);
-      alert('已儲存 Prompt 模板');
+
+      // ★ 儲存後立刻套用到 Gemini modal
+      refreshGeminiPrompt();
+
+      alert('已儲存並套用');
       close();
     };
 
-    // 重設
     document.getElementById('promptEditorReset').onclick = function () {
       if (confirm('確定重設為預設 Prompt？')) {
         textarea.value = DEFAULT_TEMPLATE;
       }
     };
 
-    // 快速範本
     modal.querySelectorAll('.tplBtn').forEach(function (btn) {
       btn.onclick = function () {
 
@@ -205,49 +240,6 @@
     log('editor opened');
   }
 
-  // 攔截 buildPrompt 使用自訂模板
-  function patchBuildPrompt() {
-
-    // 找 Gemini modal 內的 textarea
-    var promptTextarea = document.getElementById('geminiPrompt');
-    if (!promptTextarea) return false;
-
-    // 找 db.learn 中的弱點單字（模仿原本 patch 邏輯）
-    var db;
-    try {
-      db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
-    } catch (e) { db = {}; }
-
-    var items = Object.values(db.learn || {})
-      .filter(function (x) {
-        return (x.lifetimeClicks || 0) >= 10 || 
-               (x.maxClickStreak || 0) >= 10 || 
-               x.isWeak || 
-               ((x.clicks || 0) >= 10);
-      })
-      .sort(function (a, b) {
-        return (b.lifetimeClicks || b.clicks || 0) - (a.lifetimeClicks || a.clicks || 0);
-      })
-      .slice(0, 35);
-
-    var list = items.map(function (x) {
-      return (x.lemma || x.word) + (x.tw ? '（' + x.tw + '）' : '');
-    }).join(', ');
-
-    if (!list) {
-      list = '目前沒有足夠弱點單字，請先點擊一些不熟的單字。';
-    }
-
-    var template = getTemplate();
-    var finalPrompt = template.replace(/\{WORDS\}/g, list);
-
-    promptTextarea.value = finalPrompt;
-
-    log('prompt updated with custom template');
-    return true;
-  }
-
-  // 加編輯按鈕到 Gemini modal
   function addEditButton() {
 
     var top = document.getElementById('geminiWeakArticleTop');
@@ -268,37 +260,38 @@
 
     editBtn.onclick = openEditor;
 
-    // 插入到 Close 前面
     closeBtn.parentNode.insertBefore(editBtn, closeBtn);
 
     log('edit button added');
     return true;
   }
 
-  // 監聽 Gemini modal 開啟
   function startWatchdog() {
+
+    var lastState = false;
 
     setInterval(function () {
 
       var modal = document.getElementById('geminiWeakArticleModal');
       if (!modal) return;
 
-      if (modal.classList.contains('show')) {
+      var isOpen = modal.classList.contains('show');
+
+      if (isOpen) {
         addEditButton();
-        // 只在剛打開時更新一次 prompt
-        if (!modal.dataset.promptCustomized) {
-          modal.dataset.promptCustomized = '1';
-          patchBuildPrompt();
+
+        // 每次剛打開（狀態從關閉變成打開）就更新一次
+        if (!lastState) {
+          refreshGeminiPrompt();
         }
-      } else {
-        // modal 關閉時，重置 flag
-        delete modal.dataset.promptCustomized;
       }
-    }, 500);
+
+      lastState = isOpen;
+    }, 300);
   }
 
   startWatchdog();
 
-  log('ready v20260712-1');
+  log('ready v20260712-2');
 
 })();
