@@ -153,11 +153,14 @@
     }
 
     var data = await res.json();
-    var reply = data.candidates?.[0]?.content?.parts?.map(function (p) { return p.text; }).join('\n') || '';
+   var reply = data.candidates?.[0]?.content?.parts?.map(function (p) { return p.text; }).join('\n') || '';
 
-    if (!reply) throw new Error('AI 沒有回應');
+if (!reply) throw new Error('AI 沒有回應');
 
-    return reply;
+// 清除 Markdown 殘留符號（保險機制）
+reply = cleanMarkdown(reply);
+
+return reply;
   }
 
   async function callGeminiWithAutoSwitch(userMessage, statusCallback) {
