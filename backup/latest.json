@@ -4408,7 +4408,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1783867162695,
+  "updatedAt": 1783871186456,
   "learn": {
     "github": {
       "word": "github",
@@ -4895,8 +4895,8 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "dueAt": 1783445622139,
-      "updatedAt": 1783707229008,
+      "dueAt": 1783957566152,
+      "updatedAt": 1783871166153,
       "variants": {
         "spontaneously": 29
       },
@@ -4906,7 +4906,7 @@
       "loading": false,
       "firstSeenAt": 1783352941134,
       "lastSeenAt": 1783707229004,
-      "lastReviewedAt": 1783359222139,
+      "lastReviewedAt": 1783871166152,
       "lifetimeClicks": 22,
       "sessionClicks": 22,
       "maxClickStreak": 32,
@@ -4919,14 +4919,31 @@
           "clicks": 11,
           "strength": 10,
           "intervalDays": 0
+        },
+        {
+          "ts": 1783871166152,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 33,
+          "strength": 10,
+          "intervalDays": 1
         }
       ],
       "intervalDays": 1,
-      "ease": 2.4,
+      "ease": 2.3,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "isWeak": true
+      "isWeak": true,
+      "definitions": [
+        {
+          "pos": "adverb",
+          "def": "In a spontaneous manner; naturally; voluntarily.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "welcome": {
       "word": "welcome",
@@ -5955,14 +5972,24 @@
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
       "lastSeenAt": 1783818065060,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1783871173228,
       "lifetimeClicks": 25,
       "sessionClicks": 25,
       "maxClickStreak": 20,
-      "reviewHistory": [],
-      "dueAt": 1783734976885,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1783871173228,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 21,
+          "strength": 10,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783957573228,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -5976,7 +6003,7 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783818065062,
+      "updatedAt": 1783871173228,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -6234,29 +6261,29 @@
       "word": "utilize",
       "lemma": "utilize",
       "firstSeenAt": 1783803789661,
-      "lastSeenAt": 1783803789661,
+      "lastSeenAt": 1783871186449,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
       "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1783807389667,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
-      "lastSurface": "utilizing",
+      "lastSurface": "utilize",
       "lastForm": "base form",
       "variants": {
-        "utilize": 1,
+        "utilize": 2,
         "utilizing": 1
       },
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 2,
+      "strength": 2,
       "captured": true,
       "known": false,
-      "updatedAt": 1783803791477,
+      "updatedAt": 1783871186452,
       "loading": false,
       "tw": "利用",
       "translationSource": "Google Translate",
