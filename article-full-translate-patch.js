@@ -1,4 +1,4 @@
-/* article-full-translate-patch.js v20260711-80
+/* article-full-translate-patch.js v20260711-8
    Add paragraph separator so sync highlight is visually clear.
 */
 
@@ -146,10 +146,8 @@ function splitEnglishParagraphs(fullText) {
 
       .filter(function (p) {
 
-        // 1.
         if (/^[0-9]+[.]$/.test(p)) return false;
 
-        // 1)
         if (/^[0-9]+[)]$/.test(p)) return false;
 
         return true;
