@@ -154,8 +154,9 @@ function splitEnglishParagraphs(fullText) {
       })
 
       .map(function (p) {
-        return p.replace(/^[0-9]+[.)]\s+/, '');
-      });
+  return p;
+});
+
 }
 
 
