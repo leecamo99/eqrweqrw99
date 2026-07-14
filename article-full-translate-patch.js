@@ -279,12 +279,11 @@ function splitEnglishParagraphs(fullText) {
     box.id = 'fullTranslateBox';
 
     box.style.position = 'fixed';
-    box.style.bottom = '60';
+    box.style.bottom = '60px';
     box.style.left = '0';
     box.style.right = '0';
      box.style.pointerEvents = 'auto';
     box.style.zIndex = '9999999';
-     box.style.pointerEvents = 'auto';
     box.style.background = '#faf6ed';
     box.style.borderTop = '2px solid #a68a56';
     box.style.boxShadow = '0 -4px 12px rgba(0,0,0,.15)';
@@ -294,8 +293,7 @@ function splitEnglishParagraphs(fullText) {
     box.style.flexDirection = 'column';
     box.style.transition = 'max-height .3s';
     box.style.overflow = 'hidden';
-box.style.paddingBottom = '60px';
-
+     
     box.innerHTML =
       '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #d9cfbc">' +
         '<div style="color:#a68a56;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:8px">' +
