@@ -135,87 +135,27 @@
     }
 }
 function splitEnglishParagraphs(fullText) {
-    if (!fullText) return [];
-    function clean(s) {
-      return String(s || '').trim();
-    }
-    function isDigit(ch) {
-      return ch >= '0' && ch <= '9';
-    }
-    function isSpace(ch) {
-      return ch === ' ' || ch === '\n' || ch === '\t';
-    }
-    function isStandaloneNumberLine(s) {
-      s = clean(s);
-      if (!s) return true;
-      var last = s.charAt(s.length - 1);
-      if (last !== '.' && last !== ')') return false;
-      var num = s.slice(0, -1);
-      if (!num) return false;
-      for (var i = 0; i < num.length; i++) {
-        if (!isDigit(num.charAt(i))) return false;
-      }
-      return true;
-    }
-    function isNumberMarkerAt(text, index) {
-      if (index < 0 || index >= text.length) return false;
-      if (!isDigit(text.charAt(index))) return false;
-      if (index > 0 && !isSpace(text.charAt(index - 1))) return false;
-      var j = index;
-      while (j < text.length && isDigit(text.charAt(j))) {
-        j++;
-      }
-      var mark = text.charAt(j);
-      if (mark !== '.' && mark !== ')') return false;
-      var after = text.charAt(j + 1);
-      if (!isSpace(after)) return false;
-      return true;
-    }
-    var text = String(fullText || '');
-    text = text
-      .split(String.fromCharCode(13)).join('\n')
-      .split(String.fromCharCode(160)).join(' ');
-    var lines = [];
-    var pendingNumber = '';
-    text.split('\n').forEach(function (line) {
-      line = clean(line);
-      if (!line) return;
-      if (isStandaloneNumberLine(line)) {
-        pendingNumber = line;
-        return;
-      }
-      if (pendingNumber) {
-        line = pendingNumber + ' ' + line;
-        pendingNumber = '';
-      }
-      lines.push(line);
+
+  var paras = fullText
+    .split(/\n\s*\n/)
+    .filter(function (p) {
+      return p.trim();
     });
-    if (lines.length > 1) {
-      return lines;
-    }
-    var paras = [];
-    var start = 0;
-    for (var i = 0; i < text.length; i++) {
-      if (isNumberMarkerAt(text, i)) {
-        if (i > start) {
-          var before = clean(text.slice(start, i));
-          if (before) paras.push(before);
-        }
-        start = i;
-      }
-    }
-    var lastPart = clean(text.slice(start));
-    if (lastPart) {
-      paras.push(lastPart);
-    }
-    paras = paras.filter(function (p) {
-      return p;
-    });
-    if (paras.length > 1) {
-      return paras;
-    }
-    var only = clean(text);
-    return only ? [only] : [];
+
+  if (paras.length === 1) {
+
+    paras =
+      fullText.match(/[^.!?]+[.!?]+/g) ||
+      [fullText];
+
+    paras = paras
+      .map(function (p) {
+        return p.trim();
+      })
+      .filter(Boolean);
+  }
+
+  return paras;
 }
 
 
