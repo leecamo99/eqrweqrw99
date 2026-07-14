@@ -1,4 +1,4 @@
-/* article-full-translate-patch.js v20260712-5
+/* article-full-translate-patch.js v20260712-50
    Fixes:
    1. Google Translate 400 caused by too many q items.
    2. Filters numeric-only paragraphs such as "1.", "2.", "3.".
