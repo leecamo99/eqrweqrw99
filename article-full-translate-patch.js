@@ -353,7 +353,7 @@ function splitEnglishParagraphs(fullText) {
     }
 
     var rect = box.getBoundingClientRect();
-    document.body.style.paddingBottom = (rect.height + 10) + 'px';
+    document.body.style.paddingBottom = (rect.height + 60) + 'px';
   }
 
   function createTranslateBox() {
