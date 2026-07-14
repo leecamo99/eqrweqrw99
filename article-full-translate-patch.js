@@ -2,7 +2,8 @@
    Add paragraph separator so sync highlight is visually clear.
 */
 
-(function () {
+(function () {function splitEnglishParagraphs(fullText) {
+
 
   'use strict';
 
@@ -136,115 +137,15 @@
 function splitEnglishParagraphs(fullText) {
 
     if (!fullText) return [];
-
-    function trimText(s) {
-      return String(s || '').trim();
-    }
-
-    function isDigit(ch) {
-      return ch >= '0' && ch <= '9';
-    }
-
-    function isStandaloneNumberLine(s) {
-      s = trimText(s);
-
-      if (!s) return true;
-
-      var last = s.charAt(s.length - 1);
-
-      if (last !== '.' && last !== ')') return false;
-
-      var num = s.slice(0, -1);
-
-      if (!num) return false;
-
-      for (var i = 0; i < num.length; i++) {
-        if (!isDigit(num.charAt(i))) return false;
-      }
-
-      return true;
-    }
-
-    function removeLeadingNumber(s) {
-      s = trimText(s);
-
-      var i = 0;
-
-      while (i < s.length && isDigit(s.charAt(i))) {
-        i++;
-      }
-
-      if (i > 0 && (s.charAt(i) === '.' || s.charAt(i) === ')') && s.charAt(i + 1) === ' ') {
-        return trimText(s.slice(i + 2));
-      }
-
-      return s;
-    }
-
-    var lines = fullText
-      .split('\n')
-      .map(function (p) {
-        return trimText(p);
-      })
-      .filter(function (p) {
-        return p;
-      })
-      .filter(function (p) {
-        return !isStandaloneNumberLine(p);
-      });
-
-    if (lines.length > 1) {
-      return lines;
-    }
-
-    var text = trimText(fullText);
-
     var paras = [];
-    var start = 0;
-    var i = 0;
-
-    while (i < text.length) {
-
-      var ch = text.charAt(i);
-
-      if (isDigit(ch)) {
-
-        var j = i;
-
-        while (j < text.length && isDigit(text.charAt(j))) {
-          j++;
-        }
-
-        if (text.charAt(j) === '.' && text.charAt(j + 1) === ' ') {
-
-          if (i > start) {
-            var before = trimText(text.slice(start, i));
-            if (before) paras.push(before);
-          }
-
-          start = i;
-        }
-      }
-
-      i++;
-    }
-
-    var lastPart = trimText(text.slice(start));
-    if (lastPart) paras.push(lastPart);
-
-    paras = paras
-      .map(function (p) {
-        return trimText(p);
-      })
-      .filter(function (p) {
-        return p;
+    fullText
+      .split('\n')
+      .forEach(function (line) {
+        line = String(line || '').trim();
+        if (!line) return;
+        paras.push(line);
       });
-
-    if (paras.length > 1) {
-      return paras;
-    }
-
-    return text ? [text] : [];
+    return paras;
 }
 
 
@@ -435,7 +336,7 @@ function splitEnglishParagraphs(fullText) {
       if (body) body.style.display = 'none';
       if (toggleBtn) toggleBtn.textContent = '▲';
     } else {
-      box.style.maxHeight = '40vh';
+      box.style.maxHeight = '50vh';
       if (body) body.style.display = 'flex';
       if (toggleBtn) toggleBtn.textContent = '▼';
     }
