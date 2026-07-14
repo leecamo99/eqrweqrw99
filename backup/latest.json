@@ -1,15 +1,27 @@
 {
   "notebooks": [
     {
-      "id": "nb_1784058553468",
-      "name": "sdas",
+      "id": "nb_1784059013454",
+      "name": "asda",
       "date": "2026-07-14",
       "thumb": "",
       "cards": [
         {
-          "id": "nb_1784058553468c0",
+          "id": "nb_1784059013454c0",
           "title": "Chapter 1",
-          "text": "1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.",
+          "text": "1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.",
+          "myNote": ""
+        },
+        {
+          "id": "nb_1784059013454c1",
+          "title": "Chapter 2",
+          "text": "2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.",
+          "myNote": ""
+        },
+        {
+          "id": "nb_1784059013454c2",
+          "title": "Chapter 3",
+          "text": "3. Full-scale {{development}} of the {{lightweight}} {{aircraft}} is set to begin in the {{spring}} of next year.",
           "myNote": ""
         }
       ],
@@ -105,6 +117,320 @@
           "color": "c1"
         },
         "journals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lightweight": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "aircraft": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "spring": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Full-scale": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "begin": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "next": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "year": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
+      "id": "nb_1784058986022",
+      "name": "dasd",
+      "date": "2026-07-14",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1784058986022c0",
+          "title": "Chapter 1",
+          "text": "1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.",
+          "myNote": ""
+        },
+        {
+          "id": "nb_1784058986022c1",
+          "title": "Chapter 2",
+          "text": "2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "development": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "digital": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "marketing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "strategy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "agenda": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "afternoon": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "meeting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Berovo": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Institute": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regularly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "publishes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "results": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "research": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "renowned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "scientific": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "journals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
+      "id": "nb_1784058553468",
+      "name": "sdas",
+      "date": "2026-07-14",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1784058553468c1784059028326",
+          "title": "New Chapter",
+          "text": "x1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.\n\n3. Full-scale {{development}} of the {{lightweight}} {{aircraft}} is set to begin in the {{spring}} of next year.",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "development": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "digital": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "marketing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "strategy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "agenda": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "afternoon": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "meeting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Berovo": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Institute": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regularly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "publishes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "results": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "research": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "renowned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "scientific": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "journals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lightweight": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "aircraft": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "spring": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Full-scale": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "begin": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "next": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "year": {
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
@@ -13231,7 +13557,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784058553470,
+  "updatedAt": 1784059028328,
   "learn": {
     "github": {
       "word": "github",
