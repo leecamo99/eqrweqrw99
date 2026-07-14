@@ -370,7 +370,7 @@ function splitEnglishParagraphs(fullText) {
     box.id = 'fullTranslateBox';
 
     box.style.position = 'fixed';
-    box.style.bottom = '0';
+    box.style.bottom = '40';
     box.style.left = '0';
     box.style.right = '0';
     box.style.zIndex = '100';
