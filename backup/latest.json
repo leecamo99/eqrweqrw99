@@ -1,18 +1,519 @@
 {
   "notebooks": [
     {
-      "id": "nb_1784056448386",
-      "name": "q",
+      "id": "nb_1784058144650",
+      "name": "aaa",
       "date": "2026-07-14",
       "thumb": "",
       "cards": [
         {
-          "id": "nb_1784056448386c0",
+          "id": "nb_1784058144650c0",
           "title": "Chapter 1",
           "text": "1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.\n3. Full-scale {{development}} of the {{lightweight}} {{aircraft}} is set to begin in the {{spring}} of next year.\n4. A {{nutritionist}} from {{Shaffer}} {{University}} will be {{discussing}} her {{latest}} {{research}} on food {{additives}}.\n5. Ms. {{Hopkins}} {{shared}} her {{observations}} {{regarding}} the {{company}}'s {{overseas}} {{operations}} with the other {{executive}} {{committee}} {{members}}.\n6. {{Making}} an {{online}} {{payment}} with {{Paymodia}} is fast, easy, and safe.\n7. {{Without}} {{written}} {{authorization}} from the {{patient}}, we are {{unable}} to {{release}} his {{medical}} {{records}}.\n8. Mr. {{Gideon}}'s {{article}} was {{revised}} for {{length}} and {{clarity}} before it was {{published}} in the {{newspaper}}.\n9. When the {{community}} {{garden}} {{opened}}, {{locals}} were {{enthusiastic}} about {{having}} a place to grow their own {{vegetables}}.\n10. All three {{candidates}} for the {{management}} {{position}} are {{confident}} in their {{ability}} to {{perform}} the job {{effectively}}.\n1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.\n3. Full-scale {{development}} of the {{lightweight}} {{aircraft}} is set to begin in the {{spring}} of next year.\n4. A {{nutritionist}} from {{Shaffer}} {{University}} will be {{discussing}} her {{latest}} {{research}} on food {{additives}}.\n5. Ms. {{Hopkins}} {{shared}} her {{observations}} {{regarding}} the {{company}}'s {{overseas}} {{operations}} with the other {{executive}} {{committee}} {{members}}.\n6. {{Making}} an {{online}} {{payment}} with {{Paymodia}} is fast, easy, and safe.\n7. {{Without}} {{written}} {{authorization}} from the {{patient}}, we are {{unable}} to {{release}} his {{medical}} {{records}}.\n8. Mr. {{Gideon}}'s {{article}} was {{revised}} for {{length}} and {{clarity}} before it was {{published}} in the {{newspaper}}.\n9. When the {{community}} {{garden}} {{opened}}, {{locals}} were {{enthusiastic}} about {{having}} a place to grow their own {{vegetables}}.\n10. All three {{candidates}} for the {{management}} {{position}} are {{confident}} in their {{ability}} to {{perform}} the job {{effectively}}.",
           "myNote": ""
         }
       ],
+      "marks": {
+        "development": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "digital": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "marketing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "strategy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "agenda": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "afternoon": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "meeting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Berovo": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Institute": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regularly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "publishes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "results": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "research": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "renowned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "scientific": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "journals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lightweight": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "aircraft": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "spring": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "nutritionist": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Shaffer": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "University": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "discussing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "latest": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "additives": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Hopkins": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "shared": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "observations": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regarding": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "company": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overseas": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "operations": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "executive": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "committee": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "members": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Making": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "online": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "payment": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Paymodia": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Without": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "written": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "authorization": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "patient": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "unable": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "release": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "medical": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "records": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Gideon": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "article": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "revised": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "length": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "clarity": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "published": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "newspaper": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "community": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "garden": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "opened": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "locals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "enthusiastic": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "having": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "vegetables": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "candidates": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "management": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "position": {
+          "pos": "n.",
+          "tw": "職位；位置",
+          "tip": "new position = 新職位",
+          "color": "c1"
+        },
+        "confident": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ability": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "perform": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "effectively": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Full-scale": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "begin": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "next": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "year": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "food": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "other": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fast": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "easy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "safe": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "When": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "about": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "place": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "grow": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "three": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
+      "id": "nb_1784056448386",
+      "name": "q",
+      "date": "2026-07-14",
+      "thumb": "",
+      "cards": [],
       "marks": {
         "development": {
           "pos": "",
@@ -12625,7 +13126,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784056448391,
+  "updatedAt": 1784058144655,
   "learn": {
     "github": {
       "word": "github",
@@ -15725,7 +16226,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1784046508493,
       "intervalDays": 0,
@@ -15763,7 +16264,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1784046563005,
       "intervalDays": 0,
@@ -15789,7 +16290,7 @@
       "definitionSource": "dictionaryapi.dev",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜An expert or specialist in nutrition or nutritionistics"
+      "tip": "An expert or specialist in nutrition or nutritionistics"
     }
   }
 }
