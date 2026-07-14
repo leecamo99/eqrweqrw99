@@ -1,8 +1,9 @@
-/* article-full-translate-patch.js v20260714-1
-   Clean rewrite.
+/* article-full-translate-patch.js v20260715-1
+   Clean rewrite. All functions in one IIFE.
    - splitEnglishParagraphs: safe (no dangerous regex)
    - googleTranslateBatch: batched (avoid 400)
    - handles "10." style numbering correctly
+   - aligned to player bottom
 */
 
 (function () {
@@ -48,12 +49,27 @@
     return String(h);
   }
 
-function splitEnglishParagraphs(fullText) {
+  function getArticleText() {
+
+    var article = document.querySelector('.card .en');
+    if (!article) return null;
+
+    var clone = article.cloneNode(true);
+
+    clone.querySelectorAll('button, script').forEach(function (el) {
+      el.remove();
+    });
+
+    var text = clone.innerText || clone.textContent || '';
+
+    return text.trim();
+  }
+
+  function splitEnglishParagraphs(fullText) {
 
     if (!fullText) return [];
 
-    var text = String(fullText || '')
-      .replace(/\r/g, '\n');
+    var text = String(fullText || '').replace(/\r/g, '\n');
 
     // 先試著用行切
     var lines = text
@@ -75,10 +91,8 @@ function splitEnglishParagraphs(fullText) {
     while (i < text.length) {
 
       var ch = text.charAt(i);
-
       var isDigit = ch >= '0' && ch <= '9';
 
-      // 判斷是否為段首：例如 " 3. " 或開頭 "3. "
       if (isDigit) {
 
         var j = i;
@@ -93,7 +107,6 @@ function splitEnglishParagraphs(fullText) {
 
         var afterNum = text.charAt(j);
         var afterAfter = text.charAt(j + 1);
-
         var prev = i > 0 ? text.charAt(i - 1) : '\n';
 
         var isBoundary =
@@ -132,24 +145,72 @@ function splitEnglishParagraphs(fullText) {
     }
 
     return [text.trim()];
-}
+  }
 
-    function getArticleText() {
+  async function googleTranslateBatch(texts) {
 
-    var article = document.querySelector('.card .en');
-    if (!article) return null;
+    var key = getApiKey();
 
-    var clone = article.cloneNode(true);
+    if (!key) {
+      alert('請先在設定選單設定 Google Translate API Key');
+      return null;
+    }
 
-    clone.querySelectorAll('button, script').forEach(function (el) {
-      el.remove();
-    });
+    texts = (texts || [])
+      .map(function (x) {
+        return String(x || '').trim();
+      })
+      .filter(Boolean);
 
-    var text = clone.innerText || clone.textContent || '';
+    var BATCH_SIZE = 40;
+    var allResults = [];
 
-    return text.trim();
-}
+    try {
 
+      for (var i = 0; i < texts.length; i += BATCH_SIZE) {
+
+        var chunk = texts.slice(i, i + BATCH_SIZE);
+
+        var res = await fetch(
+          'https://translation.googleapis.com/language/translate/v2?key=' + key,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              q: chunk,
+              source: 'en',
+              target: 'zh-TW',
+              format: 'text'
+            })
+          }
+        );
+
+        if (!res.ok) {
+          var errText = await res.text();
+          log('translate err', res.status, errText);
+          return null;
+        }
+
+        var data = await res.json();
+
+        if (!data || !data.data || !data.data.translations) {
+          return null;
+        }
+
+        data.data.translations.forEach(function (t) {
+          allResults.push(t.translatedText);
+        });
+      }
+
+      return allResults;
+
+    } catch (e) {
+      log('translate exception', e.message);
+      return null;
+    }
+  }
 
   async function translateFullArticle() {
 
@@ -168,9 +229,15 @@ function splitEnglishParagraphs(fullText) {
     var hash = hashText(enText);
     var cache = getCache();
 
-    if (cache[hash]) {
+    if (cache[hash] && cache[hash].length === enParas.length) {
       log('using cache:', enParas.length);
       return { enParas: enParas, zhParas: cache[hash] };
+    }
+
+    // cache 長度對不上 → 忽略 cache
+    if (cache[hash]) {
+      delete cache[hash];
+      setCache(cache);
     }
 
     log('translating', enParas.length, 'paragraphs...');
@@ -252,9 +319,7 @@ function splitEnglishParagraphs(fullText) {
     var html = '';
 
     currentTranslation.enParas.forEach(function (en, i) {
-
       var zh = currentTranslation.zhParas[i] || '(翻譯中)';
-
       html += '<div class="zh-para" data-idx="' + i + '" style="padding:10px 14px;margin-bottom:12px;border-left:3px solid transparent;transition:.3s;border-radius:3px;color:#333;font-size:14px;line-height:1.7">' + zh + '</div>';
     });
 
@@ -276,11 +341,11 @@ function splitEnglishParagraphs(fullText) {
     if (!box) return;
 
     if (isCollapsed) {
-      box.style.maxHeight = '150px';
+      box.style.maxHeight = '48px';
       if (body) body.style.display = 'none';
       if (toggleBtn) toggleBtn.textContent = '▲';
     } else {
-      box.style.maxHeight = '80vh';
+      box.style.maxHeight = '45vh';
       if (body) body.style.display = 'flex';
       if (toggleBtn) toggleBtn.textContent = '▼';
     }
@@ -294,21 +359,20 @@ function splitEnglishParagraphs(fullText) {
     box.id = 'fullTranslateBox';
 
     box.style.position = 'fixed';
-    box.style.bottom = '0';
+    box.style.bottom = '0px';
     box.style.left = '0';
     box.style.right = '0';
-     box.style.pointerEvents = 'auto';
     box.style.zIndex = '9999999';
     box.style.background = '#faf6ed';
     box.style.borderTop = '2px solid #a68a56';
     box.style.boxShadow = '0 -4px 12px rgba(0,0,0,.15)';
     box.style.fontFamily = '"Microsoft JhengHei",sans-serif';
-    box.style.maxHeight = '80vh';
+    box.style.maxHeight = '45vh';
     box.style.display = 'flex';
     box.style.flexDirection = 'column';
-    box.style.transition = 'max-height .3s';
+    box.style.transition = 'max-height .3s, bottom .3s';
     box.style.overflow = 'hidden';
-     
+
     box.innerHTML =
       '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #d9cfbc">' +
         '<div style="color:#a68a56;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:8px">' +
@@ -330,6 +394,7 @@ function splitEnglishParagraphs(fullText) {
     document.body.appendChild(box);
 
     document.getElementById('translateBtn').onclick = async function () {
+
       var btn = this;
       btn.disabled = true;
       btn.textContent = '翻譯中...';
@@ -365,6 +430,70 @@ function splitEnglishParagraphs(fullText) {
     updateCollapsedState();
   }
 
+  function findGcttsBar() {
+
+    var candidates = [
+      document.querySelector('#gcttsBar'),
+      document.querySelector('#gcttsPanel'),
+      document.querySelector('#gcttsControls'),
+      document.querySelector('[data-gctts-panel]'),
+      document.querySelector('.gctts-panel'),
+      document.querySelector('.gctts-bar')
+    ];
+
+    for (var i = 0; i < candidates.length; i++) {
+      if (candidates[i]) return candidates[i];
+    }
+
+    // fallback：找 fixed 且在最底部的元素
+    var fixedEls = Array.prototype.slice.call(
+      document.querySelectorAll('div, section, aside')
+    );
+
+    var best = null;
+    var bestBottom = Infinity;
+
+    fixedEls.forEach(function (el) {
+
+      if (el.id === 'fullTranslateBox') return;
+
+      var s = window.getComputedStyle(el);
+      if (s.position !== 'fixed') return;
+
+      var r = el.getBoundingClientRect();
+      if (r.bottom > window.innerHeight + 5) return;
+      if (r.height < 30) return;
+
+      var distance = Math.abs(r.bottom - window.innerHeight);
+      if (distance < bestBottom) {
+        bestBottom = distance;
+        best = el;
+      }
+    });
+
+    return best;
+  }
+
+  function alignToPlayer() {
+
+    var box = document.getElementById('fullTranslateBox');
+    if (!box) return;
+
+    var bar = findGcttsBar();
+
+    if (!bar || bar === box) {
+      box.style.bottom = '0px';
+      return;
+    }
+
+    var barRect = bar.getBoundingClientRect();
+    var offsetFromBottom = window.innerHeight - barRect.top;
+
+    if (offsetFromBottom < 0) offsetFromBottom = 0;
+
+    box.style.bottom = offsetFromBottom + 'px';
+  }
+
   function startSyncMonitor() {
     setInterval(function () {
       if (!syncEnabled) return;
@@ -382,71 +511,20 @@ function splitEnglishParagraphs(fullText) {
       if (!document.getElementById('fullTranslateBox')) {
         createTranslateBox();
       }
-    }, 1000);
+      alignToPlayer();
+    }, 400);
   }
 
   createTranslateBox();
   startSyncMonitor();
   startWatchdog();
 
-  log('ready v20260714-1');
+  window.addEventListener('resize', alignToPlayer);
+
+  log('ready v20260715-1');
 
   window.translateFullArticle = translateFullArticle;
   window.splitEnglishParagraphs = splitEnglishParagraphs;
-function findGcttsBar() {
-    var candidates = [
-      document.querySelector('#gcttsBar'),
-      document.querySelector('#gcttsPanel'),
-      document.querySelector('#gcttsControls'),
-      document.querySelector('[data-gctts-panel]'),
-      document.querySelector('.gctts-panel'),
-      document.querySelector('.gctts-bar')
-    ];
-    for (var i = 0; i < candidates.length; i++) {
-      if (candidates[i]) return candidates[i];
-    }
-    // fallback：找 fixed 且在最底部的元素
-    var fixedEls = Array.prototype.slice.call(
-      document.querySelectorAll('div, section, aside')
-    );
-    var best = null;
-    var bestBottom = Infinity;
-    fixedEls.forEach(function (el) {
-      if (el.id === 'fullTranslateBox') return;
-      var s = window.getComputedStyle(el);
-      if (s.position !== 'fixed') return;
-      var r = el.getBoundingClientRect();
-      if (r.bottom > window.innerHeight + 5) return;
-      if (r.height < 30) return;
-      var distance = Math.abs(r.bottom - window.innerHeight);
-      if (distance < bestBottom) {
-        bestBottom = distance;
-        best = el;
-      }
-    });
-    return best;
-}
+  window.getArticleText = getArticleText;
 
-function alignToPlayer() {
-    var box = document.getElementById('fullTranslateBox');
-    if (!box) return;
-    var bar = findGcttsBar();
-    if (!bar) {
-      box.style.bottom = '0px';
-      return;
-    }
-    if (bar === box) {
-      return;
-    }
-    var barRect = bar.getBoundingClientRect();
-    var offsetFromBottom = window.innerHeight - barRect.top;
-    if (offsetFromBottom < 0) offsetFromBottom = 0;
-    box.style.bottom = offsetFromBottom + 'px';
-}
-setInterval(alignToPlayer, 400);
-window.addEventListener('resize', alignToPlayer);
-
-
-
-   
 })();
