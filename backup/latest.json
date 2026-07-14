@@ -1,6 +1,34 @@
 {
   "notebooks": [
     {
+      "id": "nb_1784043489253",
+      "name": "Tt",
+      "date": "2026-07-14",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1784043489253c0",
+          "title": "Chapter 1",
+          "text": "His first name was a boy",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "first": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "name": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
       "id": "nb_1784042171426",
       "name": "金文法",
       "date": "2026-07-14",
@@ -11611,7 +11639,7 @@
     }
   ],
   "dark": true,
-  "updatedAt": 1784043185857,
+  "updatedAt": 1784043489254,
   "learn": {
     "github": {
       "word": "github",
