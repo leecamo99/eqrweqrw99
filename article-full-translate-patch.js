@@ -81,15 +81,24 @@
 
   function splitEnglishParagraphs(fullText) {
 
-    var paras = fullText.split(/\n\s*\n/).filter(function (p) { return p.trim(); });
+    if (!fullText) return [];
 
-    if (paras.length === 1) {
-      paras = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
-      paras = paras.map(function (p) { return p.trim(); }).filter(function (p) { return p; });
-    }
-
-    return paras;
-  }
+    return fullText
+      .split(/\n+/)
+      .map(function (p) {
+        return String(p || '').trim();
+      })
+      .filter(Boolean)
+      .filter(function (p) {
+        return !/^\d+.$/.test(p);
+      })
+      .filter(function (p) {
+        return !/^\d+)$/.test(p);
+      })
+      .map(function (p) {
+        return p.replace(/^\d+[.)]\s+/, '');
+      });
+}
 
   function getArticleText() {
 
