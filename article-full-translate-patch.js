@@ -342,7 +342,7 @@ function splitEnglishParagraphs(fullText) {
       if (body) body.style.display = 'none';
       if (toggleBtn) toggleBtn.textContent = '▲';
     } else {
-      box.style.maxHeight = '80vh';
+      box.style.maxHeight = '40vh';
       if (body) body.style.display = 'flex';
       if (toggleBtn) toggleBtn.textContent = '▼';
     }
