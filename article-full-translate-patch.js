@@ -25,17 +25,16 @@
     } catch (e) {}
   }
 
-  function esc(s) {
-    return String(s || '').replace(/[<>&"']/g, function (c) {
-      return {
-        '<': '<',
-        '>': '>',
-        '&': '&',
-        '"': '"',
-        "'": '''
-      }[c];
-    });
-  }
+ function esc(s) {
+
+  return String(s || '')
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
+    .replace(/'/g, ''');
+
+}
 
   function getApiKey() {
     return (
