@@ -48,106 +48,93 @@
     return String(h);
   }
 
-  function splitEnglishParagraphs(fullText) {
+function splitEnglishParagraphs(fullText) {
 
     if (!fullText) return [];
 
-    var text = String(fullText || '');
+    var text = String(fullText || '')
+      .replace(/\r/g, '\n');
 
-    var lines = [];
-
-    text.split('\n').forEach(function (line) {
-
-      line = String(line || '').trim();
-
-      if (!line) return;
-
-      lines.push(line);
-    });
-
-    return lines;
-  }
-
-  function getArticleText() {
-
-    var article = document.querySelector('.card .en');
-    if (!article) return null;
-
-    var clone = article.cloneNode(true);
-
-    clone.querySelectorAll('button, script').forEach(function (el) {
-      el.remove();
-    });
-
-    var text = clone.innerText || clone.textContent || '';
-
-    return text.trim();
-  }
-
-  async function googleTranslateBatch(texts) {
-
-    var key = getApiKey();
-
-    if (!key) {
-      alert('請先在設定選單設定 Google Translate API Key');
-      return null;
-    }
-
-    texts = (texts || [])
-      .map(function (x) {
-        return String(x || '').trim();
+    // 先試著用行切
+    var lines = text
+      .split('\n')
+      .map(function (l) {
+        return String(l || '').trim();
       })
       .filter(Boolean);
 
-    var BATCH_SIZE = 40;
-    var allResults = [];
+    if (lines.length > 1) {
+      return lines;
+    }
 
-    try {
+    // 用「數字+點+空白」當分段點
+    var paras = [];
+    var start = 0;
+    var i = 0;
 
-      for (var i = 0; i < texts.length; i += BATCH_SIZE) {
+    while (i < text.length) {
 
-        var chunk = texts.slice(i, i + BATCH_SIZE);
+      var ch = text.charAt(i);
 
-        var res = await fetch(
-          'https://translation.googleapis.com/language/translate/v2?key=' + key,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              q: chunk,
-              source: 'en',
-              target: 'zh-TW',
-              format: 'text'
-            })
+      var isDigit = ch >= '0' && ch <= '9';
+
+      // 判斷是否為段首：例如 " 3. " 或開頭 "3. "
+      if (isDigit) {
+
+        var j = i;
+
+        while (
+          j < text.length &&
+          text.charAt(j) >= '0' &&
+          text.charAt(j) <= '9'
+        ) {
+          j++;
+        }
+
+        var afterNum = text.charAt(j);
+        var afterAfter = text.charAt(j + 1);
+
+        var prev = i > 0 ? text.charAt(i - 1) : '\n';
+
+        var isBoundary =
+          prev === ' ' ||
+          prev === '\n' ||
+          prev === '\t' ||
+          i === 0;
+
+        if (
+          isBoundary &&
+          afterNum === '.' &&
+          (afterAfter === ' ' || afterAfter === '\t')
+        ) {
+
+          if (i > start) {
+            var before = String(text.slice(start, i) || '').trim();
+            if (before) paras.push(before);
           }
-        );
 
-        if (!res.ok) {
-          var errText = await res.text();
-          log('translate err', res.status, errText);
-          return null;
+          start = i;
         }
-
-        var data = await res.json();
-
-        if (!data || !data.data || !data.data.translations) {
-          return null;
-        }
-
-        data.data.translations.forEach(function (t) {
-          allResults.push(t.translatedText);
-        });
       }
 
-      return allResults;
-
-    } catch (e) {
-      log('translate exception', e.message);
-      return null;
+      i++;
     }
-  }
+
+    var lastPart = String(text.slice(start) || '').trim();
+    if (lastPart) paras.push(lastPart);
+
+    paras = paras.filter(function (p) {
+      return p;
+    });
+
+    if (paras.length > 1) {
+      return paras;
+    }
+
+    return [text.trim()];
+}
+
+    
 
   async function translateFullArticle() {
 
@@ -292,10 +279,12 @@
     box.id = 'fullTranslateBox';
 
     box.style.position = 'fixed';
-    box.style.bottom = '0';
+    box.style.bottom = '60';
     box.style.left = '0';
     box.style.right = '0';
+     box.style.pointerEvents = 'auto';
     box.style.zIndex = '9999999';
+     box.style.pointerEvents = 'auto';
     box.style.background = '#faf6ed';
     box.style.borderTop = '2px solid #a68a56';
     box.style.boxShadow = '0 -4px 12px rgba(0,0,0,.15)';
@@ -305,6 +294,7 @@
     box.style.flexDirection = 'column';
     box.style.transition = 'max-height .3s';
     box.style.overflow = 'hidden';
+box.style.paddingBottom = '60px';
 
     box.innerHTML =
       '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #d9cfbc">' +
