@@ -435,10 +435,11 @@
           "color": "c1"
         },
         "next": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "下一個",
+          "tip": "The one that follows after this one.",
+          "color": "c1",
+          "lemma": "next"
         },
         "year": {
           "pos": "",
@@ -1399,10 +1400,11 @@
           "color": "c1"
         },
         "program": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "程序",
+          "tip": "A set of structured activities.",
+          "color": "c1",
+          "lemma": "program"
         },
         "easier": {
           "pos": "",
@@ -1549,10 +1551,11 @@
           "color": "c1"
         },
         "Included": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "包括",
+          "tip": "A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+          "color": "c1",
+          "lemma": "include"
         },
         "letter": {
           "pos": "",
@@ -1639,10 +1642,11 @@
           "color": "c1"
         },
         "during": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "adjective",
+          "tw": "dur",
+          "tip": "Major; in the major mode.",
+          "color": "c1",
+          "lemma": "dur"
         },
         "lively": {
           "pos": "",
@@ -2233,10 +2237,11 @@
           "color": "c1"
         },
         "script": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "指令碼",
+          "tip": "A writing; a written document.",
+          "color": "c1",
+          "lemma": "script"
         },
         "According": {
           "pos": "",
@@ -2518,7 +2523,8 @@
           "pos": "n.",
           "tw": "章節；段落",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "section"
         },
         "Brocker": {
           "pos": "",
@@ -2890,7 +2896,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "follow"
         },
         "solicited": {
           "pos": "",
@@ -3136,7 +3143,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "follow"
         },
         "service": {
           "pos": "",
@@ -3301,10 +3309,11 @@
           "color": "c1"
         },
         "During": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "adjective",
+          "tw": "dur",
+          "tip": "Major; in the major mode.",
+          "color": "c1",
+          "lemma": "dur"
         },
         "Thursday": {
           "pos": "",
@@ -3517,10 +3526,11 @@
           "color": "c1"
         },
         "morning": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "早晨",
+          "tip": "Morning.",
+          "color": "c1",
+          "lemma": "morn"
         },
         "analysis": {
           "pos": "",
@@ -3891,8 +3901,9 @@
         "approved": {
           "pos": "adj./v.",
           "tw": "已核准；批准",
-          "tip": "",
-          "color": "c1"
+          "tip": "To sanction officially; to ratify; to confirm; to set as satisfactory.",
+          "color": "c1",
+          "lemma": "approve"
         },
         "Lombard": {
           "pos": "",
@@ -4465,10 +4476,11 @@
           "color": "c1"
         },
         "welcomes": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "歡迎",
+          "tip": "The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
+          "color": "c1",
+          "lemma": "welcome"
         },
         "improving": {
           "pos": "",
@@ -4603,10 +4615,11 @@
           "color": "c1"
         },
         "yourself": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "pronoun",
+          "tw": "您自己",
+          "tip": "(reflexive pronoun) Your own self (singular).",
+          "color": "c1",
+          "lemma": "yourself"
         },
         "Multecho": {
           "pos": "",
@@ -4669,10 +4682,11 @@
           "color": "c1"
         },
         "weekend": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "週末",
+          "tip": "The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday.",
+          "color": "c1",
+          "lemma": "weekend"
         },
         "Zappish": {
           "pos": "",
@@ -4876,7 +4890,8 @@
           "pos": "n.",
           "tw": "安全；保全",
           "tip": "security vendor = 保全廠商",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "security"
         },
         "building": {
           "pos": "",
@@ -5149,10 +5164,11 @@
           "color": "c1"
         },
         "awards": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
         },
         "banquet": {
           "pos": "",
@@ -5497,10 +5513,11 @@
           "color": "c1"
         },
         "Awards": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
         },
         "renovation": {
           "pos": "",
@@ -5589,8 +5606,9 @@
         "including": {
           "pos": "prep.",
           "tw": "包括",
-          "tip": "",
-          "color": "c1"
+          "tip": "A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+          "color": "c1",
+          "lemma": "include"
         },
         "recycling": {
           "pos": "",
@@ -5605,10 +5623,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "viewed": {
           "pos": "",
@@ -5809,10 +5828,11 @@
           "color": "c1"
         },
         "next": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "下一個",
+          "tip": "The one that follows after this one.",
+          "color": "c1",
+          "lemma": "next"
         },
         "year": {
           "pos": "",
@@ -6787,10 +6807,11 @@
           "color": "c1"
         },
         "award": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
         },
         "past": {
           "pos": "",
@@ -6847,10 +6868,11 @@
           "color": "c1"
         },
         "over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
         },
         "half": {
           "pos": "",
@@ -7303,10 +7325,11 @@
           "color": "c1"
         },
         "Over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
         },
         "weeks": {
           "pos": "",
@@ -12096,12 +12119,12 @@
     }
   ],
   "dark": true,
-  "updatedAt": 1784042435869,
+  "updatedAt": 1784042911217,
   "learn": {
     "github": {
       "word": "github",
       "pos": "",
-      "tw": "（未建字義，請自行補充）",
+      "tw": "",
       "tip": "",
       "clicks": 0,
       "strength": 0,
@@ -12126,7 +12149,7 @@
     "screening": {
       "word": "screening",
       "pos": "",
-      "tw": "（未建字義，請自行補充）",
+      "tw": "",
       "tip": "",
       "clicks": 0,
       "strength": 0,
@@ -12201,7 +12224,7 @@
     "bulleted": {
       "word": "bulleted",
       "pos": "",
-      "tw": "（未建字義，請自行補充）",
+      "tw": "",
       "tip": "",
       "clicks": 3,
       "strength": 3,
@@ -14688,10 +14711,10 @@
       "lastSurface": "immerse",
       "lastForm": "base form",
       "variants": {
-        "immersing": 18,
+        "immersing": 31,
         "immerse": 7
       },
-      "clicks": 21,
+      "clicks": 34,
       "strength": 10,
       "captured": true,
       "known": false,
@@ -14725,56 +14748,6 @@
         "tw": "沉浸；使陷入",
         "ex": "She immersed herself in her studies to prepare for the final exam.",
         "tw_ex": "為了準備期末考，她全神貫注地投入在學業中。"
-      }
-    },
-    "immers": {
-      "word": "immers",
-      "lemma": "immers",
-      "pos": "",
-      "tw": "深度體驗",
-      "tip": "Auto translated by MyMemory",
-      "clicks": 13,
-      "strength": 10,
-      "captured": true,
-      "known": false,
-      "dueAt": 1783801644915,
-      "updatedAt": 1783799840957,
-      "variants": {
-        "immersing": 13
-      },
-      "lastSurface": "immersing",
-      "lastForm": "-ing form",
-      "engine": "MyMemory",
-      "loading": false,
-      "firstSeenAt": 1783798315737,
-      "lastSeenAt": 1783798315737,
-      "lastReviewedAt": 0,
-      "lifetimeClicks": 0,
-      "sessionClicks": 0,
-      "maxClickStreak": 3,
-      "reviewHistory": [],
-      "intervalDays": 0,
-      "ease": 2.5,
-      "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
-      "geminiPos": "v.",
-      "geminiTw": "沉浸、使陷入",
-      "geminiEx": "She immersed herself in her studies to prepare for the final exam.",
-      "geminiTwEx": "為了準備期末考，她全心投入於學業之中。",
-      "geminiPhonetic": "",
-      "geminiSynonyms": [],
-      "geminiDerivatives": [],
-      "geminiCollocations": [],
-      "geminiLevel": "",
-      "geminiTip": "",
-      "geminiSource": "gemini",
-      "geminiUpdatedAt": 1784040727134,
-      "geminiRaw": {
-        "pos": "v.",
-        "tw": "沉浸、使陷入",
-        "ex": "She immersed herself in her studies to prepare for the final exam.",
-        "tw_ex": "為了準備期末考，她全心投入於學業之中。"
       }
     },
     "expand": {
@@ -14885,9 +14858,9 @@
       "lastForm": "base form",
       "variants": {
         "perspective": 6,
-        "perspectives": 3
+        "perspectives": 5
       },
-      "clicks": 6,
+      "clicks": 8,
       "strength": 6,
       "captured": true,
       "known": false,
@@ -14944,66 +14917,6 @@
         "tw": "觀點、視角",
         "ex": "From my perspective, this is the best solution to the problem.",
         "tw_ex": "以我的觀點來看，這是解決這個問題最好的方法。"
-      }
-    },
-    "perspectif": {
-      "word": "perspectif",
-      "lemma": "perspectif",
-      "pos": "",
-      "tw": "perspectif",
-      "tip": "Auto translated by MyMemory",
-      "clicks": 2,
-      "strength": 2,
-      "captured": true,
-      "known": false,
-      "dueAt": 1784127142722,
-      "updatedAt": 1784040742722,
-      "variants": {
-        "perspectives": 2
-      },
-      "lastSurface": "perspectives",
-      "lastForm": "plural -ves",
-      "engine": "MyMemory",
-      "loading": false,
-      "firstSeenAt": 1783800063160,
-      "lastSeenAt": 1783800063160,
-      "lastReviewedAt": 1784040742722,
-      "lifetimeClicks": 0,
-      "sessionClicks": 0,
-      "maxClickStreak": 2,
-      "reviewHistory": [
-        {
-          "ts": 1784040742722,
-          "day": "2026-07-14",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 2,
-          "strength": 2,
-          "intervalDays": 0
-        }
-      ],
-      "intervalDays": 1,
-      "ease": 2.4,
-      "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
-      "geminiPos": "n.",
-      "geminiTw": "觀點、透視法",
-      "geminiEx": "From my perspective, the plan needs more careful consideration.",
-      "geminiTwEx": "以我的觀點來看，這項計畫需要更審慎的考量。",
-      "geminiPhonetic": "",
-      "geminiSynonyms": [],
-      "geminiDerivatives": [],
-      "geminiCollocations": [],
-      "geminiLevel": "",
-      "geminiTip": "",
-      "geminiSource": "gemini",
-      "geminiUpdatedAt": 1784040741638,
-      "geminiRaw": {
-        "pos": "n.",
-        "tw": "觀點、透視法",
-        "ex": "From my perspective, the plan needs more careful consideration.",
-        "tw_ex": "以我的觀點來看，這項計畫需要更審慎的考量。"
       }
     },
     "study": {
@@ -15217,9 +15130,44 @@
         "tw_ex": "我們應該利用現有的資源來準時完成這個專案。"
       }
     },
-    "prestigiou": {
-      "word": "prestigiou",
-      "lemma": "prestigiou",
+    "sections": {
+      "word": "sections",
+      "lemma": "sections",
+      "geminiPos": "n./v.",
+      "geminiTw": "部分；章節；切開",
+      "geminiEx": "The library is divided into different sections based on the genre of the books.",
+      "geminiTwEx": "圖書館根據書籍的類型被劃分為不同的區域。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040744331,
+      "geminiRaw": {
+        "pos": "n./v.",
+        "tw": "部分；章節；切開",
+        "ex": "The library is divided into different sections based on the genre of the books.",
+        "tw_ex": "圖書館根據書籍的類型被劃分為不同的區域。"
+      },
+      "firstSeenAt": 1784042098566,
+      "lastSeenAt": 1784042098566,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 0,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0
+    },
+    "prestigious": {
+      "word": "prestigious",
+      "lemma": "prestigious",
       "firstSeenAt": 1783817545776,
       "lastSeenAt": 1783817545776,
       "lastReviewedAt": 1784040767992,
@@ -15255,76 +15203,51 @@
       "known": false,
       "updatedAt": 1784040767992,
       "loading": false,
-      "tw": "prestigiou",
+      "tw": "",
       "translationSource": "Google Translate",
-      "tip": "Auto translated by MyMemory",
+      "tip": "",
       "engine": "MyMemory",
-      "pos": ""
+      "pos": "",
+      "example": "",
+      "synonyms": ""
     },
-    "immer": {
-      "word": "immer",
-      "lemma": "immer",
-      "firstSeenAt": 1784040727658,
-      "lastSeenAt": 1784040727658,
-      "lastReviewedAt": 1784040727658,
-      "lifetimeClicks": 0,
-      "sessionClicks": 0,
-      "maxClickStreak": 0,
-      "reviewHistory": [
-        {
-          "ts": 1784040727658,
-          "day": "2026-07-14",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 0
-        }
-      ],
-      "dueAt": 1784127127658,
-      "intervalDays": 1,
-      "ease": 2.4,
-      "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
-      "known": false,
-      "captured": true,
-      "updatedAt": 1784040727658
-    },
-    "sections": {
-      "word": "sections",
-      "lemma": "sections",
-      "geminiPos": "n./v.",
-      "geminiTw": "部分；章節；切開",
-      "geminiEx": "The library is divided into different sections based on the genre of the books.",
-      "geminiTwEx": "圖書館根據書籍的類型被劃分為不同的區域。",
-      "geminiPhonetic": "",
-      "geminiSynonyms": [],
-      "geminiDerivatives": [],
-      "geminiCollocations": [],
-      "geminiLevel": "",
-      "geminiTip": "",
-      "geminiSource": "gemini",
-      "geminiUpdatedAt": 1784040744331,
-      "geminiRaw": {
-        "pos": "n./v.",
-        "tw": "部分；章節；切開",
-        "ex": "The library is divided into different sections based on the genre of the books.",
-        "tw_ex": "圖書館根據書籍的類型被劃分為不同的區域。"
-      },
-      "firstSeenAt": 1784042098566,
-      "lastSeenAt": 1784042098566,
+    "institute": {
+      "word": "institute",
+      "lemma": "institute",
+      "firstSeenAt": 1784042908475,
+      "lastSeenAt": 1784042908475,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 0,
-      "sessionClicks": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
       "maxClickStreak": 0,
       "reviewHistory": [],
-      "dueAt": 0,
+      "dueAt": 1784046508493,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
       "status": "new",
-      "totalResets": 0
+      "totalResets": 0,
+      "lastSurface": "Institute",
+      "lastForm": "base form",
+      "variants": {
+        "institute": 1,
+        "Institute": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1784042911194,
+      "loading": false,
+      "tw": "研究院）",
+      "definitions": [
+        "[noun] An organization founded to promote a cause",
+        "[noun] An institution of learning; a college, especially for technical subjects"
+      ],
+      "definitionSource": "dictionaryapi.dev",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜An organization founded to promote a cause"
     }
   }
 }
