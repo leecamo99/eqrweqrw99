@@ -298,6 +298,10 @@ function splitEnglishParagraphs(fullText) {
 
     currentTranslation.enParas.forEach(function (en, i) {
 
+       console.log(
+       'EN=', currentTranslation.enParas.length,
+       'ZH=', currentTranslation.zhParas.length
+         );
     var zh = currentTranslation.zhParas[i] || '(翻譯中)';
 
    zh = zh
