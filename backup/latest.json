@@ -1,6 +1,118 @@
 {
   "notebooks": [
     {
+      "id": "nb_1784060775731",
+      "name": "sdasfasdfdssf",
+      "date": "2026-07-14",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1784060775731c0",
+          "title": "Chapter 1",
+          "text": "1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "development": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "digital": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "marketing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "strategy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "agenda": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "afternoon": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "meeting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Berovo": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Institute": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regularly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "publishes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "results": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "research": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "renowned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "scientific": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "journals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
       "id": "nb_1784059716733",
       "name": "dsds",
       "date": "2026-07-14",
@@ -12686,7 +12798,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784059716739,
+  "updatedAt": 1784060775732,
   "learn": {
     "github": {
       "word": "github",
