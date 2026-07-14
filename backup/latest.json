@@ -1,18 +1,123 @@
 {
   "notebooks": [
     {
-      "id": "nb_1784058144650",
-      "name": "aaa",
+      "id": "nb_1784058553468",
+      "name": "sdas",
       "date": "2026-07-14",
       "thumb": "",
       "cards": [
         {
-          "id": "nb_1784058144650c0",
+          "id": "nb_1784058553468c0",
           "title": "Chapter 1",
-          "text": "1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.\n3. Full-scale {{development}} of the {{lightweight}} {{aircraft}} is set to begin in the {{spring}} of next year.\n4. A {{nutritionist}} from {{Shaffer}} {{University}} will be {{discussing}} her {{latest}} {{research}} on food {{additives}}.\n5. Ms. {{Hopkins}} {{shared}} her {{observations}} {{regarding}} the {{company}}'s {{overseas}} {{operations}} with the other {{executive}} {{committee}} {{members}}.\n6. {{Making}} an {{online}} {{payment}} with {{Paymodia}} is fast, easy, and safe.\n7. {{Without}} {{written}} {{authorization}} from the {{patient}}, we are {{unable}} to {{release}} his {{medical}} {{records}}.\n8. Mr. {{Gideon}}'s {{article}} was {{revised}} for {{length}} and {{clarity}} before it was {{published}} in the {{newspaper}}.\n9. When the {{community}} {{garden}} {{opened}}, {{locals}} were {{enthusiastic}} about {{having}} a place to grow their own {{vegetables}}.\n10. All three {{candidates}} for the {{management}} {{position}} are {{confident}} in their {{ability}} to {{perform}} the job {{effectively}}.\n1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.\n3. Full-scale {{development}} of the {{lightweight}} {{aircraft}} is set to begin in the {{spring}} of next year.\n4. A {{nutritionist}} from {{Shaffer}} {{University}} will be {{discussing}} her {{latest}} {{research}} on food {{additives}}.\n5. Ms. {{Hopkins}} {{shared}} her {{observations}} {{regarding}} the {{company}}'s {{overseas}} {{operations}} with the other {{executive}} {{committee}} {{members}}.\n6. {{Making}} an {{online}} {{payment}} with {{Paymodia}} is fast, easy, and safe.\n7. {{Without}} {{written}} {{authorization}} from the {{patient}}, we are {{unable}} to {{release}} his {{medical}} {{records}}.\n8. Mr. {{Gideon}}'s {{article}} was {{revised}} for {{length}} and {{clarity}} before it was {{published}} in the {{newspaper}}.\n9. When the {{community}} {{garden}} {{opened}}, {{locals}} were {{enthusiastic}} about {{having}} a place to grow their own {{vegetables}}.\n10. All three {{candidates}} for the {{management}} {{position}} are {{confident}} in their {{ability}} to {{perform}} the job {{effectively}}.",
+          "text": "1. The {{development}} of a new {{digital}} {{marketing}} {{strategy}} is on the {{agenda}} for this {{afternoon}}'s {{meeting}}.\n2. The {{Berovo}} {{Institute}} {{regularly}} {{publishes}} the {{results}} of its {{research}} in {{renowned}} {{scientific}} {{journals}}.",
           "myNote": ""
         }
       ],
+      "marks": {
+        "development": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "digital": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "marketing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "strategy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "agenda": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "afternoon": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "meeting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Berovo": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Institute": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regularly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "publishes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "results": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "research": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "renowned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "scientific": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "journals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
+      "id": "nb_1784058144650",
+      "name": "aaa",
+      "date": "2026-07-14",
+      "thumb": "",
+      "cards": [],
       "marks": {
         "development": {
           "pos": "",
@@ -13126,7 +13231,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784058144655,
+  "updatedAt": 1784058553470,
   "learn": {
     "github": {
       "word": "github",
