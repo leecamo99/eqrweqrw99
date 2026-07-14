@@ -69,83 +69,50 @@
 
     if (!fullText) return [];
 
-    var text = String(fullText || '').replace(/\r/g, '\n');
+    var text = String(fullText || '');
+    text = text.replace(/[\u00a0\u2028\u2029\r]/g, ' ');
 
-    // 先試著用行切
-    var lines = text
-      .split('\n')
-      .map(function (l) {
-        return String(l || '').trim();
-      })
-      .filter(Boolean);
+    // 用 regex.exec 找所有「數字+點+空白」的位置
+    var re = /(\d+).\s/g;
+    var positions = [];
+    var m;
 
-    if (lines.length > 1) {
-      return lines;
+    while ((m = re.exec(text)) !== null) {
+      positions.push(m.index);
     }
 
-    // 用「數字+點+空白」當分段點
-    var paras = [];
-    var start = 0;
-    var i = 0;
+    // 找不到多個標記 → 用其他方式切
+    if (positions.length < 2) {
 
-    while (i < text.length) {
+      var lines = text.split('\n')
+        .map(function (l) { return String(l || '').trim(); })
+        .filter(Boolean);
 
-      var ch = text.charAt(i);
-      var isDigit = ch >= '0' && ch <= '9';
+      if (lines.length > 1) return lines;
 
-      if (isDigit) {
-
-        var j = i;
-
-        while (
-          j < text.length &&
-          text.charAt(j) >= '0' &&
-          text.charAt(j) <= '9'
-        ) {
-          j++;
-        }
-
-        var afterNum = text.charAt(j);
-        var afterAfter = text.charAt(j + 1);
-        var prev = i > 0 ? text.charAt(i - 1) : '\n';
-
-        var isBoundary =
-          prev === ' ' ||
-          prev === '\n' ||
-          prev === '\t' ||
-          i === 0;
-
-        if (
-          isBoundary &&
-          afterNum === '.' &&
-          (afterAfter === ' ' || afterAfter === '\t')
-        ) {
-
-          if (i > start) {
-            var before = String(text.slice(start, i) || '').trim();
-            if (before) paras.push(before);
-          }
-
-          start = i;
-        }
+      var sentences = text.match(/[^.!?]+[.!?]+/g);
+      if (sentences && sentences.length > 1) {
+        return sentences.map(function (s) { return s.trim(); }).filter(Boolean);
       }
 
-      i++;
+      return [text.trim()];
     }
 
-    var lastPart = String(text.slice(start) || '').trim();
-    if (lastPart) paras.push(lastPart);
+    // 有多個標記 → 用位置切段
+    var paras = [];
 
-    paras = paras.filter(function (p) {
-      return p;
-    });
+    var before = text.slice(0, positions[0]).trim();
+    if (before) paras.push(before);
 
-    if (paras.length > 1) {
-      return paras;
+    for (var i = 0; i < positions.length; i++) {
+      var start = positions[i];
+      var end = i + 1 < positions.length ? positions[i + 1] : text.length;
+      var seg = text.slice(start, end).trim();
+      if (seg) paras.push(seg);
     }
 
-    return [text.trim()];
-  }
+    return paras;
+}
 
   async function googleTranslateBatch(texts) {
 
