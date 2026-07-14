@@ -1,4 +1,4 @@
-/* article-full-translate-patch.js v20260711-8
+/* article-full-translate-patch.js v20260711-80
    Add paragraph separator so sync highlight is visually clear.
 */
 
@@ -133,8 +133,7 @@
       return null;
     }
 }
-
- function splitEnglishParagraphs(fullText) {
+function splitEnglishParagraphs(fullText) {
 
     if (!fullText) return [];
 
@@ -145,20 +144,22 @@
       })
       .filter(Boolean)
 
-      // 排除 1. 2. 3.
       .filter(function (p) {
-        return !/^\d+.$/.test(p);
-      })
 
-      // 排除 1) 2)
-      .filter(function (p) {
-        return !/^\d+)$/.test(p);
+        // 1.
+        if (/^[0-9]+[.]$/.test(p)) return false;
+
+        // 1)
+        if (/^[0-9]+[)]$/.test(p)) return false;
+
+        return true;
       })
 
       .map(function (p) {
-        return p.replace(/^\d+[.)]\s+/, '');
+        return p.replace(/^[0-9]+[.)]\s+/, '');
       });
 }
+
 
   function getArticleText() {
 
