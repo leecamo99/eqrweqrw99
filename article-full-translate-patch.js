@@ -279,7 +279,7 @@ function splitEnglishParagraphs(fullText) {
     box.id = 'fullTranslateBox';
 
     box.style.position = 'fixed';
-    box.style.bottom = '60px';
+    box.style.bottom = '0';
     box.style.left = '0';
     box.style.right = '0';
      box.style.pointerEvents = 'auto';
@@ -378,5 +378,60 @@ function splitEnglishParagraphs(fullText) {
 
   window.translateFullArticle = translateFullArticle;
   window.splitEnglishParagraphs = splitEnglishParagraphs;
+function findGcttsBar() {
+    var candidates = [
+      document.querySelector('#gcttsBar'),
+      document.querySelector('#gcttsPanel'),
+      document.querySelector('#gcttsControls'),
+      document.querySelector('[data-gctts-panel]'),
+      document.querySelector('.gctts-panel'),
+      document.querySelector('.gctts-bar')
+    ];
+    for (var i = 0; i < candidates.length; i++) {
+      if (candidates[i]) return candidates[i];
+    }
+    // fallback：找 fixed 且在最底部的元素
+    var fixedEls = Array.prototype.slice.call(
+      document.querySelectorAll('div, section, aside')
+    );
+    var best = null;
+    var bestBottom = Infinity;
+    fixedEls.forEach(function (el) {
+      if (el.id === 'fullTranslateBox') return;
+      var s = window.getComputedStyle(el);
+      if (s.position !== 'fixed') return;
+      var r = el.getBoundingClientRect();
+      if (r.bottom > window.innerHeight + 5) return;
+      if (r.height < 30) return;
+      var distance = Math.abs(r.bottom - window.innerHeight);
+      if (distance < bestBottom) {
+        bestBottom = distance;
+        best = el;
+      }
+    });
+    return best;
+}
 
+function alignToPlayer() {
+    var box = document.getElementById('fullTranslateBox');
+    if (!box) return;
+    var bar = findGcttsBar();
+    if (!bar) {
+      box.style.bottom = '0px';
+      return;
+    }
+    if (bar === box) {
+      return;
+    }
+    var barRect = bar.getBoundingClientRect();
+    var offsetFromBottom = window.innerHeight - barRect.top;
+    if (offsetFromBottom < 0) offsetFromBottom = 0;
+    box.style.bottom = offsetFromBottom + 'px';
+}
+setInterval(alignToPlayer, 400);
+window.addEventListener('resize', alignToPlayer);
+
+
+
+   
 })();
