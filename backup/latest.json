@@ -4408,7 +4408,7 @@
     }
   ],
   "dark": true,
-  "updatedAt": 1784040675209,
+  "updatedAt": 1784040767992,
   "learn": {
     "github": {
       "word": "github",
@@ -4533,20 +4533,38 @@
       "ease": 2.5,
       "lapses": 0,
       "status": "learning",
-      "totalResets": 0
+      "totalResets": 0,
+      "geminiPos": "adj.",
+      "geminiTw": "列點的、有項目符號的",
+      "geminiEx": "Please provide the summary in a bulleted list.",
+      "geminiTwEx": "請用列點清單的方式提供摘要。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040735861,
+      "geminiRaw": {
+        "pos": "adj.",
+        "tw": "列點的、有項目符號的",
+        "ex": "Please provide the summary in a bulleted list.",
+        "tw_ex": "請用列點清單的方式提供摘要。"
+      }
     },
     "bullet": {
       "word": "bullet",
       "lemma": "bullet",
       "pos": "noun",
       "tw": "項目符號",
-      "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
+      "tip": "A projectile, usually of metal, shot from a gun at high speed.",
       "clicks": 0,
       "strength": 0,
-      "captured": false,
-      "known": true,
-      "dueAt": 1783445625346,
-      "updatedAt": 1783359225346,
+      "captured": true,
+      "known": false,
+      "dueAt": 1784127137007,
+      "updatedAt": 1784040737007,
       "variants": {
         "bulleted": 7
       },
@@ -4556,7 +4574,7 @@
       "loading": false,
       "firstSeenAt": 1783352586481,
       "lastSeenAt": 1783352586481,
-      "lastReviewedAt": 1783359225346,
+      "lastReviewedAt": 1784040737007,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -4569,20 +4587,62 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784040737007,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
         }
       ],
       "intervalDays": 1,
-      "ease": 2.5,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "young",
-      "totalResets": 1
+      "status": "learning",
+      "totalResets": 1,
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "A projectile, usually of metal, shot from a gun at high speed.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "An entire round of unfired ammunition for a firearm, including the projectile, the cartridge casing, the propellant charge, etc.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "Ammunition for a sling or slingshot which has been manufactured for such use.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To draw attention to (text) by, or as if by, placing a graphic bullet in front of it.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To speed, like a bullet.",
+          "example": "Their debut started slow, but bulleted to number six in its fourth week."
+        },
+        {
+          "pos": "verb",
+          "def": "To make a shot, especially with great speed.",
+          "example": "He bulleted a header for his first score of the season."
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "approve": {
       "word": "approve",
       "lemma": "approve",
       "pos": "verb",
       "tw": "核准",
-      "tip": "Auto translated by MyMemory｜To sanction officially; to ratify; to confirm; to set as satisfactory.",
+      "tip": "To sanction officially; to ratify; to confirm; to set as satisfactory.",
       "clicks": 0,
       "strength": 0,
       "captured": false,
@@ -4614,7 +4674,7 @@
       "lemma": "script",
       "pos": "noun",
       "tw": "指令碼",
-      "tip": "Auto translated by MyMemory｜A writing; a written document.",
+      "tip": "A writing; a written document.",
       "clicks": 0,
       "strength": 0,
       "captured": false,
@@ -4651,8 +4711,8 @@
       "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1783445635272,
-      "updatedAt": 1783359235272,
+      "dueAt": 1784127138162,
+      "updatedAt": 1784040738163,
       "variants": {
         "validated": 1
       },
@@ -4662,7 +4722,7 @@
       "loading": false,
       "firstSeenAt": 1783352614199,
       "lastSeenAt": 1783352614199,
-      "lastReviewedAt": 1783359235272,
+      "lastReviewedAt": 1784040738162,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 3,
@@ -4675,20 +4735,47 @@
           "clicks": 3,
           "strength": 3,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784040738162,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 1
         }
       ],
       "intervalDays": 1,
-      "ease": 2.4,
+      "ease": 2.3,
       "lapses": 0,
       "status": "learning",
-      "totalResets": 0
+      "totalResets": 0,
+      "geminiPos": "v.",
+      "geminiTw": "驗證、證實",
+      "geminiEx": "The data was validated by the research team to ensure its accuracy.",
+      "geminiTwEx": "研究團隊驗證了這些數據以確保其準確性。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040737018,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "驗證、證實",
+        "ex": "The data was validated by the research team to ensure its accuracy.",
+        "tw_ex": "研究團隊驗證了這些數據以確保其準確性。"
+      }
     },
     "check": {
       "word": "check",
       "lemma": "check",
       "pos": "noun",
       "tw": "檢查, 檢查",
-      "tip": "Auto translated by MyMemory｜A situation in which the king is directly threatened by an opposing piece.",
+      "tip": "A situation in which the king is directly threatened by an opposing piece.",
       "clicks": 0,
       "strength": 0,
       "captured": false,
@@ -4752,7 +4839,7 @@
       "lemma": "person",
       "pos": "noun",
       "tw": "人物",
-      "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+      "tip": "An individual; usually a human being.",
       "clicks": 0,
       "strength": 0,
       "captured": false,
@@ -4784,13 +4871,13 @@
       "lemma": "dur",
       "pos": "adjective",
       "tw": "dur",
-      "tip": "Auto translated by MyMemory｜Major; in the major mode.",
+      "tip": "Major; in the major mode.",
       "clicks": 0,
       "strength": 0,
       "captured": false,
       "known": true,
-      "dueAt": 1783445636861,
-      "updatedAt": 1783359236861,
+      "dueAt": 1784299938980,
+      "updatedAt": 1784040738980,
       "variants": {
         "during": 1
       },
@@ -4800,7 +4887,7 @@
       "loading": false,
       "firstSeenAt": 1783352599049,
       "lastSeenAt": 1783352599049,
-      "lastReviewedAt": 1783359236861,
+      "lastReviewedAt": 1784040738980,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -4813,20 +4900,37 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784040738980,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
         }
       ],
-      "intervalDays": 1,
+      "intervalDays": 3,
       "ease": 2.5,
       "lapses": 0,
       "status": "young",
-      "totalResets": 1
+      "totalResets": 2,
+      "definitions": [
+        {
+          "pos": "adjective",
+          "def": "Major; in the major mode.",
+          "example": "C dur"
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "during": {
       "word": "during",
       "lemma": "during",
       "pos": "verb",
       "tw": "期間",
-      "tip": "Auto translated by MyMemory｜To last, continue, endure.",
+      "tip": "To last, continue, endure.",
       "clicks": 3,
       "strength": 3,
       "captured": true,
@@ -4851,14 +4955,32 @@
       "ease": 2.5,
       "lapses": 0,
       "status": "learning",
-      "totalResets": 0
+      "totalResets": 0,
+      "geminiPos": "prep.",
+      "geminiTw": "在……期間",
+      "geminiEx": "We stayed in a hotel during our vacation.",
+      "geminiTwEx": "我們在度假期間住在飯店裡。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040738178,
+      "geminiRaw": {
+        "pos": "prep.",
+        "tw": "在……期間",
+        "ex": "We stayed in a hotel during our vacation.",
+        "tw_ex": "我們在度假期間住在飯店裡。"
+      }
     },
     "following": {
       "word": "following",
       "lemma": "following",
       "pos": "verb",
       "tw": "關注中",
-      "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+      "tip": "To go after; to pursue; to move behind in the same path or direction.",
       "clicks": 3,
       "strength": 3,
       "captured": true,
@@ -4883,20 +5005,38 @@
       "ease": 2.5,
       "lapses": 0,
       "status": "learning",
-      "totalResets": 0
+      "totalResets": 0,
+      "geminiPos": "adj./n./prep.",
+      "geminiTw": "接著的；下列的",
+      "geminiEx": "Please answer the following questions.",
+      "geminiTwEx": "請回答下列問題。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040738994,
+      "geminiRaw": {
+        "pos": "adj./n./prep.",
+        "tw": "接著的；下列的",
+        "ex": "Please answer the following questions.",
+        "tw_ex": "請回答下列問題。"
+      }
     },
     "spontaneously": {
       "word": "spontaneously",
       "lemma": "spontaneously",
       "pos": "adverb",
       "tw": "自發地",
-      "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
+      "tip": "In a spontaneous manner; naturally; voluntarily.",
       "clicks": 33,
       "strength": 10,
       "captured": true,
       "known": false,
-      "dueAt": 1783957566152,
-      "updatedAt": 1783871166153,
+      "dueAt": 1784127125709,
+      "updatedAt": 1784040725709,
       "variants": {
         "spontaneously": 29
       },
@@ -4906,7 +5046,7 @@
       "loading": false,
       "firstSeenAt": 1783352941134,
       "lastSeenAt": 1783707229004,
-      "lastReviewedAt": 1783871166152,
+      "lastReviewedAt": 1784040725709,
       "lifetimeClicks": 22,
       "sessionClicks": 22,
       "maxClickStreak": 32,
@@ -4928,10 +5068,19 @@
           "clicks": 33,
           "strength": 10,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784040725709,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 33,
+          "strength": 10,
+          "intervalDays": 1
         }
       ],
       "intervalDays": 1,
-      "ease": 2.3,
+      "ease": 2.1999999999999997,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -4943,20 +5092,38 @@
           "example": null
         }
       ],
-      "definitionSource": "dictionaryapi.dev"
+      "definitionSource": "dictionaryapi.dev",
+      "geminiPos": "adv.",
+      "geminiTw": "自發地、不由自主地",
+      "geminiEx": "The crowd spontaneously started singing when the music began.",
+      "geminiTwEx": "當音樂響起時，人群自發地開始歌唱。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040718158,
+      "geminiRaw": {
+        "pos": "adv.",
+        "tw": "自發地、不由自主地",
+        "ex": "The crowd spontaneously started singing when the music began.",
+        "tw_ex": "當音樂響起時，人群自發地開始歌唱。"
+      }
     },
     "welcome": {
       "word": "welcome",
       "lemma": "welcome",
       "pos": "noun",
       "tw": "歡迎",
-      "tip": "Auto translated by MyMemory｜The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "dueAt": 1783445640098,
-      "updatedAt": 1783708433431,
+      "tip": "The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 1784299946889,
+      "updatedAt": 1784040746889,
       "variants": {
         "welcome": 2
       },
@@ -4966,7 +5133,7 @@
       "loading": false,
       "firstSeenAt": 1783353354870,
       "lastSeenAt": 1783708433427,
-      "lastReviewedAt": 1783359240098,
+      "lastReviewedAt": 1784040746889,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
@@ -4979,20 +5146,58 @@
           "clicks": 1,
           "strength": 1,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784040746889,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
         }
       ],
-      "intervalDays": 1,
+      "intervalDays": 3,
       "ease": 2.5,
       "lapses": 0,
       "status": "young",
-      "totalResets": 1
+      "totalResets": 2,
+      "geminiPos": "adj./v./n./int.",
+      "geminiTw": "歡迎",
+      "geminiEx": "You are welcome to join us for dinner tonight.",
+      "geminiTwEx": "歡迎你今晚加入我們的晚餐。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040745869,
+      "geminiRaw": {
+        "pos": "adj./v./n./int.",
+        "tw": "歡迎",
+        "ex": "You are welcome to join us for dinner tonight.",
+        "tw_ex": "歡迎你今晚加入我們的晚餐。"
+      },
+      "definitions": [
+        "[noun] The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
+        "[noun] The utterance of such a greeting.",
+        "[verb] To affirm or greet the arrival of someone, especially by saying \"Welcome!\".",
+        "[verb] To accept something willingly or gladly.",
+        "[adjective] Whose arrival is a cause of joy; received with gladness; admitted willingly to the house, entertainment, or company.",
+        "[adjective] Producing gladness.",
+        "[interjection] Greeting given upon someone's arrival.",
+        "[interjection] Ellipsis of you're welcome."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "totally": {
       "word": "totally",
       "lemma": "totally",
       "pos": "adverb",
       "tw": "完全",
-      "tip": "Auto translated by MyMemory｜To the fullest extent or degree.",
+      "tip": "To the fullest extent or degree.",
       "clicks": 0,
       "strength": 0,
       "captured": false,
@@ -5034,7 +5239,7 @@
       "lemma": "follow",
       "firstSeenAt": 1783359238354,
       "lastSeenAt": 1783359238354,
-      "lastReviewedAt": 1783359238354,
+      "lastReviewedAt": 1784040739607,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -5047,26 +5252,35 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784040739607,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1783445638354,
-      "intervalDays": 1,
+      "dueAt": 1784299939607,
+      "intervalDays": 3,
       "ease": 2.5,
       "lapses": 0,
       "status": "young",
-      "totalResets": 1,
+      "totalResets": 2,
       "known": true,
       "captured": false,
       "clicks": 0,
       "strength": 0,
-      "updatedAt": 1783359238354
+      "updatedAt": 1784040739607
     },
     "section": {
       "word": "section",
       "lemma": "section",
       "firstSeenAt": 1783359239525,
       "lastSeenAt": 1783359239525,
-      "lastReviewedAt": 1783359239525,
+      "lastReviewedAt": 1784040745856,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -5079,26 +5293,42 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784040745856,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1783445639525,
-      "intervalDays": 1,
+      "dueAt": 1784299945856,
+      "intervalDays": 3,
       "ease": 2.5,
       "lapses": 0,
       "status": "young",
-      "totalResets": 1,
+      "totalResets": 2,
       "known": true,
       "captured": false,
       "clicks": 0,
       "strength": 0,
-      "updatedAt": 1783359239525
+      "updatedAt": 1784040745856,
+      "definitions": [
+        "[noun] A cutting; a part cut out from the rest of something.",
+        "[noun] A part, piece, subdivision of anything.",
+        "[verb] To cut, divide or separate into pieces.",
+        "[verb] To reduce to the degree of thinness required for study with the microscope."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "overtime": {
       "word": "overtime",
       "lemma": "overtime",
       "firstSeenAt": 1783430274331,
       "lastSeenAt": 1783446834014,
-      "lastReviewedAt": 1783446740565,
+      "lastReviewedAt": 1784040748060,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 1,
@@ -5138,30 +5368,90 @@
           "clicks": 6,
           "strength": 6,
           "intervalDays": 8
+        },
+        {
+          "ts": 1784040748060,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 20
         }
       ],
-      "dueAt": 1785174740565,
-      "intervalDays": 20,
+      "dueAt": 1788360748060,
+      "intervalDays": 50,
       "ease": 2.5,
       "lapses": 0,
-      "status": "young",
-      "totalResets": 4,
+      "status": "mature",
+      "totalResets": 5,
       "lastSurface": "overtime",
       "lastForm": "base form",
       "variants": {
         "overtime": 50
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783446834017,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040748060,
       "loading": false,
       "tw": "加班",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜Working time outside of one's regular hours.",
-      "isWeak": true
+      "tip": "Working time outside of one's regular hours.",
+      "isWeak": true,
+      "geminiPos": "n./adv./adj.",
+      "geminiTw": "加班；超時",
+      "geminiEx": "He has been working a lot of overtime lately to finish the project.",
+      "geminiTwEx": "他最近為了完成專案一直在大量加班。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040746901,
+      "geminiRaw": {
+        "pos": "n./adv./adj.",
+        "tw": "加班；超時",
+        "ex": "He has been working a lot of overtime lately to finish the project.",
+        "tw_ex": "他最近為了完成專案一直在大量加班。"
+      },
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "Working time outside of one's regular hours.",
+          "example": "Workers are usually paid extra for working overtime."
+        },
+        {
+          "pos": "noun",
+          "def": "The rate of pay, usually higher, for work done outside of or in addition to regular hours.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "An extra period of play when a contest has a tie score at the end of regulation. (British: extra time.)",
+          "example": "That last-second shot ties the game 99-99 and sends it to overtime!"
+        },
+        {
+          "pos": "verb",
+          "def": "To measure something incorrectly, as taking more time than it actually did.",
+          "example": null
+        },
+        {
+          "pos": "adverb",
+          "def": "Exceeding regular working hours.",
+          "example": null
+        },
+        {
+          "pos": "adverb",
+          "def": "Beyond the normal or usual extent.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "over": {
       "word": "over",
@@ -5203,7 +5493,7 @@
       "tw": "超过",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
+      "tip": "A set of six legal balls bowled.",
       "isWeak": true
     },
     "morn": {
@@ -5246,7 +5536,7 @@
       "tw": "早晨",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜Morning."
+      "tip": "Morning."
     },
     "weekend": {
       "word": "weekend",
@@ -5297,73 +5587,200 @@
       "tw": "週末",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday."
+      "tip": "The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday."
     },
     "speak": {
       "word": "speak",
       "lemma": "speak",
       "firstSeenAt": 1783486753208,
       "lastSeenAt": 1783707237816,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040728965,
       "lifetimeClicks": 10,
       "sessionClicks": 10,
       "maxClickStreak": 9,
-      "reviewHistory": [],
-      "dueAt": 1783490353212,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040728965,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 10,
+          "strength": 10,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127128965,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "speaking",
       "lastForm": "-ing form",
       "variants": {
         "speaking": 7,
         "speak": 3
       },
-      "clicks": 10,
-      "strength": 10,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783707237822,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040728965,
       "loading": false,
       "tw": "語音",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy.",
-      "isWeak": true
+      "tip": "A low class bar, a speakeasy.",
+      "isWeak": true,
+      "geminiPos": "v.",
+      "geminiTw": "說話",
+      "geminiEx": "She can speak four languages fluently.",
+      "geminiTwEx": "她能流利地說四種語言。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040727671,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "說話",
+        "ex": "She can speak four languages fluently.",
+        "tw_ex": "她能流利地說四種語言。"
+      },
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "A low class bar, a speakeasy.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "Language, jargon, or terminology used uniquely in a particular environment or group.",
+          "example": "Corporate speak; IT speak."
+        },
+        {
+          "pos": "noun",
+          "def": "Speech, conversation.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To communicate with one's voice, to say words out loud.",
+          "example": "I was so surprised I couldn't speak."
+        },
+        {
+          "pos": "verb",
+          "def": "To have a conversation.",
+          "example": "It's been ages since we've spoken."
+        },
+        {
+          "pos": "verb",
+          "def": "(by extension) To communicate or converse by some means other than orally, such as writing or facial expressions.",
+          "example": "Actions speak louder than words."
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "count": {
       "word": "count",
       "lemma": "count",
       "firstSeenAt": 1783510428740,
       "lastSeenAt": 1783510431288,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040741625,
       "lifetimeClicks": 2,
       "sessionClicks": 2,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783514028744,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040741625,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 2,
+          "strength": 2,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127141625,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "count",
       "lastForm": "base form",
       "variants": {
         "count": 2
       },
-      "clicks": 2,
-      "strength": 2,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783510431293,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040741625,
       "loading": false,
       "tw": "數量",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜The act of counting or tallying a quantity."
+      "tip": "The act of counting or tallying a quantity.",
+      "geminiPos": "v./n.",
+      "geminiTw": "計算；數數",
+      "geminiEx": "Can you count how many people are in the room?",
+      "geminiTwEx": "你能數數看房間裡有多少人嗎？",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040740622,
+      "geminiRaw": {
+        "pos": "v./n.",
+        "tw": "計算；數數",
+        "ex": "Can you count how many people are in the room?",
+        "tw_ex": "你能數數看房間裡有多少人嗎？"
+      },
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "The act of counting or tallying a quantity.",
+          "example": "Give the chairs a quick count to check if we have enough."
+        },
+        {
+          "pos": "noun",
+          "def": "The result of a tally that reveals the number of items in a set; a quantity counted.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "A countdown.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To recite numbers in sequence.",
+          "example": "Can you count to a hundred?"
+        },
+        {
+          "pos": "verb",
+          "def": "To determine the number (of objects in a group).",
+          "example": "There are three apples; count them."
+        },
+        {
+          "pos": "verb",
+          "def": "To be of significance; to matter.",
+          "example": "Your views don’t count here.    It does count if you cheat with someone when you’re drunk."
+        },
+        {
+          "pos": "adjective",
+          "def": "(grammar) Countable.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "bonus": {
       "word": "bonus",
@@ -5395,55 +5812,93 @@
       "tw": "獎金",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜Something extra that is good; an added benefit."
+      "tip": "Something extra that is good; an added benefit.",
+      "geminiPos": "n.",
+      "geminiTw": "獎金；紅利；額外好處",
+      "geminiEx": "All employees received a year-end bonus for their hard work.",
+      "geminiTwEx": "所有員工都因為辛勤工作而領到了年終獎金。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040748077,
+      "geminiRaw": {
+        "pos": "n.",
+        "tw": "獎金；紅利；額外好處",
+        "ex": "All employees received a year-end bonus for their hard work.",
+        "tw_ex": "所有員工都因為辛勤工作而領到了年終獎金。"
+      }
     },
     "calculate": {
       "word": "calculate",
       "lemma": "calculate",
       "firstSeenAt": 1783510685318,
       "lastSeenAt": 1783510685318,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040750239,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783514285324,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040750239,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127150239,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "calculate",
       "lastForm": "base form",
       "variants": {
         "calculate": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783510687079,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040750239,
       "loading": false,
       "tw": "計算",
       "engine": "MyMemory",
       "pos": "verb",
-      "tip": "Auto translated by MyMemory｜To determine the value of something or the solution to something by a mathematical process."
+      "tip": "To determine the value of something or the solution to something by a mathematical process."
     },
     "leftover": {
       "word": "leftover",
       "lemma": "leftover",
       "firstSeenAt": 1783510697499,
       "lastSeenAt": 1783510697499,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040751496,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783514297505,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784040751496,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127151496,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "leftover",
       "lastForm": "base form",
@@ -5454,28 +5909,74 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783510698931,
+      "updatedAt": 1784040751496,
       "loading": false,
       "tw": "剩飯",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜Something left behind; an excess or remainder."
+      "tip": "Something left behind; an excess or remainder.",
+      "geminiPos": "n./adj.",
+      "geminiTw": "剩菜、剩餘物",
+      "geminiEx": "We ate the leftovers for lunch the next day.",
+      "geminiTwEx": "我們隔天午餐吃了剩下的菜。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040750253,
+      "geminiRaw": {
+        "pos": "n./adj.",
+        "tw": "剩菜、剩餘物",
+        "ex": "We ate the leftovers for lunch the next day.",
+        "tw_ex": "我們隔天午餐吃了剩下的菜。"
+      },
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "Something left behind; an excess or remainder.",
+          "example": "It's a leftover from yesterday, but it's still perfectly good."
+        },
+        {
+          "pos": "noun",
+          "def": "(chiefly in the plural, usually of food) Remaining after a meal is complete or eaten for a later meal or snack.",
+          "example": "Not leftovers again!"
+        },
+        {
+          "pos": "adjective",
+          "def": "Remaining; left behind; extra; in reserve.",
+          "example": "Do you want some of the leftover supplies from the event?"
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "spot": {
       "word": "spot",
       "lemma": "spot",
       "firstSeenAt": 1783704314043,
       "lastSeenAt": 1783704314043,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040753596,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783707914046,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784040753596,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127153596,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "spot",
       "lastForm": "base form",
@@ -5486,28 +5987,94 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783704316321,
+      "updatedAt": 1784040753596,
       "loading": false,
       "tw": "聚光點",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A round or irregular patch on the surface of a thing having a different color, texture etc. and generally round in shape."
+      "tip": "A round or irregular patch on the surface of a thing having a different color, texture etc. and generally round in shape.",
+      "geminiPos": "n./v./adj.",
+      "geminiTw": "地點、斑點 / 發現、認出 / 現貨的",
+      "geminiEx": "I found a perfect spot for a picnic in the park.",
+      "geminiTwEx": "我在公園裡找到了一個野餐的絕佳地點。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040751514,
+      "geminiRaw": {
+        "pos": "n./v./adj.",
+        "tw": "地點、斑點 / 發現、認出 / 現貨的",
+        "ex": "I found a perfect spot for a picnic in the park.",
+        "tw_ex": "我在公園裡找到了一個野餐的絕佳地點。"
+      },
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "A round or irregular patch on the surface of a thing having a different color, texture etc. and generally round in shape.",
+          "example": "The leopard is noted for the spots of color in its fur."
+        },
+        {
+          "pos": "noun",
+          "def": "A stain or disfiguring mark.",
+          "example": "I have tried everything, and I can’t get this spot out."
+        },
+        {
+          "pos": "noun",
+          "def": "A pimple, papule or pustule.",
+          "example": "I think she's got chicken pox; she's covered in spots."
+        },
+        {
+          "pos": "verb",
+          "def": "To see, find; to pick out, notice, locate, distinguish or identify.",
+          "example": "Try to spot the differences between these two pictures."
+        },
+        {
+          "pos": "verb",
+          "def": "To loan a small amount of money to someone.",
+          "example": "I’ll spot you ten dollars for lunch."
+        },
+        {
+          "pos": "verb",
+          "def": "To stain; to leave a spot (on).",
+          "example": "Hard water will spot if it is left on a surface."
+        },
+        {
+          "pos": "adjective",
+          "def": "Available on the spot; for immediate payment or delivery.",
+          "example": "spot wheat; spot cash; a spot contract"
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "beforehand": {
       "word": "beforehand",
       "lemma": "beforehand",
       "firstSeenAt": 1783704325541,
       "lastSeenAt": 1783704325541,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040754856,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783707925546,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784040754856,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127154856,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "beforehand",
       "lastForm": "base form",
@@ -5518,92 +6085,190 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783704327080,
+      "updatedAt": 1784040754856,
       "loading": false,
       "tw": "事先",
       "engine": "MyMemory",
       "pos": "adjective",
-      "tip": "Auto translated by MyMemory｜In comfortable circumstances as regards property; forehanded."
+      "tip": "In comfortable circumstances as regards property; forehanded.",
+      "geminiPos": "adv.",
+      "geminiTw": "預先、事先",
+      "geminiEx": "If you make a reservation beforehand, you won't have to wait in line.",
+      "geminiTwEx": "如果你事先預約，就不用排隊了。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040753613,
+      "geminiRaw": {
+        "pos": "adv.",
+        "tw": "預先、事先",
+        "ex": "If you make a reservation beforehand, you won't have to wait in line.",
+        "tw_ex": "如果你事先預約，就不用排隊了。"
+      },
+      "definitions": [
+        "[adjective] In comfortable circumstances as regards property; forehanded.",
+        "[adjective] (often followed by with) In a state of anticipation or preoccupation.",
+        "[adverb] At an earlier or preceding time."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "learn": {
       "word": "learn",
       "lemma": "learn",
       "firstSeenAt": 1783707260820,
       "lastSeenAt": 1783707260820,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040755889,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783710860822,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040755889,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127155889,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "learning",
       "lastForm": "-ing form",
       "variants": {
         "learning": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783707263481,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040755889,
       "loading": false,
       "tw": "學",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜The act of learning something"
+      "tip": "The act of learning something",
+      "geminiPos": "v.",
+      "geminiTw": "學習",
+      "geminiEx": "She wants to learn how to play the piano.",
+      "geminiTwEx": "她想學習如何彈鋼琴。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040754871,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "學習",
+        "ex": "She wants to learn how to play the piano.",
+        "tw_ex": "她想學習如何彈鋼琴。"
+      }
     },
     "everyone": {
       "word": "everyone",
       "lemma": "everyone",
       "firstSeenAt": 1783708436564,
       "lastSeenAt": 1783708436564,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040757009,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783712036569,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040757009,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127157009,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "everyone",
       "lastForm": "base form",
       "variants": {
         "everyone": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783708439404,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040757009,
       "loading": false,
       "tw": "所有人",
       "engine": "MyMemory",
       "pos": "pronoun",
-      "tip": "Auto translated by MyMemory｜Every person."
+      "tip": "Every person.",
+      "geminiPos": "pron.",
+      "geminiTw": "每個人",
+      "geminiEx": "Everyone is invited to the party.",
+      "geminiTwEx": "每個人都受邀參加派對。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040755903,
+      "geminiRaw": {
+        "pos": "pron.",
+        "tw": "每個人",
+        "ex": "Everyone is invited to the party.",
+        "tw_ex": "每個人都受邀參加派對。"
+      },
+      "definitions": [
+        {
+          "pos": "pronoun",
+          "def": "Every person.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "preparation": {
       "word": "preparation",
       "lemma": "preparation",
       "firstSeenAt": 1783708444934,
       "lastSeenAt": 1783708444935,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040759607,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783712044939,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784040759607,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127159607,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "preparation",
       "lastForm": "base form",
@@ -5614,40 +6279,86 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783708446782,
+      "updatedAt": 1784040759607,
       "loading": false,
       "tw": "準備工作",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜The act of preparing or getting ready."
+      "tip": "The act of preparing or getting ready.",
+      "geminiPos": "n.",
+      "geminiTw": "準備",
+      "geminiEx": "The team made careful preparation for the upcoming project.",
+      "geminiTwEx": "團隊為即將到來的專案做了細心的準備。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040757023,
+      "geminiRaw": {
+        "pos": "n.",
+        "tw": "準備",
+        "ex": "The team made careful preparation for the upcoming project.",
+        "tw_ex": "團隊為即將到來的專案做了細心的準備。"
+      },
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "The act of preparing or getting ready.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "The state of being prepared; readiness.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "That which is prepared.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "horizon": {
       "word": "horizon",
       "lemma": "horizon",
       "firstSeenAt": 1783731120938,
       "lastSeenAt": 1783803769378,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040734282,
       "lifetimeClicks": 5,
       "sessionClicks": 5,
       "maxClickStreak": 4,
-      "reviewHistory": [],
-      "dueAt": 1783734720941,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040734282,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 5,
+          "strength": 5,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127134282,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "horizons",
       "lastForm": "base form",
       "variants": {
         "horizons": 5,
         "horizon": 1
       },
-      "clicks": 5,
-      "strength": 5,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783803769381,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040734282,
       "loading": false,
       "tw": "地平線",
       "engine": "MyMemory",
@@ -5671,55 +6382,111 @@
           "example": null
         }
       ],
-      "definitionSource": "dictionaryapi.dev"
+      "definitionSource": "dictionaryapi.dev",
+      "geminiPos": "n.",
+      "geminiTw": "地平線；眼界",
+      "geminiEx": "The sun began to sink below the horizon.",
+      "geminiTwEx": "太陽開始沒入地平線之下。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040732967,
+      "geminiRaw": {
+        "pos": "n.",
+        "tw": "地平線；眼界",
+        "ex": "The sun began to sink below the horizon.",
+        "tw_ex": "太陽開始沒入地平線之下。"
+      }
     },
     "award": {
       "word": "award",
       "lemma": "award",
       "firstSeenAt": 1783731140962,
       "lastSeenAt": 1783731140962,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040760519,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783734740967,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040760519,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127160519,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "award",
       "lastForm": "base form",
       "variants": {
         "award": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783731142363,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040760519,
       "loading": false,
       "tw": "獎",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted."
+      "tip": "A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+      "geminiPos": "n./v.",
+      "geminiTw": "獎項；授予",
+      "geminiEx": "The committee decided to award her the first prize for her outstanding performance.",
+      "geminiTwEx": "委員會決定因她傑出的表現而頒發第一名獎項給她。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040759623,
+      "geminiRaw": {
+        "pos": "n./v.",
+        "tw": "獎項；授予",
+        "ex": "The committee decided to award her the first prize for her outstanding performance.",
+        "tw_ex": "委員會決定因她傑出的表現而頒發第一名獎項給她。"
+      }
     },
     "supercharge": {
       "word": "supercharge",
       "lemma": "supercharge",
       "firstSeenAt": 1783731158391,
       "lastSeenAt": 1783731158391,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040761758,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783734758395,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784040761758,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127161758,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "Supercharge",
       "lastForm": "base form",
@@ -5730,39 +6497,73 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783731159873,
+      "updatedAt": 1784040761758,
       "loading": false,
       "tw": "增壓",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A charge borne upon an ordinary or other charge."
+      "tip": "A charge borne upon an ordinary or other charge.",
+      "geminiPos": "v.",
+      "geminiTw": "增強；使充滿活力；給（引擎）加裝增壓器",
+      "geminiEx": "The new marketing strategy will supercharge our sales growth this year.",
+      "geminiTwEx": "新的行銷策略將會大幅提升我們今年的銷售成長。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040760531,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "增強；使充滿活力；給（引擎）加裝增壓器",
+        "ex": "The new marketing strategy will supercharge our sales growth this year.",
+        "tw_ex": "新的行銷策略將會大幅提升我們今年的銷售成長。"
+      },
+      "definitions": [
+        "[noun] A charge borne upon an ordinary or other charge.",
+        "[verb] To increase the power of an internal combustion engine (either Otto or Diesel cycle) by compressing the inlet air with power extracted from the crankshaft.",
+        "[verb] To make faster or more powerful."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "gain": {
       "word": "gain",
       "lemma": "gain",
       "firstSeenAt": 1783731169616,
       "lastSeenAt": 1783804086001,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040740609,
       "lifetimeClicks": 3,
       "sessionClicks": 3,
       "maxClickStreak": 2,
-      "reviewHistory": [],
-      "dueAt": 1783734769620,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040740609,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127140609,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "gain",
       "lastForm": "base form",
       "variants": {
         "gain": 4
       },
-      "clicks": 3,
-      "strength": 3,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783804086007,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040740609,
       "loading": false,
       "tw": "獲得",
       "engine": "MyMemory",
@@ -5775,39 +6576,123 @@
         "[verb] To acquire possession of.",
         "[verb] To have or receive advantage or profit; to acquire gain; to grow rich; to advance in interest, health, or happiness; to make progress."
       ],
-      "definitionSource": "dictionaryapi.dev"
+      "definitionSource": "dictionaryapi.dev",
+      "geminiPos": "v./n.",
+      "geminiTw": "獲得；增加",
+      "geminiEx": "He worked hard to gain experience in the field.",
+      "geminiTwEx": "他努力工作以在該領域獲得經驗。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040739620,
+      "geminiRaw": {
+        "pos": "v./n.",
+        "tw": "獲得；增加",
+        "ex": "He worked hard to gain experience in the field.",
+        "tw_ex": "他努力工作以在該領域獲得經驗。"
+      }
     },
     "next": {
       "word": "next",
       "lemma": "next",
       "firstSeenAt": 1783796607597,
       "lastSeenAt": 1783796607597,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040762556,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783800207601,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040762556,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127162556,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "next",
       "lastForm": "base form",
       "variants": {
         "next": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783796610264,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040762556,
       "loading": false,
       "tw": "下一個",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜The one that follows after this one."
+      "tip": "The one that follows after this one.",
+      "geminiPos": "adj./adv./n.",
+      "geminiTw": "下一個；其次",
+      "geminiEx": "Who is next in line?",
+      "geminiTwEx": "下一個排隊的人是誰？",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040761776,
+      "geminiRaw": {
+        "pos": "adj./adv./n.",
+        "tw": "下一個；其次",
+        "ex": "Who is next in line?",
+        "tw_ex": "下一個排隊的人是誰？"
+      },
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "The one that follows after this one.",
+          "example": "Next, please, don't hold up the queue!"
+        },
+        {
+          "pos": "adjective",
+          "def": "Nearest in place or position, having nothing similar intervening; adjoining.",
+          "example": null
+        },
+        {
+          "pos": "adjective",
+          "def": "Nearest in order, succession, or rank; immediately following (or sometimes preceding) in order.",
+          "example": "the next chapter; the next man I see; the next week; the Sunday next before Easter"
+        },
+        {
+          "pos": "adjective",
+          "def": "Following in a hypothetical sequence of some kind.",
+          "example": "The man was driven by his love for money and his desire to become the next Bill Gates."
+        },
+        {
+          "pos": "adverb",
+          "def": "In a time, place, rank or sequence closest or following.",
+          "example": "It's the next best thing to ice cream."
+        },
+        {
+          "pos": "adverb",
+          "def": "On the first subsequent occasion.",
+          "example": "Financial panic, earthquakes, oil spills, riots. What comes next?"
+        },
+        {
+          "pos": "preposition",
+          "def": "On the side of; nearest or adjacent to; next to.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "include": {
       "word": "include",
@@ -5839,67 +6724,118 @@
       "tw": "包括",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A piece of source code or other content that is dynamically retrieved for inclusion in another item."
+      "tip": "A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+      "geminiPos": "v.",
+      "geminiTw": "包括；包含",
+      "geminiEx": "The price includes breakfast and dinner.",
+      "geminiTwEx": "價格包含早餐和晚餐。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040762572,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "包括；包含",
+        "ex": "The price includes breakfast and dinner.",
+        "tw_ex": "價格包含早餐和晚餐。"
+      },
+      "definitions": [
+        "[noun] A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+        "[verb] To bring into a group, class, set, or total as a (new) part or member.",
+        "[verb] To contain, as parts of a whole; to comprehend."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "program": {
       "word": "program",
       "lemma": "program",
       "firstSeenAt": 1783797089467,
       "lastSeenAt": 1783797089467,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040764320,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783800689469,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040764320,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127164320,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "programs",
       "lastForm": "plural / 3rd person -s",
       "variants": {
         "programs": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783797090624,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040764320,
       "loading": false,
       "tw": "程序",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A set of structured activities."
+      "tip": "A set of structured activities.",
+      "definitions": [
+        "[noun] A set of structured activities.",
+        "[noun] A leaflet listing information about a play, game or other activity.",
+        "[verb] To enter a program or other instructions into (a computer or other electronic device) to instruct it to do a particular task.",
+        "[verb] To develop (software) by writing program code."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "global": {
       "word": "global",
       "lemma": "global",
       "firstSeenAt": 1783797093090,
       "lastSeenAt": 1783867162689,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040729778,
       "lifetimeClicks": 8,
       "sessionClicks": 8,
       "maxClickStreak": 7,
-      "reviewHistory": [],
-      "dueAt": 1783800693093,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040729778,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 8,
+          "strength": 8,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127129778,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "global",
       "lastForm": "base form",
       "variants": {
         "global": 8,
         "Global": 1
       },
-      "clicks": 8,
-      "strength": 8,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783867162693,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040729778,
       "loading": false,
       "tw": "全球的",
       "engine": "MyMemory",
@@ -5933,46 +6869,105 @@
           "example": null
         }
       ],
-      "definitionSource": "dictionaryapi.dev"
+      "definitionSource": "dictionaryapi.dev",
+      "geminiPos": "adj.",
+      "geminiTw": "全球的；整體的",
+      "geminiEx": "Climate change is a global issue that requires international cooperation.",
+      "geminiTwEx": "氣候變遷是一個需要國際合作的全球性議題。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040728980,
+      "geminiRaw": {
+        "pos": "adj.",
+        "tw": "全球的；整體的",
+        "ex": "Climate change is a global issue that requires international cooperation.",
+        "tw_ex": "氣候變遷是一個需要國際合作的全球性議題。"
+      }
     },
     "yourself": {
       "word": "yourself",
       "lemma": "yourself",
       "firstSeenAt": 1783797098260,
       "lastSeenAt": 1783798544211,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040735845,
       "lifetimeClicks": 5,
       "sessionClicks": 5,
       "maxClickStreak": 4,
-      "reviewHistory": [],
-      "dueAt": 1783800698262,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040735845,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 5,
+          "strength": 5,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127135845,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "yourself",
       "lastForm": "base form",
       "variants": {
         "yourself": 5
       },
-      "clicks": 5,
-      "strength": 5,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783798544215,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040735845,
       "loading": false,
       "tw": "您自己",
       "engine": "MyMemory",
       "pos": "pronoun",
-      "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular)."
+      "tip": "(reflexive pronoun) Your own self (singular).",
+      "geminiPos": "pron.",
+      "geminiTw": "你自己",
+      "geminiEx": "You should believe in yourself.",
+      "geminiTwEx": "你應該相信你自己。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040734299,
+      "geminiRaw": {
+        "pos": "pron.",
+        "tw": "你自己",
+        "ex": "You should believe in yourself.",
+        "tw_ex": "你應該相信你自己。"
+      },
+      "definitions": [
+        {
+          "pos": "pronoun",
+          "def": "(reflexive pronoun) Your own self (singular).",
+          "example": "Be careful with that fire or you'll burn yourself."
+        },
+        {
+          "pos": "pronoun",
+          "def": "You (singular); used emphatically, especially to indicate exclusiveness of the referent's participation in the predicate, i.e., that no one else is involved.",
+          "example": "After a good night's sleep you'll feel like yourself again."
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "immerse": {
       "word": "immerse",
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
       "lastSeenAt": 1783818065060,
-      "lastReviewedAt": 1783871173228,
+      "lastReviewedAt": 1784040727123,
       "lifetimeClicks": 25,
       "sessionClicks": 25,
       "maxClickStreak": 20,
@@ -5985,11 +6980,20 @@
           "clicks": 21,
           "strength": 10,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784040727123,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 21,
+          "strength": 10,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1783957573228,
+      "dueAt": 1784127127123,
       "intervalDays": 1,
-      "ease": 2.4,
+      "ease": 2.3,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -6003,7 +7007,7 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1783871173228,
+      "updatedAt": 1784040727123,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -6015,7 +7019,25 @@
         "[verb] To involve or engage deeply.",
         "[adjective] Immersed; buried; sunk."
       ],
-      "definitionSource": "dictionaryapi.dev"
+      "definitionSource": "dictionaryapi.dev",
+      "geminiPos": "v.",
+      "geminiTw": "沉浸；使陷入",
+      "geminiEx": "She immersed herself in her studies to prepare for the final exam.",
+      "geminiTwEx": "為了準備期末考，她全神貫注地投入在學業中。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040725721,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "沉浸；使陷入",
+        "ex": "She immersed herself in her studies to prepare for the final exam.",
+        "tw_ex": "為了準備期末考，她全神貫注地投入在學業中。"
+      }
     },
     "immers": {
       "word": "immers",
@@ -6047,46 +7069,92 @@
       "ease": 2.5,
       "lapses": 0,
       "status": "learning",
-      "totalResets": 0
+      "totalResets": 0,
+      "geminiPos": "v.",
+      "geminiTw": "沉浸、使陷入",
+      "geminiEx": "She immersed herself in her studies to prepare for the final exam.",
+      "geminiTwEx": "為了準備期末考，她全心投入於學業之中。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040727134,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "沉浸、使陷入",
+        "ex": "She immersed herself in her studies to prepare for the final exam.",
+        "tw_ex": "為了準備期末考，她全心投入於學業之中。"
+      }
     },
     "expand": {
       "word": "expand",
       "lemma": "expand",
       "firstSeenAt": 1783798414501,
       "lastSeenAt": 1783798414501,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040765176,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783802014505,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040765176,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127165176,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "Expand",
       "lastForm": "base form",
       "variants": {
         "Expand": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783798416725,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040765176,
       "loading": false,
       "tw": "展開",
       "engine": "MyMemory",
       "pos": "verb",
-      "tip": "Auto translated by MyMemory｜To change (something) from a smaller form and/or size to a larger one; to spread out or lay open."
+      "tip": "To change (something) from a smaller form and/or size to a larger one; to spread out or lay open.",
+      "geminiPos": "v.",
+      "geminiTw": "擴張、擴大",
+      "geminiEx": "The company plans to expand its operations into international markets.",
+      "geminiTwEx": "該公司計劃將業務擴展至國際市場。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040764336,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "擴張、擴大",
+        "ex": "The company plans to expand its operations into international markets.",
+        "tw_ex": "該公司計劃將業務擴展至國際市場。"
+      }
     },
     "perspective": {
       "word": "perspective",
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
       "lastSeenAt": 1783817450894,
-      "lastReviewedAt": 1783817517197,
+      "lastReviewedAt": 1784040732956,
       "lifetimeClicks": 11,
       "sessionClicks": 11,
       "maxClickStreak": 5,
@@ -6108,11 +7176,20 @@
           "clicks": 6,
           "strength": 6,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784040732956,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 6,
+          "strength": 6,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1783903917197,
+      "dueAt": 1784127132956,
       "intervalDays": 1,
-      "ease": 2.3,
+      "ease": 2.1999999999999997,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -6126,7 +7203,7 @@
       "strength": 6,
       "captured": true,
       "known": false,
-      "updatedAt": 1783817517198,
+      "updatedAt": 1784040732956,
       "loading": false,
       "tw": "看法",
       "engine": "MyMemory",
@@ -6161,7 +7238,25 @@
           "example": null
         }
       ],
-      "definitionSource": "dictionaryapi.dev"
+      "definitionSource": "dictionaryapi.dev",
+      "geminiPos": "n.",
+      "geminiTw": "觀點、視角",
+      "geminiEx": "From my perspective, this is the best solution to the problem.",
+      "geminiTwEx": "以我的觀點來看，這是解決這個問題最好的方法。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040729793,
+      "geminiRaw": {
+        "pos": "n.",
+        "tw": "觀點、視角",
+        "ex": "From my perspective, this is the best solution to the problem.",
+        "tw_ex": "以我的觀點來看，這是解決這個問題最好的方法。"
+      }
     },
     "perspectif": {
       "word": "perspectif",
@@ -6173,8 +7268,8 @@
       "strength": 2,
       "captured": true,
       "known": false,
-      "dueAt": 1783803449510,
-      "updatedAt": 1783800063160,
+      "dueAt": 1784127142722,
+      "updatedAt": 1784040742722,
       "variants": {
         "perspectives": 2
       },
@@ -6184,49 +7279,123 @@
       "loading": false,
       "firstSeenAt": 1783800063160,
       "lastSeenAt": 1783800063160,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040742722,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 2,
-      "reviewHistory": [],
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784040742722,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 2,
+          "strength": 2,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
       "status": "learning",
-      "totalResets": 0
+      "totalResets": 0,
+      "geminiPos": "n.",
+      "geminiTw": "觀點、透視法",
+      "geminiEx": "From my perspective, the plan needs more careful consideration.",
+      "geminiTwEx": "以我的觀點來看，這項計畫需要更審慎的考量。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040741638,
+      "geminiRaw": {
+        "pos": "n.",
+        "tw": "觀點、透視法",
+        "ex": "From my perspective, the plan needs more careful consideration.",
+        "tw_ex": "以我的觀點來看，這項計畫需要更審慎的考量。"
+      }
     },
     "study": {
       "word": "study",
       "lemma": "study",
       "firstSeenAt": 1783800679334,
       "lastSeenAt": 1783800679334,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040766137,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783804279338,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040766137,
+          "day": "2026-07-14",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127166137,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "studies",
       "lastForm": "base form",
       "variants": {
         "study": 1,
         "studies": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783800681192,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784040766137,
       "loading": false,
       "tw": "閱讀室",
       "engine": "MyMemory",
       "pos": "verb",
-      "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination."
+      "tip": "(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+      "geminiPos": "n./v.",
+      "geminiTw": "學習；研究",
+      "geminiEx": "She is studying hard for her final exams.",
+      "geminiTwEx": "她正在為期末考努力讀書。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040765193,
+      "geminiRaw": {
+        "pos": "n./v.",
+        "tw": "學習；研究",
+        "ex": "She is studying hard for her final exams.",
+        "tw_ex": "她正在為期末考努力讀書。"
+      },
+      "definitions": [
+        {
+          "pos": "verb",
+          "def": "(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "example": "I need to study my biology notes."
+        },
+        {
+          "pos": "verb",
+          "def": "(academic) To take a course or courses on a subject.",
+          "example": "I study medicine at the university."
+        },
+        {
+          "pos": "verb",
+          "def": "To acquire knowledge on a subject with the intention of applying it in practice.",
+          "example": "Biologists study living things."
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "win": {
       "word": "win",
@@ -6255,21 +7424,54 @@
       "known": false,
       "updatedAt": 1783800711683,
       "loading": true,
-      "tw": "查詢中..."
+      "tw": "查詢中...",
+      "geminiPos": "v./n.",
+      "geminiTw": "贏；獲勝",
+      "geminiEx": "She worked hard to win the championship.",
+      "geminiTwEx": "她努力工作以贏得冠軍。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040766151,
+      "geminiRaw": {
+        "pos": "v./n.",
+        "tw": "贏；獲勝",
+        "ex": "She worked hard to win the championship.",
+        "tw_ex": "她努力工作以贏得冠軍。"
+      },
+      "definitions": [
+        "[verb] To conquer, defeat.",
+        "[verb] To reach some destination or object, despite difficulty or toil (now usually intransitive, with preposition or locative adverb)."
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "utilize": {
       "word": "utilize",
       "lemma": "utilize",
       "firstSeenAt": 1783803789661,
       "lastSeenAt": 1783871186449,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040744313,
       "lifetimeClicks": 2,
       "sessionClicks": 2,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783807389667,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784040744313,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 2,
+          "strength": 2,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127144313,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -6283,11 +7485,11 @@
       "strength": 2,
       "captured": true,
       "known": false,
-      "updatedAt": 1783871186452,
+      "updatedAt": 1784040744313,
       "loading": false,
       "tw": "利用",
       "translationSource": "Google Translate",
-      "tip": "Auto translated by MyMemory｜To make use of; to use.",
+      "tip": "To make use of; to use.",
       "definitions": [
         {
           "pos": "verb",
@@ -6307,23 +7509,51 @@
       ],
       "definitionSource": "dictionaryapi.dev",
       "engine": "MyMemory",
-      "pos": "verb"
+      "pos": "verb",
+      "geminiPos": "v.",
+      "geminiTw": "利用；使用",
+      "geminiEx": "We should utilize the available resources to complete the project on time.",
+      "geminiTwEx": "我們應該利用現有的資源來準時完成這個專案。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040742736,
+      "geminiRaw": {
+        "pos": "v.",
+        "tw": "利用；使用",
+        "ex": "We should utilize the available resources to complete the project on time.",
+        "tw_ex": "我們應該利用現有的資源來準時完成這個專案。"
+      }
     },
     "prestigiou": {
       "word": "prestigiou",
       "lemma": "prestigiou",
       "firstSeenAt": 1783817545776,
       "lastSeenAt": 1783817545776,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784040767992,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
-      "reviewHistory": [],
-      "dueAt": 1783821145781,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1784040767991,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127167992,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "prestigious",
       "lastForm": "base form",
@@ -6335,13 +7565,65 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1783817547352,
+      "updatedAt": 1784040767992,
       "loading": false,
       "tw": "prestigiou",
       "translationSource": "Google Translate",
       "tip": "Auto translated by MyMemory",
       "engine": "MyMemory",
       "pos": ""
+    },
+    "immer": {
+      "word": "immer",
+      "lemma": "immer",
+      "firstSeenAt": 1784040727658,
+      "lastSeenAt": 1784040727658,
+      "lastReviewedAt": 1784040727658,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784040727658,
+          "day": "2026-07-14",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784127127658,
+      "intervalDays": 1,
+      "ease": 2.4,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "known": false,
+      "captured": true,
+      "updatedAt": 1784040727658
+    },
+    "sections": {
+      "word": "sections",
+      "lemma": "sections",
+      "geminiPos": "n./v.",
+      "geminiTw": "部分；章節；切開",
+      "geminiEx": "The library is divided into different sections based on the genre of the books.",
+      "geminiTwEx": "圖書館根據書籍的類型被劃分為不同的區域。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784040744331,
+      "geminiRaw": {
+        "pos": "n./v.",
+        "tw": "部分；章節；切開",
+        "ex": "The library is divided into different sections based on the genre of the books.",
+        "tw_ex": "圖書館根據書籍的類型被劃分為不同的區域。"
+      }
     }
   }
 }
