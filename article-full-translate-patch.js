@@ -1,21 +1,23 @@
 /* article-full-translate-patch.js v20260712-5
-   - 等 DOM ready 才建立
-   - 建立失敗會重試
-   - 被外部移除會 3 秒內自動重建
-   - 大量 log 方便除錯
-*/
+   Fixes:
+   1. Google Translate 400 caused by too many q items.
+   2. Filters numeric-only paragraphs such as "1.", "2.", "3.".
+   3. Sanitizes undefined/null/empty strings before sending.
+   4. Translates in batches to avoid request size limits.
+   5. Keeps full-article Chinese translation panel, cache, collapse, sync toggle.
+＊/
 
 (function () {
 
   'use strict';
 
-  var AUDIO_BAR_SELECTOR = '#gcttsPanel';
-  var FALLBACK_HEIGHT    = 60;
-  var GAP                = 0;
+  var CACHE_STORAGE = 'article_full_translate_cache_v1';
+  var COLLAPSED_STORAGE = 'article_full_translate_collapsed_v1';
 
-  var API_KEY_STORAGE    = 'google_translate_api_key';
-  var CACHE_STORAGE      = 'article_translation_cache_v1';
-  var COLLAPSED_STORAGE  = 'article_translate_collapsed';
+  var currentTranslation = null;
+  var syncEnabled = false;
+  var isCollapsed = localStorage.getItem(COLLAPSED_STORAGE) === '1';
+  var syncTimer = null;
 
   function log() {
     try {
@@ -23,25 +25,46 @@
     } catch (e) {}
   }
 
-  function getAudioBarHeight() {
-    try {
-      var el = document.querySelector(AUDIO_BAR_SELECTOR);
-      if (!el) return FALLBACK_HEIGHT;
-      var h = el.getBoundingClientRect().height;
-      if (!h || h < 10) return FALLBACK_HEIGHT;
-      return h;
-    } catch (e) { return FALLBACK_HEIGHT; }
+  function esc(s) {
+    return String(s || '').replace(/[<>&"']/g, function (c) {
+      return {
+        '<': '<',
+        '>': '>',
+        '&': '&',
+        '"': '"',
+        "'": '''
+      }[c];
+    });
   }
 
-  function getApiKey() { return localStorage.getItem(API_KEY_STORAGE) || ''; }
+  function getApiKey() {
+    return (
+      localStorage.getItem('notebook_google_translate_key_v1') ||
+      localStorage.getItem('google_translate_api_key') ||
+      localStorage.getItem('notebook_google_translate_key') ||
+      ''
+    ).trim();
+  }
 
   function getCache() {
-    try { return JSON.parse(localStorage.getItem(CACHE_STORAGE) || '{}'); }
-    catch (e) { return {}; }
+    try {
+      var c = JSON.parse(localStorage.getItem(CACHE_STORAGE) || '{}');
+      return c && typeof c === 'object' ? c : {};
+    } catch (e) {
+      return {};
+    }
   }
-  function setCache(c) { localStorage.setItem(CACHE_STORAGE, JSON.stringify(c)); }
+
+  function setCache(c) {
+    try {
+      localStorage.setItem(CACHE_STORAGE, JSON.stringify(c || {}));
+    } catch (e) {
+      log('cache save failed:', e.message);
+    }
+  }
 
   function hashText(text) {
+    text = String(text || '');
     var h = 0;
     for (var i = 0; i < text.length; i++) {
       h = ((h << 5) - h) + text.charCodeAt(i);
@@ -50,327 +73,493 @@
     return String(h);
   }
 
-  async function googleTranslateBatch(texts) {
-    var key = getApiKey();
-    if (!key) { alert('請先在設定選單設定 Google Translate API Key'); return null; }
+  function cleanTextForTranslate(text) {
+    return String(text || '')
+      .replace(/\u00a0/g, ' ')
+      .replace(/[ \t]+/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
 
-    try {
-      var res = await fetch(
-        'https://translation.googleapis.com/language/translate/v2?key=' + key,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            q: texts, source: 'en', target: 'zh-TW', format: 'text'
-          })
-        }
-      );
-      if (!res.ok) { log('translate http err:', res.status); return null; }
-      var data = await res.json();
-      if (!data || !data.data || !data.data.translations) return null;
-      return data.data.translations.map(function (t) { return t.translatedText; });
-    } catch (e) { log('translate err:', e.message); return null; }
+  function isNumberOnlyLine(s) {
+    s = String(s || '').trim();
+    return /^\d+[.)]?$/.test(s);
+  }
+
+  function isBadTranslateUnit(s) {
+    s = String(s || '').trim();
+
+    if (!s) return true;
+
+    // 排除 1. 2. 3. 或 1) 這種獨立段號
+    if (/^\d+[.)]?$/.test(s)) return true;
+
+    // 排除單一符號
+    if (/^[^\w\u4e00-\u9fff]+$/.test(s)) return true;
+
+    return false;
   }
 
   function splitEnglishParagraphs(fullText) {
-    var paras = fullText.split(/\n\s*\n/).filter(function (p) { return p.trim(); });
-    if (paras.length === 1) {
-      paras = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
-      paras = paras.map(function (p) { return p.trim(); }).filter(function (p) { return p; });
+
+    fullText = cleanTextForTranslate(fullText);
+
+    if (!fullText) return [];
+
+    // 先用行處理，因為你的文章目前明顯變成：
+    // 1.
+    // Sentence
+    // 2.
+    // Sentence
+    var rawLines = fullText
+      .split(/\n+/)
+      .map(function (x) { return cleanTextForTranslate(x); })
+      .filter(Boolean);
+
+    var lines = [];
+
+    rawLines.forEach(function (line) {
+      if (isNumberOnlyLine(line)) return;
+
+      // 有些行會是 "1. The sentence..."，移掉前面的段號
+      line = line.replace(/^\d+[.)]\s+/, '').trim();
+
+      if (!isBadTranslateUnit(line)) {
+        lines.push(line);
+      }
+    });
+
+    // 如果行數很多，直接用行當 paragraph，比正則拆句安全
+    if (lines.length >= 2) {
+      return lines;
     }
+
+    // fallback：用空白段落切
+    var paras = fullText
+      .split(/\n\s\n/)
+      .map(function (p) { return cleanTextForTranslate(p); })
+      .filter(Boolean)
+      .filter(function (p) { return !isBadTranslateUnit(p); });
+
+    if (paras.length > 1) return paras;
+
+    // 最後 fallback：用句號、問號、驚嘆號切句
+    paras = (fullText.match(/[^.!?]+[.!?]+/g) || [fullText])
+      .map(function (p) { return cleanTextForTranslate(p); })
+      .filter(Boolean)
+      .map(function (p) { return p.replace(/^\d+[.)]\s*/, '').trim(); })
+      .filter(function (p) { return !isBadTranslateUnit(p); });
+
     return paras;
   }
 
   function getArticleText() {
     var article = document.querySelector('.card .en');
+
+    if (!article) {
+      article = document.querySelector('.en');
+    }
+
     if (!article) return null;
+
     var clone = article.cloneNode(true);
-    clone.querySelectorAll('button, script').forEach(function (el) { el.remove(); });
-    return (clone.innerText || clone.textContent || '').trim();
+
+    clone.querySelectorAll('button, script, style').forEach(function (el) {
+      el.remove();
+    });
+
+    // 避免抓到隱藏控制元素
+    clone.querySelectorAll('[aria-hidden="true"], .hidden, .btn').forEach(function (el) {
+      el.remove();
+    });
+
+    return cleanTextForTranslate(clone.innerText || clone.textContent || '');
+  }
+
+  async function googleTranslateOneBatch(chunk, key, offset) {
+
+    var res = await fetch(
+      'https://translation.googleapis.com/language/translate/v2?key=' + encodeURIComponent(key),
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          q: chunk,
+          source: 'en',
+          target: 'zh-TW',
+          format: 'text'
+        })
+      }
+    );
+
+    if (!res.ok) {
+      var errText = await res.text();
+
+      console.error(
+        '[FullTranslate] batch fail offset=' + offset,
+        'status=' + res.status,
+        errText
+      );
+
+      throw new Error('Google Translate HTTP ' + res.status);
+    }
+
+    var data = await res.json();
+
+    if (!data || !data.data || !data.data.translations) {
+      throw new Error('Google Translate empty response');
+    }
+
+    return data.data.translations.map(function (t) {
+      return t.translatedText || '';
+    });
+  }
+
+  async function googleTranslateBatch(texts) {
+
+    var key = getApiKey();
+
+    if (!key) {
+      alert('請先在設定選單設定 Google Translate API Key');
+      return null;
+    }
+
+    texts = (texts || [])
+      .map(function (x) { return cleanTextForTranslate(x); })
+      .filter(function (x) { return !isBadTranslateUnit(x); });
+
+    log('clean texts:', texts.length);
+    console.log('[FullTranslate] first 5 clean texts =', texts.slice(0, 5));
+
+    if (!texts.length) return [];
+
+    /*
+      Google Translate v2 支援 q 陣列，但一次送太多容易 400。
+      這裡用 45 筆一批，比 50 更保守。
+    */
+    var BATCH_SIZE = 45;
+    var allResults = [];
+
+    for (var i = 0; i < texts.length; i += BATCH_SIZE) {
+
+      var chunk = texts.slice(i, i + BATCH_SIZE);
+
+      log('translate batch', (i / BATCH_SIZE) + 1, 'items:', chunk.length);
+
+      try {
+        var translated = await googleTranslateOneBatch(chunk, key, i);
+        allResults = allResults.concat(translated);
+      } catch (e) {
+        log('translate batch err:', e.message);
+        return null;
+      }
+    }
+
+    return allResults;
   }
 
   async function translateFullArticle() {
+
     var enText = getArticleText();
-    if (!enText) { alert('沒有找到文章'); return null; }
+
+    if (!enText) {
+      alert('沒有找到文章');
+      return null;
+    }
 
     var enParas = splitEnglishParagraphs(enText);
-    if (enParas.length === 0) { alert('文章沒有段落'); return null; }
 
-    var hash = hashText(enText);
+    if (enParas.length === 0) {
+      alert('文章沒有可翻譯段落');
+      return null;
+    }
+
+    var hash = hashText(enText + '::v5');
     var cache = getCache();
-    if (cache[hash]) {
+
+    if (cache[hash] && Array.isArray(cache[hash]) && cache[hash].length === enParas.length) {
       log('using cache:', enParas.length);
-      return { enParas: enParas, zhParas: cache[hash] };
+      return {
+        enParas: enParas,
+        zhParas: cache[hash]
+      };
+    }
+
+    if (cache[hash] && cache[hash].length !== enParas.length) {
+      log('cache length mismatch, ignore cache');
+      delete cache[hash];
+      setCache(cache);
     }
 
     log('translating', enParas.length, 'paragraphs...');
+
     var status = document.getElementById('translateStatus');
-    if (status) status.textContent = '翻譯中...';
+
+    if (status) {
+      status.textContent = '翻譯中...';
+    }
 
     var zhParas = await googleTranslateBatch(enParas);
+
     if (!zhParas) {
       if (status) status.textContent = '翻譯失敗';
       return null;
     }
+
+    if (zhParas.length !== enParas.length) {
+      console.error('[FullTranslate] length mismatch', enParas.length, zhParas.length);
+      if (status) status.textContent = '翻譯段落數不一致';
+      return null;
+    }
+
     log('translated', zhParas.length);
+
     cache[hash] = zhParas;
     setCache(cache);
-    if (status) status.textContent = '';
-    return { enParas: enParas, zhParas: zhParas };
+
+    if (status) {
+      status.textContent = '';
+    }
+
+    return {
+      enParas: enParas,
+      zhParas: zhParas
+    };
   }
 
-  var currentTranslation = null;
-  var syncEnabled = false;
-  var isCollapsed = localStorage.getItem(COLLAPSED_STORAGE) === '1';
+  function ensurePanel() {
+
+    var box = document.getElementById('fullTranslateBox');
+
+    if (box) return box;
+
+    box = document.createElement('div');
+    box.id = 'fullTranslateBox';
+
+    box.style.cssText = [
+      'position:fixed',
+      'left:0',
+      'right:0',
+      'bottom:30px',
+      'z-index:2147483000',
+      'background:#faf6ed',
+      'border-top:1px solid #c9bfae',
+      'box-shadow:0 -6px 18px rgba(0,0,0,.18)',
+      'font-family:Segoe UI, Microsoft JhengHei, sans-serif',
+      'color:#2b2b2b',
+      'display:none',
+      'max-height:40vh',
+      'overflow:hidden'
+    ].join(';');
+
+    box.innerHTML =
+      '<div id="fullTranslateHeader" style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:#e8dfc7;border-bottom:1px solid #c9bfae;font-size:12px">' +
+        '<b style="color:#34495e">中文翻譯</b>' +
+        '<span id="translateStatus" style="color:#7a7367"></span>' +
+        '<button id="syncToggleBtn" style="margin-left:auto;padding:3px 8px;border:0;background:#666;color:white;border-radius:3px;cursor:pointer;font-size:12px">🔗 同步: 關</button>' +
+        '<button id="collapseTranslateBtn" style="padding:3px 8px;border:1px solid #aaa;background:transparent;border-radius:3px;cursor:pointer;font-size:12px">收合</button>' +
+        '<button id="closeTranslateBtn" style="padding:3px 8px;border:1px solid #aaa;background:transparent;border-radius:3px;cursor:pointer;font-size:12px">×</button>' +
+      '</div>' +
+      '<div id="fullTranslateContent" style="overflow:auto;max-height:calc(40vh - 40px);padding:10px 14px;font-size:14px;line-height:1.7"></div>';
+
+    document.body.appendChild(box);
+
+    document.getElementById('closeTranslateBtn').onclick = function () {
+      box.style.display = 'none';
+      stopSyncTimer();
+    };
+
+    document.getElementById('collapseTranslateBtn').onclick = function () {
+      isCollapsed = !isCollapsed;
+      localStorage.setItem(COLLAPSED_STORAGE, isCollapsed ? '1' : '0');
+      applyCollapsedState();
+    };
+
+    document.getElementById('syncToggleBtn').onclick = function () {
+      syncEnabled = !syncEnabled;
+      updateSyncState();
+      if (syncEnabled) startSyncTimer();
+      else stopSyncTimer();
+    };
+
+    applyCollapsedState();
+    updateSyncState();
+
+    return box;
+  }
+
+  function applyCollapsedState() {
+
+    var content = document.getElementById('fullTranslateContent');
+    var btn = document.getElementById('collapseTranslateBtn');
+    var box = document.getElementById('fullTranslateBox');
+
+    if (!content || !btn || !box) return;
+
+    if (isCollapsed) {
+      content.style.display = 'none';
+      box.style.maxHeight = '48px';
+      btn.textContent = '展開';
+    } else {
+      content.style.display = 'block';
+      box.style.maxHeight = '40vh';
+      btn.textContent = '收合';
+    }
+  }
 
   function updateSyncState() {
+
     var btn = document.getElementById('syncToggleBtn');
-    if (btn) {
-      btn.textContent = syncEnabled ? '🔗 同步: 開' : '🔗 同步: 關';
-      btn.style.background = syncEnabled ? '#a68a56' : '#666';
-    }
+
+    if (!btn) return;
+
+    btn.textContent = syncEnabled ? '🔗 同步: 開' : '🔗 同步: 關';
+    btn.style.background = syncEnabled ? '#a68a56' : '#666';
+  }
+
+  function renderTranslation(result) {
+
+    if (!result) return;
+
+    currentTranslation = result;
+
+    var box = ensurePanel();
+    var content = document.getElementById('fullTranslateContent');
+
+    if (!content) return;
+
+    content.innerHTML = result.zhParas.map(function (zh, i) {
+      return '<div class="zhPara" data-idx="' + i + '" style="padding:7px 8px;margin-bottom:6px;border-left:3px solid transparent;background:rgba(255,255,255,.45);border-radius:4px">' +
+        '<div style="font-size:11px;color:#999;margin-bottom:2px">#' + (i + 1) + '</div>' +
+        '<div>' + esc(zh) + '</div>' +
+      '</div>';
+    }).join('');
+
+    box.style.display = 'block';
+
+    applyCollapsedState();
   }
 
   function findCurrentParaIndex() {
-    var audio = document.getElementById('__V5_MASTER_AUDIO__');
-    if (!audio || !currentTranslation) return -1;
-    var ct = audio.currentTime, du = audio.duration;
-    if (!isFinite(ct) || !isFinite(du) || du <= 0) return -1;
-    var idx = Math.floor((ct / du) * currentTranslation.enParas.length);
-    return Math.min(currentTranslation.enParas.length - 1, Math.max(0, idx));
-  }
 
-  function scrollInContainer(el, container) {
-    if (!el || !container) return;
-    var cr = container.getBoundingClientRect();
-    var er = el.getBoundingClientRect();
-    var buf = 30;
-    var rt = er.top - cr.top, rb = er.bottom - cr.top;
-    if (rt < buf || rb > cr.height - buf) {
-      var offset = el.offsetTop - (container.clientHeight / 2) + (el.clientHeight / 2);
-      container.scrollTo({ top: offset, behavior: 'smooth' });
-    }
-  }
+    if (!currentTranslation || !currentTranslation.enParas) return -1;
 
-  function highlightSyncPara() {
-    if (!syncEnabled || !currentTranslation) return;
-    var idx = findCurrentParaIndex();
-    if (idx < 0) return;
-    var zhSide = document.getElementById('translateZhSide');
-    if (!zhSide) return;
-    zhSide.querySelectorAll('.zh-para').forEach(function (el, i) {
-      if (i === idx) {
-        el.style.background  = 'rgba(166, 138, 86, 0.20)';
-        el.style.borderLeft  = '4px solid #a68a56';
-        el.style.paddingLeft = '10px';
-      } else {
-        el.style.background  = '';
-        el.style.borderLeft  = '3px solid transparent';
-        el.style.paddingLeft = '11px';
+    var article = document.querySelector('.card .en');
+    if (!article) return -1;
+
+    var rects = [];
+    var ps = article.querySelectorAll('p');
+
+    ps.forEach(function (p, i) {
+      var r = p.getBoundingClientRect();
+      rects.push({
+        i: i,
+        top: r.top,
+        bottom: r.bottom
+      });
+    });
+
+    if (!rects.length) return -1;
+
+    var center = window.innerHeight * 0.45;
+    var best = rects[0];
+    var bestDist = Math.abs(((best.top + best.bottom) / 2) - center);
+
+    rects.forEach(function (r) {
+      var mid = (r.top + r.bottom) / 2;
+      var d = Math.abs(mid - center);
+      if (d < bestDist) {
+        best = r;
+        bestDist = d;
       }
     });
-    var cur = zhSide.querySelector('.zh-para[data-idx="' + idx + '"]');
-    scrollInContainer(cur, zhSide);
+
+    return Math.min(best.i, currentTranslation.zhParas.length - 1);
   }
 
-  function renderTranslation() {
-    var zhSide = document.getElementById('translateZhSide');
-    if (!zhSide || !currentTranslation) return;
-    var html = '';
-    currentTranslation.enParas.forEach(function (en, i) {
-      var zh = currentTranslation.zhParas[i] || '(翻譯中)';
-      var isLast = i === currentTranslation.enParas.length - 1;
-      html += '<div class="zh-para" data-idx="' + i + '" style="' +
-        'padding:10px 14px;margin-bottom:12px;border-left:3px solid transparent;' +
-        'transition:background 0.3s,border-left-color 0.3s,padding-left 0.3s;' +
-        'border-radius:3px;color:#333;font-size:14px;line-height:1.7;' +
-        (isLast ? '' : 'border-bottom:1px dashed #d9cfbc;padding-bottom:14px;') +
-        '">' + zh + '</div>';
+  function highlightTranslation(index) {
+
+    var content = document.getElementById('fullTranslateContent');
+    if (!content) return;
+
+    content.querySelectorAll('.zhPara').forEach(function (el) {
+      el.style.borderLeftColor = 'transparent';
+      el.style.background = 'rgba(255,255,255,.45)';
     });
-    zhSide.innerHTML = html;
-  }
 
-  function toggleCollapsed() {
-    isCollapsed = !isCollapsed;
-    localStorage.setItem(COLLAPSED_STORAGE, isCollapsed ? '1' : '0');
-    updateCollapsedState();
-  }
+    var target = content.querySelector('.zhPara[data-idx="' + index + '"]');
 
-  function updateCollapsedState() {
-    var box = document.getElementById('fullTranslateBox');
-    var tb  = document.getElementById('translateCollapseBtn');
-    var bd  = document.getElementById('translateBody');
-    if (!box) return;
-    if (isCollapsed) {
-      box.style.maxHeight = '48px';
-      if (bd) bd.style.display = 'none';
-      if (tb) tb.textContent = '▲ 展開';
-    } else {
-      box.style.maxHeight = '60vh';
-      if (bd) bd.style.display = 'flex';
-      if (tb) tb.textContent = '▼ 收合';
+    if (target) {
+      target.style.borderLeftColor = '#a68a56';
+      target.style.background = '#fff6df';
+      target.scrollIntoView({
+        block: 'nearest',
+        behavior: 'smooth'
+      });
     }
-    updateBodyPadding();
   }
 
-  function updateBodyPadding() {
-    var box = document.getElementById('fullTranslateBox');
-    if (!box) { document.body.style.paddingBottom = '0'; return; }
-    var audioH = getAudioBarHeight();
-    box.style.bottom = (audioH + GAP) + 'px';
-    var rect = box.getBoundingClientRect();
-    document.body.style.paddingBottom = (rect.height + audioH + GAP + 10) + 'px';
-  }
+  function startSyncTimer() {
 
-  function createTranslateBox() {
+    stopSyncTimer();
 
-    if (!document.body) { log('body not ready, skip'); return false; }
-    if (document.getElementById('fullTranslateBox')) return true;
-
-    log('creating box...');
-
-    var audioH = getAudioBarHeight();
-
-    var box = document.createElement('div');
-    box.id = 'fullTranslateBox';
-    box.style.cssText =
-      'position:fixed;' +
-      'bottom:' + (audioH + GAP) + 'px;' +
-      'left:0;right:0;' +
-      'z-index:2147483000;' +
-      'background:#faf6ed;' +
-      'border-top:2px solid #a68a56;' +
-      'box-shadow:0 -4px 12px rgba(0,0,0,0.08);' +
-      'font-family:"Microsoft JhengHei",sans-serif;' +
-      'max-height:60vh;' +
-      'display:flex;' +
-      'flex-direction:column;' +
-      'transition:max-height 0.3s,bottom 0.2s;' +
-      'overflow:hidden;';
-
-    box.innerHTML =
-      '<div id="translateHeader" style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #d9cfbc;flex-shrink:0;cursor:pointer;">' +
-        '<div style="color:#a68a56;font-weight:bold;font-size:13px;display:flex;align-items:center;gap:8px;">' +
-          '<span id="translateCollapseBtn" style="cursor:pointer;padding:4px 10px;user-select:none;font-size:14px;font-weight:bold;border-radius:6px;background:#eee7d8;">' +
-          (isCollapsed ? '▲ 展開' : '▼ 收合') +
-          '</span>' +
-          '📖 中文翻譯' +
-          '<span id="translateStatus" style="color:#888;font-size:11px;font-weight:normal;"></span>' +
-        '</div>' +
-        '<div style="display:flex;gap:4px;">' +
-          '<button id="translateBtn" style="padding:4px 8px;background:#a68a56;color:white;border:none;border-radius:3px;cursor:pointer;font-size:11px;">翻譯全文</button>' +
-          '<button id="syncToggleBtn" style="padding:4px 8px;background:#666;color:white;border:none;border-radius:3px;cursor:pointer;font-size:11px;">🔗 同步: 關</button>' +
-          '<button id="translateClearBtn" style="padding:4px 8px;background:transparent;color:#999;border:1px solid #ccc;border-radius:3px;cursor:pointer;font-size:11px;">清除</button>' +
-        '</div>' +
-      '</div>' +
-      '<div id="translateBody" style="flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0;">' +
-        '<div id="translateZhSide" style="flex:1;overflow-y:auto;padding:8px 12px;min-height:0;">' +
-          '<div style="color:#999;padding:20px;text-align:center;font-size:12px;">點擊「翻譯全文」開始</div>' +
-        '</div>' +
-      '</div>';
-
-    try {
-      document.body.appendChild(box);
-    } catch (e) {
-      log('appendChild err:', e.message);
-      return false;
-    }
-
-    var header = document.getElementById('translateHeader');
-    if (header) {
-      header.onclick = function (e) {
-        if (e.target.closest('button')) return;
-        toggleCollapsed();
-      };
-    }
-
-    var tBtn = document.getElementById('translateBtn');
-    if (tBtn) tBtn.onclick = async function (e) {
-      e.stopPropagation();
-      this.disabled = true;
-      this.textContent = '翻譯中...';
-      currentTranslation = await translateFullArticle();
-      this.disabled = false;
-      this.textContent = '重新翻譯';
-      if (currentTranslation) renderTranslation();
-    };
-
-    var sBtn = document.getElementById('syncToggleBtn');
-    if (sBtn) sBtn.onclick = function (e) {
-      e.stopPropagation();
-      syncEnabled = !syncEnabled;
-      updateSyncState();
-      if (syncEnabled) highlightSyncPara();
-    };
-
-    var cBtn = document.getElementById('translateClearBtn');
-    if (cBtn) cBtn.onclick = function (e) {
-      e.stopPropagation();
-      currentTranslation = null;
-      var zs = document.getElementById('translateZhSide');
-      if (zs) zs.innerHTML =
-        '<div style="color:#999;padding:20px;text-align:center;font-size:12px;">點擊「翻譯全文」開始</div>';
-      document.getElementById('translateBtn').textContent = '翻譯全文';
-      syncEnabled = false;
-      updateSyncState();
-    };
-
-    log('box created OK, audioH =', audioH);
-
-    updateCollapsedState();
-    watchAudioPanel();
-
-    if (currentTranslation) {
-      renderTranslation();
-      var b = document.getElementById('translateBtn');
-      if (b) b.textContent = '重新翻譯';
-    }
-    return true;
-  }
-
-  function watchAudioPanel() {
-    var panel = document.querySelector(AUDIO_BAR_SELECTOR);
-    if (!panel || typeof ResizeObserver === 'undefined') return;
-    try {
-      var ro = new ResizeObserver(function () { updateBodyPadding(); });
-      ro.observe(panel);
-      log('watching', AUDIO_BAR_SELECTOR);
-    } catch (e) { log('RO err:', e.message); }
-  }
-
-  function startSyncMonitor() {
-    setInterval(function () {
+    syncTimer = setInterval(function () {
       if (!syncEnabled || !currentTranslation) return;
-      var a = document.getElementById('__V5_MASTER_AUDIO__');
-      if (!a || a.paused) return;
-      highlightSyncPara();
+      var idx = findCurrentParaIndex();
+      if (idx >= 0) highlightTranslation(idx);
     }, 500);
   }
 
-  function startWatchdog() {
-    setInterval(function () {
-      var box = document.getElementById('fullTranslateBox');
-      if (!box) {
-        log('box missing, recreating');
-        createTranslateBox();
-        return;
-      }
-      updateBodyPadding();
-    }, 1500);
+  function stopSyncTimer() {
+
+    if (syncTimer) {
+      clearInterval(syncTimer);
+      syncTimer = null;
+    }
   }
 
-  function boot() {
-    log('boot v20260712-5');
-    createTranslateBox();
-    startSyncMonitor();
-    startWatchdog();
-    window.addEventListener('resize', updateBodyPadding);
+  function addButton() {
+
+    if (document.getElementById('fullTranslateBtn')) return;
+
+    var editBtn = document.getElementById('articleEditBtn');
+    var anchor = editBtn || document.querySelector('#head') || document.querySelector('#view');
+
+    if (!anchor) return;
+
+    var btn = document.createElement('button');
+    btn.id = 'fullTranslateBtn';
+    btn.className = 'btn';
+    btn.textContent = '🌏 中文翻譯';
+    btn.style.marginLeft = '6px';
+
+    btn.onclick = async function () {
+      var result = await translateFullArticle();
+      if (result) renderTranslation(result);
+    };
+
+    if (editBtn && editBtn.parentNode) {
+      editBtn.parentNode.insertBefore(btn, editBtn.nextSibling);
+    } else {
+      anchor.appendChild(btn);
+    }
+
+    log('button added');
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
+  function clearTranslateCache() {
+    localStorage.removeItem(CACHE_STORAGE);
+    log('cache cleared');
   }
+
+  window.translateFullArticle = translateFullArticle;
+  window.clearFullTranslateCache = clearTranslateCache;
+
+  setInterval(addButton, 1000);
+  setTimeout(addButton, 500);
+
+  log('ready v20260712-5');
 
 })();
