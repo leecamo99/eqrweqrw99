@@ -53,100 +53,26 @@
   async function googleTranslateBatch(texts) {
 
     var key = getApiKey();
-
     if (!key) {
       alert('請先在設定選單設定 Google Translate API Key');
       return null;
     }
 
-    texts = (texts || [])
-      .map(function (x) {
-        return String(x || '').trim();
-      })
-      .filter(Boolean);
-
-    log('clean paragraphs:', texts.length);
-
-    const BATCH_SIZE = 40;
-
-    var allResults = [];
-
     try {
 
-      for (var i = 0; i < texts.length; i += BATCH_SIZE) {
-
-        var chunk =
-          texts.slice(
-            i,
-            i + BATCH_SIZE
-          );
-
-        log(
-          'translate batch',
-          (i / BATCH_SIZE) + 1,
-          '/',
-          Math.ceil(texts.length / BATCH_SIZE),
-          'items:',
-          chunk.length
-        );
-
-        var res = await fetch(
-          'https://translation.googleapis.com/language/translate/v2?key=' + key,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              q: chunk,
-              source: 'en',
-              target: 'zh-TW',
-              format: 'text'
-            })
-          }
-        );
-
-        if (!res.ok) {
-
-          console.error(
-            '[FullTranslate] http err',
-            res.status,
-            await res.text()
-          );
-
-          return null;
-        }
-
-        var data = await res.json();
-
-        if (
-          !data ||
-          !data.data ||
-          !data.data.translations
-        ) {
-          return null;
-        }
-
-        allResults.push(
-          ...data.data.translations.map(function (t) {
-            return t.translatedText;
+      var res = await fetch(
+        'https://translation.googleapis.com/language/translate/v2?key=' + key,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            q: texts,
+            source: 'en',
+            target: 'zh-TW',
+            format: 'text'
           })
-        );
-      }
-
-      return allResults;
-
-    } catch (e) {
-
-      console.error(
-        '[FullTranslate]',
-        e
+        }
       );
-
-      return null;
-    }
-}
-
 
       if (!res.ok) {
         log('Google translate err:', res.status);
@@ -166,34 +92,15 @@
 
   function splitEnglishParagraphs(fullText) {
 
-    if (!fullText) return [];
+    var paras = fullText.split(/\n\s*\n/).filter(function (p) { return p.trim(); });
 
-    var paras =
-      fullText
-        .split(/\n+/)
-        .map(function (p) {
-          return String(p || '').trim();
-        })
-        .filter(Boolean)
-
-        // 移除 1. 2. 3.
-        .filter(function (p) {
-          return !/^\d+.$/.test(p);
-        })
-
-        // 移除 1) 2)
-        .filter(function (p) {
-          return !/^\d+)$/.test(p);
-        })
-
-        // 移除前面段號
-        .map(function (p) {
-          return p.replace(/^\d+[.)]\s+/, '');
-        });
+    if (paras.length === 1) {
+      paras = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
+      paras = paras.map(function (p) { return p.trim(); }).filter(function (p) { return p; });
+    }
 
     return paras;
-}
-
+  }
 
   function getArticleText() {
 
