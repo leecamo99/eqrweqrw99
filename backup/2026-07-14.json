@@ -1,0 +1,6347 @@
+{
+  "notebooks": [
+    {
+      "id": "nb_1783730975352",
+      "name": "20260711",
+      "date": "2026-07-11",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783730975352c0",
+          "title": "Chapter 1",
+          "text": "{{Expand}} your {{horizons}} next year with our award-{{winning}} {{overseas}} study {{programs}}. {{Supercharge}} your {{studies}} and gain new {{global}} {{perspectives}} by {{immersing}} {{yourself}} in a {{foreign}} {{language}} and {{culture}}, with {{courses}} {{offered}} by {{prestigious}} {{universities}} in over 100 {{countries}}. Study under some of the world’s top {{professors}} {{alongside}} {{students}} from {{around}} the globe.Not only can you make {{friends}} from all over the world, but you will open doors to {{incredible}} {{opportunities}} in the {{future}}.Our {{graduates}} have gone on to hold {{positions}} in {{several}} {{multinational}} {{corporations}} {{utilizing}} the {{highly}} {{desirable}} {{skills}} and {{experience}} they {{gained}} with us. The world is {{moving}} {{towards}} a {{global}} {{future}}, so why not get ahead of the trend and have an {{incredible}} {{adventure}} with {{Global}} Study Group?{{Global}} Study Group does not {{guarantee}} nor {{assist}} in {{securing}} {{employment}} after the {{completion}} of {{programs}}. {{Flights}}, {{accommodation}}, and other {{incidental}} {{expenses}} are not {{included}}.",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "Expand": {
+          "pos": "verb",
+          "tw": "展開",
+          "tip": "Auto translated by MyMemory｜To change (something) from a smaller form and/or size to a larger one; to spread out or lay open.",
+          "color": "c1",
+          "lemma": "expand"
+        },
+        "horizons": {
+          "pos": "noun",
+          "tw": "地平線",
+          "tip": "Auto translated by MyMemory｜The visible horizontal line or point (in all directions) that appears to connect the Earth to the sky.",
+          "color": "c1",
+          "lemma": "horizon"
+        },
+        "winning": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1",
+          "lemma": "win"
+        },
+        "overseas": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "programs": {
+          "pos": "noun",
+          "tw": "程序",
+          "tip": "Auto translated by MyMemory｜A set of structured activities.",
+          "color": "c1",
+          "lemma": "program"
+        },
+        "Supercharge": {
+          "pos": "noun",
+          "tw": "增壓",
+          "tip": "Auto translated by MyMemory｜A charge borne upon an ordinary or other charge.",
+          "color": "c1",
+          "lemma": "supercharge"
+        },
+        "studies": {
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
+        },
+        "global": {
+          "pos": "noun",
+          "tw": "全域",
+          "tip": "Auto translated by MyMemory｜A globally scoped identifier.",
+          "color": "c1",
+          "lemma": "global"
+        },
+        "perspectives": {
+          "pos": "noun",
+          "tw": "perspectif",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "perspective"
+        },
+        "immersing": {
+          "pos": "",
+          "tw": "深度體驗",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "immerse"
+        },
+        "yourself": {
+          "pos": "pronoun",
+          "tw": "您自己",
+          "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular).",
+          "color": "c1",
+          "lemma": "yourself"
+        },
+        "foreign": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "language": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "culture": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "courses": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "offered": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "prestigious": {
+          "pos": "",
+          "tw": "prestigiou",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "prestigiou"
+        },
+        "universities": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "countries": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "professors": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "alongside": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "students": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "around": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "friends": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "incredible": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "opportunities": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "future": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "graduates": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "positions": {
+          "pos": "n.",
+          "tw": "職位；位置",
+          "tip": "new position = 新職位",
+          "color": "c1"
+        },
+        "several": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "multinational": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "corporations": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "utilizing": {
+          "pos": "verb",
+          "tw": "利用",
+          "tip": "Auto translated by MyMemory｜To make use of; to use.",
+          "color": "c1",
+          "lemma": "utilize"
+        },
+        "highly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "desirable": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "skills": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "experience": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "gained": {
+          "pos": "noun",
+          "tw": "增益",
+          "tip": "Auto translated by MyMemory｜The act of gaining; acquisition.",
+          "color": "c1",
+          "lemma": "gain"
+        },
+        "moving": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "towards": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "adventure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Global": {
+          "pos": "noun",
+          "tw": "全域",
+          "tip": "Auto translated by MyMemory｜A globally scoped identifier.",
+          "color": "c1",
+          "lemma": "global"
+        },
+        "guarantee": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "assist": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "securing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "employment": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "completion": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Flights": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "accommodation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "incidental": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "expenses": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "included": {
+          "pos": "noun",
+          "tw": "包括",
+          "tip": "Auto translated by MyMemory｜A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+          "color": "c1",
+          "lemma": "include"
+        },
+        "next": {
+          "pos": "noun",
+          "tw": "下一個",
+          "tip": "Auto translated by MyMemory｜The one that follows after this one.",
+          "color": "c1",
+          "lemma": "next"
+        },
+        "year": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "award": {
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "Auto translated by MyMemory｜A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
+        },
+        "study": {
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
+        },
+        "gain": {
+          "pos": "noun",
+          "tw": "增益",
+          "tip": "Auto translated by MyMemory｜The act of gaining; acquisition.",
+          "color": "c1",
+          "lemma": "gain"
+        },
+        "over": {
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
+        },
+        "Study": {
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
+        },
+        "under": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "some": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "world's": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "globe": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "only": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "make": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "world": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "open": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "doors": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "gone": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hold": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ahead": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "trend": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Group": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "other": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
+      "id": "nb_1783429952478",
+      "name": "20260706",
+      "date": "2026-07-07",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783429952478c1783446597718",
+          "title": "New Chapter",
+          "text": "Good {{morning}},\n\nFirst, I’d like to say a big “thank you” to {{everyone}} who {{worked}} {{overtime}} over the {{weekend}} to {{complete}} this year’s stock count. You guys {{finished}} in {{record}} time!\n\nThat being said, there is still a lot to do before the end of this month. We {{finally}} {{received}} the men’s {{winter}} coats from our {{supplier}} {{yesterday}}, and we need to get them out on the floor before the early {{holiday}} sale {{starts}} on {{December}} 1. {{Additionally}}, we will be {{erecting}} two {{temporary}} {{stands}} near the {{entrance}} to {{display}} last year’s {{leftover}} stock for sale.\n\nI know you are all doing your best, and I won’t {{forget}} it when I {{calculate}} this year’s {{bonuses}}. Keep it up!\n\n{{Thanks}} again,\n\nC. Smith\n\n{{General}} {{Manager}}, C&M {{Fashion}}",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "morning": {
+          "pos": "noun",
+          "tw": "早晨",
+          "tip": "Auto translated by MyMemory｜Morning.",
+          "color": "c1",
+          "lemma": "morn"
+        },
+        "everyone": {
+          "pos": "pronoun",
+          "tw": "所有人",
+          "tip": "Auto translated by MyMemory｜Every person.",
+          "color": "c1",
+          "lemma": "everyone"
+        },
+        "worked": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "weekend": {
+          "pos": "noun",
+          "tw": "週末",
+          "tip": "Auto translated by MyMemory｜The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday.",
+          "color": "c1",
+          "lemma": "weekend"
+        },
+        "complete": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "finished": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "record": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "finally": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "received": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "winter": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "supplier": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "yesterday": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "holiday": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "starts": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "December": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Additionally": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "erecting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "temporary": {
+          "pos": "adj.",
+          "tw": "臨時的；暫時的",
+          "tip": "",
+          "color": "c1"
+        },
+        "stands": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "entrance": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "display": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "leftover": {
+          "pos": "noun",
+          "tw": "剩飯",
+          "tip": "Auto translated by MyMemory｜Something left behind; an excess or remainder.",
+          "color": "c1",
+          "lemma": "leftover"
+        },
+        "forget": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "calculate": {
+          "pos": "verb",
+          "tw": "計算",
+          "tip": "Auto translated by MyMemory｜To determine the value of something or the solution to something by a mathematical process.",
+          "color": "c1",
+          "lemma": "calculate"
+        },
+        "bonuses": {
+          "pos": "noun",
+          "tw": "獎金",
+          "tip": "Auto translated by MyMemory｜Something extra that is good; an added benefit.",
+          "color": "c1",
+          "lemma": "bonus"
+        },
+        "Thanks": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "General": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Manager": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Fashion": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Good": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "First": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "like": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "thank": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "over": {
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
+        },
+        "year's": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "stock": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "count": {
+          "pos": "noun",
+          "tw": "數量",
+          "tip": "Auto translated by MyMemory｜The act of counting or tallying a quantity.",
+          "color": "c1",
+          "lemma": "count"
+        },
+        "guys": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "time": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "said": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "there": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "still": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "month": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "men's": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "coats": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "need": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "floor": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "early": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sale": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "near": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "last": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "know": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "doing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "best": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "won't": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "when": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Keep": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "again": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Smith": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overtime": {
+          "pos": "noun",
+          "tw": "加班",
+          "tip": "Auto translated by MyMemory｜Working time outside of one's regular hours.",
+          "color": "c1",
+          "lemma": "overtime"
+        }
+      }
+    },
+    {
+      "id": "nb_1783349013745",
+      "name": "20260706-script",
+      "date": "2026-07-06",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1783349013745c0",
+          "title": "Chapter 1",
+          "text": "hi {{everyone}} and {{welcome}} back to {{simple}}\n{{spoken}}\n{{English}} I'm Jack and I hope you're all\ndoing great today in this {{lesson}} we're\n{{tackling}} a {{common}} {{problem}} many {{people}}\nface when {{learning}} to speak {{English}}\n{{speaking}} {{spontaneously}} or on the spot\n{{without}}\n{{preparation}} I {{recently}} {{received}} a\n{{comment}} from one of you about this and\nmany of you {{agreed}} it's tough to speak\n{{English}} {{naturally}} when you haven't\n{{planned}} what to say now let's break this\ndown when you're {{giving}} a {{presentation}}\nor have {{practiced}} {{sentences}} {{beforehand}}\nyou might feel {{pretty}} {{confident}} you know\nwhat you're going to say so it's easy to\nspeak {{fluently}} but when you're in a\n{{random}} {{conversation}} or {{someone}} asks you\n{{something}} {{unexpected}} {{suddenly}} your mind\ngoes blank does that {{happen}} to you too\nthis is {{because}} you're {{trying}} to think\nabout the right words {{grammar}} and\n{{sentence}} {{structure}} all at once and that\ncan be\n{{overwhelming}} the {{result}} you {{hesitate}}\ntake long {{pauses}} or even {{freeze}} up it's\n{{totally}} {{normal}} but the good news is you\ncan {{overcome}} this so today I'm going to\nhelp you solve this {{problem}} by {{showing}}\nyou how to speak {{English}} more\n{{spontaneously}} {{without}}\n{{overthinking}} but before we jump into the\n{{lesson}} don't {{forget}} to hit {{subscribe}} so\nyou never miss a new video if you like\nwhat we're {{talking}} about today give this\nvideo a {{thumbs}} up and share it with your\n{{friends}} who might find it {{helpful}} now\nlet's get into today's\ntopic how to speak {{English}}\n{{spontaneously}} {{speaking}} {{spontaneously}}\nmeans that you don't plan every {{single}}\nword or {{sentence}} before {{speaking}} for\n{{example}} right now I'm {{speaking}}\n{{spontaneously}} to you I haven't {{written}}\nevery {{sentence}} {{beforehand}} the words just\ncome to me as I talk when you can speak\n{{spontaneously}} it means you're not\n{{constantly}} {{pausing}} to think about what\nto say next while short {{pauses}} are\n{{completely}} okay and even {{natural}} long\n{{pauses}} can break your flow and make you\nfeel {{nervous}} {{imagine}} {{someone}} asks you\nwhat are your plans for the {{weekend}} if\nyou take too long to reply {{because}}\nyou're {{trying}} to find the {{perfect}} words\nyou might feel stuck or {{Tongue}} Tied\nthat's when {{people}} get {{nervous}} and it's\nhard to keep the {{conversation}} going this\n{{hesitation}} often leads to what we call\nbeing {{Tongue}} Tied a {{feeling}} where you\njust don't know what to say or how to\nstart you might have {{thoughts}} in your\nhead but you {{struggle}} to {{express}} them\nthis can hurt your {{fluency}} and\n{{confidence}} which is why it's so\n{{important}} to work on {{speaking}} {{without}}\n{{overthinking}} now I know this {{sounds}}\n{{tricky}} but but don't worry you can train\n{{yourself}} to speak more\n{{spontaneously}} and today I've got six\n{{practical}} tips that will help you do\njust that these six {{Solutions}} are your\n{{action}} plan to help you start {{speaking}}\n{{English}} {{without}} {{hesitating}} or\n{{overthinking}} the goal is to make your\nwords flow {{naturally}} {{without}} {{constantly}}\n{{thinking}} about {{grammer}} rules or\n{{translating}} {{thoughts}} from your {{native}}\n{{language}} over time speak {{speaking}} will\n{{become}} more {{natural}} and words will come\nto you more\n{{easily}} so let's dive into those six\n{{Solutions}} first you need to {{immerse}}\n{{yourself}} in {{English}} the more you hear it\nthe more {{comfortable}} you'll get {{second}}\n{{practice}} {{speaking}} out loud even if it's\njust to {{yourself}} third think in {{English}}\n{{instead}} of your {{native}} {{language}} {{fourth}}\nuse {{simple}} {{sentences}} at first and\n{{gradually}} build up\n{{complexity}} fifth {{engage}} in {{regular}}\n{{conversation}} with {{others}} even if it's\njust small talk {{finally}} don't be {{afraid}}\nto make {{mistakes}} that's how you learn\n{{remember}} it's all about {{practicing}} and\n{{building}} your {{confidence}} step by step\nwith time you'll find {{yourself}} {{speaking}}\n{{English}} more {{naturally}} {{without}} {{planning}}\nevery word let's get {{started}} with the\nsix {{solution}}\nlet's dive into {{solution}} one for\n{{speaking}} {{English}} more {{fluently}} and\n{{spontaneously}} the topic {{bringing}} {{Clarity}}\nto your\n{{thoughts}} as I {{mentioned}} before {{speaking}}\n{{English}} {{spontaneously}} is tough if your\n{{thoughts}} are {{unclear}} so let's break it\ndown when we speak what we say comes\n{{directly}} from what we think our {{thoughts}}\nare the {{foundation}} of our {{speech}} and if\nyour mind is clear about what you want\nto {{express}} that {{confusion}} will show up\nin your {{speech}} Let's {{imagine}} you're\nabout to speak but your {{thoughts}} are a\nbit foggy maybe you're {{uncertain}} about\nwhich word to use or you're not sure if\nyour {{grammar}} is right what {{happens}} next\nyou\n{{hesitate}} that {{little}} pause might not\nseem like much but it {{affects}} your\n{{fluency}} and\n{{spontaneity}} it's like being stuck in tra\n{{traffic}} you know where you want to go\nbut you're {{unsure}} how to get there\n{{because}} of the {{blocks}} in your mind\n{{instead}} of {{focusing}} on the {{message}} you\nwant to share you end up {{worrying}} about\nThe Words which slows you down to be\nable to speak {{clearly}} and {{naturally}} you\nneed to bring {{Clarity}} to your {{thoughts}}\nbut how can you do this {{especially}} when\n{{thoughts}} and {{speech}} {{happen}} so {{quickly}}\noften in\n{{milliseconds}} let's think about this in\nyour {{native}} {{language}} you don't have this\n{{problem}} why {{because}} you've {{practiced}} it\nfor so long that you don't need to\n{{consciously}} think about the words if\n{{someone}} asks how are you in your {{native}}\n{{language}} you {{respond}} {{immediately}} {{without}}\n{{hesitation}} but in {{English}} you might\npause {{because}} you're {{searching}} for the\nright words that pause is {{exactly}} what\nwe want to\n{{reduce}} now let me share a {{technique}} that\ncan help you train your mind to think\n{{clearly}} and speak more {{naturally}} in\n{{English}} it's {{called}}\n{{subvocalization}} this might sound\n{{complicated}} but it's {{actually}} quite\n{{simple}} {{subvocalization}} is when you\n{{silently}} {{repeat}} words to {{yourself}} as you\nread or think it's like {{hearing}} {{yourself}}\nspeak in your mind but {{without}} {{saying}}\nthe words out loud here's how it works\nwhen you're {{reading}} {{something}} in {{English}}\n{{whether}} it's a book an {{article}} or even\n{{subtitles}} on a video you're not just\n{{reading}} {{silently}} you're also {{mentally}}\n{{pronouncing}} the words in your head this\n{{internal}} Voice or sub {{vocalization}}\n{{allows}} you to {{practice}} {{English}} {{structure}}\nand {{Rhythm}} {{without}} {{needing}} to say the\nwords out loud over time this helps\ntrain your brain to think in {{English}}\nmore {{clearly}} just as you do in your\n{{native}} {{language}} let's take an {{example}}\n{{imagine}} you're {{reading}} the {{sentence}} she\nwas {{standing}} on the {{balcony}} {{staring}} at\nthe\nstars even {{though}} you're {{reading}}\n{{silently}} you might {{notice}} that in your\nmind you can hear the {{sentence}} with the\n{{correct}} tone and {{Rhythm}} as if you were\n{{saying}} it out loud this is\n{{subvocalization}} at work it's like you're\n{{practicing}} {{speaking}} in your head\n{{preparing}} your brain for real\n{{conversations}} {{without}} the {{pressure}} of\n{{speaking}}\naloud by {{practicing}} this {{technique}}\nyou're not just {{reading}} for\n{{understanding}} you're {{training}} your\n{{subconscious}} mind to {{process}} {{English}}\n{{faster}} and more {{clearly}} this way when it\ncomes time to speak you'll find the\nright words and {{sentences}} {{coming}} to you\nmuch more\n{{naturally}} you've {{already}} {{prepared}} your\nbrain by {{feeding}} it with {{correct}}\n{{structures}} and {{phrases}} {{during}} {{reading}}\n{{another}} great {{benefit}} of {{subvocalization}}\nis that it {{boosts}} your\n{{confidence}} think about it the more you\n{{practice}} {{thinking}} in {{English}} the more\n{{comfortable}} you'll be when {{speaking}} it\nyou won't have to pause as much {{because}}\nyour brain {{already}} has a clear set of\nwords and {{phrases}} ready to go it's like\n{{training}} for a race the more you\n{{practice}} the {{better}} {{prepared}} you'll be\nwhen it's time to run so the key to\n{{improving}} {{spontaneity}} in {{English}} isn't\njust about {{speaking}} more often it's\nabout {{thinking}} more {{clearly}} and {{training}}\nyour brain to be ready for those\n{{unplanned}}\n{{conversations}} when your {{thoughts}} are\nclear your {{speech}} will {{follow}} in {{summary}}\n{{bringing}} {{Clarity}} to your\n{{thoughts}} is {{crucial}} for {{speaking}} {{English}}\n{{naturally}} and {{confidently}} and\n{{subvocalization}} is a {{powerful}} {{technique}}\nthat can help you {{achieve}} this\n{{Clarity}} {{remember}} it's like {{rehearsing}} in\nyour mind before the real {{conversation}}\n{{begins}} with {{regular}} {{practice}} your\n{{subconscious}} mind will start to pick up\nthe {{patterns}} {{structures}} and {{vocabulary}}\nyou need and you'll be able to speak\nmore {{fluently}} {{without}} {{hesitating}} or\n{{overthinking}} so start {{practicing}} this\ntoday when you read don't just focus on\n{{understanding}} the text hear the words in\nyour mind and let them flow {{naturally}}\nover time this will make a huge\n{{difference}} in your {{ability}} to speak\n{{English}} with {{confidence}} and\n{{spontaneity}} now let's dive into {{solution}}\ntwo which is about {{training}} your\n{{subconscious}} mind this is the most\n{{important}} step in {{learning}} to speak\n{{English}} {{fluently}} {{without}} {{overthinking}}\nyou see your {{subconscious}} mind plays a\nhuge role in how you {{process}} and use\n{{language}} right now your {{subconscious}} is\nfully {{comfortable}} with your {{native}}\n{{language}} but for {{English}} to feel as\n{{natural}} we need to train it when your\n{{subconscious}} mind is {{familiar}} with\n{{English}} you'll be able to speak {{without}}\n{{feeling}} {{nervous}} or {{unsure}} for {{example}}\nwhile you're {{listening}} to me right now\nyour {{subconscious}} is {{already}} {{absorbing}}\n{{everything}} I say but here's the thing if\nyou don't keep {{revisiting}} or {{practicing}}\nthis {{information}} it will fade over time\nthe key is to keep {{practicing}} until\nyou're {{subconscious}} holds on to {{English}}\nin the same way it does with your {{native}}\n{{language}} so how do we train the\n{{subconscious}} mind one of the best ways\nis {{through}} {{listening}} {{listening}} to\n{{English}} {{regularly}} {{creates}} an inner\n{{environment}} where {{English}} feels {{familiar}}\nand {{comfortable}} think of it like\n{{training}} your brain {{muscles}} you're\n{{creating}} a {{natural}} flow in your mind\nwhere {{English}} {{becomes}} {{second}} {{nature}}\nstart by {{listening}} to {{content}} that's\n{{reliable}} and {{fluent}} it could be {{anything}}\n{{educational}} {{videos}} {{entertainment}}\n{{lifestyle}} tips or even {{health}} {{related}}\n{{topics}} {{YouTube}} is a {{treasure}} Trove of\n{{English}} {{content}} you could also watch\n{{movies}} {{listen}} to songs or {{explore}}\n{{podcasts}} the key is to make sure you're\n{{hearing}} {{English}} that's {{spoken}} {{correctly}}\nand {{Naturally}} by {{surrounding}} {{yourself}}\nwith good {{English}} {{content}} your\n{{subconscious}} will start {{storing}} the\n{{language}} {{anguage}} over time you'll {{notice}}\na big {{difference}} in how {{naturally}}\n{{English}} comes to you when you\nspeak let's move on to {{solution}}\nthree which is all about {{learning}} to\nthink in\n{{English}} now that we've {{talked}} about\n{{Clarity}} of {{thought}} and using the\n{{subconscious}} mind it's {{important}} to\nfocus on how we think if you want to\nspeak {{English}} {{fluently}} and\n{{spontaneously}} you need to stop\n{{translating}} from your {{native}} {{language}}\n{{thinking}} in {{English}} is key here's what\n{{happens}} when you're used to {{thinking}} in\nyour {{native}} {{language}} your brain works in\ntwo steps first you think of {{something}}\nin your {{native}} {{language}} then you try to\n{{translate}} it into {{English}} this slows you\ndown and makes {{speaking}} more {{difficult}}\nto break this habit start {{describing}}\n{{things}} {{directly}} in {{English}} for {{example}}\nif you see a book don't let your first\n{{thought}} be in your {{native}} {{language}}\n{{instead}} train your mind to {{immediately}}\nthink book in {{English}} the more you\n{{practice}} the more {{natural}} it will {{become}}\nover time this will help you {{respond}}\n{{faster}} and with more {{confidence}} {{during}}\n{{conversations}} the goal is to make\n{{English}} your {{default}} {{thinking}} {{language}}\n{{especially}} when you're {{speaking}} this\ndoesn't need to feel {{forced}} {{gradually}} it\nwill {{become}} a habit it the more you\n{{immerse}} {{yourself}} in {{English}} the {{easier}}\nit {{becomes}} to think and speak {{naturally}}\n{{without}} {{translating}} {{remember}} the key to\n{{speaking}}\n{{spontaneously}} is {{thinking}} in {{English}} as\nyou {{practice}} this daily you'll see\n{{yourself}} {{becoming}} more {{fluent}} and\n{{confident}} keep at it and you'll {{notice}}\nthe\n{{difference}} let's dive {{deeper}} into our\n{{discussion}} with war {{solution}} 4 which is\nall about {{focusing}} on Flow not\nflaws when {{learning}} to speak {{English}}\nmany {{people}} get stuck {{because}} they focus\ntoo much on the {{mistakes}} they make or\nwhat we call flaws but here's the key\nfocus on Flow not on\nflaws what do we mean by\nflow flow {{refers}} to the {{smoothness}} of\nyour {{speech}} how {{naturally}} the words come\nout and how {{easily}} the {{conversation}}\nmoves {{forward}} {{fluency}} is after all about\n{{having}} a good flow too often {{English}}\n{{Learners}} are {{afraid}} to make {{mistakes}}\nthey stop mids {{sentence}} {{overthink}} every\nword or {{hesitate}} before {{speaking}} {{because}}\nthey don't want to say {{something}} wrong\nbut the truth is {{mistakes}} are a {{natural}}\npart of\n{{learning}} they're a sign that you're\n{{trying}} that you're {{pushing}} {{yourself}} to\n{{improve}} so {{instead}} of {{focusing}} on these\n{{mistakes}} shift your {{attention}} to\n{{maintaining}} a {{steady}} flow when you speak\nthink of {{speaking}} {{English}} like a\n{{performance}} on stage when an actor\n{{performs}} the {{audience}} sees the {{result}}\nnot the {{rehearsals}} the actor might have\nmade {{mistakes}} in {{practice}} but {{during}} the\n{{performance}} the focus is on {{delivering}}\nthe lines with {{confidence}} the same goes\nfor you when you're in a {{conversation}}\nit's time to form {{whether}} you make small\n{{mistakes}} in {{grammar}} or {{pronunciation}}\ndoesn't {{matter}} as much as the {{overall}}\nflow of your {{speech}} the goal is to keep\ngoing the more you {{practice}} the more\n{{naturally}} the words will come flow leads\nto {{fluency}} and {{fluency}} leads to\n{{spontaneity}} as you keep {{speaking}} {{without}}\n{{getting}} stuck on your {{mistakes}} your mind\nwill {{become}} more {{accustomed}} to {{forming}}\n{{sentences}} {{smoothly}}\nover time you'll find that you're able\nto speak {{English}} more {{confidently}} and\nwith fewer\n{{errors}} now let's talk about {{solution}}\nfive which {{focuses}} on using small\n{{sentence}}\n{{structures}} when {{learning}} to speak\n{{English}} using {{smaller}} {{sentence}}\n{{structures}} can be {{extremely}} {{helpful}} many\n{{Learners}} {{struggle}} with long {{complex}}\n{{sentences}} which often {{become}} {{jumbled}} and\nhard to {{manage}} {{AG}} when {{translating}} from\nyour {{native}} {{language}} you might try to\ncram too much {{information}} into one\n{{sentence}} this can cause {{confusion}} and\nlead to {{mistakes}} {{instead}} of {{trying}} to\n{{create}} long {{sentences}} focus on\n{{expressing}} one idea at a time short\nclear {{sentences}} are {{easier}} to {{handle}} and\nwill help you speak more {{fluently}} and\n{{spontaneously}} for {{example}} {{instead}} of\n{{saying}} I want to go to the store {{because}}\nI need to buy some {{groceries}} but I also\nneed to pick up my {{laundry}} you can break\nit down into two {{sentences}} I need to go\nto the store to buy some {{groceries}} after\nthat I'll pick up my\n{{laundry}} using short {{sentences}} {{allows}} you\nto think {{clearly}} and stay {{focused}} on one\n{{thought}} at a time this not only makes\nyour {{speech}} more {{fluent}} but also helps\nyou avoid {{mistakes}} in {{grammar}} and\n{{sentence}} {{structure}} if you're {{aiming}} for\n{{accuracy}} in your {{speech}}\nsmall {{sentences}} are a great way to\n{{achieve}} that it's {{important}} to {{remember}}\nthat short {{sentences}} don't mean\n{{incomplete}}\n{{sentences}} you {{should}} still aim to use\n{{complete}} {{thoughts}} but avoid {{cramming}} too\nmany ideas into one {{sentence}} this\n{{approach}} will make your {{speech}} {{clearer}}\n{{easier}} to {{follow}} and less {{likely}} to get\nmixed up {{additionally}} {{shorter}} {{sentences}}\ngive you the {{opportunity}} to pause take a\n{{breath}} and {{prepare}} for the next\n{{thought}} this helps {{maintain}} a {{steady}}\nflow of {{speech}} {{without}} {{overloading}} your\nbrain with too much {{information}} at once\nover time as you {{become}} more {{comfortable}}\nyou can {{gradually}} {{increase}} the {{length}} of\nyour {{sentences}} but at the {{beginning}}\nfocus on {{keeping}} {{things}} {{simple}} and clear\nour sixth {{solution}} is {{perhaps}} the most\n{{important}} {{practice}} {{regularly}} in\n{{situations}} no {{matter}} how much you study\n{{grammar}} or\n{{vocabulary}} the real {{progress}} {{happens}}\nwhen you use {{English}} in real life\n{{situations}} you need to put {{yourself}} in\n{{environments}} where {{speaking}} {{English}}\ncomes {{naturally}} this could be in\n{{conversations}} with {{friends}} {{joining}}\n{{language}} {{groups}} or even {{chatting}} with\n{{colleagues}} start with a small\n{{comfortable}}\n{{conversations}} and {{gradually}} move on to\nmore {{spontaneous}} ones as you begin to\nspeak {{English}} more {{regularly}} your mind\nwill start to adapt you'll begin to\nthink less about {{grammar}} or {{sentence}}\n{{structure}} and your {{speech}} will {{become}}\nmore\n{{automatic}} {{speaking}} {{English}} {{regularly}}\n{{builds}} {{fluency}} just like {{muscle}}\n{{memory}} the more you use {{English}} in real\nlife {{situations}} the more {{familiar}} your\nbrain {{becomes}} with {{forming}} {{sentences}} on\nthe spot\nit's like {{learning}} to ride a bike the\nmore you do it the more {{natural}} it\n{{becomes}} and don't worry about {{making}}\n{{mistakes}} {{everyone}} makes {{mistakes}} even\n{{native}} {{speakers}} the key is to keep\n{{communicating}} your goal is to get your\n{{message}} {{across}} not to be\n{{perfect}} {{communication}} is more {{important}}\nthan\n{{Perfection}} if you can get your point\n{{across}} that's a {{success}} over time your\n{{fluency}} and {{spontaneity}} will {{improve}} and\nyou'll make fewer {{mistakes}} but don't let\nthe fear of {{mistakes}} hold you back from\n{{speaking}} to {{summarize}} here are the six\nsteps we've {{covered}} one train your\n{{subconscious}}\nmind {{immerse}} {{yourself}} in {{English}} by\n{{listening}} and {{reading}} as much as\n{{possible}} your {{subconscious}} will begin to\nadapt two\nbring {{Clarity}} to your\n{{thoughts}} {{subvocalization}} and {{thinking}} in\n{{English}} will help you {{organize}} your\n{{thoughts}} more {{clearly}} {{making}} it {{easier}}\nto speak\n{{spontaneously}} three think in\n{{English}} avoid the {{translation}} {{process}}\ntrain {{yourself}} to think {{directly}} in\n{{English}} to {{reduce}} {{hesitation}} and {{improve}}\n{{spontaneity}} four focus on Flow not on\nflaws {{maintain}} a {{steady}} flow of {{speech}}\neven if you make {{mistakes}} {{fluency}} comes\nfrom {{continuous}} {{smooth}} {{speaking}} not from\n{{perfect}} {{grammar}} five use small {{sentence}}\n{{structures}} break down your {{thoughts}} into\nclear {{concise}} {{sentences}} this will make\nit {{easier}} to stay {{focused}} and {{reduce}}\n{{mistakes}} six {{practice}} {{regularly}} in real\n{{situations}} put {{yourself}} in\n{{English}}-{{speaking}} {{environment}} ments as\noften as {{possible}} real life {{practice}} is\nthe best way to {{improve}} {{fluency}} and\n{{spontaneity}} now let's talk about a few\nextra tips that will help you on your\n{{journey}} to\n{{fluency}} set small {{achievable}}\ngoals it's easy to feel {{overwhelmed}} when\n{{learning}} a new {{language}} so break your\n{{learning}} down into {{smaller}} tasks for\n{{example}} set a goal to have a 5-{{minute}}\n{{conversation}} in {{English}} every day or to\nwrite a short {{paragraph}} about your day\nover time {{increase}} the {{difficulty}} of\nthese tasks this will help you track\nyour {{progress}} and build your {{confidence}}\nas you {{achieve}} each\ngoal {{consistency}} is\nkey even if you only have time for a\nshort {{practice}} {{session}} each day {{regular}}\n{{practice}} is more {{effective}} than {{cramming}}\nonce a week daily {{exposure}} to {{English}}\nwill keep your brain {{engaged}} with the\n{{language}} and help you {{recall}} {{vocabulary}}\nand {{sentence}} {{structures}} when\n{{needed}} {{celebrate}} your\n{{progress}} {{learning}} a {{language}} is a long\n{{journey}} and it's {{important}} to {{recognize}}\nyour {{achievements}} along the way {{whether}}\nyou've held your first {{conversation}}\n{{without}} {{hesitation}} or {{understood}} a\n{{complex}} {{sentence}} in {{English}} {{celebrate}}\nthese\n{{Milestones}} this {{positive}} {{reinforcement}}\nwill keep you {{motivated}} to {{continue}}\n{{improving}} {{challenge}} {{yourself}}\n{{gradually}} as you get more {{comfortable}}\nwith {{English}} push your {{limits}} a {{little}}\ntry {{discussing}} more {{complex}} {{topics}} or\n{{practice}} {{talking}} about {{abstract}} {{Concepts}}\nlike {{happiness}} or {{culture}} this will\n{{expand}} your {{vocabulary}} and {{improve}} your\n{{ability}} to think and {{respond}} in {{English}}\non the\nspot {{finally}} stay {{patient}} and\n{{positive}} {{language}} {{learning}} can be\n{{frustrating}} at times but {{mistakes}} are a\n{{natural}} part of the {{process}} keep a\n{{positive}} {{attitude}} and {{remember}} that\nevery {{mistake}} {{brings}} you {{closer}} to\n{{fluency}} with time and {{consistent}}\n{{practice}} you'll see your {{English}}\n{{improve}} that's all for today if you\nfound this video {{helpful}} don't {{forget}} to\ngive it a {{thumbs}} up and {{subscribe}} to\n{{simple}} {{SP}} {{spoken}} {{English}} for more tips\non {{improving}} your {{fluency}} hit the\n{{notification}} Bell and I'll see you in\nthe next video",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "AG": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c3"
+        },
+        "SP": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c3"
+        },
+        "everyone": {
+          "pos": "pronoun",
+          "tw": "所有人",
+          "tip": "Auto translated by MyMemory｜Every person.",
+          "color": "c1",
+          "lemma": "everyone"
+        },
+        "welcome": {
+          "pos": "noun",
+          "tw": "歡迎",
+          "tip": "Auto translated by MyMemory｜The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
+          "color": "c1",
+          "lemma": "welcome"
+        },
+        "simple": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "spoken": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "English": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lesson": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "tackling": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "common": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "problem": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "people": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "learning": {
+          "pos": "noun",
+          "tw": "學",
+          "tip": "Auto translated by MyMemory｜The act of learning something",
+          "color": "c1",
+          "lemma": "learn"
+        },
+        "speaking": {
+          "pos": "noun",
+          "tw": "語音",
+          "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy.",
+          "color": "c1",
+          "lemma": "speak"
+        },
+        "spontaneously": {
+          "pos": "adverb",
+          "tw": "自發地",
+          "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
+          "color": "c1",
+          "lemma": "spontaneously"
+        },
+        "without": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "preparation": {
+          "pos": "noun",
+          "tw": "準備工作",
+          "tip": "Auto translated by MyMemory｜The act of preparing or getting ready.",
+          "color": "c1",
+          "lemma": "preparation"
+        },
+        "recently": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "received": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "comment": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "agreed": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "naturally": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "planned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "giving": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "presentation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "practiced": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sentences": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "beforehand": {
+          "pos": "adjective",
+          "tw": "事先",
+          "tip": "Auto translated by MyMemory｜In comfortable circumstances as regards property; forehanded.",
+          "color": "c1",
+          "lemma": "beforehand"
+        },
+        "pretty": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "confident": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fluently": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "random": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "conversation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "someone": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "something": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "unexpected": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "suddenly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "happen": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "because": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "trying": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "grammar": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sentence": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "structure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overwhelming": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "result": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hesitate": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pauses": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "freeze": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "totally": {
+          "pos": "adverb",
+          "tw": "完全",
+          "tip": "Auto translated by MyMemory｜To the fullest extent or degree.",
+          "color": "c1",
+          "lemma": "totally"
+        },
+        "normal": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overcome": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "showing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overthinking": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "forget": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "subscribe": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "talking": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "thumbs": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "friends": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "helpful": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "single": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "example": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "written": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "constantly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pausing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "completely": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "natural": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "nervous": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "imagine": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "weekend": {
+          "pos": "noun",
+          "tw": "週末",
+          "tip": "Auto translated by MyMemory｜The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday.",
+          "color": "c1",
+          "lemma": "weekend"
+        },
+        "perfect": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Tongue": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hesitation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "feeling": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "thoughts": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "struggle": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "express": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fluency": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "confidence": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "important": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sounds": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "tricky": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "yourself": {
+          "pos": "pronoun",
+          "tw": "您自己",
+          "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular).",
+          "color": "c1",
+          "lemma": "yourself"
+        },
+        "practical": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Solutions": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "action": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hesitating": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "thinking": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "grammer": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "translating": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "native": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "language": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "become": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "easily": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "immerse": {
+          "pos": "",
+          "tw": "深度體驗",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "immerse"
+        },
+        "comfortable": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "second": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "practice": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "instead": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fourth": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "gradually": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "complexity": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "engage": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regular": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "others": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "finally": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "afraid": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mistakes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "remember": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "practicing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "building": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "planning": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "started": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "solution": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "bringing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Clarity": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mentioned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "unclear": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "directly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "foundation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "speech": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "confusion": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "uncertain": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "happens": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "little": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "affects": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "spontaneity": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "traffic": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "unsure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "blocks": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "focusing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "message": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "worrying": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "clearly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "especially": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "quickly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "milliseconds": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "consciously": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "respond": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "immediately": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "searching": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "exactly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "reduce": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "technique": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "called": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "subvocalization": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "complicated": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "actually": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "silently": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "repeat": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hearing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "saying": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "reading": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "whether": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "article": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "subtitles": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mentally": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pronouncing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "internal": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "vocalization": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "allows": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Rhythm": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "needing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "standing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "balcony": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "staring": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "though": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "notice": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "correct": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "preparing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "conversations": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pressure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "understanding": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "training": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "subconscious": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "process": {
+          "pos": "n.",
+          "tw": "流程；程序",
+          "tip": "",
+          "color": "c1"
+        },
+        "faster": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "coming": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "already": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "prepared": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "feeding": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "structures": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "phrases": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "during": {
+          "pos": "verb",
+          "tw": "期間",
+          "tip": "Auto translated by MyMemory｜To last, continue, endure.",
+          "color": "c1",
+          "lemma": "dur"
+        },
+        "another": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "benefit": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "boosts": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "better": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "improving": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "unplanned": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "follow": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1",
+          "lemma": "follow"
+        },
+        "summary": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "crucial": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "confidently": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "powerful": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "achieve": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "rehearsing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "begins": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "patterns": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "vocabulary": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "difference": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ability": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "familiar": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "listening": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "absorbing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "everything": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "revisiting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "information": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "through": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "regularly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "creates": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "environment": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "muscles": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "creating": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "becomes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "nature": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "content": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "reliable": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fluent": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "anything": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "educational": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "videos": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "entertainment": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lifestyle": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "health": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "related": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "topics": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "YouTube": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "treasure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "movies": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "listen": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "explore": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "podcasts": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "correctly": {
+          "pos": "adv.",
+          "tw": "正確地",
+          "tip": "set up correctly = 正確設定",
+          "color": "c1"
+        },
+        "Naturally": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "surrounding": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "storing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "anguage": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "talked": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "thought": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "translate": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "difficult": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "describing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "things": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "default": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "forced": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "easier": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "becoming": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "deeper": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "discussion": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "refers": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "smoothness": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "forward": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "having": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Learners": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overthink": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pushing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "improve": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "attention": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "maintaining": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "steady": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "performance": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "performs": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "audience": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "rehearsals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "delivering": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pronunciation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "matter": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overall": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "getting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "accustomed": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "forming": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "smoothly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "errors": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "focuses": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "smaller": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "extremely": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "complex": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "jumbled": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "manage": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "create": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "expressing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "handle": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "groceries": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "laundry": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "focused": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "aiming": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "accuracy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "incomplete": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "should": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "complete": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "cramming": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "approach": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "clearer": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "likely": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "additionally": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "shorter": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "opportunity": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "breath": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "prepare": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "maintain": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overloading": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "increase": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "length": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "beginning": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "keeping": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "perhaps": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "situations": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "progress": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "environments": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "joining": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "groups": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "chatting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "colleagues": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "spontaneous": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "automatic": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "builds": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "muscle": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "memory": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "making": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "speakers": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "communicating": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "across": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "communication": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Perfection": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "success": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "summarize": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "covered": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "possible": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "organize": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "translation": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "continuous": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "smooth": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "concise": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "journey": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "achievable": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "overwhelmed": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "minute": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "paragraph": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "difficulty": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "consistency": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "session": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "effective": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "exposure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "engaged": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "recall": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "needed": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "celebrate": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "recognize": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "achievements": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "understood": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Milestones": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "positive": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "reinforcement": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "motivated": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "continue": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "challenge": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "limits": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "discussing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "abstract": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Concepts": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "happiness": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "culture": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "expand": {
+          "pos": "verb",
+          "tw": "展開",
+          "tip": "Auto translated by MyMemory｜To change (something) from a smaller form and/or size to a larger one; to spread out or lay open.",
+          "color": "c1",
+          "lemma": "expand"
+        },
+        "patient": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "frustrating": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "attitude": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mistake": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "brings": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "closer": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "consistent": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "notification": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "back": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Jack": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hope": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "doing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "great": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "today": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "many": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "face": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "when": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "speak": {
+          "pos": "noun",
+          "tw": "語音",
+          "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy.",
+          "color": "c1",
+          "lemma": "speak"
+        },
+        "spot": {
+          "pos": "noun",
+          "tw": "聚光點",
+          "tip": "Auto translated by MyMemory｜A round or irregular patch on the surface of a thing having a different color, texture etc. and generally round in shape.",
+          "color": "c1",
+          "lemma": "spot"
+        },
+        "about": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "tough": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "haven": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "what": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "break": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "down": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "might": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "feel": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "know": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "going": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "easy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "asks": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mind": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "goes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "blank": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "think": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "right": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "words": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "once": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "take": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "long": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "even": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "good": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "news": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "help": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "solve": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "more": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "jump": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "into": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "never": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "miss": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "video": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "like": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "give": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "share": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "find": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "topic": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "means": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "plan": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "every": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "word": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "just": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "come": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "talk": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "next": {
+          "pos": "noun",
+          "tw": "下一個",
+          "tip": "Auto translated by MyMemory｜The one that follows after this one.",
+          "color": "c1",
+          "lemma": "next"
+        },
+        "while": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "short": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "okay": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "flow": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "make": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "plans": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "reply": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "stuck": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Tied": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hard": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "keep": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "often": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "leads": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "call": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "where": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "start": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "head": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hurt": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "which": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "work": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "worry": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "train": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "tips": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "goal": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "rules": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "over": {
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
+        },
+        "time": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "dive": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "first": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "need": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hear": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "loud": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "third": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "build": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fifth": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "small": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "learn": {
+          "pos": "noun",
+          "tw": "學",
+          "tip": "Auto translated by MyMemory｜The act of learning something",
+          "color": "c1",
+          "lemma": "learn"
+        },
+        "step": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "comes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "clear": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "want": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "show": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "foggy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "maybe": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pause": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "seem": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "much": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "there": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Words": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "slows": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "able": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "bring": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sound": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "quite": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "read": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "works": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "book": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "also": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Voice": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "helps": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "brain": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "stars": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "tone": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "real": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "aloud": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ready": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "race": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pick": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "focus": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "text": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "huge": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "most": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "plays": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "role": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fully": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "thing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fade": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "until": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "holds": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "same": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "best": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ways": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "inner": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "feels": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "could": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Trove": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "watch": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "songs": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "move": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "three": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "using": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "stop": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "used": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "steps": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "makes": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "habit": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "doesn": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "daily": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Flow": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "flaws": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mean": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "moves": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mids": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "wrong": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "truth": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "part": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sign": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "shift": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "stage": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "actor": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sees": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "made": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lines": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "form": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fewer": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "five": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "cram": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "cause": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "lead": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "idea": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "store": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "some": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "stay": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "only": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "avoid": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "still": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ideas": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "less": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "mixed": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sixth": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "study": {
+          "pos": "verb",
+          "tw": "閱讀室",
+          "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination.",
+          "color": "c1",
+          "lemma": "study"
+        },
+        "life": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ones": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "begin": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "adapt": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ride": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "bike": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "than": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "point": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "fear": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "hold": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "four": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "ments": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "extra": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "goals": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "tasks": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "write": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "track": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "each": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "week": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "along": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "held": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "push": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "times": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "found": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Bell": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    }
+  ],
+  "dark": true,
+  "updatedAt": 1784040675209,
+  "learn": {
+    "github": {
+      "word": "github",
+      "pos": "",
+      "tw": "（未建字義，請自行補充）",
+      "tip": "",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783275874680,
+      "lemma": "github",
+      "firstSeenAt": 1783275874680,
+      "lastSeenAt": 1783275874680,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "screening": {
+      "word": "screening",
+      "pos": "",
+      "tw": "（未建字義，請自行補充）",
+      "tip": "",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783275880924,
+      "lemma": "screening",
+      "firstSeenAt": 1783275880924,
+      "lastSeenAt": 1783275880924,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "security": {
+      "word": "security",
+      "pos": "n.",
+      "tw": "安全；保全",
+      "tip": "security vendor = 保全廠商",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783352584988,
+      "lemma": "security",
+      "firstSeenAt": 1783352584988,
+      "lastSeenAt": 1783352584988,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "Sections": {
+      "word": "Sections",
+      "pos": "n.",
+      "tw": "章節；段落",
+      "tip": "",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783280076194,
+      "updatedAt": 1783276476194,
+      "lemma": "Sections",
+      "firstSeenAt": 1783276476194,
+      "lastSeenAt": 1783276476194,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
+    },
+    "bulleted": {
+      "word": "bulleted",
+      "pos": "",
+      "tw": "（未建字義，請自行補充）",
+      "tip": "",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783278291709,
+      "updatedAt": 1783276487139,
+      "lemma": "bulleted",
+      "firstSeenAt": 1783276487139,
+      "lastSeenAt": 1783276487139,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 3,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
+    },
+    "bullet": {
+      "word": "bullet",
+      "lemma": "bullet",
+      "pos": "noun",
+      "tw": "項目符號",
+      "tip": "Auto translated by MyMemory｜A projectile, usually of metal, shot from a gun at high speed.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 1783445625346,
+      "updatedAt": 1783359225346,
+      "variants": {
+        "bulleted": 7
+      },
+      "lastSurface": "bulleted",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352586481,
+      "lastSeenAt": 1783352586481,
+      "lastReviewedAt": 1783359225346,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359225346,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
+    },
+    "approve": {
+      "word": "approve",
+      "lemma": "approve",
+      "pos": "verb",
+      "tw": "核准",
+      "tip": "Auto translated by MyMemory｜To sanction officially; to ratify; to confirm; to set as satisfactory.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783352602842,
+      "variants": {
+        "approved": 2
+      },
+      "lastSurface": "approved",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352602842,
+      "lastSeenAt": 1783352602842,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "script": {
+      "word": "script",
+      "lemma": "script",
+      "pos": "noun",
+      "tw": "指令碼",
+      "tip": "Auto translated by MyMemory｜A writing; a written document.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783352604542,
+      "variants": {
+        "script": 2
+      },
+      "lastSurface": "script",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352604542,
+      "lastSeenAt": 1783352604542,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "validat": {
+      "word": "validat",
+      "lemma": "validat",
+      "pos": "",
+      "tw": "validat",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783445635272,
+      "updatedAt": 1783359235272,
+      "variants": {
+        "validated": 1
+      },
+      "lastSurface": "validated",
+      "lastForm": "-ed / past participle",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352614199,
+      "lastSeenAt": 1783352614199,
+      "lastReviewedAt": 1783359235272,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 3,
+      "reviewHistory": [
+        {
+          "ts": 1783359235272,
+          "day": "2026-07-06",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.4,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
+    },
+    "check": {
+      "word": "check",
+      "lemma": "check",
+      "pos": "noun",
+      "tw": "檢查, 檢查",
+      "tip": "Auto translated by MyMemory｜A situation in which the king is directly threatened by an opposing piece.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783352615819,
+      "variants": {
+        "checking": 1
+      },
+      "lastSurface": "checking",
+      "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352615819,
+      "lastSeenAt": 1783352615819,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "crs": {
+      "word": "crs",
+      "lemma": "crs",
+      "pos": "",
+      "tw": "crs",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783352588542,
+      "variants": {
+        "CRS": 1
+      },
+      "lastSurface": "CRS",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352588542,
+      "lastSeenAt": 1783352588542,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "person": {
+      "word": "person",
+      "lemma": "person",
+      "pos": "noun",
+      "tw": "人物",
+      "tip": "Auto translated by MyMemory｜An individual; usually a human being.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 0,
+      "updatedAt": 1783352589842,
+      "variants": {
+        "person": 1
+      },
+      "lastSurface": "person",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352589842,
+      "lastSeenAt": 1783352589842,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 0
+    },
+    "dur": {
+      "word": "dur",
+      "lemma": "dur",
+      "pos": "adjective",
+      "tw": "dur",
+      "tip": "Auto translated by MyMemory｜Major; in the major mode.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 1783445636861,
+      "updatedAt": 1783359236861,
+      "variants": {
+        "during": 1
+      },
+      "lastSurface": "during",
+      "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352599049,
+      "lastSeenAt": 1783352599049,
+      "lastReviewedAt": 1783359236861,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359236861,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
+    },
+    "during": {
+      "word": "during",
+      "lemma": "during",
+      "pos": "verb",
+      "tw": "期間",
+      "tip": "Auto translated by MyMemory｜To last, continue, endure.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286070454,
+      "updatedAt": 1783284270454,
+      "variants": {
+        "during": 1
+      },
+      "lastSurface": "during",
+      "lastForm": "fixed lexical item",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783284270454,
+      "lastSeenAt": 1783284270454,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 3,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
+    },
+    "following": {
+      "word": "following",
+      "lemma": "following",
+      "pos": "verb",
+      "tw": "關注中",
+      "tip": "Auto translated by MyMemory｜To go after; to pursue; to move behind in the same path or direction.",
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783286078665,
+      "updatedAt": 1783284278665,
+      "variants": {
+        "following": 1
+      },
+      "lastSurface": "following",
+      "lastForm": "fixed lexical item",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783284278665,
+      "lastSeenAt": 1783284278665,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 3,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
+    },
+    "spontaneously": {
+      "word": "spontaneously",
+      "lemma": "spontaneously",
+      "pos": "adverb",
+      "tw": "自發地",
+      "tip": "Auto translated by MyMemory｜In a spontaneous manner; naturally; voluntarily.",
+      "clicks": 33,
+      "strength": 10,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783957566152,
+      "updatedAt": 1783871166153,
+      "variants": {
+        "spontaneously": 29
+      },
+      "lastSurface": "spontaneously",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783352941134,
+      "lastSeenAt": 1783707229004,
+      "lastReviewedAt": 1783871166152,
+      "lifetimeClicks": 22,
+      "sessionClicks": 22,
+      "maxClickStreak": 32,
+      "reviewHistory": [
+        {
+          "ts": 1783359222139,
+          "day": "2026-07-06",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 11,
+          "strength": 10,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1783871166152,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 33,
+          "strength": 10,
+          "intervalDays": 1
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.3,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "isWeak": true,
+      "definitions": [
+        {
+          "pos": "adverb",
+          "def": "In a spontaneous manner; naturally; voluntarily.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
+    },
+    "welcome": {
+      "word": "welcome",
+      "lemma": "welcome",
+      "pos": "noun",
+      "tw": "歡迎",
+      "tip": "Auto translated by MyMemory｜The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783445640098,
+      "updatedAt": 1783708433431,
+      "variants": {
+        "welcome": 2
+      },
+      "lastSurface": "welcome",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783353354870,
+      "lastSeenAt": 1783708433427,
+      "lastReviewedAt": 1783359240098,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1783359240098,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
+    },
+    "totally": {
+      "word": "totally",
+      "lemma": "totally",
+      "pos": "adverb",
+      "tw": "完全",
+      "tip": "Auto translated by MyMemory｜To the fullest extent or degree.",
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "dueAt": 1783445640605,
+      "updatedAt": 1783359240605,
+      "variants": {
+        "totally": 1
+      },
+      "lastSurface": "totally",
+      "lastForm": "base form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783353922101,
+      "lastSeenAt": 1783353922101,
+      "lastReviewedAt": 1783359240605,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1783359240605,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1
+    },
+    "follow": {
+      "word": "follow",
+      "lemma": "follow",
+      "firstSeenAt": 1783359238354,
+      "lastSeenAt": 1783359238354,
+      "lastReviewedAt": 1783359238354,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359238354,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783445638354,
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1,
+      "known": true,
+      "captured": false,
+      "clicks": 0,
+      "strength": 0,
+      "updatedAt": 1783359238354
+    },
+    "section": {
+      "word": "section",
+      "lemma": "section",
+      "firstSeenAt": 1783359239525,
+      "lastSeenAt": 1783359239525,
+      "lastReviewedAt": 1783359239525,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1783359239525,
+          "day": "2026-07-06",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783445639525,
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1,
+      "known": true,
+      "captured": false,
+      "clicks": 0,
+      "strength": 0,
+      "updatedAt": 1783359239525
+    },
+    "overtime": {
+      "word": "overtime",
+      "lemma": "overtime",
+      "firstSeenAt": 1783430274331,
+      "lastSeenAt": 1783446834014,
+      "lastReviewedAt": 1783446740565,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1783445252799,
+          "day": "2026-07-07",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 39,
+          "strength": 10,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1783445887252,
+          "day": "2026-07-07",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 4,
+          "strength": 4,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1783445891568,
+          "day": "2026-07-07",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 3
+        },
+        {
+          "ts": 1783446740565,
+          "day": "2026-07-07",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 6,
+          "strength": 6,
+          "intervalDays": 8
+        }
+      ],
+      "dueAt": 1785174740565,
+      "intervalDays": 20,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 4,
+      "lastSurface": "overtime",
+      "lastForm": "base form",
+      "variants": {
+        "overtime": 50
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783446834017,
+      "loading": false,
+      "tw": "加班",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Working time outside of one's regular hours.",
+      "isWeak": true
+    },
+    "over": {
+      "word": "over",
+      "lemma": "over",
+      "firstSeenAt": 1783443668598,
+      "lastSeenAt": 1783510164437,
+      "lastReviewedAt": 1783510167243,
+      "lifetimeClicks": 12,
+      "sessionClicks": 12,
+      "maxClickStreak": 11,
+      "reviewHistory": [
+        {
+          "ts": 1783510167243,
+          "day": "2026-07-08",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 12,
+          "strength": 10,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783596567243,
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1,
+      "lastSurface": "over",
+      "lastForm": "base form",
+      "variants": {
+        "over": 12
+      },
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1783510167243,
+      "loading": false,
+      "tw": "超过",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A set of six legal balls bowled.",
+      "isWeak": true
+    },
+    "morn": {
+      "word": "morn",
+      "lemma": "morn",
+      "firstSeenAt": 1783443775399,
+      "lastSeenAt": 1783445937421,
+      "lastReviewedAt": 1783445955781,
+      "lifetimeClicks": 4,
+      "sessionClicks": 4,
+      "maxClickStreak": 3,
+      "reviewHistory": [
+        {
+          "ts": 1783445955781,
+          "day": "2026-07-07",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 4,
+          "strength": 4,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783532355782,
+      "intervalDays": 1,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 1,
+      "lastSurface": "morning",
+      "lastForm": "-ing form",
+      "variants": {
+        "morning": 4
+      },
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1783445955782,
+      "loading": false,
+      "tw": "早晨",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Morning."
+    },
+    "weekend": {
+      "word": "weekend",
+      "lemma": "weekend",
+      "firstSeenAt": 1783444658305,
+      "lastSeenAt": 1783445819032,
+      "lastReviewedAt": 1783445879917,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1783445876672,
+          "day": "2026-07-07",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 2,
+          "strength": 2,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1783445879917,
+          "day": "2026-07-07",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        }
+      ],
+      "dueAt": 1783705079917,
+      "intervalDays": 3,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 2,
+      "lastSurface": "weekend",
+      "lastForm": "base form",
+      "variants": {
+        "weekend": 2
+      },
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1783445879917,
+      "loading": false,
+      "tw": "週末",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday."
+    },
+    "speak": {
+      "word": "speak",
+      "lemma": "speak",
+      "firstSeenAt": 1783486753208,
+      "lastSeenAt": 1783707237816,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 10,
+      "sessionClicks": 10,
+      "maxClickStreak": 9,
+      "reviewHistory": [],
+      "dueAt": 1783490353212,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "speaking",
+      "lastForm": "-ing form",
+      "variants": {
+        "speaking": 7,
+        "speak": 3
+      },
+      "clicks": 10,
+      "strength": 10,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783707237822,
+      "loading": false,
+      "tw": "語音",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A low class bar, a speakeasy.",
+      "isWeak": true
+    },
+    "count": {
+      "word": "count",
+      "lemma": "count",
+      "firstSeenAt": 1783510428740,
+      "lastSeenAt": 1783510431288,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783514028744,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "count",
+      "lastForm": "base form",
+      "variants": {
+        "count": 2
+      },
+      "clicks": 2,
+      "strength": 2,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510431293,
+      "loading": false,
+      "tw": "數量",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The act of counting or tallying a quantity."
+    },
+    "bonus": {
+      "word": "bonus",
+      "lemma": "bonus",
+      "firstSeenAt": 1783510680011,
+      "lastSeenAt": 1783510680011,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783514280016,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "bonuses",
+      "lastForm": "plural / 3rd person -es",
+      "variants": {
+        "bonuses": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510680449,
+      "loading": false,
+      "tw": "獎金",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Something extra that is good; an added benefit."
+    },
+    "calculate": {
+      "word": "calculate",
+      "lemma": "calculate",
+      "firstSeenAt": 1783510685318,
+      "lastSeenAt": 1783510685318,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783514285324,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "calculate",
+      "lastForm": "base form",
+      "variants": {
+        "calculate": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510687079,
+      "loading": false,
+      "tw": "計算",
+      "engine": "MyMemory",
+      "pos": "verb",
+      "tip": "Auto translated by MyMemory｜To determine the value of something or the solution to something by a mathematical process."
+    },
+    "leftover": {
+      "word": "leftover",
+      "lemma": "leftover",
+      "firstSeenAt": 1783510697499,
+      "lastSeenAt": 1783510697499,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783514297505,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "leftover",
+      "lastForm": "base form",
+      "variants": {
+        "leftover": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783510698931,
+      "loading": false,
+      "tw": "剩飯",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜Something left behind; an excess or remainder."
+    },
+    "spot": {
+      "word": "spot",
+      "lemma": "spot",
+      "firstSeenAt": 1783704314043,
+      "lastSeenAt": 1783704314043,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783707914046,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "spot",
+      "lastForm": "base form",
+      "variants": {
+        "spot": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783704316321,
+      "loading": false,
+      "tw": "聚光點",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A round or irregular patch on the surface of a thing having a different color, texture etc. and generally round in shape."
+    },
+    "beforehand": {
+      "word": "beforehand",
+      "lemma": "beforehand",
+      "firstSeenAt": 1783704325541,
+      "lastSeenAt": 1783704325541,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783707925546,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "beforehand",
+      "lastForm": "base form",
+      "variants": {
+        "beforehand": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783704327080,
+      "loading": false,
+      "tw": "事先",
+      "engine": "MyMemory",
+      "pos": "adjective",
+      "tip": "Auto translated by MyMemory｜In comfortable circumstances as regards property; forehanded."
+    },
+    "learn": {
+      "word": "learn",
+      "lemma": "learn",
+      "firstSeenAt": 1783707260820,
+      "lastSeenAt": 1783707260820,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783710860822,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "learning",
+      "lastForm": "-ing form",
+      "variants": {
+        "learning": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783707263481,
+      "loading": false,
+      "tw": "學",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The act of learning something"
+    },
+    "everyone": {
+      "word": "everyone",
+      "lemma": "everyone",
+      "firstSeenAt": 1783708436564,
+      "lastSeenAt": 1783708436564,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783712036569,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "everyone",
+      "lastForm": "base form",
+      "variants": {
+        "everyone": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783708439404,
+      "loading": false,
+      "tw": "所有人",
+      "engine": "MyMemory",
+      "pos": "pronoun",
+      "tip": "Auto translated by MyMemory｜Every person."
+    },
+    "preparation": {
+      "word": "preparation",
+      "lemma": "preparation",
+      "firstSeenAt": 1783708444934,
+      "lastSeenAt": 1783708444935,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783712044939,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "preparation",
+      "lastForm": "base form",
+      "variants": {
+        "preparation": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783708446782,
+      "loading": false,
+      "tw": "準備工作",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The act of preparing or getting ready."
+    },
+    "horizon": {
+      "word": "horizon",
+      "lemma": "horizon",
+      "firstSeenAt": 1783731120938,
+      "lastSeenAt": 1783803769378,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 5,
+      "sessionClicks": 5,
+      "maxClickStreak": 4,
+      "reviewHistory": [],
+      "dueAt": 1783734720941,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "horizons",
+      "lastForm": "base form",
+      "variants": {
+        "horizons": 5,
+        "horizon": 1
+      },
+      "clicks": 5,
+      "strength": 5,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783803769381,
+      "loading": false,
+      "tw": "地平線",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "",
+      "translationSource": "Google Translate",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "The visible horizontal line or point (in all directions) that appears to connect the Earth to the sky.",
+          "example": "A tall building was visible on the horizon."
+        },
+        {
+          "pos": "noun",
+          "def": "The range or limit of one's knowledge, experience or interest; a boundary or threshold.",
+          "example": "Some students take a gap year after finishing high school to broaden their horizons."
+        },
+        {
+          "pos": "noun",
+          "def": "The range or limit of any dimension in which one exists.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
+    },
+    "award": {
+      "word": "award",
+      "lemma": "award",
+      "firstSeenAt": 1783731140962,
+      "lastSeenAt": 1783731140962,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783734740967,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "award",
+      "lastForm": "base form",
+      "variants": {
+        "award": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783731142363,
+      "loading": false,
+      "tw": "獎",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted."
+    },
+    "supercharge": {
+      "word": "supercharge",
+      "lemma": "supercharge",
+      "firstSeenAt": 1783731158391,
+      "lastSeenAt": 1783731158391,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783734758395,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "Supercharge",
+      "lastForm": "base form",
+      "variants": {
+        "Supercharge": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783731159873,
+      "loading": false,
+      "tw": "增壓",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A charge borne upon an ordinary or other charge."
+    },
+    "gain": {
+      "word": "gain",
+      "lemma": "gain",
+      "firstSeenAt": 1783731169616,
+      "lastSeenAt": 1783804086001,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 3,
+      "sessionClicks": 3,
+      "maxClickStreak": 2,
+      "reviewHistory": [],
+      "dueAt": 1783734769620,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "gain",
+      "lastForm": "base form",
+      "variants": {
+        "gain": 4
+      },
+      "clicks": 3,
+      "strength": 3,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783804086007,
+      "loading": false,
+      "tw": "獲得",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "",
+      "translationSource": "Google Translate",
+      "definitions": [
+        "[noun] The act of gaining; acquisition.",
+        "[noun] What is gained.",
+        "[verb] To acquire possession of.",
+        "[verb] To have or receive advantage or profit; to acquire gain; to grow rich; to advance in interest, health, or happiness; to make progress."
+      ],
+      "definitionSource": "dictionaryapi.dev"
+    },
+    "next": {
+      "word": "next",
+      "lemma": "next",
+      "firstSeenAt": 1783796607597,
+      "lastSeenAt": 1783796607597,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783800207601,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "next",
+      "lastForm": "base form",
+      "variants": {
+        "next": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783796610264,
+      "loading": false,
+      "tw": "下一個",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜The one that follows after this one."
+    },
+    "include": {
+      "word": "include",
+      "lemma": "include",
+      "firstSeenAt": 1783797079306,
+      "lastSeenAt": 1783797079306,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783800679309,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "included",
+      "lastForm": "-ed / past participle",
+      "variants": {
+        "included": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783797081763,
+      "loading": false,
+      "tw": "包括",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A piece of source code or other content that is dynamically retrieved for inclusion in another item."
+    },
+    "program": {
+      "word": "program",
+      "lemma": "program",
+      "firstSeenAt": 1783797089467,
+      "lastSeenAt": 1783797089467,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783800689469,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "programs",
+      "lastForm": "plural / 3rd person -s",
+      "variants": {
+        "programs": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783797090624,
+      "loading": false,
+      "tw": "程序",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A set of structured activities."
+    },
+    "global": {
+      "word": "global",
+      "lemma": "global",
+      "firstSeenAt": 1783797093090,
+      "lastSeenAt": 1783867162689,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 8,
+      "sessionClicks": 8,
+      "maxClickStreak": 7,
+      "reviewHistory": [],
+      "dueAt": 1783800693093,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "global",
+      "lastForm": "base form",
+      "variants": {
+        "global": 8,
+        "Global": 1
+      },
+      "clicks": 8,
+      "strength": 8,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783867162693,
+      "loading": false,
+      "tw": "全球的",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "",
+      "translationSource": "Google Translate",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "A globally scoped identifier.",
+          "example": null
+        },
+        {
+          "pos": "adjective",
+          "def": "Concerning all parts of the world.",
+          "example": "Pollution is a global problem."
+        },
+        {
+          "pos": "adjective",
+          "def": "Pertaining to the whole of something; total, universal:",
+          "example": null
+        },
+        {
+          "pos": "adjective",
+          "def": "Spherical, ball-shaped.",
+          "example": "In the center was a small, global mass."
+        },
+        {
+          "pos": "adverb",
+          "def": "In the global manner; world-wide.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
+    },
+    "yourself": {
+      "word": "yourself",
+      "lemma": "yourself",
+      "firstSeenAt": 1783797098260,
+      "lastSeenAt": 1783798544211,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 5,
+      "sessionClicks": 5,
+      "maxClickStreak": 4,
+      "reviewHistory": [],
+      "dueAt": 1783800698262,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "yourself",
+      "lastForm": "base form",
+      "variants": {
+        "yourself": 5
+      },
+      "clicks": 5,
+      "strength": 5,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783798544215,
+      "loading": false,
+      "tw": "您自己",
+      "engine": "MyMemory",
+      "pos": "pronoun",
+      "tip": "Auto translated by MyMemory｜(reflexive pronoun) Your own self (singular)."
+    },
+    "immerse": {
+      "word": "immerse",
+      "lemma": "immerse",
+      "firstSeenAt": 1783731376881,
+      "lastSeenAt": 1783818065060,
+      "lastReviewedAt": 1783871173228,
+      "lifetimeClicks": 25,
+      "sessionClicks": 25,
+      "maxClickStreak": 20,
+      "reviewHistory": [
+        {
+          "ts": 1783871173228,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 21,
+          "strength": 10,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1783957573228,
+      "intervalDays": 1,
+      "ease": 2.4,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "immerse",
+      "lastForm": "base form",
+      "variants": {
+        "immersing": 18,
+        "immerse": 7
+      },
+      "clicks": 21,
+      "strength": 10,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783871173228,
+      "loading": false,
+      "tw": "深度體驗",
+      "engine": "MyMemory",
+      "pos": "",
+      "tip": "Auto translated by MyMemory",
+      "isWeak": true,
+      "definitions": [
+        "[verb] To put under the surface of a liquid; to dunk.",
+        "[verb] To involve or engage deeply.",
+        "[adjective] Immersed; buried; sunk."
+      ],
+      "definitionSource": "dictionaryapi.dev"
+    },
+    "immers": {
+      "word": "immers",
+      "lemma": "immers",
+      "pos": "",
+      "tw": "深度體驗",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 13,
+      "strength": 10,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783801644915,
+      "updatedAt": 1783799840957,
+      "variants": {
+        "immersing": 13
+      },
+      "lastSurface": "immersing",
+      "lastForm": "-ing form",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783798315737,
+      "lastSeenAt": 1783798315737,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 3,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
+    },
+    "expand": {
+      "word": "expand",
+      "lemma": "expand",
+      "firstSeenAt": 1783798414501,
+      "lastSeenAt": 1783798414501,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783802014505,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "Expand",
+      "lastForm": "base form",
+      "variants": {
+        "Expand": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783798416725,
+      "loading": false,
+      "tw": "展開",
+      "engine": "MyMemory",
+      "pos": "verb",
+      "tip": "Auto translated by MyMemory｜To change (something) from a smaller form and/or size to a larger one; to spread out or lay open."
+    },
+    "perspective": {
+      "word": "perspective",
+      "lemma": "perspective",
+      "firstSeenAt": 1783799685949,
+      "lastSeenAt": 1783817450894,
+      "lastReviewedAt": 1783817517197,
+      "lifetimeClicks": 11,
+      "sessionClicks": 11,
+      "maxClickStreak": 5,
+      "reviewHistory": [
+        {
+          "ts": 1783817503055,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 6,
+          "strength": 6,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1783817517197,
+          "day": "2026-07-12",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 6,
+          "strength": 6,
+          "intervalDays": 1
+        }
+      ],
+      "dueAt": 1783903917197,
+      "intervalDays": 1,
+      "ease": 2.3,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "perspectives",
+      "lastForm": "base form",
+      "variants": {
+        "perspective": 6,
+        "perspectives": 3
+      },
+      "clicks": 6,
+      "strength": 6,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783817517198,
+      "loading": false,
+      "tw": "看法",
+      "engine": "MyMemory",
+      "pos": "noun",
+      "tip": "",
+      "isWeak": true,
+      "translationSource": "Google Translate",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "A view, vista or outlook.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "The appearance of depth in objects, especially as perceived using binocular vision.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "The technique of representing three-dimensional objects on a two-dimensional surface.",
+          "example": null
+        },
+        {
+          "pos": "adjective",
+          "def": "Of, in or relating to perspective.",
+          "example": "a perspective drawing"
+        },
+        {
+          "pos": "adjective",
+          "def": "Providing visual aid; of or relating to the science of vision; optical.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
+    },
+    "perspectif": {
+      "word": "perspectif",
+      "lemma": "perspectif",
+      "pos": "",
+      "tw": "perspectif",
+      "tip": "Auto translated by MyMemory",
+      "clicks": 2,
+      "strength": 2,
+      "captured": true,
+      "known": false,
+      "dueAt": 1783803449510,
+      "updatedAt": 1783800063160,
+      "variants": {
+        "perspectives": 2
+      },
+      "lastSurface": "perspectives",
+      "lastForm": "plural -ves",
+      "engine": "MyMemory",
+      "loading": false,
+      "firstSeenAt": 1783800063160,
+      "lastSeenAt": 1783800063160,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 2,
+      "reviewHistory": [],
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0
+    },
+    "study": {
+      "word": "study",
+      "lemma": "study",
+      "firstSeenAt": 1783800679334,
+      "lastSeenAt": 1783800679334,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783804279338,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "studies",
+      "lastForm": "base form",
+      "variants": {
+        "study": 1,
+        "studies": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783800681192,
+      "loading": false,
+      "tw": "閱讀室",
+      "engine": "MyMemory",
+      "pos": "verb",
+      "tip": "Auto translated by MyMemory｜(usually academic) To review materials already learned in order to make sure one does not forget them, usually in preparation for an examination."
+    },
+    "win": {
+      "word": "win",
+      "lemma": "win",
+      "firstSeenAt": 1783800711672,
+      "lastSeenAt": 1783800711672,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783804311678,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "win",
+      "lastForm": "base form",
+      "variants": {
+        "win": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783800711683,
+      "loading": true,
+      "tw": "查詢中..."
+    },
+    "utilize": {
+      "word": "utilize",
+      "lemma": "utilize",
+      "firstSeenAt": 1783803789661,
+      "lastSeenAt": 1783871186449,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
+      "maxClickStreak": 1,
+      "reviewHistory": [],
+      "dueAt": 1783807389667,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "lastSurface": "utilize",
+      "lastForm": "base form",
+      "variants": {
+        "utilize": 2,
+        "utilizing": 1
+      },
+      "clicks": 2,
+      "strength": 2,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783871186452,
+      "loading": false,
+      "tw": "利用",
+      "translationSource": "Google Translate",
+      "tip": "Auto translated by MyMemory｜To make use of; to use.",
+      "definitions": [
+        {
+          "pos": "verb",
+          "def": "To make use of; to use.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To make useful; to find a practical use for.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To make best use of; to use to its fullest extent, potential, or ability.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev",
+      "engine": "MyMemory",
+      "pos": "verb"
+    },
+    "prestigiou": {
+      "word": "prestigiou",
+      "lemma": "prestigiou",
+      "firstSeenAt": 1783817545776,
+      "lastSeenAt": 1783817545776,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1783821145781,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "prestigious",
+      "lastForm": "base form",
+      "variants": {
+        "prestigiou": 1,
+        "prestigious": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1783817547352,
+      "loading": false,
+      "tw": "prestigiou",
+      "translationSource": "Google Translate",
+      "tip": "Auto translated by MyMemory",
+      "engine": "MyMemory",
+      "pos": ""
+    }
+  }
+}
