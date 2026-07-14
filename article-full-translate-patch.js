@@ -5,8 +5,8 @@
    3. Sanitizes undefined/null/empty strings before sending.
    4. Translates in batches to avoid request size limits.
    5. Keeps full-article Chinese translation panel, cache, collapse, sync toggle.
-＊/
 
+*/
 (function () {
 
   'use strict';
