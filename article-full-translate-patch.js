@@ -134,7 +134,22 @@ function splitEnglishParagraphs(fullText) {
     return [text.trim()];
 }
 
-    
+    function getArticleText() {
+
+    var article = document.querySelector('.card .en');
+    if (!article) return null;
+
+    var clone = article.cloneNode(true);
+
+    clone.querySelectorAll('button, script').forEach(function (el) {
+      el.remove();
+    });
+
+    var text = clone.innerText || clone.textContent || '';
+
+    return text.trim();
+}
+
 
   async function translateFullArticle() {
 
