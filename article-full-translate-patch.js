@@ -39,47 +39,102 @@
     return String(h);
   }
 
-  async function googleTranslateBatch(texts) {
+ async function googleTranslateBatch(texts) {
 
     var key = getApiKey();
+
     if (!key) {
       alert('請先在設定選單設定 Google Translate API Key');
       return null;
     }
 
+    texts = (texts || [])
+      .map(function (x) {
+        return String(x || '').trim();
+      })
+      .filter(Boolean);
+
+    log('clean paragraphs:', texts.length);
+
+    var BATCH_SIZE = 40;
+    var allResults = [];
+
     try {
 
-      var res = await fetch(
-        'https://translation.googleapis.com/language/translate/v2?key=' + key,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            q: texts,
-            source: 'en',
-            target: 'zh-TW',
-            format: 'text'
-          })
-        }
-      );
+      for (var i = 0; i < texts.length; i += BATCH_SIZE) {
 
-      if (!res.ok) {
-        log('Google translate err:', res.status);
-        return null;
+        var chunk =
+          texts.slice(
+            i,
+            i + BATCH_SIZE
+          );
+
+        log(
+          'translate batch',
+          (i / BATCH_SIZE) + 1,
+          '/',
+          Math.ceil(texts.length / BATCH_SIZE)
+        );
+
+        var res =
+          await fetch(
+            'https://translation.googleapis.com/language/translate/v2?key=' + key,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                q: chunk,
+                source: 'en',
+                target: 'zh-TW',
+                format: 'text'
+              })
+            }
+          );
+
+        if (!res.ok) {
+
+          console.error(
+            '[FullTranslate]',
+            res.status,
+            await res.text()
+          );
+
+          return null;
+        }
+
+        var data = await res.json();
+
+        if (
+          !data ||
+          !data.data ||
+          !data.data.translations
+        ) {
+          return null;
+        }
+
+        allResults.push(
+          ...data.data.translations.map(function (t) {
+            return t.translatedText;
+          })
+        );
       }
 
-      var data = await res.json();
-      if (!data || !data.data || !data.data.translations) return null;
-
-      return data.data.translations.map(function (t) { return t.translatedText; });
+      return allResults;
 
     } catch (e) {
-      log('err:', e.message);
+
+      console.error(
+        '[FullTranslate]',
+        e.message
+      );
+
       return null;
     }
-  }
+}
 
-  function splitEnglishParagraphs(fullText) {
+ function splitEnglishParagraphs(fullText) {
 
     if (!fullText) return [];
 
@@ -89,12 +144,17 @@
         return String(p || '').trim();
       })
       .filter(Boolean)
+
+      // 排除 1. 2. 3.
       .filter(function (p) {
         return !/^\d+.$/.test(p);
       })
+
+      // 排除 1) 2)
       .filter(function (p) {
         return !/^\d+)$/.test(p);
       })
+
       .map(function (p) {
         return p.replace(/^\d+[.)]\s+/, '');
       });
