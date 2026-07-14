@@ -297,7 +297,13 @@ function splitEnglishParagraphs(fullText) {
 
     currentTranslation.enParas.forEach(function (en, i) {
 
-      var zh = currentTranslation.zhParas[i] || '(翻譯中)';
+    var zh = currentTranslation.zhParas[i] || '(翻譯中)';
+
+   zh = zh
+  .replace(/。/g, '。<br><br>')
+  .replace(/！/g, '！<br><br>')
+  .replace(/？/g, '？<br><br>');
+       
       var isLast = i === currentTranslation.enParas.length - 1;
 
       html += '<div class="zh-para" data-idx="' + i + '" style="' +
