@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260716-1720
+/* auto-cloud-sync-patch.js v20260717-1
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -341,11 +341,10 @@
   log('ready v20260716-1');
 
 })();
-/* === v1.9.3 左上角快捷漢堡（整合 ☁ 同步 / 💬 AI / A文 翻譯播放器） === */
-(function shortcutHubV193(){
+/* === v1.9.4 左上角快捷漢堡（放寬吸收條件 + 定期補抓） === */
+(function shortcutHubV194(){
   document.getElementById('shortcutHub')?.remove();
   document.getElementById('shortcutHubStyle')?.remove();
-  document.getElementById('a2cLabelStyle')?.remove();
 
   const IDS = ['autoSyncBtn', 'aiChatBtn', 'bcollapseBtn'];
 
@@ -436,7 +435,8 @@
     absorbBusy = true;
     IDS.forEach(id => {
       const el = document.getElementById(id);
-      if (el && el.parentElement === document.body) list.appendChild(el);
+      // ★ 只要不在 list 裡就吸收，不管原本掛哪
+      if (el && el.parentElement !== list) list.appendChild(el);
     });
     const b = document.getElementById('bcollapseBtn');
     if (b && !b.querySelector('.a2c-label')){
@@ -451,21 +451,18 @@
   }
   absorbButtons();
 
-  function guardA2C(){
-    const b = document.getElementById('bcollapseBtn');
-    if (b && !b.querySelector('.a2c-label')){
-      b.textContent = '';
-      const label = document.createElement('span');
-      label.className = 'a2c-label';
-      label.textContent = 'A文';
-      b.appendChild(label);
-    }
-  }
   const bBtn = document.getElementById('bcollapseBtn');
   if (bBtn){
-    new MutationObserver(guardA2C).observe(bBtn, {
-      childList:true, characterData:true, subtree:true
-    });
+    new MutationObserver(() => {
+      const b = document.getElementById('bcollapseBtn');
+      if (b && !b.querySelector('.a2c-label')){
+        b.textContent = '';
+        const label = document.createElement('span');
+        label.className = 'a2c-label';
+        label.textContent = 'A文';
+        b.appendChild(label);
+      }
+    }).observe(bBtn, { childList:true, characterData:true, subtree:true });
   }
 
   function checkMainMenu(){
@@ -480,8 +477,12 @@
       attributes:true, attributeFilter:['class']
     });
   }
-  new MutationObserver(absorbButtons).observe(document.body, { childList:true });
 
-  console.log('✅ v1.9.3 已注入');
+  // ★ 監看整個 DOM 樹（含深層）+ 每 2 秒補抓
+  new MutationObserver(absorbButtons).observe(document.body, {
+    childList:true, subtree:true
+  });
+  setInterval(absorbButtons, 2000);
+
+  console.log('✅ v1.9.4 已注入');
 })();
-
