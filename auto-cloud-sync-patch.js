@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260717-3
+/* auto-cloud-sync-patch.js v20260717-4
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -374,16 +374,30 @@
   gap:8px;
   transition:left .25s ease!important;
 }
-    #shortcutHubToggle{
-      width:36px!important;height:36px!important;
-      border-radius:50%!important;border:none!important;
-      background:#4a7c59!important;color:#fff!important;
-      font-size:16px!important;cursor:pointer!important;
-      box-shadow:0 2px 8px rgba(0,0,0,.25)!important;
-      transition:transform .2s!important;
-      display:flex!important;align-items:center!important;justify-content:center!important;
-      padding:0!important;
-    }
+  #shortcutHubToggle{
+  width:36px!important;
+  height:36px!important;
+  border-radius:50%!important;
+  border:none!important;
+  background:#4a7c59!important;
+  color:#fff!important;
+
+  position:relative!important;
+  left:0!important;
+
+  font-size:16px!important;
+  cursor:pointer!important;
+  box-shadow:0 2px 8px rgba(0,0,0,.25)!important;
+
+  transition:
+    left .25s ease,
+    transform .2s!important;
+
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0!important;
+}
     #shortcutHub.open #shortcutHubToggle{ transform:rotate(90deg); }
     #shortcutHubList{ display:none;flex-direction:column;gap:8px; }
     #shortcutHub.open #shortcutHubList{ display:flex; }
@@ -449,36 +463,41 @@
 
 
 
-  function checkMainMenu(){
+function checkMainMenu(){
 
   const side = document.getElementById('side');
 
-  if (!side){
-    hub.classList.remove('hidden-by-menu');
-    hub.style.left = '10px';
-    return;
-  }
-
-  const expanded =
-    side.classList.contains('open') ||
-    side.style.width === '280px' ||
-    side.dataset.collapsed !== '1';
-
-  if (expanded){
-    hub.style.left = '290px';
-  }else{
-    hub.style.left = '10px';
-  }
+  if (!side) return;
 
   hub.classList.remove('hidden-by-menu');
 }
-  checkMainMenu();
+
+function updateHamburgerPosition(){
+
   const side = document.getElementById('side');
-  if (side){
-    new MutationObserver(checkMainMenu).observe(side, {
-      attributes:true, attributeFilter:['class']
+  const btn  = document.getElementById('shortcutHubToggle');
+
+  if (!side || !btn) return;
+
+  btn.style.left =
+    side.classList.contains('open')
+      ? side.offsetWidth + 'px'
+      : '0px';
+}
+
+checkMainMenu();
+updateHamburgerPosition();
+
+const sideEl = document.getElementById('side');
+
+if (sideEl) {
+  new MutationObserver(updateHamburgerPosition)
+    .observe(sideEl, {
+      attributes:true,
+      attributeFilter:['class','style']
     });
-  }
+}
+  
 
   // ★ 監看整個 DOM 樹（含深層）+ 每 2 秒補抓
   new MutationObserver(absorbButtons).observe(document.body, {
