@@ -1,4 +1,4 @@
-/* ai-chat-drawer-patch.js  v20260717-2 Phase A + Blocker Fix
+/* ai-chat-drawer-patch.js  v20260717-3 Phase A + Blocker Fix
    AI 駐站助理 - Phase A + Blocker Fix（Level 1 + 部分 Level 2）
 
    新增功能（相對 v1）：
@@ -15,7 +15,7 @@
 (function () {
   'use strict';
   var TAG = '[AIChatDrawer]';
-  var VER = 'v20260717-2';
+  var VER = 'v20260717-3';
   var STORAGE_KEY = 'notebook_ai_chats_v1';
   var MODEL_FALLBACK = ['gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-3-flash-preview'];
   var MAX_ARTICLE_CHARS = 3000;
@@ -977,6 +977,7 @@
   function openDrawer() {
     injectCSS();
     build();
+     data = loadData(); // ★ 每次開啟都從 localStorage 重新讀
     ensureCurrentChat();
     var drawer = document.getElementById('aiChatDrawer');
     drawer.classList.add('open');
@@ -1004,6 +1005,14 @@
     newChat: function () { newChat(); },
     switchChat: switchChat,
     getData: function () { return data; },
+    reload: function () {                          // ★ 新增
+      data = loadData();
+      currentChatId = null;
+      ensureCurrentChat();
+      if (document.getElementById('aiChatDrawer')) renderAll();
+      console.log(TAG, '🔄 已從 localStorage 重新載入');
+    },
+   
     testContext: function () {
       console.log('=== 上下文提取測試 ===');
       console.log('article:', extractArticle());
