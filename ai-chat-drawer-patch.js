@@ -1,4 +1,4 @@
-/* ai-chat-drawer-patch.js  v20260717-1 Phase A + Blocker Fix
+/* ai-chat-drawer-patch.js  v20260717-2 Phase A + Blocker Fix
    AI 駐站助理 - Phase A + Blocker Fix（Level 1 + 部分 Level 2）
 
    新增功能（相對 v1）：
@@ -15,7 +15,7 @@
 (function () {
   'use strict';
   var TAG = '[AIChatDrawer]';
-  var VER = 'v20260717-1';
+  var VER = 'v20260717-2';
   var STORAGE_KEY = 'notebook_ai_chats_v1';
   var MODEL_FALLBACK = ['gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-3-flash-preview'];
   var MAX_ARTICLE_CHARS = 3000;
@@ -57,16 +57,46 @@
   };
 
   // ---- 資料層 ----
-  function loadData() {
-    try {
-      var d = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      if (!d.chats) d.chats = {};
-      return d;
-    } catch (e) { return { chats: {} }; }
+  // ---- 資料層（v2: 搬進 notebook_platform_v3.aiChats 讓雲同步能吃到） ----
+  var PLATFORM_KEY = 'notebook_platform_v3';
+
+  function loadPlatformDB(){
+    try { return JSON.parse(localStorage.getItem(PLATFORM_KEY) || '{}'); }
+    catch(e){ return {}; }
   }
+  function savePlatformDB(db){
+    try { localStorage.setItem(PLATFORM_KEY, JSON.stringify(db)); }
+    catch(e){ console.error(TAG, e); }
+  }
+
+  function loadData() {
+    // 1) 先從 platform DB 讀
+    var db = loadPlatformDB();
+    if (db.aiChats && db.aiChats.chats){
+      return db.aiChats;
+    }
+    // 2) 沒有的話從舊 key 遷移過來（一次性）
+    try {
+      var old = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      if (old && old.chats && Object.keys(old.chats).length){
+        console.log(TAG, '📦 遷移舊資料至 notebook_platform_v3.aiChats');
+        db.aiChats = old;
+        savePlatformDB(db);
+        // 保留舊 key 一份備份，不刪除
+        return old;
+      }
+    } catch(e){}
+    return { chats: {} };
+  }
+
   function saveData(d) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
-    catch (e) { console.error(TAG, e); }
+    // 同步寫入 platform DB（跟著雲同步走）+ 舊 key（本地備援）
+    try {
+      var db = loadPlatformDB();
+      db.aiChats = d;
+      savePlatformDB(db);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+    } catch (e) { console.error(TAG, e); }
   }
 
   function newChatId() { return 'chat_' + Date.now(); }
