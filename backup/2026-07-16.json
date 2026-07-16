@@ -11612,7 +11612,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784219412645,
+  "updatedAt": 1784226284458,
   "learn": {
     "github": {
       "word": "github",
@@ -15349,5 +15349,26 @@
       "translationSource": "Google Translate",
       "tip": ""
     }
+  },
+  "aiChats": {
+    "chats": {
+      "chat_1784219845369": {
+        "id": "chat_1784219845369",
+        "title": "7/17 00:37",
+        "role": "english_tutor",
+        "customPrompt": "",
+        "contexts": {
+          "article": false,
+          "selection": false,
+          "wordbank": false,
+          "due": false,
+          "notes": false
+        },
+        "createdAt": 1784219845369,
+        "updatedAt": 1784219845369,
+        "messages": []
+      }
+    },
+    "currentId": "chat_1784219845369"
   }
 }
