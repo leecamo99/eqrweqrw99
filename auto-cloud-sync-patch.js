@@ -497,39 +497,7 @@
     }, 200);
   }
 
-  function updateHamburgerPosition(){
 
-    const side = document.getElementById('side');
-    const btn = document.getElementById('shortcutHubToggle');
-
-    if (!btn) return;
-
-    btn.style.position = 'relative';
-    btn.style.transition = 'left .25s ease';
-
-    if (!side) {
-      btn.style.left = '0px';
-      return;
-    }
-
-    btn.style.left = side.classList.contains('open')
-      ? side.offsetWidth + 'px'
-      : '0px';
-  }
-
-  function initSidebarObserver(){
-
-    const side = document.getElementById('side');
-
-    if (!side) return;
-
-    new MutationObserver(function(){
-      updateHamburgerPosition();
-    }).observe(side, {
-      attributes:true,
-      attributeFilter:['class', 'style']
-    });
-  }
 
   absorbButtons();
   updateHamburgerPosition();
@@ -543,10 +511,7 @@
     subtree:true
   });
 
-  setInterval(function(){
-    absorbButtons();
-    updateHamburgerPosition();
-  }, 2000);
+setInterval(absorbButtons, 2000);
 
   console.log('✅ v1.9.5 快捷漢堡已注入：Sidebar 展開右移，縮回歸位');
 
