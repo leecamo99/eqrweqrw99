@@ -165,7 +165,7 @@
 
     if (document.getElementById('autoSyncBtn')) return;
 
-    var btn = document.createElement('button');
+    var btn = document.createElement('top');
     btn.id = 'autoSyncBtn';
 
     btn.style.cssText = 
