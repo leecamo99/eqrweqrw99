@@ -81,10 +81,11 @@
           "color": "c1"
         },
         "Institute": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "研究院）",
+          "tip": "An organization founded to promote a cause",
+          "color": "c1",
+          "lemma": "institute"
         },
         "regularly": {
           "pos": "",
@@ -147,10 +148,11 @@
           "color": "c1"
         },
         "nutritionist": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "營養師",
+          "tip": "An expert or specialist in nutrition or nutritionistics",
+          "color": "c1",
+          "lemma": "nutritionist"
         },
         "Shaffer": {
           "pos": "",
@@ -891,10 +893,11 @@
           "color": "c1"
         },
         "program": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "程序",
+          "tip": "A set of structured activities.",
+          "color": "c1",
+          "lemma": "program"
         },
         "easier": {
           "pos": "",
@@ -1041,10 +1044,11 @@
           "color": "c1"
         },
         "Included": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "包括",
+          "tip": "A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+          "color": "c1",
+          "lemma": "include"
         },
         "letter": {
           "pos": "",
@@ -1131,10 +1135,11 @@
           "color": "c1"
         },
         "during": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "adjective",
+          "tw": "dur",
+          "tip": "Major; in the major mode.",
+          "color": "c1",
+          "lemma": "dur"
         },
         "lively": {
           "pos": "",
@@ -1725,10 +1730,11 @@
           "color": "c1"
         },
         "script": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "指令碼",
+          "tip": "A writing; a written document.",
+          "color": "c1",
+          "lemma": "script"
         },
         "According": {
           "pos": "",
@@ -2010,7 +2016,8 @@
           "pos": "n.",
           "tw": "章節；段落",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "section"
         },
         "Brocker": {
           "pos": "",
@@ -2382,7 +2389,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "follow"
         },
         "solicited": {
           "pos": "",
@@ -2628,7 +2636,8 @@
           "pos": "",
           "tw": "（未建字義，請自行補充）",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "follow"
         },
         "service": {
           "pos": "",
@@ -2793,10 +2802,11 @@
           "color": "c1"
         },
         "During": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "adjective",
+          "tw": "dur",
+          "tip": "Major; in the major mode.",
+          "color": "c1",
+          "lemma": "dur"
         },
         "Thursday": {
           "pos": "",
@@ -3009,10 +3019,11 @@
           "color": "c1"
         },
         "morning": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "早晨",
+          "tip": "Morning.",
+          "color": "c1",
+          "lemma": "morn"
         },
         "analysis": {
           "pos": "",
@@ -3383,8 +3394,9 @@
         "approved": {
           "pos": "adj./v.",
           "tw": "已核准；批准",
-          "tip": "",
-          "color": "c1"
+          "tip": "To sanction officially; to ratify; to confirm; to set as satisfactory.",
+          "color": "c1",
+          "lemma": "approve"
         },
         "Lombard": {
           "pos": "",
@@ -3957,10 +3969,11 @@
           "color": "c1"
         },
         "welcomes": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "歡迎",
+          "tip": "The act of greeting someone’s arrival, especially by saying \"Welcome!\"; reception.",
+          "color": "c1",
+          "lemma": "welcome"
         },
         "improving": {
           "pos": "",
@@ -4095,10 +4108,11 @@
           "color": "c1"
         },
         "yourself": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "pronoun",
+          "tw": "您自己",
+          "tip": "(reflexive pronoun) Your own self (singular).",
+          "color": "c1",
+          "lemma": "yourself"
         },
         "Multecho": {
           "pos": "",
@@ -4161,10 +4175,11 @@
           "color": "c1"
         },
         "weekend": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "週末",
+          "tip": "The break in the working week, usually two days including the traditional holy or sabbath day. Thus in western countries, Saturday and Sunday.",
+          "color": "c1",
+          "lemma": "weekend"
         },
         "Zappish": {
           "pos": "",
@@ -4368,7 +4383,8 @@
           "pos": "n.",
           "tw": "安全；保全",
           "tip": "security vendor = 保全廠商",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "security"
         },
         "building": {
           "pos": "",
@@ -4641,10 +4657,11 @@
           "color": "c1"
         },
         "awards": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
         },
         "banquet": {
           "pos": "",
@@ -4989,10 +5006,11 @@
           "color": "c1"
         },
         "Awards": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
         },
         "renovation": {
           "pos": "",
@@ -5081,8 +5099,9 @@
         "including": {
           "pos": "prep.",
           "tw": "包括",
-          "tip": "",
-          "color": "c1"
+          "tip": "A piece of source code or other content that is dynamically retrieved for inclusion in another item.",
+          "color": "c1",
+          "lemma": "include"
         },
         "recycling": {
           "pos": "",
@@ -5097,10 +5116,11 @@
           "color": "c1"
         },
         "person": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "人物",
+          "tip": "An individual; usually a human being.",
+          "color": "c1",
+          "lemma": "person"
         },
         "viewed": {
           "pos": "",
@@ -5301,10 +5321,11 @@
           "color": "c1"
         },
         "next": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "下一個",
+          "tip": "The one that follows after this one.",
+          "color": "c1",
+          "lemma": "next"
         },
         "year": {
           "pos": "",
@@ -6279,10 +6300,11 @@
           "color": "c1"
         },
         "award": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "獎",
+          "tip": "A judgment, sentence, or final decision. Specifically: The decision of arbitrators in a case submitted.",
+          "color": "c1",
+          "lemma": "award"
         },
         "past": {
           "pos": "",
@@ -6339,10 +6361,11 @@
           "color": "c1"
         },
         "over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
         },
         "half": {
           "pos": "",
@@ -6795,10 +6818,11 @@
           "color": "c1"
         },
         "Over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "超过",
+          "tip": "A set of six legal balls bowled.",
+          "color": "c1",
+          "lemma": "over"
         },
         "weeks": {
           "pos": "",
@@ -11588,7 +11612,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784060982647,
+  "updatedAt": 1784189855719,
   "learn": {
     "github": {
       "word": "github",
@@ -11741,10 +11765,10 @@
       "tip": "A projectile, usually of metal, shot from a gun at high speed.",
       "clicks": 0,
       "strength": 0,
-      "captured": true,
-      "known": false,
-      "dueAt": 1784127137007,
-      "updatedAt": 1784040737007,
+      "captured": false,
+      "known": true,
+      "dueAt": 1785226642136,
+      "updatedAt": 1784189842136,
       "variants": {
         "bulleted": 7
       },
@@ -11754,7 +11778,7 @@
       "loading": false,
       "firstSeenAt": 1783352586481,
       "lastSeenAt": 1783352586481,
-      "lastReviewedAt": 1784040737007,
+      "lastReviewedAt": 1784189842136,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -11776,13 +11800,49 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189777769,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189803588,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189812437,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 2
+        },
+        {
+          "ts": 1784189842136,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 5
         }
       ],
-      "intervalDays": 1,
-      "ease": 2.4,
+      "intervalDays": 12,
+      "ease": 2.3,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 1,
+      "status": "young",
+      "totalResets": 4,
       "definitions": [
         {
           "pos": "noun",
@@ -11891,8 +11951,8 @@
       "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1784127138162,
-      "updatedAt": 1784040738163,
+      "dueAt": 1784276243204,
+      "updatedAt": 1784189843204,
       "variants": {
         "validated": 1
       },
@@ -11902,7 +11962,7 @@
       "loading": false,
       "firstSeenAt": 1783352614199,
       "lastSeenAt": 1783352614199,
-      "lastReviewedAt": 1784040738162,
+      "lastReviewedAt": 1784189843204,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 3,
@@ -11924,10 +11984,37 @@
           "clicks": 3,
           "strength": 3,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189779021,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189813421,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189843204,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 1
         }
       ],
       "intervalDays": 1,
-      "ease": 2.3,
+      "ease": 1.9999999999999996,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -12056,8 +12143,8 @@
       "strength": 0,
       "captured": false,
       "known": true,
-      "dueAt": 1784299938980,
-      "updatedAt": 1784040738980,
+      "dueAt": 1788509844254,
+      "updatedAt": 1784189844254,
       "variants": {
         "during": 1
       },
@@ -12067,7 +12154,7 @@
       "loading": false,
       "firstSeenAt": 1783352599049,
       "lastSeenAt": 1783352599049,
-      "lastReviewedAt": 1784040738980,
+      "lastReviewedAt": 1784189844254,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -12089,13 +12176,40 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189780535,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 3
+        },
+        {
+          "ts": 1784189814704,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 8
+        },
+        {
+          "ts": 1784189844254,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 20
         }
       ],
-      "intervalDays": 3,
+      "intervalDays": 50,
       "ease": 2.5,
       "lapses": 0,
-      "status": "young",
-      "totalResets": 2,
+      "status": "mature",
+      "totalResets": 5,
       "definitions": [
         {
           "pos": "adjective",
@@ -12215,8 +12329,8 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "dueAt": 1784127125709,
-      "updatedAt": 1784040725709,
+      "dueAt": 1784276239604,
+      "updatedAt": 1784189839604,
       "variants": {
         "spontaneously": 29
       },
@@ -12226,7 +12340,7 @@
       "loading": false,
       "firstSeenAt": 1783352941134,
       "lastSeenAt": 1783707229004,
-      "lastReviewedAt": 1784040725709,
+      "lastReviewedAt": 1784189839604,
       "lifetimeClicks": 22,
       "sessionClicks": 22,
       "maxClickStreak": 32,
@@ -12257,10 +12371,37 @@
           "clicks": 33,
           "strength": 10,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189774704,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 33,
+          "strength": 10,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189810237,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 33,
+          "strength": 10,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189839604,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 33,
+          "strength": 10,
+          "intervalDays": 1
         }
       ],
       "intervalDays": 1,
-      "ease": 2.1999999999999997,
+      "ease": 1.8999999999999995,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -12419,7 +12560,7 @@
       "lemma": "follow",
       "firstSeenAt": 1783359238354,
       "lastSeenAt": 1783359238354,
-      "lastReviewedAt": 1784040739607,
+      "lastReviewedAt": 1784189845237,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -12441,26 +12582,84 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189781686,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 3
+        },
+        {
+          "ts": 1784189815954,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 8
+        },
+        {
+          "ts": 1784189845237,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 20
         }
       ],
-      "dueAt": 1784299939607,
-      "intervalDays": 3,
+      "dueAt": 1788509845237,
+      "intervalDays": 50,
       "ease": 2.5,
       "lapses": 0,
-      "status": "young",
-      "totalResets": 2,
+      "status": "mature",
+      "totalResets": 5,
       "known": true,
       "captured": false,
       "clicks": 0,
       "strength": 0,
-      "updatedAt": 1784040739607
+      "updatedAt": 1784189845237,
+      "tw": "跟隨",
+      "translationSource": "Google Translate",
+      "tip": "",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "(sometimes attributive) In billiards and similar games, a stroke causing a ball to follow another ball after hitting it.",
+          "example": "a follow shot"
+        },
+        {
+          "pos": "noun",
+          "def": "The act of following another user's online activity.",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To go after; to pursue; to move behind in the same path or direction.",
+          "example": "Follow that car!"
+        },
+        {
+          "pos": "verb",
+          "def": "To go or come after in a sequence.",
+          "example": "B follows A in the alphabet."
+        },
+        {
+          "pos": "verb",
+          "def": "To carry out (orders, instructions, etc.).",
+          "example": "Follow these instructions to the letter."
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev"
     },
     "section": {
       "word": "section",
       "lemma": "section",
       "firstSeenAt": 1783359239525,
       "lastSeenAt": 1783359239525,
-      "lastReviewedAt": 1784040745856,
+      "lastReviewedAt": 1784189847436,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -12482,19 +12681,46 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189785969,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 3
+        },
+        {
+          "ts": 1784189820403,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 8
+        },
+        {
+          "ts": 1784189847436,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 20
         }
       ],
-      "dueAt": 1784299945856,
-      "intervalDays": 3,
+      "dueAt": 1788509847436,
+      "intervalDays": 50,
       "ease": 2.5,
       "lapses": 0,
-      "status": "young",
-      "totalResets": 2,
+      "status": "mature",
+      "totalResets": 5,
       "known": true,
       "captured": false,
       "clicks": 0,
       "strength": 0,
-      "updatedAt": 1784040745856,
+      "updatedAt": 1784189847436,
       "definitions": [
         "[noun] A cutting; a part cut out from the rest of something.",
         "[noun] A part, piece, subdivision of anything.",
@@ -13059,7 +13285,7 @@
       "lemma": "leftover",
       "firstSeenAt": 1783510697499,
       "lastSeenAt": 1783510697499,
-      "lastReviewedAt": 1784040751496,
+      "lastReviewedAt": 1784189849419,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
@@ -13072,11 +13298,29 @@
           "clicks": 1,
           "strength": 1,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784189822803,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189849419,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127151496,
+      "dueAt": 1784276249419,
       "intervalDays": 1,
-      "ease": 2.4,
+      "ease": 2.1999999999999997,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -13089,7 +13333,7 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784040751496,
+      "updatedAt": 1784189849419,
       "loading": false,
       "tw": "剩飯",
       "engine": "MyMemory",
@@ -13137,7 +13381,7 @@
       "lemma": "spot",
       "firstSeenAt": 1783704314043,
       "lastSeenAt": 1783704314043,
-      "lastReviewedAt": 1784040753596,
+      "lastReviewedAt": 1784189789404,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
@@ -13150,24 +13394,33 @@
           "clicks": 1,
           "strength": 1,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784189789404,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127153596,
-      "intervalDays": 1,
+      "dueAt": 1784362589404,
+      "intervalDays": 2,
       "ease": 2.4,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "spot",
       "lastForm": "base form",
       "variants": {
         "spot": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1784040753596,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784189789404,
       "loading": false,
       "tw": "聚光點",
       "engine": "MyMemory",
@@ -13235,7 +13488,7 @@
       "lemma": "beforehand",
       "firstSeenAt": 1783704325541,
       "lastSeenAt": 1783704325541,
-      "lastReviewedAt": 1784040754856,
+      "lastReviewedAt": 1784189790986,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
@@ -13248,24 +13501,33 @@
           "clicks": 1,
           "strength": 1,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784189790986,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127154856,
-      "intervalDays": 1,
+      "dueAt": 1784362590986,
+      "intervalDays": 2,
       "ease": 2.4,
       "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "beforehand",
       "lastForm": "base form",
       "variants": {
         "beforehand": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1784040754856,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784189790986,
       "loading": false,
       "tw": "事先",
       "engine": "MyMemory",
@@ -13429,7 +13691,7 @@
       "lemma": "preparation",
       "firstSeenAt": 1783708444934,
       "lastSeenAt": 1783708444935,
-      "lastReviewedAt": 1784040759607,
+      "lastReviewedAt": 1784189850935,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
@@ -13442,11 +13704,38 @@
           "clicks": 1,
           "strength": 1,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784189792121,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189824254,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189850935,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127159607,
+      "dueAt": 1784276250935,
       "intervalDays": 1,
-      "ease": 2.4,
+      "ease": 2.0999999999999996,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -13459,7 +13748,7 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784040759607,
+      "updatedAt": 1784189850935,
       "loading": false,
       "tw": "準備工作",
       "engine": "MyMemory",
@@ -13647,7 +13936,7 @@
       "lemma": "supercharge",
       "firstSeenAt": 1783731158391,
       "lastSeenAt": 1783731158391,
-      "lastReviewedAt": 1784040761758,
+      "lastReviewedAt": 1784189851904,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
@@ -13660,11 +13949,38 @@
           "clicks": 1,
           "strength": 1,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784189793385,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189825138,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189851904,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127161758,
+      "dueAt": 1784276251904,
       "intervalDays": 1,
-      "ease": 2.4,
+      "ease": 2.0999999999999996,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -13677,7 +13993,7 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784040761758,
+      "updatedAt": 1784189851904,
       "loading": false,
       "tw": "增壓",
       "engine": "MyMemory",
@@ -13879,27 +14195,37 @@
       "lemma": "include",
       "firstSeenAt": 1783797079306,
       "lastSeenAt": 1783797079306,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784189794502,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783800679309,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784189794502,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784276194502,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "included",
       "lastForm": "-ed / past participle",
       "variants": {
         "included": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783797081763,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784189794502,
       "loading": false,
       "tw": "包括",
       "engine": "MyMemory",
@@ -14147,7 +14473,7 @@
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
       "lastSeenAt": 1783818065060,
-      "lastReviewedAt": 1784040727123,
+      "lastReviewedAt": 1784189838869,
       "lifetimeClicks": 25,
       "sessionClicks": 25,
       "maxClickStreak": 20,
@@ -14169,11 +14495,38 @@
           "clicks": 21,
           "strength": 10,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189773638,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 34,
+          "strength": 10,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189809404,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 34,
+          "strength": 10,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189838869,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 34,
+          "strength": 10,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127127123,
+      "dueAt": 1784276238869,
       "intervalDays": 1,
-      "ease": 2.3,
+      "ease": 1.9999999999999996,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -14187,7 +14540,7 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1784040727123,
+      "updatedAt": 1784189838869,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -14284,7 +14637,7 @@
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
       "lastSeenAt": 1783817450894,
-      "lastReviewedAt": 1784040732956,
+      "lastReviewedAt": 1784189840822,
       "lifetimeClicks": 11,
       "sessionClicks": 11,
       "maxClickStreak": 5,
@@ -14315,11 +14668,38 @@
           "clicks": 6,
           "strength": 6,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784189775854,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 8,
+          "strength": 6,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189811020,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 8,
+          "strength": 6,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189840822,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 8,
+          "strength": 6,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127132956,
+      "dueAt": 1784276240822,
       "intervalDays": 1,
-      "ease": 2.1999999999999997,
+      "ease": 1.8999999999999995,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -14333,7 +14713,7 @@
       "strength": 6,
       "captured": true,
       "known": false,
-      "updatedAt": 1784040732956,
+      "updatedAt": 1784189840822,
       "loading": false,
       "tw": "看法",
       "engine": "MyMemory",
@@ -14472,27 +14852,37 @@
       "lemma": "win",
       "firstSeenAt": 1783800711672,
       "lastSeenAt": 1783800711672,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784189797754,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1783804311678,
-      "intervalDays": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784189797754,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784276197754,
+      "intervalDays": 1,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
+      "status": "young",
+      "totalResets": 1,
       "lastSurface": "win",
       "lastForm": "base form",
       "variants": {
         "win": 1
       },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1783800711683,
+      "clicks": 0,
+      "strength": 0,
+      "captured": false,
+      "known": true,
+      "updatedAt": 1784189797754,
       "loading": true,
       "tw": "查詢中...",
       "geminiPos": "v./n.",
@@ -14524,7 +14914,7 @@
       "lemma": "utilize",
       "firstSeenAt": 1783803789661,
       "lastSeenAt": 1783871186449,
-      "lastReviewedAt": 1784040744313,
+      "lastReviewedAt": 1784189846387,
       "lifetimeClicks": 2,
       "sessionClicks": 2,
       "maxClickStreak": 1,
@@ -14537,11 +14927,38 @@
           "clicks": 2,
           "strength": 2,
           "intervalDays": 0
+        },
+        {
+          "ts": 1784189784869,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 2,
+          "strength": 2,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189819120,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 2,
+          "strength": 2,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189846387,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 2,
+          "strength": 2,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784127144313,
+      "dueAt": 1784276246387,
       "intervalDays": 1,
-      "ease": 2.4,
+      "ease": 2.0999999999999996,
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
@@ -14555,7 +14972,7 @@
       "strength": 2,
       "captured": true,
       "known": false,
-      "updatedAt": 1784040744313,
+      "updatedAt": 1784189846387,
       "loading": false,
       "tw": "利用",
       "translationSource": "Google Translate",
@@ -14685,16 +15102,44 @@
       "lemma": "institute",
       "firstSeenAt": 1784042908475,
       "lastSeenAt": 1784042908475,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784189853885,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1784046508493,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784189800270,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1784189827621,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189853885,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        }
+      ],
+      "dueAt": 1784276253886,
+      "intervalDays": 1,
+      "ease": 2.1999999999999997,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "Institute",
       "lastForm": "base form",
@@ -14706,7 +15151,7 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784042911194,
+      "updatedAt": 1784189853886,
       "loading": false,
       "tw": "研究院）",
       "definitions": [
@@ -14723,16 +15168,44 @@
       "lemma": "nutritionist",
       "firstSeenAt": 1784042962989,
       "lastSeenAt": 1784042962989,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784189854905,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 1,
-      "reviewHistory": [],
-      "dueAt": 1784046563005,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "reviewHistory": [
+        {
+          "ts": 1784189801736,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1784189828754,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189854905,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 1
+        }
+      ],
+      "dueAt": 1784276254905,
+      "intervalDays": 1,
+      "ease": 2.1999999999999997,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "nutritionist",
       "lastForm": "base form",
@@ -14743,7 +15216,7 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784042964139,
+      "updatedAt": 1784189854905,
       "loading": false,
       "tw": "營養師",
       "definitions": [
@@ -14753,6 +15226,128 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "An expert or specialist in nutrition or nutritionistics"
+    },
+    "bonu": {
+      "word": "bonu",
+      "lemma": "bonu",
+      "firstSeenAt": 1784189787052,
+      "lastSeenAt": 1784189787052,
+      "lastReviewedAt": 1784189848502,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784189787052,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1784189821220,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189848501,
+          "day": "2026-07-16",
+          "grade": "good",
+          "source": "known-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 3
+        }
+      ],
+      "dueAt": 1784881048502,
+      "intervalDays": 8,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "young",
+      "totalResets": 3,
+      "known": true,
+      "captured": false,
+      "clicks": 0,
+      "strength": 0,
+      "updatedAt": 1784189848502,
+      "tw": "獎勵",
+      "translationSource": "Google Translate",
+      "tip": ""
+    },
+    "prestigiou": {
+      "word": "prestigiou",
+      "lemma": "prestigiou",
+      "firstSeenAt": 1784189798919,
+      "lastSeenAt": 1784189798919,
+      "lastReviewedAt": 1784189855719,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784189798919,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1784189826503,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189829653,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189852870,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784189855719,
+          "day": "2026-07-16",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        }
+      ],
+      "dueAt": 1784276255719,
+      "intervalDays": 1,
+      "ease": 1.9999999999999996,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "known": false,
+      "captured": true,
+      "updatedAt": 1784189855719,
+      "tw": "享有盛譽",
+      "translationSource": "Google Translate",
+      "tip": ""
     }
   }
 }
