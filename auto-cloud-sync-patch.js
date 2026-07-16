@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260717-1
+/* auto-cloud-sync-patch.js v20260717-2
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -438,32 +438,12 @@
       // ★ 只要不在 list 裡就吸收，不管原本掛哪
       if (el && el.parentElement !== list) list.appendChild(el);
     });
-    const b = document.getElementById('bcollapseBtn');
-    if (b && !b.querySelector('.a2c-label')){
-      b.textContent = '';
-      const label = document.createElement('span');
-      label.className = 'a2c-label';
-      label.textContent = 'A文';
-      b.appendChild(label);
-      b.title = '翻譯 / 播放器';
-    }
+
     setTimeout(() => absorbBusy = false, 200);
   }
   absorbButtons();
 
-  const bBtn = document.getElementById('bcollapseBtn');
-  if (bBtn){
-    new MutationObserver(() => {
-      const b = document.getElementById('bcollapseBtn');
-      if (b && !b.querySelector('.a2c-label')){
-        b.textContent = '';
-        const label = document.createElement('span');
-        label.className = 'a2c-label';
-        label.textContent = 'A文';
-        b.appendChild(label);
-      }
-    }).observe(bBtn, { childList:true, characterData:true, subtree:true });
-  }
+
 
   function checkMainMenu(){
     const side = document.getElementById('side');
