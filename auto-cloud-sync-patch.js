@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260716-1
+/* auto-cloud-sync-patch.js v20260716-1720
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -339,35 +339,149 @@
   }, 10 * 1000);
 
   log('ready v20260716-1');
-/* === v1.1 浮動同步鈕位置：改到左上角微微下（避開頂部菜單） === */
-(function fixCloudSyncBtnPosition(){
-  var STYLE_ID = 'autoCloudSyncBtn-pos-fix-v11';
-  if (document.getElementById(STYLE_ID)) return;
-  var css = document.createElement('style');
-  css.id = STYLE_ID;
+
+})();
+/* === v1.9.3 左上角快捷漢堡（整合 ☁ 同步 / 💬 AI / A文 翻譯播放器） === */
+(function shortcutHubV193(){
+  document.getElementById('shortcutHub')?.remove();
+  document.getElementById('shortcutHubStyle')?.remove();
+  document.getElementById('a2cLabelStyle')?.remove();
+
+  const IDS = ['autoSyncBtn', 'aiChatBtn', 'bcollapseBtn'];
+
+  const hub = document.createElement('div');
+  hub.id = 'shortcutHub';
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'shortcutHubToggle';
+  toggleBtn.title = '快捷選單';
+  toggleBtn.setAttribute('aria-label', '快捷選單');
+  toggleBtn.textContent = '☰';
+  hub.appendChild(toggleBtn);
+  const list = document.createElement('div');
+  list.id = 'shortcutHubList';
+  hub.appendChild(list);
+  document.body.appendChild(hub);
+
+  const css = document.createElement('style');
+  css.id = 'shortcutHubStyle';
   css.textContent = `
-    #autoCloudSyncBtn,
-    .auto-cloud-sync-btn,
-    [data-role="auto-cloud-sync"]{
-      position: fixed !important;
-      top: 64px !important;      /* 微微下，避開頂部菜單/工具列 */
-      left: 12px !important;
-      right: auto !important;
-      bottom: auto !important;
-      z-index: 2147483000 !important;   /* 壓過播放介面 */
-      transform: none !important;
+    #shortcutHub{
+      position:fixed!important;
+      top:60px!important; left:10px!important;
+      z-index:9999!important;
+      display:flex;flex-direction:column;gap:8px;
     }
-    /* 手機/平板直立時再往下一點，避免壓到漢堡選單 */
-    @media (max-width: 820px){
-      #autoCloudSyncBtn,
-      .auto-cloud-sync-btn,
-      [data-role="auto-cloud-sync"]{
-        top: 56px !important;
-        left: 8px !important;
-      }
+    #shortcutHubToggle{
+      width:36px!important;height:36px!important;
+      border-radius:50%!important;border:none!important;
+      background:#4a7c59!important;color:#fff!important;
+      font-size:16px!important;cursor:pointer!important;
+      box-shadow:0 2px 8px rgba(0,0,0,.25)!important;
+      transition:transform .2s!important;
+      display:flex!important;align-items:center!important;justify-content:center!important;
+      padding:0!important;
     }
+    #shortcutHub.open #shortcutHubToggle{ transform:rotate(90deg); }
+    #shortcutHubList{ display:none;flex-direction:column;gap:8px; }
+    #shortcutHub.open #shortcutHubList{ display:flex; }
+    #shortcutHubList > *{
+      position:static!important;
+      top:auto!important;left:auto!important;
+      right:auto!important;bottom:auto!important;
+      transform:none!important;margin:0!important;
+      width:36px!important;height:36px!important;
+      min-width:36px!important;min-height:36px!important;
+      padding:0!important;
+      border-radius:50%!important;border:none!important;
+      box-sizing:border-box!important;
+      background:#4a7c59!important;color:#fff!important;
+      display:flex!important;align-items:center!important;justify-content:center!important;
+      font-size:16px!important;line-height:1!important;
+      box-shadow:0 2px 6px rgba(0,0,0,.2)!important;
+      cursor:pointer!important;
+      transition:transform .15s, background .15s!important;
+      opacity:1!important;
+    }
+    #shortcutHubList > *:hover{
+      background:#5a8c69!important;
+      transform:scale(1.08)!important;
+    }
+    #shortcutHubList > * > *{
+      font-size:16px!important;
+      width:auto!important;height:auto!important;
+      max-width:24px!important;max-height:24px!important;
+    }
+    #shortcutHubList .a2c-label{
+      font-size:12px!important;
+      font-weight:700!important;
+      letter-spacing:-1px!important;
+      line-height:1!important;
+    }
+    #shortcutHub.hidden-by-menu{ display:none!important; }
   `;
   document.head.appendChild(css);
-   
+
+  toggleBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    hub.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (hub.contains(e.target)) return;
+    hub.classList.remove('open');
+  }, true);
+
+  let absorbBusy = false;
+  function absorbButtons(){
+    if (absorbBusy) return;
+    absorbBusy = true;
+    IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.parentElement === document.body) list.appendChild(el);
+    });
+    const b = document.getElementById('bcollapseBtn');
+    if (b && !b.querySelector('.a2c-label')){
+      b.textContent = '';
+      const label = document.createElement('span');
+      label.className = 'a2c-label';
+      label.textContent = 'A文';
+      b.appendChild(label);
+      b.title = '翻譯 / 播放器';
+    }
+    setTimeout(() => absorbBusy = false, 200);
+  }
+  absorbButtons();
+
+  function guardA2C(){
+    const b = document.getElementById('bcollapseBtn');
+    if (b && !b.querySelector('.a2c-label')){
+      b.textContent = '';
+      const label = document.createElement('span');
+      label.className = 'a2c-label';
+      label.textContent = 'A文';
+      b.appendChild(label);
+    }
+  }
+  const bBtn = document.getElementById('bcollapseBtn');
+  if (bBtn){
+    new MutationObserver(guardA2C).observe(bBtn, {
+      childList:true, characterData:true, subtree:true
+    });
+  }
+
+  function checkMainMenu(){
+    const side = document.getElementById('side');
+    if (!side){ hub.classList.remove('hidden-by-menu'); return; }
+    hub.classList.toggle('hidden-by-menu', side.classList.contains('open'));
+  }
+  checkMainMenu();
+  const side = document.getElementById('side');
+  if (side){
+    new MutationObserver(checkMainMenu).observe(side, {
+      attributes:true, attributeFilter:['class']
+    });
+  }
+  new MutationObserver(absorbButtons).observe(document.body, { childList:true });
+
+  console.log('✅ v1.9.3 已注入');
 })();
-})();
+
