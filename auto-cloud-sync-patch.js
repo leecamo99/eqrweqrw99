@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260717-2
+/* auto-cloud-sync-patch.js v20260717-3
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -365,11 +365,15 @@
   css.id = 'shortcutHubStyle';
   css.textContent = `
     #shortcutHub{
-      position:fixed!important;
-      top:60px!important; left:10px!important;
-      z-index:9999!important;
-      display:flex;flex-direction:column;gap:8px;
-    }
+  position:fixed!important;
+  top:60px!important;
+  left:10px!important;
+  z-index:9999!important;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  transition:left .25s ease!important;
+}
     #shortcutHubToggle{
       width:36px!important;height:36px!important;
       border-radius:50%!important;border:none!important;
@@ -446,10 +450,28 @@
 
 
   function checkMainMenu(){
-    const side = document.getElementById('side');
-    if (!side){ hub.classList.remove('hidden-by-menu'); return; }
-    hub.classList.toggle('hidden-by-menu', side.classList.contains('open'));
+
+  const side = document.getElementById('side');
+
+  if (!side){
+    hub.classList.remove('hidden-by-menu');
+    hub.style.left = '10px';
+    return;
   }
+
+  const expanded =
+    side.classList.contains('open') ||
+    side.style.width === '280px' ||
+    side.dataset.collapsed !== '1';
+
+  if (expanded){
+    hub.style.left = '290px';
+  }else{
+    hub.style.left = '10px';
+  }
+
+  hub.classList.remove('hidden-by-menu');
+}
   checkMainMenu();
   const side = document.getElementById('side');
   if (side){
