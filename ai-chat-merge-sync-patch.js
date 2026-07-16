@@ -1,7 +1,5 @@
-/* ai-chat-merge-sync-patch.js v1.2
-   關鍵發現：db 是全域物件，直接寫入 window.db.aiChats 即可
-   - 上傳前：從 localStorage 抓最新 aiChats 塞進 window.db
-   - 下載後：合併本地備份 + 雲端 aiChats
+/* ai-chat-merge-sync-patch.js v1.3
+   關鍵：上傳前用 ghGet 偷抓雲端 aiChats 做合併，避免蓋掉別台的對話
 */
 (function(){
   'use strict';
@@ -23,6 +21,28 @@
     return merged;
   }
 
+  // 偷抓雲端 aiChats（不動 window.db 其他欄位）
+  async function fetchCloudAiChats(){
+    try {
+      var sync = document.getElementById('sync');
+      if (!sync || !sync.token || typeof window.ghGet !== 'function') return { chats:{} };
+      var ex = await window.ghGet(sync.path);
+      if (!ex || !ex.content) return { chats:{} };
+      var decoded;
+      if (typeof window.b64d === 'function'){
+        decoded = window.b64d(ex.content);
+      } else {
+        // 標準 base64 解碼（含 UTF-8 修正）
+        decoded = decodeURIComponent(escape(atob(ex.content.replace(/\s/g,''))));
+      }
+      var remote = JSON.parse(decoded);
+      return remote.aiChats || { chats:{} };
+    } catch(e){
+      console.warn(TAG, '偷抓雲端失敗:', e.message);
+      return { chats:{} };
+    }
+  }
+
   function waitFor(cond, cb, tries){
     tries = tries || 0;
     if (cond()){ cb(); return; }
@@ -31,64 +51,69 @@
   }
 
   waitFor(
-    function(){ return typeof window.cloudUpload==='function' && typeof window.cloudDownload==='function'; },
+    function(){
+      return typeof window.cloudUpload === 'function'
+          && typeof window.cloudDownload === 'function'
+          && typeof window.ghGet === 'function';
+    },
     function(){
       var origUp   = window.cloudUpload;
       var origDown = window.cloudDownload;
 
-      // ---- 上傳包裝：把 localStorage 最新 aiChats 注入 window.db ----
+      // ---- 上傳包裝：偷抓雲端 → 合併 → 注入 window.db → 上傳 ----
       window.cloudUpload = async function(){
         try {
-          var fresh = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
-          if (window.db && fresh.aiChats){
-            window.db.aiChats = fresh.aiChats;
-            console.log(TAG, '📤 注入本地 aiChats 到 window.db，對話數:', Object.keys(fresh.aiChats.chats||{}).length);
-          }
+          var localFull = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+          var localAi = localFull.aiChats || { chats:{} };
+          var localCount = Object.keys(localAi.chats || {}).length;
+
+          var cloudAi = await fetchCloudAiChats();
+          var cloudCount = Object.keys(cloudAi.chats || {}).length;
+
+          var merged = mergeAi(cloudAi, localAi);
+          var mergedCount = Object.keys(merged.chats).length;
+
+          if (window.db) window.db.aiChats = merged;
+          localFull.aiChats = merged;
+          try { localStorage.setItem(STORE_KEY, JSON.stringify(localFull)); } catch(e){}
+          try { localStorage.setItem('notebook_ai_chats_v1', JSON.stringify(merged)); } catch(e){}
+          try { if (window.__aiChat && window.__aiChat.reload) window.__aiChat.reload(); } catch(e){}
+
+          console.log(TAG, '📤 上傳前合併: 本地', localCount, '+ 雲端', cloudCount, '→', mergedCount);
         } catch(e){
-          console.warn(TAG, '注入失敗:', e.message);
+          console.warn(TAG, '上傳前合併失敗:', e.message);
         }
         return await origUp.apply(this, arguments);
       };
 
-      // ---- 下載包裝：先備份本地，下載後合併 ----
+      // ---- 下載包裝：備份本地 → 執行下載 → 合併 ----
       window.cloudDownload = async function(){
-        // 1) 備份本地 aiChats
         var before = {};
         try { before = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e){}
         var backupAi = before.aiChats ? JSON.parse(JSON.stringify(before.aiChats)) : { chats:{} };
         var backupCount = Object.keys(backupAi.chats || {}).length;
 
-        // 2) 執行原下載（雲端整包覆蓋 window.db 和 localStorage）
         var result = await origDown.apply(this, arguments);
 
-        // 3) 讀出雲端下載後的 aiChats
         var after = {};
         try { after = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e){}
         var cloudAi = after.aiChats || { chats:{} };
         var cloudCount = Object.keys(cloudAi.chats || {}).length;
 
-        // 4) 合併
         var merged = mergeAi(cloudAi, backupAi);
         var mergedCount = Object.keys(merged.chats).length;
 
-        // 5) 寫回 localStorage 和 window.db
         after.aiChats = merged;
         try { localStorage.setItem(STORE_KEY, JSON.stringify(after)); } catch(e){}
         if (window.db) window.db.aiChats = merged;
-
-        // 6) 也寫舊 key 保底
         try { localStorage.setItem('notebook_ai_chats_v1', JSON.stringify(merged)); } catch(e){}
+        try { if (window.__aiChat && window.__aiChat.reload) window.__aiChat.reload(); } catch(e){}
 
-        // 7) 通知 AI 抽屜 reload
-        try {
-          if (window.__aiChat && window.__aiChat.reload) window.__aiChat.reload();
-        } catch(e){}
-
-        console.log(TAG, '📥 下載合併：雲端', cloudCount, '+ 本地備份', backupCount, '→', mergedCount);
+        console.log(TAG, '📥 下載合併: 雲端', cloudCount, '+ 本地備份', backupCount, '→', mergedCount);
         return result;
       };
 
-      console.log(TAG, 'v1.2 ready — window.db 直接注入');
+      console.log(TAG, 'v1.3 ready — 上傳前 ghGet 偷抓雲端做合併');
     }
   );
 })();
