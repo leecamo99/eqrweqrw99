@@ -1,4 +1,4 @@
-/* ai-chat-drawer-patch.js  v20260713-2 Phase A + Blocker Fix
+/* ai-chat-drawer-patch.js  v20260717-1 Phase A + Blocker Fix
    AI 駐站助理 - Phase A + Blocker Fix（Level 1 + 部分 Level 2）
 
    新增功能（相對 v1）：
@@ -15,7 +15,7 @@
 (function () {
   'use strict';
   var TAG = '[AIChatDrawer]';
-  var VER = 'v20260713-3';
+  var VER = 'v20260717-1';
   var STORAGE_KEY = 'notebook_ai_chats_v1';
   var MODEL_FALLBACK = ['gemini-3.1-flash-lite', 'gemini-3.5-flash', 'gemini-3-flash-preview'];
   var MAX_ARTICLE_CHARS = 3000;
@@ -324,7 +324,7 @@
     '  transition:transform .2s}' +
     '#aiChatBtn:hover{transform:scale(1.1)}' +
     '' +
-    '#aiChatDrawer{position:fixed;top:0;right:-450px;width:420px;height:100vh;' +
+      '#aiChatDrawer{position:fixed;top:0;right:-450px;width:420px;height:calc(100vh - 100px);' +
     '  background:#f5f1e8;box-shadow:-4px 0 20px rgba(0,0,0,.2);z-index:100000;' +
     '  transition:right .3s ease;display:flex;flex-direction:column;' +
     '  font:13px/1.5 -apple-system,"Segoe UI",sans-serif}' +
@@ -413,6 +413,13 @@
     '#aiChatDrawer .aiInputBar button{padding:0 16px;background:#a68a56;color:#fff;' +
     '  border:none;border-radius:6px;cursor:pointer;font-weight:bold}' +
     '#aiChatDrawer .aiInputBar button:disabled{background:#ccc;cursor:not-allowed}' +
+         '' +
+    '#aiChatDrawer .aiResizeHandle{position:absolute;left:0;bottom:0;width:24px;height:24px;' +
+    '  display:flex;align-items:center;justify-content:center;cursor:nesw-resize;' +
+    '  background:rgba(166,138,86,.2);color:#a68a56;font-size:14px;font-weight:bold;' +
+    '  border-top-right-radius:6px;user-select:none;z-index:10;' +
+    '  transition:background .15s}' +
+    '#aiChatDrawer .aiResizeHandle:hover{background:rgba(166,138,86,.5);color:#fff}' +
     '' +
     '@media (max-width:600px){' +
     '  #aiChatDrawer{width:100vw;right:-100vw}' +
@@ -861,6 +868,57 @@
       }
     };
     document.getElementById('aiChatSend').onclick = sendMessage;
+         // === 拖曳調整尺寸 ===
+    var handle = document.createElement('div');
+    handle.className = 'aiResizeHandle';
+    handle.title = '拖曳調整大小';
+    handle.textContent = '⇱';
+    drawer.appendChild(handle);
+
+    // 讀取記憶尺寸
+    try {
+      var sz = JSON.parse(localStorage.getItem('aiChatDrawer_size_v1') || '{}');
+      if (sz.w) drawer.style.width  = Math.max(320, Math.min(sz.w, window.innerWidth  - 20)) + 'px';
+      if (sz.h) drawer.style.height = Math.max(300, Math.min(sz.h, window.innerHeight - 20)) + 'px';
+    } catch(e){}
+
+    var startX, startY, startW, startH, dragging = false;
+    function onStart(e){
+      dragging = true;
+      var pt = e.touches ? e.touches[0] : e;
+      startX = pt.clientX; startY = pt.clientY;
+      var r = drawer.getBoundingClientRect();
+      startW = r.width; startH = r.height;
+      document.body.style.userSelect = 'none';
+      e.preventDefault(); e.stopPropagation();
+    }
+    function onMove(e){
+      if (!dragging) return;
+      var pt = e.touches ? e.touches[0] : e;
+      var dx = startX - pt.clientX;   // 往左 = 變寬
+      var dy = pt.clientY - startY;   // 往下 = 變高
+      var w = Math.max(320, Math.min(window.innerWidth  - 20, startW + dx));
+      var h = Math.max(300, Math.min(window.innerHeight - 20, startH + dy));
+      drawer.style.width  = w + 'px';
+      drawer.style.height = h + 'px';
+    }
+    function onEnd(){
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.userSelect = '';
+      var r = drawer.getBoundingClientRect();
+      try {
+        localStorage.setItem('aiChatDrawer_size_v1',
+          JSON.stringify({ w: Math.round(r.width), h: Math.round(r.height) }));
+      } catch(e){}
+      console.log(TAG, '💾 記住尺寸', Math.round(r.width), '×', Math.round(r.height));
+    }
+    handle.addEventListener('mousedown',  onStart);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup',   onEnd);
+    handle.addEventListener('touchstart', onStart, { passive:false });
+    document.addEventListener('touchmove', onMove, { passive:false });
+    document.addEventListener('touchend',  onEnd);
   }
 
   // ⭐ 遮擋物隔離
