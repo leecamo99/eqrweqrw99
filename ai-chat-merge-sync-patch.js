@@ -1,4 +1,4 @@
-/* ai-chat-merge-sync-patch.js v1.0
+/* ai-chat-merge-sync-patch.js v20260717-2
    包住 cloudUpload / cloudDownload，讓 aiChats 用「合併」而不是「覆蓋」
    規則：同 id 取 updatedAt 較新的；不同 id 全部保留
 */
@@ -72,7 +72,7 @@
         saveLocal(afterDb);
         // 也回寫舊 key，讓 patch 舊邏輯能讀到
         try { localStorage.setItem('notebook_ai_chats_v1', JSON.stringify(merged)); } catch(e){}
-
+try { window.__aiChat && window.__aiChat.reload && window.__aiChat.reload(); } catch(e){} // ★ 追加
         console.log(TAG, '📥 下載合併:', '雲端', cloudCount, '+ 本地', localCount, '→ 合併', mergedCount);
         return result;
       };
@@ -103,7 +103,7 @@
           backup.aiChats = merged;
           saveLocal(backup);
           try { localStorage.setItem('notebook_ai_chats_v1', JSON.stringify(merged)); } catch(e){}
-
+try { window.__aiChat && window.__aiChat.reload && window.__aiChat.reload(); } catch(e){} // ★ 追加
           console.log(TAG, '📤 上傳前合併:', '本地', localCount, '+ 雲端', cloudCount, '→', Object.keys(merged.chats).length);
         } catch(e){
           console.warn(TAG, '上傳前合併失敗（雲端可能還沒資料）:', e.message);
