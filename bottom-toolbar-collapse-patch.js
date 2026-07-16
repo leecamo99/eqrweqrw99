@@ -1,4 +1,4 @@
-/* bottom-toolbar-collapse-patch.js  v20260713-1
+/* bottom-toolbar-collapse-patch.js  v20260717-1
    底部工具列一鍵收合
 
    目標元素（可自訂）：
@@ -76,14 +76,22 @@
     updateBtnIcon();
   }
 
-  function updateBtnIcon() {
+   function updateBtnIcon() {
     var btn = document.getElementById('bcollapseBtn');
     if (!btn) return;
     var collapsed = isCollapsed();
-    btn.textContent = collapsed ? '\u{1F53C}' : '\u{1F53D}';
-    btn.title = collapsed ? '展開底部工具列 (Ctrl+B)' : '收合底部工具列 (Ctrl+B)';
-    btn.style.background = collapsed ? '#8f8' : '#a68a56';
-    btn.style.color = collapsed ? '#333' : '#fff';
+
+    // 用 A文 標籤（若已存在則跳過，避免重寫觸發別的 observer）
+    if (!btn.querySelector('.a2c-label')) {
+      btn.textContent = '';
+      var label = document.createElement('span');
+      label.className = 'a2c-label';
+      label.textContent = 'A文';
+      label.style.cssText = 'font-size:12px;font-weight:700;letter-spacing:-1px;line-height:1;';
+      btn.appendChild(label);
+    }
+    btn.title = collapsed ? '展開翻譯 / 播放器 (Ctrl+B)' : '收合翻譯 / 播放器 (Ctrl+B)';
+    // 讓快捷選單裡的顏色統一，不再依 collapsed 換色
   }
 
   function toggle() {
