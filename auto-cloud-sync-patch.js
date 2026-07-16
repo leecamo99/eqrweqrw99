@@ -165,7 +165,7 @@
 
     if (document.getElementById('autoSyncBtn')) return;
 
-    var btn = document.createElement('top');
+    var btn = document.createElement('bottom');
     btn.id = 'autoSyncBtn';
 
     btn.style.cssText = 
@@ -339,5 +339,35 @@
   }, 10 * 1000);
 
   log('ready v20260716-1');
-
+/* === v1.1 浮動同步鈕位置：改到左上角微微下（避開頂部菜單） === */
+(function fixCloudSyncBtnPosition(){
+  var STYLE_ID = 'autoCloudSyncBtn-pos-fix-v11';
+  if (document.getElementById(STYLE_ID)) return;
+  var css = document.createElement('style');
+  css.id = STYLE_ID;
+  css.textContent = `
+    #autoCloudSyncBtn,
+    .auto-cloud-sync-btn,
+    [data-role="auto-cloud-sync"]{
+      position: fixed !important;
+      top: 64px !important;      /* 微微下，避開頂部菜單/工具列 */
+      left: 12px !important;
+      right: auto !important;
+      bottom: auto !important;
+      z-index: 2147483000 !important;   /* 壓過播放介面 */
+      transform: none !important;
+    }
+    /* 手機/平板直立時再往下一點，避免壓到漢堡選單 */
+    @media (max-width: 820px){
+      #autoCloudSyncBtn,
+      .auto-cloud-sync-btn,
+      [data-role="auto-cloud-sync"]{
+        top: 56px !important;
+        left: 8px !important;
+      }
+    }
+  `;
+  document.head.appendChild(css);
+   
+})();
 })();
