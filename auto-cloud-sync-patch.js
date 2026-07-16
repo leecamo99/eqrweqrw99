@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260717-4
+/* auto-cloud-sync-patch.js v20260717-5
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -341,8 +341,9 @@
   log('ready v20260716-1');
 
 })();
-/* === v1.9.4 左上角快捷漢堡（放寬吸收條件 + 定期補抓） === */
-(function shortcutHubV194(){
+/* === v1.9.5 左上角快捷漢堡（跟 Sidebar 同步滑動，不寫死寬度） === */
+(function shortcutHubV195(){
+
   document.getElementById('shortcutHub')?.remove();
   document.getElementById('shortcutHubStyle')?.remove();
 
@@ -350,160 +351,203 @@
 
   const hub = document.createElement('div');
   hub.id = 'shortcutHub';
+
   const toggleBtn = document.createElement('button');
   toggleBtn.id = 'shortcutHubToggle';
   toggleBtn.title = '快捷選單';
   toggleBtn.setAttribute('aria-label', '快捷選單');
   toggleBtn.textContent = '☰';
+
   hub.appendChild(toggleBtn);
+
   const list = document.createElement('div');
   list.id = 'shortcutHubList';
+
   hub.appendChild(list);
   document.body.appendChild(hub);
 
   const css = document.createElement('style');
   css.id = 'shortcutHubStyle';
+
   css.textContent = `
     #shortcutHub{
-  position:fixed!important;
-  top:60px!important;
-  left:10px!important;
-  z-index:9999!important;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  transition:left .25s ease!important;
-}
-  #shortcutHubToggle{
-  width:36px!important;
-  height:36px!important;
-  border-radius:50%!important;
-  border:none!important;
-  background:#4a7c59!important;
-  color:#fff!important;
+      position:fixed!important;
+      top:60px!important;
+      left:10px!important;
+      z-index:999999!important;
+      display:flex!important;
+      flex-direction:column!important;
+      gap:8px!important;
+      pointer-events:auto!important;
+    }
 
-  position:relative!important;
-  left:0!important;
+    #shortcutHubToggle{
+      width:36px!important;
+      height:36px!important;
+      border-radius:50%!important;
+      border:none!important;
+      background:#4a7c59!important;
+      color:#fff!important;
+      position:relative!important;
+      left:0!important;
+      font-size:16px!important;
+      cursor:pointer!important;
+      box-shadow:0 2px 8px rgba(0,0,0,.25)!important;
+      transition:left .25s ease, transform .2s ease!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      padding:0!important;
+      user-select:none!important;
+    }
 
-  font-size:16px!important;
-  cursor:pointer!important;
-  box-shadow:0 2px 8px rgba(0,0,0,.25)!important;
+    #shortcutHub.open #shortcutHubToggle{
+      transform:rotate(90deg)!important;
+    }
 
-  transition:
-    left .25s ease,
-    transform .2s!important;
+    #shortcutHubList{
+      display:none!important;
+      flex-direction:column!important;
+      gap:8px!important;
+    }
 
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  padding:0!important;
-}
-    #shortcutHub.open #shortcutHubToggle{ transform:rotate(90deg); }
-    #shortcutHubList{ display:none;flex-direction:column;gap:8px; }
-    #shortcutHub.open #shortcutHubList{ display:flex; }
+    #shortcutHub.open #shortcutHubList{
+      display:flex!important;
+    }
+
     #shortcutHubList > *{
       position:static!important;
-      top:auto!important;left:auto!important;
-      right:auto!important;bottom:auto!important;
-      transform:none!important;margin:0!important;
-      width:36px!important;height:36px!important;
-      min-width:36px!important;min-height:36px!important;
+      top:auto!important;
+      left:auto!important;
+      right:auto!important;
+      bottom:auto!important;
+      transform:none!important;
+      margin:0!important;
+      width:36px!important;
+      height:36px!important;
+      min-width:36px!important;
+      min-height:36px!important;
       padding:0!important;
-      border-radius:50%!important;border:none!important;
+      border-radius:50%!important;
+      border:none!important;
       box-sizing:border-box!important;
-      background:#4a7c59!important;color:#fff!important;
-      display:flex!important;align-items:center!important;justify-content:center!important;
-      font-size:16px!important;line-height:1!important;
+      background:#4a7c59!important;
+      color:#fff!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      font-size:16px!important;
+      line-height:1!important;
       box-shadow:0 2px 6px rgba(0,0,0,.2)!important;
       cursor:pointer!important;
-      transition:transform .15s, background .15s!important;
+      transition:transform .15s ease, background .15s ease!important;
       opacity:1!important;
     }
+
     #shortcutHubList > *:hover{
       background:#5a8c69!important;
       transform:scale(1.08)!important;
     }
+
     #shortcutHubList > * > *{
       font-size:16px!important;
-      width:auto!important;height:auto!important;
-      max-width:24px!important;max-height:24px!important;
+      width:auto!important;
+      height:auto!important;
+      max-width:24px!important;
+      max-height:24px!important;
     }
+
     #shortcutHubList .a2c-label{
       font-size:12px!important;
       font-weight:700!important;
       letter-spacing:-1px!important;
       line-height:1!important;
     }
-    #shortcutHub.hidden-by-menu{ display:none!important; }
   `;
+
   document.head.appendChild(css);
 
-  toggleBtn.addEventListener('click', e => {
+  toggleBtn.addEventListener('click', function(e){
     e.stopPropagation();
     hub.classList.toggle('open');
   });
-  document.addEventListener('click', e => {
+
+  document.addEventListener('click', function(e){
     if (hub.contains(e.target)) return;
     hub.classList.remove('open');
   }, true);
 
   let absorbBusy = false;
+
   function absorbButtons(){
     if (absorbBusy) return;
+
     absorbBusy = true;
-    IDS.forEach(id => {
+
+    IDS.forEach(function(id){
       const el = document.getElementById(id);
-      // ★ 只要不在 list 裡就吸收，不管原本掛哪
-      if (el && el.parentElement !== list) list.appendChild(el);
+
+      if (el && el.parentElement !== list) {
+        list.appendChild(el);
+      }
     });
 
-    setTimeout(() => absorbBusy = false, 200);
+    setTimeout(function(){
+      absorbBusy = false;
+    }, 200);
   }
-  absorbButtons();
 
+  function updateHamburgerPosition(){
 
+    const side = document.getElementById('side');
+    const btn = document.getElementById('shortcutHubToggle');
 
-function checkMainMenu(){
+    if (!btn) return;
 
-  const side = document.getElementById('side');
+    btn.style.position = 'relative';
+    btn.style.transition = 'left .25s ease';
 
-  if (!side) return;
+    if (!side) {
+      btn.style.left = '0px';
+      return;
+    }
 
-  hub.classList.remove('hidden-by-menu');
-}
-
-function updateHamburgerPosition(){
-
-  const side = document.getElementById('side');
-  const btn  = document.getElementById('shortcutHubToggle');
-
-  if (!side || !btn) return;
-
-  btn.style.left =
-    side.classList.contains('open')
+    btn.style.left = side.classList.contains('open')
       ? side.offsetWidth + 'px'
       : '0px';
-}
+  }
 
-checkMainMenu();
-updateHamburgerPosition();
+  function initSidebarObserver(){
 
-const sideEl = document.getElementById('side');
+    const side = document.getElementById('side');
 
-if (sideEl) {
-  new MutationObserver(updateHamburgerPosition)
-    .observe(sideEl, {
+    if (!side) return;
+
+    new MutationObserver(function(){
+      updateHamburgerPosition();
+    }).observe(side, {
       attributes:true,
-      attributeFilter:['class','style']
+      attributeFilter:['class', 'style']
     });
-}
-  
+  }
 
-  // ★ 監看整個 DOM 樹（含深層）+ 每 2 秒補抓
-  new MutationObserver(absorbButtons).observe(document.body, {
-    childList:true, subtree:true
+  absorbButtons();
+  updateHamburgerPosition();
+  initSidebarObserver();
+
+  new MutationObserver(function(){
+    absorbButtons();
+    updateHamburgerPosition();
+  }).observe(document.body, {
+    childList:true,
+    subtree:true
   });
-  setInterval(absorbButtons, 2000);
 
-  console.log('✅ v1.9.4 已注入');
+  setInterval(function(){
+    absorbButtons();
+    updateHamburgerPosition();
+  }, 2000);
+
+  console.log('✅ v1.9.5 快捷漢堡已注入：Sidebar 展開右移，縮回歸位');
+
 })();
