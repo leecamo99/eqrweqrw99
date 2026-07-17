@@ -1,5 +1,5 @@
 /*!
- * srs-settings-patch.js  v20260718-2
+ * srs-settings-patch.js  v20260718-1
  * SRS / Anki 風格參數面板
  * 儲存位置：localStorage['__srsSettings']
  *
@@ -237,29 +237,39 @@
 
   // ==== 注入到「設定與管理」中心，並移除側邊欄 SRS 按鈕 ====
   function injectButton() {
-    // 先清掉舊版可能插在側邊欄或錯誤位置的按鈕
+    // 1. 移除舊版側邊欄按鈕
     var oldSide = document.getElementById('srsSideBtn');
     if (oldSide) oldSide.remove();
 
-    var oldWrong = document.getElementById('srsHubEntry');
-    if (oldWrong) oldWrong.remove();
+    // 2. 移除舊版錯誤位置按鈕
+    var oldHubEntry = document.getElementById('srsHubEntry');
+    if (oldHubEntry) oldHubEntry.remove();
 
-    // 設定中心是 lazy 產生的，沒出現就下次再試
+    // 3. 找設定中心 Modal
     var hub = document.getElementById('settingsHubModal');
     if (!hub) return false;
 
-    // 已經注入過就不要重複
-    if (hub.querySelector('#srsHubCard')) return true;
+    // 4. 已插入過就停止
+    if (document.getElementById('srsHubCard')) return true;
 
-    // 找設定中心內容容器
-    var box =
-      hub.querySelector('.box, .content, [class*=box], [class*=content]') ||
-      hub.firstElementChild ||
-      hub;
+    // 5. 找「學習資料統計」卡片
+    var all = Array.prototype.slice.call(hub.querySelectorAll('div,section,article'));
 
-    if (!box) return false;
+    var statsCard = all.find(function (el) {
+      var txt = el.textContent || '';
+      return txt.includes('學習資料統計') &&
+             txt.includes('筆記本數量') &&
+             txt.includes('弱點單字');
+    });
 
-    // 建立 SRS 設定卡片
+    // 6. 如果找不到精準卡片，就找含「學習資料統計」的最小區塊
+    if (!statsCard) {
+      statsCard = all.find(function (el) {
+        return (el.textContent || '').includes('學習資料統計');
+      });
+    }
+
+    // 7. 建立 SRS 卡片
     var card = document.createElement('div');
     card.id = 'srsHubCard';
     card.style.cssText =
@@ -271,7 +281,7 @@
         '🧠 SRS 學習參數' +
       '</h3>' +
       '<p style="margin:0 0 12px;color:#777;font-size:13px;line-height:1.6;">' +
-        '調整 Anki 風格複習參數，例如每日新卡、複習上限、熟練門檻、忘記次數與音訊設定。' +
+        '調整 Anki 風格複習參數：每日新卡、複習上限、熟練門檻、忘記次數、音訊與計時器。' +
       '</p>' +
       '<button id="openSrsSettingsFromHub" class="btn" style="' +
         'background:#a68a56;color:#fff;border:0;border-radius:6px;' +
@@ -280,19 +290,22 @@
         '🧠 開啟 SRS 學習參數' +
       '</button>';
 
-    // 優先插在「學習資料統計」卡片下面
-    var children = Array.prototype.slice.call(box.children || []);
-    var statsBlock = children.find(function (el) {
-      return el.textContent && el.textContent.includes('學習資料統計');
-    });
-
-    if (statsBlock && statsBlock.parentNode) {
-      statsBlock.insertAdjacentElement('afterend', card);
+    // 8. 插入位置：學習資料統計下面；找不到就放在設定中心最後
+    if (statsCard && statsCard.parentNode) {
+      statsCard.insertAdjacentElement('afterend', card);
     } else {
+      var box =
+        hub.querySelector('.box') ||
+        hub.querySelector('[class*=box]') ||
+        hub.querySelector('[style*=background]') ||
+        hub.firstElementChild ||
+        hub;
+
       box.appendChild(card);
     }
 
-    var openBtn = card.querySelector('#openSrsSettingsFromHub');
+    // 9. 綁定開啟事件
+    var openBtn = document.getElementById('openSrsSettingsFromHub');
     if (openBtn) {
       openBtn.onclick = function () {
         renderModal();
