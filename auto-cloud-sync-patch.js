@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260717-51
+/* auto-cloud-sync-patch.js v20260717-6
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -463,6 +463,9 @@ addBtn.onclick = () => {
   function absorbButtons(){
     if (absorbBusy) return;
     absorbBusy = true;
+     const ai = document.getElementById('aiChatBtn');
+      if(ai) ai.textContent = 'AI';
+     
     IDS.forEach(id => {
       const el = document.getElementById(id);
       // ★ 只要不在 list 裡就吸收，不管原本掛哪
