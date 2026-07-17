@@ -1,4 +1,4 @@
-/* flash-later-fix-patch.js  v20260713-5
+/* flash-later-fix-patch.js  v20260717-1
    關鍵修正：進度分母 bug
    - 舊版：totalGuess = guessTotal() + seenWords.length，多加 1 且永不更新
    - 新版：閃卡開啟時拍快照 initialTotal，關閉還原，重開重算
@@ -13,7 +13,7 @@
 (function () {
   'use strict';
   var TAG = '[FlashEnhance]';
-  var VER = 'v20260713-5';
+  var VER = 'v20260717-1';
 
   var BLOCKERS = ['fullTranslateBox'];
 
@@ -61,21 +61,27 @@
     }
   }
 
-  // 計算目前 db.learn 中到期可複習的字數
+    // 計算本輪真正的閃卡池：只算 captured=true 且 known!==true 的字
+  // 不看 dueAt，因為「開始閃卡複習」是 force 模式，本來就是把捕獲池全部拿出來複習
   function countDueWords() {
     try {
       var db = JSON.parse(localStorage.getItem('notebook_platform_v3') || '{}');
       var learn = db.learn || {};
-      var now = Date.now();
-      var due = 0;
+      var total = 0;
+
       Object.keys(learn).forEach(function (w) {
         var e = learn[w];
         if (!e) return;
-        var d = e.due || e.dueAt || (e.srs && e.srs.due) || 0;
-        if (!d || d <= now) due++;
+
+        if (e.captured === true && e.known !== true) {
+          total++;
+        }
       });
-      return due;
-    } catch (e) { return 0; }
+
+      return total;
+    } catch (e) {
+      return 0;
+    }
   }
 
   function updateProgress() {
@@ -94,14 +100,19 @@
       }
     }
 
-    // 移除舊標記
+      // 移除舊標記，並清掉可能被舊 patch / console 補丁留下的 📊 x / y
     var oldTag = flashMeta.querySelector('.flash-progress');
     if (oldTag) oldTag.remove();
+
+    flashMeta.innerHTML = flashMeta.innerHTML
+      .replace(/(?:\s*·?\s*📊\s*\d+\s*\/\s*\d+)+/g, '')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
 
     // ⭐ 分母用 initialTotal（開啟時的快照）
     // 分子 = seenWords.length
     // 保底：分母至少要 >= 分子
-    var denominator = Math.max(initialTotal, seenWords.length);
+      var denominator = Math.max(initialTotal || countDueWords(), seenWords.length);
 
     var tag = document.createElement('span');
     tag.className = 'flash-progress';
@@ -238,10 +249,11 @@
       resetProgress();
       hideBlockers();
       boostFlashZIndex();
-      // 延遲 200ms 拍快照，等 db 讀取穩定
+          // 延遲 200ms 拍快照，等 db 讀取穩定
       setTimeout(function () {
         initialTotal = countDueWords();
-        console.log(TAG, '\uD83C\uDFAF 閃卡開啟，本輪總計 ' + initialTotal + ' 字');
+        console.log(TAG, '🎯 閃卡開啟，本輪總計 ' + initialTotal + ' 字');
+        updateProgress();
       }, 200);
     }
     if (!isShown && wasShown) {
