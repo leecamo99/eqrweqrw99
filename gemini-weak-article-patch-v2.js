@@ -14,7 +14,7 @@
   const STORE='notebook_platform_v3';
   const KEY='notebook_gemini_api_key_v1';
   const MODEL_KEY='notebook_gemini_model_v1';
-  const DEFAULT_MODEL='gemini-3.5-flash';
+  const DEFAULT_MODEL='gemini-3.1-flash-lite';
   let inFlight=false;
 
   function esc(s){return String(s||'').replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));}
