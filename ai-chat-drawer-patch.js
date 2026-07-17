@@ -1,4 +1,4 @@
-/* ai-chat-drawer-patch.js  v20260717-3 Phase A + Blocker Fix
+/* ai-chat-drawer-patch.js  v20260717-4 Phase A + Blocker Fix
    AI 駐站助理 - Phase A + Blocker Fix（Level 1 + 部分 Level 2）
 
    新增功能（相對 v1）：
@@ -451,11 +451,25 @@
     '  transition:background .15s}' +
     '#aiChatDrawer .aiResizeHandle:hover{background:rgba(166,138,86,.5);color:#fff}' +
     '' +
-    '@media (max-width:600px){' +
+       '@media (max-width:600px){' +
     '  #aiChatDrawer{width:100vw;right:-100vw}' +
     '  #aiChatDrawer .aiListPanel{width:100px}' +
     '  #aiChatDrawer .aiCtxPop{width:calc(100vw - 24px);right:12px}' +
     '  #aiChatBtn{bottom:200px;right:8px;width:44px;height:44px;font-size:20px}' +
+    '}' +
+    '' +
+    '#autoSyncBtn{' +
+    '  width:36px !important;' +
+    '  height:36px !important;' +
+    '  min-width:36px !important;' +
+    '  min-height:36px !important;' +
+    '  right:auto !important;' +
+    '  bottom:auto !important;' +
+    '  position:static !important;' +
+    '  transform:translateX(-2px) !important;' +
+    '  font-size:18px !important;' +
+    '  padding:0 !important;' +
+    '  box-sizing:border-box !important;' +
     '}';
 
   function injectCSS() {
