@@ -1,6 +1,40 @@
 {
   "notebooks": [
     {
+      "id": "nb_1784314678084",
+      "name": "1",
+      "date": "2026-07-17",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1784314678084c0",
+          "title": "Chapter 1",
+          "text": "Hi Paul, what can I help you with?",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "Paul": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "what": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "help": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
       "id": "nb_1784053802771",
       "name": "金文法－",
       "date": "2026-07-14",
@@ -11612,7 +11646,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784314093847,
+  "updatedAt": 1784314678087,
   "learn": {
     "github": {
       "word": "github",
@@ -16328,6 +16362,156 @@
       "tw": "獎勵",
       "translationSource": "Google Translate",
       "tip": ""
+    },
+    "prestigiou": {
+      "word": "prestigiou",
+      "lemma": "prestigiou",
+      "firstSeenAt": 1784299230154,
+      "lastSeenAt": 1784299230154,
+      "lastReviewedAt": 1784300072053,
+      "lifetimeClicks": 0,
+      "sessionClicks": 0,
+      "maxClickStreak": 0,
+      "reviewHistory": [
+        {
+          "ts": 1784299230154,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 0
+        },
+        {
+          "ts": 1784299233166,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299305403,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299309492,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299437599,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299442324,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299709694,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299715857,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299742962,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784299751799,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784300065447,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784300072053,
+          "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 1
+        }
+      ],
+      "dueAt": 1784386472053,
+      "intervalDays": 1,
+      "ease": 1.3,
+      "lapses": 0,
+      "status": "learning",
+      "totalResets": 0,
+      "known": false,
+      "captured": true,
+      "updatedAt": 1784300072053,
+      "tw": "享有盛譽",
+      "translationSource": "Google Translate",
+      "tip": "",
+      "geminiPos": "adj.",
+      "geminiTw": "有聲望的、受尊敬的、高級的",
+      "geminiEx": "The company has a prestigious reputation in the industry.",
+      "geminiTwEx": "這家公司在業界享有崇高的聲譽。",
+      "geminiPhonetic": "",
+      "geminiSynonyms": [],
+      "geminiDerivatives": [],
+      "geminiCollocations": [],
+      "geminiLevel": "",
+      "geminiTip": "",
+      "geminiSource": "gemini",
+      "geminiUpdatedAt": 1784299232225,
+      "geminiRaw": {
+        "pos": "adj.",
+        "tw": "有聲望的、受尊敬的、高級的",
+        "ex": "The company has a prestigious reputation in the industry.",
+        "tw_ex": "這家公司在業界享有崇高的聲譽。"
+      }
     }
   },
   "aiChats": {
