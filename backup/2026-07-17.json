@@ -11646,7 +11646,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784314678087,
+  "updatedAt": 1784318759783,
   "learn": {
     "github": {
       "word": "github",
@@ -16362,156 +16362,6 @@
       "tw": "獎勵",
       "translationSource": "Google Translate",
       "tip": ""
-    },
-    "prestigiou": {
-      "word": "prestigiou",
-      "lemma": "prestigiou",
-      "firstSeenAt": 1784299230154,
-      "lastSeenAt": 1784299230154,
-      "lastReviewedAt": 1784300072053,
-      "lifetimeClicks": 0,
-      "sessionClicks": 0,
-      "maxClickStreak": 0,
-      "reviewHistory": [
-        {
-          "ts": 1784299230154,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 0
-        },
-        {
-          "ts": 1784299233166,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299305403,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299309492,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299437599,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299442324,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299709694,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299715857,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299742962,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784299751799,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784300065447,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784300072053,
-          "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 1
-        }
-      ],
-      "dueAt": 1784386472053,
-      "intervalDays": 1,
-      "ease": 1.3,
-      "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
-      "known": false,
-      "captured": true,
-      "updatedAt": 1784300072053,
-      "tw": "享有盛譽",
-      "translationSource": "Google Translate",
-      "tip": "",
-      "geminiPos": "adj.",
-      "geminiTw": "有聲望的、受尊敬的、高級的",
-      "geminiEx": "The company has a prestigious reputation in the industry.",
-      "geminiTwEx": "這家公司在業界享有崇高的聲譽。",
-      "geminiPhonetic": "",
-      "geminiSynonyms": [],
-      "geminiDerivatives": [],
-      "geminiCollocations": [],
-      "geminiLevel": "",
-      "geminiTip": "",
-      "geminiSource": "gemini",
-      "geminiUpdatedAt": 1784299232225,
-      "geminiRaw": {
-        "pos": "adj.",
-        "tw": "有聲望的、受尊敬的、高級的",
-        "ex": "The company has a prestigious reputation in the industry.",
-        "tw_ex": "這家公司在業界享有崇高的聲譽。"
-      }
     }
   },
   "aiChats": {
@@ -16534,5 +16384,22 @@
       }
     },
     "currentId": "chat_1784219845369"
-  }
+  },
+  "generatedArticles": [
+    {
+      "ts": 1784318759778,
+      "type": "weakWords",
+      "model": "gemini-2.5-flash",
+      "prompt": "你是一位多益 (TOEIC) 專家，目標分數 800+。請根據以下弱點單字，寫一篇適合多益考試風格的英文短文。\n\n要求：\n1. 英文文章約 250-350 字。\n2. 主題貼近多益常考情境：商業郵件、報告、公告、會議、旅遊、交通、購物等。\n3. 每個弱點單字至少自然使用一次，可以使用正確詞形變化。\n4. 難度符合多益 700-800 分程度。\n5. 文章後面用繁體中文列出「單字複習表」：單字 / 詞性 / 繁中意思 / 文章中的一句例句。\n6. 最後提供 5 題簡短理解問題（多益題型）。\n7. 請直接輸出內容，不要解釋你如何生成。\n8. 輸出純文字，不要使用任何 Markdown 語法（不要用 **, __, *, #, [], 等符號）。單字直接以純文字呈現，不做粗體、斜體或程式碼標記。\n\n弱點單字：immerse（深度體驗）, spontaneously（自發地）, over（超过）, perspective（看法）, speak（語音）, overtime（加班）",
+      "result": "Subject: Enhancing Team Collaboration and Skill Development Through \"Synergy Sprint\"\n\nDear Team,\n\nI hope this message finds you well. I'm thrilled to announce a significant new initiative, \"Synergy Sprint,\" specifically designed to foster enhanced collaboration and accelerate professional growth across all our departments",
+      "words": [
+        "immerse",
+        "spontaneously",
+        "over",
+        "perspective",
+        "speak",
+        "overtime"
+      ]
+    }
+  ]
 }
