@@ -1,5 +1,5 @@
 /*!
- * srs-settings-patch.js  v20260718-4
+ * srs-settings-patch.js  v20260718-5
  * SRS / Anki 風格參數面板
  * 儲存位置：localStorage['__srsSettings']
  *
@@ -14,7 +14,7 @@
 (function () {
   'use strict';
   var TAG = '[SrsSettings]';
-  var VER = 'v20260718-4';
+  var VER = 'v20260718-5';
   var STORAGE_KEY = '__srsSettings';
 
   // ==== 預設值（對照 Anki / memoryToast）====
@@ -245,15 +245,16 @@
     var oldHubEntry = document.getElementById('srsHubEntry');
     if (oldHubEntry) oldHubEntry.remove();
 
-    // 設定中心 Modal
+    // 找設定中心 Modal
     var hub = document.getElementById('settingsHubModal');
     if (!hub) return false;
 
-    // 避免重複插入
+    // 已經有就不要重複插入
     if (document.getElementById('srsHubCard')) return true;
 
-    // 你的 settingsHubModal 裡真正的內容容器是 firstElementChild
+    // settingsHubModal 的真正內容容器
     var target = hub.firstElementChild || hub;
+    if (!target) return false;
 
     var card = document.createElement('div');
     card.id = 'srsHubCard';
@@ -294,17 +295,45 @@
       };
     }
 
+    console.log(TAG, 'SRS card injected into settings hub');
+
     return true;
-  }
   }
 
   function boot() {
+    window.__injectSrsToHub = injectButton;
+
     setTimeout(function () {
       injectButton();
-      // 每 3 秒重試（settingsHubModal 是 lazy 生成）
-      setInterval(injectButton, 3000);
+
+      // settingsHubModal 可能是 lazy 建立，所以保留輪詢
+      setInterval(injectButton, 1000);
+
+      // 點擊「設定與管理」後，延遲補插一次
+      var openBtn = document.getElementById('openSettingsPageBtn');
+      if (openBtn && !openBtn.__srsHooked) {
+        openBtn.__srsHooked = true;
+        openBtn.addEventListener('click', function () {
+          setTimeout(injectButton, 100);
+          setTimeout(injectButton, 500);
+          setTimeout(injectButton, 1000);
+        });
+      }
+
+      // 監聽 DOM 變化，只要 settingsHubModal 被建立或重建，就補插
+      if (!window.__srsHubObserver) {
+        window.__srsHubObserver = new MutationObserver(function () {
+          injectButton();
+        });
+
+        window.__srsHubObserver.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      }
+
       console.log(TAG, 'ready', VER);
-      console.log(TAG, '💡 開啟面板：__openSrsSettings() | 讀值：__getSrs("masterThreshold")');
+      console.log(TAG, '💡 開啟面板：__openSrsSettings() | 補插設定中心：__injectSrsToHub()');
     }, 1500);
   }
 
