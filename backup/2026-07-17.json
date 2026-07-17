@@ -7,9 +7,9 @@
       "thumb": "",
       "cards": [
         {
-          "id": "nb_1784314678084c1784321308938",
+          "id": "nb_1784314678084c1784321386020",
           "title": "New Chapter",
-          "text": "{{Subject}}: {{Enhancing}} Team {{Collaboration}} and Skill {{Development}} {{Through}} \"{{Synergy}} {{Sprint}}\"\n\nDear Team,\n\nI hope this {{message}} finds you well.\n\nI'm {{thrilled}} to {{announce}} a {{significant}} new {{initiative}}, \"{{Synergy}} {{Sprint}},\" {{specifically}} {{designed}} to {{foster}} {{enhanced}} {{collaboration}} and {{accelerate}} {{professional}} {{growth}} {{across}} all our {{departments}}.",
+          "text": "{{Subject}}: {{Enhancing}} Team {{Collaboration}} and Skill {{Development}} {{Through}} {{Synergy}} {{Sprint}}\r\n\r\nDear Team,\r\n\r\nI hope this {{message}} finds you well.\r\n\r\nI'm {{thrilled}} to {{announce}} a {{significant}} new {{initiative}}, {{Synergy}} {{Sprint}}, {{specifically}} {{designed}} to {{foster}} {{enhanced}} {{collaboration}} and {{accelerate}} {{professional}} {{growth}} {{across}} all our {{departments}}.",
           "myNote": ""
         }
       ],
@@ -11820,7 +11820,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784321308938,
+  "updatedAt": 1784321386020,
   "learn": {
     "github": {
       "word": "github",
