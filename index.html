@@ -95,7 +95,19 @@
     <button class="sidebtn" onclick="cloudUpload(true)">上傳</button>
     <button class="sidebtn" onclick="cloudDownload(true)">載入</button>
   </div>
-  <div id="nblist"></div>
+  <div id="nblist">
+#nblist{
+    max-height:200px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+    #nblist{
+    max-height:200px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+    
+  </div>
   <hr>
   <button class="sidebtn hi" onclick="toggleCapture()">🎯 捕獲單字區</button>
   <button class="sidebtn" onclick="startFlash(true)">📇 開始閃卡複習</button>
