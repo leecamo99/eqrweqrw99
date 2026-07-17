@@ -40,6 +40,22 @@
   width:100%;
   box-sizing:border-box;
 }
+#nblist{
+  max-height:200px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding-right:4px;
+}
+
+#nblist::-webkit-scrollbar{
+  width:5px;
+}
+
+#nblist::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.25);
+  border-radius:20px;
+}
+  
    .nb.active{border-left-color:var(--accent);background:rgba(166,138,86,.15)}.nb small{color:#cfc6b2}.del{float:right;background:none;border:0;color:#d0a0a0;cursor:pointer}#sync{border:1px solid rgba(255,255,255,.15);padding:8px;margin-bottom:12px;font-size:12px}.ok{color:#8fb28f}.warn{color:#d2aa67}.err{color:#d6a0a0}#main{padding:24px 32px}h1{text-align:center;color:var(--primary);font-weight:400;letter-spacing:3px;margin:0}.sub{text-align:center;color:var(--muted);font-size:12px;font-style:italic;letter-spacing:1px;margin-bottom:18px}
 #upload{
   background:var(--paper);
@@ -95,19 +111,7 @@
     <button class="sidebtn" onclick="cloudUpload(true)">上傳</button>
     <button class="sidebtn" onclick="cloudDownload(true)">載入</button>
   </div>
-  <div id="nblist">
-#nblist{
-    max-height:200px;
-    overflow-y:auto;
-    overflow-x:hidden;
-}
-    #nblist{
-    max-height:200px;
-    overflow-y:auto;
-    overflow-x:hidden;
-}
-    
-  </div>
+<div id="nblist"></div>
   <hr>
   <button class="sidebtn hi" onclick="toggleCapture()">🎯 捕獲單字區</button>
   <button class="sidebtn" onclick="startFlash(true)">📇 開始閃卡複習</button>
