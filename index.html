@@ -118,7 +118,19 @@ onclick="openPaste()">
 貼上文字
 </button>
 
-<label>
+
+
+<span style="margin-left:8px">
+  OCR 語言
+</span>
+
+<select id="ocrLang">
+  <option value="eng">English</option>
+  <option value="eng+chi_tra">English + 繁中</option>
+  <option value="chi_tra">繁中</option>
+</select>
+
+  <label>
   <input type="checkbox" id="prepGray" checked>
   灰階
 </label>
@@ -133,16 +145,7 @@ onclick="openPaste()">
   二值化
 </label>
 
-<span style="margin-left:8px">
-  OCR 語言
-</span>
-
-<select id="ocrLang">
-  <option value="eng">English</option>
-  <option value="eng+chi_tra">English + 繁中</option>
-  <option value="chi_tra">繁中</option>
-</select>
-
+  
 <input
   id="fileIn"
   type="file"
