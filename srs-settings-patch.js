@@ -1,5 +1,5 @@
 /*!
- * srs-settings-patch.js  v20260716-1
+ * srs-settings-patch.js  v20260717-1
  * SRS / Anki 風格參數面板
  * 儲存位置：localStorage['__srsSettings']
  *
@@ -271,9 +271,10 @@
       b2.id = 'srsSideBtn';
       b2.className = 'sidebtn';
       b2.textContent = '🧠 SRS 參數';
-      b2.style.cssText = 'display:block;width:calc(100% - 20px);margin:6px 10px;' +
-        'padding:8px;background:transparent;border:1px solid #a68a56;' +
-        'color:#a68a56;border-radius:6px;cursor:pointer;font-size:13px';
+   b2.style.cssText = 'display:block;width:100%;box-sizing:border-box;margin:5px 0;' +
+  'padding:9px;background:transparent;border:1px solid rgba(255,255,255,.22);' +
+  'color:#e8e0cc;border-radius:0;cursor:pointer;font-size:13px';
+
       b2.onclick = renderModal;
       side.appendChild(b2);
       return true;
