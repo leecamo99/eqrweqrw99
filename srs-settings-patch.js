@@ -1,5 +1,5 @@
 /*!
- * srs-settings-patch.js  v20260717-1
+ * srs-settings-patch.js  v20260718-2
  * SRS / Anki 風格參數面板
  * 儲存位置：localStorage['__srsSettings']
  *
@@ -14,7 +14,7 @@
 (function () {
   'use strict';
   var TAG = '[SrsSettings]';
-  var VER = 'v20260716-1';
+  var VER = 'v20260718-2';
   var STORAGE_KEY = '__srsSettings';
 
   // ==== 預設值（對照 Anki / memoryToast）====
@@ -235,51 +235,72 @@
 
   window.__openSrsSettings = renderModal;
 
-  // ==== 注入按鈕到既有設定選單 ====
+  // ==== 注入到「設定與管理」中心，並移除側邊欄 SRS 按鈕 ====
   function injectButton() {
-    // 嘗試多種可能位置
-    var candidates = [
-      '#settingsHubModal',        // 你的設定 Hub
-      '#openSettingsPageBtn',     // 側邊設定按鈕旁
-      '.sidebtn',                 // 側邊按鈕群
-      '#side'                     // 側邊欄本體
-    ];
+    // 先清掉舊版可能插在側邊欄或錯誤位置的按鈕
+    var oldSide = document.getElementById('srsSideBtn');
+    if (oldSide) oldSide.remove();
 
-    // 優先塞進 settingsHubModal
+    var oldWrong = document.getElementById('srsHubEntry');
+    if (oldWrong) oldWrong.remove();
+
+    // 設定中心是 lazy 產生的，沒出現就下次再試
     var hub = document.getElementById('settingsHubModal');
-    if (hub && !hub.querySelector('#srsHubEntry')) {
-      var btn = document.createElement('button');
-      btn.id = 'srsHubEntry';
-      btn.textContent = '🧠 SRS 學習參數';
-      btn.style.cssText = 'display:block;width:100%;padding:10px;margin:6px 0;' +
-        'background:#4dc9e6;color:#fff;border:none;border-radius:8px;' +
-        'font-size:14px;cursor:pointer;font-weight:600';
-      btn.onclick = function () {
-        hub.style.display = 'none';
+    if (!hub) return false;
+
+    // 已經注入過就不要重複
+    if (hub.querySelector('#srsHubCard')) return true;
+
+    // 找設定中心內容容器
+    var box =
+      hub.querySelector('.box, .content, [class*=box], [class*=content]') ||
+      hub.firstElementChild ||
+      hub;
+
+    if (!box) return false;
+
+    // 建立 SRS 設定卡片
+    var card = document.createElement('div');
+    card.id = 'srsHubCard';
+    card.style.cssText =
+      'background:#fff;border:1px solid #eadfca;border-radius:10px;' +
+      'padding:16px;margin:14px 0;box-sizing:border-box;';
+
+    card.innerHTML =
+      '<h3 style="margin:0 0 10px;color:#a68a56;font-size:17px;border-bottom:1px dotted #d8c8a8;padding-bottom:8px;">' +
+        '🧠 SRS 學習參數' +
+      '</h3>' +
+      '<p style="margin:0 0 12px;color:#777;font-size:13px;line-height:1.6;">' +
+        '調整 Anki 風格複習參數，例如每日新卡、複習上限、熟練門檻、忘記次數與音訊設定。' +
+      '</p>' +
+      '<button id="openSrsSettingsFromHub" class="btn" style="' +
+        'background:#a68a56;color:#fff;border:0;border-radius:6px;' +
+        'padding:8px 14px;cursor:pointer;font-size:13px;' +
+      '">' +
+        '🧠 開啟 SRS 學習參數' +
+      '</button>';
+
+    // 優先插在「學習資料統計」卡片下面
+    var children = Array.prototype.slice.call(box.children || []);
+    var statsBlock = children.find(function (el) {
+      return el.textContent && el.textContent.includes('學習資料統計');
+    });
+
+    if (statsBlock && statsBlock.parentNode) {
+      statsBlock.insertAdjacentElement('afterend', card);
+    } else {
+      box.appendChild(card);
+    }
+
+    var openBtn = card.querySelector('#openSrsSettingsFromHub');
+    if (openBtn) {
+      openBtn.onclick = function () {
         renderModal();
       };
-      hub.querySelector('.box, .content, [class*=box], [class*=content]')
-        ? (hub.querySelector('.box, .content, [class*=box], [class*=content]').appendChild(btn))
-        : hub.appendChild(btn);
-      return true;
     }
 
-    // 退而求其次：塞在側邊
-    var side = document.getElementById('side');
-    if (side && !document.getElementById('srsSideBtn')) {
-      var b2 = document.createElement('button');
-      b2.id = 'srsSideBtn';
-      b2.className = 'sidebtn';
-      b2.textContent = '🧠 SRS 參數';
-   b2.style.cssText = 'display:block;width:100%;box-sizing:border-box;margin:5px 0;' +
-  'padding:9px;background:transparent;border:1px solid rgba(255,255,255,.22);' +
-  'color:#e8e0cc;border-radius:0;cursor:pointer;font-size:13px';
-
-      b2.onclick = renderModal;
-      side.appendChild(b2);
-      return true;
-    }
-    return false;
+    return true;
+  }
   }
 
   function boot() {
