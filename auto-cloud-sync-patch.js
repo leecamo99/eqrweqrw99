@@ -1,4 +1,4 @@
-/* auto-cloud-sync-patch.js v20260717-6
+/* auto-cloud-sync-patch.js v20260718-1
    1. Floating cloud button (bottom-right) for one-click upload.
    2. Auto-uploads after 5 minutes of user inactivity when data is dirty.
    3. Visual status indicator (synced / dirty / uploading / error).
@@ -345,16 +345,6 @@
 (function shortcutHubV194(){
   document.getElementById('shortcutHub')?.remove();
   document.getElementById('shortcutHubStyle')?.remove();
-
-
-const addBtn = document.createElement('button');
-addBtn.id = 'quickAddBtn';
-addBtn.textContent = '+';
-addBtn.title = '快速新增';
-
-addBtn.onclick = () => {
-  document.querySelector('.add-btn,.new-note-btn,#addNotebookBtn')?.click();
-};
    
   const IDS = ['autoSyncBtn', 'aiChatBtn', 'bcollapseBtn'];
 
@@ -369,7 +359,7 @@ addBtn.onclick = () => {
   const list = document.createElement('div');
   list.id = 'shortcutHubList';
   hub.appendChild(list);
-   list.appendChild(addBtn);
+  
   document.body.appendChild(hub);
 
   const css = document.createElement('style');
