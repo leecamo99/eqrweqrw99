@@ -63,10 +63,11 @@
           "color": "c1"
         },
         "Synergy": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "協同作用",
+          "tip": "(systems theory) A synonym of binding energy.",
+          "color": "c1",
+          "lemma": "synergy"
         },
         "Sprint": {
           "pos": "",
@@ -87,10 +88,11 @@
           "color": "c1"
         },
         "announce": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "verb",
+          "tw": "宣告",
+          "tip": "To give public notice, especially for the first time; to make known",
+          "color": "c1",
+          "lemma": "announce"
         },
         "significant": {
           "pos": "",
@@ -11820,7 +11822,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784321440704,
+  "updatedAt": 1784644896072,
   "learn": {
     "github": {
       "word": "github",
@@ -15293,7 +15295,7 @@
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
       "lastSeenAt": 1783818065060,
-      "lastReviewedAt": 1784300050851,
+      "lastReviewedAt": 1784644896072,
       "lifetimeClicks": 25,
       "sessionClicks": 25,
       "maxClickStreak": 20,
@@ -15423,9 +15425,18 @@
           "clicks": 34,
           "strength": 10,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784644896072,
+          "day": "2026-07-21",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 34,
+          "strength": 10,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784386450851,
+      "dueAt": 1784731296072,
       "intervalDays": 1,
       "ease": 1.3,
       "lapses": 0,
@@ -15441,7 +15452,7 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1784300050851,
+      "updatedAt": 1784644896072,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -16536,6 +16547,104 @@
       "tw": "獎勵",
       "translationSource": "Google Translate",
       "tip": ""
+    },
+    "synergy": {
+      "word": "synergy",
+      "lemma": "synergy",
+      "firstSeenAt": 1784644871322,
+      "lastSeenAt": 1784644871322,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1784648471341,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "Synergy",
+      "lastForm": "base form",
+      "variants": {
+        "synergy": 1,
+        "Synergy": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1784644874940,
+      "loading": false,
+      "tw": "協同效應",
+      "translationSource": "Google Translate",
+      "tip": "(systems theory) A synonym of binding energy.",
+      "definitions": [
+        {
+          "pos": "noun",
+          "def": "(systems theory) A synonym of binding energy.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "The cooperation of two or more nerves, muscles, organs, etc.",
+          "example": "the digestive synergy"
+        },
+        {
+          "pos": "noun",
+          "def": "The combined action of two or more drugs where the effects are stronger than their mere sum.",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev",
+      "engine": "MyMemory",
+      "pos": "noun"
+    },
+    "announce": {
+      "word": "announce",
+      "lemma": "announce",
+      "firstSeenAt": 1784644880319,
+      "lastSeenAt": 1784644880319,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1784648480340,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "announce",
+      "lastForm": "base form",
+      "variants": {
+        "announce": 2
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1784644882171,
+      "loading": false,
+      "tw": "通告",
+      "translationSource": "Google Translate",
+      "tip": "To give public notice, especially for the first time; to make known",
+      "definitions": [
+        {
+          "pos": "verb",
+          "def": "To give public notice, especially for the first time; to make known",
+          "example": null
+        },
+        {
+          "pos": "verb",
+          "def": "To pronounce; to declare by judicial sentence",
+          "example": null
+        }
+      ],
+      "definitionSource": "dictionaryapi.dev",
+      "engine": "MyMemory",
+      "pos": "verb"
     }
   },
   "aiChats": {
