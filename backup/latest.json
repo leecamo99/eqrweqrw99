@@ -241,78 +241,6 @@
           "tw": "（未建字義，請自行補充）",
           "tip": "",
           "color": "c1"
-        },
-        "Would": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "like": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "work": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "want": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "make": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "about": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "five": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "world": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "final": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "issue": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "found": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "site": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
         }
       }
     },
@@ -13563,7 +13491,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784703451159,
+  "updatedAt": 1784703554439,
   "learn": {
     "github": {
       "word": "github",
@@ -18389,6 +18317,38 @@
       "engine": "MyMemory",
       "pos": "noun",
       "tip": "A temporally organized plan for matters to be attended to."
+    },
+    "bre": {
+      "word": "bre",
+      "lemma": "bre",
+      "firstSeenAt": 1784703553191,
+      "lastSeenAt": 1784703553191,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1784707153213,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "breed",
+      "lastForm": "-ed / past participle",
+      "variants": {
+        "breed": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1784703554422,
+      "loading": false,
+      "tw": "BRE",
+      "engine": "MyMemory",
+      "pos": "",
+      "tip": "Auto translated by MyMemory"
     }
   },
   "aiChats": {
