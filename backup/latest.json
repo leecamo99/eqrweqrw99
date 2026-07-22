@@ -265,10 +265,11 @@
           "color": "c1"
         },
         "agenda": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "pos": "noun",
+          "tw": "議程, 行程摘要, 日程",
+          "tip": "A temporally organized plan for matters to be attended to.",
+          "color": "c1",
+          "lemma": "agenda"
         },
         "afternoon": {
           "pos": "",
@@ -11820,7 +11821,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784702269881,
+  "updatedAt": 1784702356060,
   "learn": {
     "github": {
       "word": "github",
@@ -16587,16 +16588,26 @@
       "lemma": "agenda",
       "firstSeenAt": 1784702265578,
       "lastSeenAt": 1784702265578,
-      "lastReviewedAt": 0,
+      "lastReviewedAt": 1784702356060,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
-      "reviewHistory": [],
-      "dueAt": 1784705865608,
-      "intervalDays": 0,
-      "ease": 2.5,
+      "maxClickStreak": 1,
+      "reviewHistory": [
+        {
+          "ts": 1784702356060,
+          "day": "2026-07-22",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 1,
+          "strength": 1,
+          "intervalDays": 0
+        }
+      ],
+      "dueAt": 1784788756060,
+      "intervalDays": 1,
+      "ease": 2.4,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "agenda",
       "lastForm": "base form",
@@ -16607,7 +16618,7 @@
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784702269852,
+      "updatedAt": 1784702356060,
       "loading": false,
       "tw": "議程, 行程摘要, 日程",
       "definitions": [
@@ -16635,7 +16646,7 @@
       "definitionSource": "dictionaryapi.dev",
       "engine": "MyMemory",
       "pos": "noun",
-      "tip": "Auto translated by MyMemory｜A temporally organized plan for matters to be attended to."
+      "tip": "A temporally organized plan for matters to be attended to."
     }
   },
   "aiChats": {
