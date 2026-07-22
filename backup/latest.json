@@ -1,6 +1,322 @@
 {
   "notebooks": [
     {
+      "id": "nb_1784703300149",
+      "name": "text-message chain",
+      "date": "2026-07-22",
+      "thumb": "",
+      "cards": [
+        {
+          "id": "nb_1784703300149c0",
+          "title": "Chapter 1",
+          "text": "Jeff {{Boggins}} (8:54 A.M.)\nHi, {{Sylvia}}. I've got a {{question}} for you. My {{neighbor}} is {{starting}} a {{business}}, but he needs some {{accounting}} {{advice}}. Would you feel {{comfortable}} {{providing}} a {{professional}} {{referral}} for {{Marisol}} Cruz, the {{accountant}} you {{worked}} with on the Smith {{project}}?\n{{Sylvia}} Hao (8:55 A.M.)\nThat's an easy one! Of {{course}}.\nJeff {{Boggins}} (8:56 A.M.)\nI {{thought}} so. I'm not sure what my {{neighbor}} needs {{exactly}}, but if you could give me Ms. Cruz's {{contact}} {{information}}, I'll pass it along.\n{{Sylvia}} Hao (8:57 A.M.)\nSure. 'll send you a link to her Web site. She was {{extremely}} {{knowledgeable}} and a real {{pleasure}} to work with. I'm sure she would be glad to talk to your {{neighbor}}.\nJeff {{Boggins}} (8:58 A.M.)\nI knew I could count on you. {{Thanks}}.",
+          "myNote": ""
+        }
+      ],
+      "marks": {
+        "Boggins": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Sylvia": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "question": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "neighbor": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "starting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "business": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "accounting": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "advice": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "comfortable": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "providing": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "professional": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "referral": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Marisol": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "accountant": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "worked": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "project": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "course": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "thought": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "exactly": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "contact": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "information": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "extremely": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "knowledgeable": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pleasure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Thanks": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Jeff": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "needs": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "some": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Would": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "feel": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Cruz": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Smith": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "easy": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "sure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "what": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "could": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "give": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "pass": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "along": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "Sure": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "send": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "link": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "site": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "real": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "work": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "would": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "glad": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "talk": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "knew": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        },
+        "count": {
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
+        }
+      }
+    },
+    {
       "id": "nb_1784703233898",
       "name": "Digital Tech Conference",
       "date": "2026-07-22",
@@ -12429,7 +12745,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784703233904,
+  "updatedAt": 1784703300153,
   "learn": {
     "github": {
       "word": "github",
