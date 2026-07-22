@@ -63,11 +63,10 @@
           "color": "c1"
         },
         "Synergy": {
-          "pos": "noun",
-          "tw": "協同作用",
-          "tip": "(systems theory) A synonym of binding energy.",
-          "color": "c1",
-          "lemma": "synergy"
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
         },
         "Sprint": {
           "pos": "",
@@ -88,11 +87,10 @@
           "color": "c1"
         },
         "announce": {
-          "pos": "verb",
-          "tw": "宣告",
-          "tip": "To give public notice, especially for the first time; to make known",
-          "color": "c1",
-          "lemma": "announce"
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
         },
         "significant": {
           "pos": "",
@@ -11822,7 +11820,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784644896072,
+  "updatedAt": 1784702269881,
   "learn": {
     "github": {
       "word": "github",
@@ -11977,8 +11975,8 @@
       "strength": 0,
       "captured": true,
       "known": false,
-      "dueAt": 1807973670834,
-      "updatedAt": 1784300070834,
+      "dueAt": 1813127724759,
+      "updatedAt": 1784702124759,
       "variants": {
         "bulleted": 7
       },
@@ -11988,7 +11986,7 @@
       "loading": false,
       "firstSeenAt": 1783352586481,
       "lastSeenAt": 1783352586481,
-      "lastReviewedAt": 1784300070834,
+      "lastReviewedAt": 1784702124759,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -12172,9 +12170,18 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 228
+        },
+        {
+          "ts": 1784702124759,
+          "day": "2026-07-22",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 0,
+          "strength": 0,
+          "intervalDays": 274
         }
       ],
-      "intervalDays": 274,
+      "intervalDays": 329,
       "ease": 1.3,
       "lapses": 0,
       "status": "learning",
@@ -12305,8 +12312,8 @@
       "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1784386460541,
-      "updatedAt": 1784300060541,
+      "dueAt": 1784788563808,
+      "updatedAt": 1784702163808,
       "variants": {
         "validated": 1
       },
@@ -12316,7 +12323,7 @@
       "loading": false,
       "firstSeenAt": 1783352614199,
       "lastSeenAt": 1783352614199,
-      "lastReviewedAt": 1784300060541,
+      "lastReviewedAt": 1784702163808,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 3,
@@ -12441,6 +12448,15 @@
         {
           "ts": 1784300060541,
           "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 3,
+          "strength": 3,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784702163808,
+          "day": "2026-07-22",
           "grade": "hard",
           "source": "hard-button",
           "clicks": 3,
@@ -12809,8 +12825,8 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "dueAt": 1784386456894,
-      "updatedAt": 1784300056894,
+      "dueAt": 1784788484752,
+      "updatedAt": 1784702084752,
       "variants": {
         "spontaneously": 29
       },
@@ -12820,7 +12836,7 @@
       "loading": false,
       "firstSeenAt": 1783352941134,
       "lastSeenAt": 1783707229004,
-      "lastReviewedAt": 1784300056894,
+      "lastReviewedAt": 1784702084752,
       "lifetimeClicks": 22,
       "sessionClicks": 22,
       "maxClickStreak": 32,
@@ -12954,6 +12970,15 @@
         {
           "ts": 1784300056894,
           "day": "2026-07-17",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 33,
+          "strength": 10,
+          "intervalDays": 1
+        },
+        {
+          "ts": 1784702084751,
+          "day": "2026-07-22",
           "grade": "hard",
           "source": "hard-button",
           "clicks": 33,
@@ -15295,7 +15320,7 @@
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
       "lastSeenAt": 1783818065060,
-      "lastReviewedAt": 1784644896072,
+      "lastReviewedAt": 1784702078341,
       "lifetimeClicks": 25,
       "sessionClicks": 25,
       "maxClickStreak": 20,
@@ -15427,8 +15452,8 @@
           "intervalDays": 1
         },
         {
-          "ts": 1784644896072,
-          "day": "2026-07-21",
+          "ts": 1784702078341,
+          "day": "2026-07-22",
           "grade": "hard",
           "source": "hard-button",
           "clicks": 34,
@@ -15436,7 +15461,7 @@
           "intervalDays": 1
         }
       ],
-      "dueAt": 1784731296072,
+      "dueAt": 1784788478341,
       "intervalDays": 1,
       "ease": 1.3,
       "lapses": 0,
@@ -15452,7 +15477,7 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1784644896072,
+      "updatedAt": 1784702078341,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -15466,9 +15491,9 @@
       ],
       "definitionSource": "dictionaryapi.dev",
       "geminiPos": "v.",
-      "geminiTw": "沉浸；使陷入",
+      "geminiTw": "使沉浸；使陷入",
       "geminiEx": "She immersed herself in her studies to prepare for the final exam.",
-      "geminiTwEx": "為了準備期末考，她全神貫注地投入在學業中。",
+      "geminiTwEx": "她埋首於學業中，為期末考做準備。",
       "geminiPhonetic": "",
       "geminiSynonyms": [],
       "geminiDerivatives": [],
@@ -15476,12 +15501,12 @@
       "geminiLevel": "",
       "geminiTip": "",
       "geminiSource": "gemini",
-      "geminiUpdatedAt": 1784040725721,
+      "geminiUpdatedAt": 1784702150049,
       "geminiRaw": {
         "pos": "v.",
-        "tw": "沉浸；使陷入",
+        "tw": "使沉浸；使陷入",
         "ex": "She immersed herself in her studies to prepare for the final exam.",
-        "tw_ex": "為了準備期末考，她全神貫注地投入在學業中。"
+        "tw_ex": "她埋首於學業中，為期末考做準備。"
       }
     },
     "expand": {
@@ -15549,7 +15574,7 @@
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
       "lastSeenAt": 1783817450894,
-      "lastReviewedAt": 1784300058711,
+      "lastReviewedAt": 1784702096707,
       "lifetimeClicks": 11,
       "sessionClicks": 11,
       "maxClickStreak": 5,
@@ -15688,9 +15713,18 @@
           "clicks": 8,
           "strength": 6,
           "intervalDays": 1
+        },
+        {
+          "ts": 1784702096707,
+          "day": "2026-07-22",
+          "grade": "hard",
+          "source": "hard-button",
+          "clicks": 8,
+          "strength": 6,
+          "intervalDays": 1
         }
       ],
-      "dueAt": 1784386458711,
+      "dueAt": 1784788496707,
       "intervalDays": 1,
       "ease": 1.3,
       "lapses": 0,
@@ -15706,7 +15740,7 @@
       "strength": 6,
       "captured": true,
       "known": false,
-      "updatedAt": 1784300058711,
+      "updatedAt": 1784702096707,
       "loading": false,
       "tw": "看法",
       "engine": "MyMemory",
@@ -16548,103 +16582,60 @@
       "translationSource": "Google Translate",
       "tip": ""
     },
-    "synergy": {
-      "word": "synergy",
-      "lemma": "synergy",
-      "firstSeenAt": 1784644871322,
-      "lastSeenAt": 1784644871322,
+    "agenda": {
+      "word": "agenda",
+      "lemma": "agenda",
+      "firstSeenAt": 1784702265578,
+      "lastSeenAt": 1784702265578,
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 0,
       "reviewHistory": [],
-      "dueAt": 1784648471341,
+      "dueAt": 1784705865608,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
       "status": "new",
       "totalResets": 0,
-      "lastSurface": "Synergy",
+      "lastSurface": "agenda",
       "lastForm": "base form",
       "variants": {
-        "synergy": 1,
-        "Synergy": 1
+        "agenda": 2
       },
       "clicks": 1,
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784644874940,
+      "updatedAt": 1784702269852,
       "loading": false,
-      "tw": "協同效應",
-      "translationSource": "Google Translate",
-      "tip": "(systems theory) A synonym of binding energy.",
+      "tw": "議程, 行程摘要, 日程",
       "definitions": [
         {
           "pos": "noun",
-          "def": "(systems theory) A synonym of binding energy.",
+          "def": "A temporally organized plan for matters to be attended to.",
           "example": null
         },
         {
           "pos": "noun",
-          "def": "The cooperation of two or more nerves, muscles, organs, etc.",
-          "example": "the digestive synergy"
+          "def": "A list of matters to be taken up (as at a meeting).",
+          "example": null
         },
         {
           "pos": "noun",
-          "def": "The combined action of two or more drugs where the effects are stronger than their mere sum.",
+          "def": "A notebook used to organize and maintain such plans or lists, an agenda book, an agenda planner.",
+          "example": null
+        },
+        {
+          "pos": "noun",
+          "def": "A task which ought to be done.",
           "example": null
         }
       ],
       "definitionSource": "dictionaryapi.dev",
       "engine": "MyMemory",
-      "pos": "noun"
-    },
-    "announce": {
-      "word": "announce",
-      "lemma": "announce",
-      "firstSeenAt": 1784644880319,
-      "lastSeenAt": 1784644880319,
-      "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
-      "maxClickStreak": 0,
-      "reviewHistory": [],
-      "dueAt": 1784648480340,
-      "intervalDays": 0,
-      "ease": 2.5,
-      "lapses": 0,
-      "status": "new",
-      "totalResets": 0,
-      "lastSurface": "announce",
-      "lastForm": "base form",
-      "variants": {
-        "announce": 2
-      },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1784644882171,
-      "loading": false,
-      "tw": "通告",
-      "translationSource": "Google Translate",
-      "tip": "To give public notice, especially for the first time; to make known",
-      "definitions": [
-        {
-          "pos": "verb",
-          "def": "To give public notice, especially for the first time; to make known",
-          "example": null
-        },
-        {
-          "pos": "verb",
-          "def": "To pronounce; to declare by judicial sentence",
-          "example": null
-        }
-      ],
-      "definitionSource": "dictionaryapi.dev",
-      "engine": "MyMemory",
-      "pos": "verb"
+      "pos": "noun",
+      "tip": "Auto translated by MyMemory｜A temporally organized plan for matters to be attended to."
     }
   },
   "aiChats": {
