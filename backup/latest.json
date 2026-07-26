@@ -47,9 +47,10 @@
         },
         "Nurturing": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "tw": "nurtur",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "nurtur"
         },
         "Nature": {
           "pos": "",
@@ -13577,7 +13578,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1785025871243,
+  "updatedAt": 1785026121274,
   "learn": {
     "github": {
       "word": "github",
@@ -18413,28 +18414,28 @@
       "word": "bre",
       "lemma": "bre",
       "firstSeenAt": 1784703553191,
-      "lastSeenAt": 1784703553191,
+      "lastSeenAt": 1785026121251,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
+      "lifetimeClicks": 2,
+      "sessionClicks": 2,
       "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1784707153213,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
-      "status": "new",
+      "status": "learning",
       "totalResets": 0,
       "lastSurface": "breed",
       "lastForm": "-ed / past participle",
       "variants": {
-        "breed": 1
+        "breed": 2
       },
-      "clicks": 1,
-      "strength": 1,
+      "clicks": 2,
+      "strength": 2,
       "captured": true,
       "known": false,
-      "updatedAt": 1784703554422,
+      "updatedAt": 1785026121263,
       "loading": false,
       "tw": "BRE",
       "engine": "MyMemory",
@@ -18516,7 +18517,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1785029452073,
       "intervalDays": 0,
@@ -18550,7 +18551,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1785029469975,
       "intervalDays": 0,
