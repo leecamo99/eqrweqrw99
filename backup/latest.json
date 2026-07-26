@@ -16,9 +16,10 @@
       "marks": {
         "featured": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
+          "tw": "功能",
+          "tip": "Auto translated by MyMemory",
+          "color": "c1",
+          "lemma": "featur"
         },
         "magazine": {
           "pos": "",
@@ -13576,7 +13577,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1785024979825,
+  "updatedAt": 1785025871243,
   "learn": {
     "github": {
       "word": "github",
@@ -14905,7 +14906,7 @@
       "lastReviewedAt": 1784299430943,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [
         {
           "ts": 1783359238354,
@@ -18448,7 +18449,7 @@
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
-      "maxClickStreak": 0,
+      "maxClickStreak": 1,
       "reviewHistory": [],
       "dueAt": 1785028558549,
       "intervalDays": 0,
@@ -18506,6 +18507,74 @@
       "definitionSource": "dictionaryapi.dev",
       "engine": "MyMemory",
       "pos": "noun"
+    },
+    "featur": {
+      "word": "featur",
+      "lemma": "featur",
+      "firstSeenAt": 1785025852051,
+      "lastSeenAt": 1785025852051,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1785029452073,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "featured",
+      "lastForm": "base form",
+      "variants": {
+        "featur": 1,
+        "featured": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1785025855842,
+      "loading": false,
+      "tw": "featur",
+      "translationSource": "Google Translate",
+      "tip": "Auto translated by MyMemory",
+      "engine": "MyMemory",
+      "pos": ""
+    },
+    "nurtur": {
+      "word": "nurtur",
+      "lemma": "nurtur",
+      "firstSeenAt": 1785025869954,
+      "lastSeenAt": 1785025869954,
+      "lastReviewedAt": 0,
+      "lifetimeClicks": 1,
+      "sessionClicks": 1,
+      "maxClickStreak": 0,
+      "reviewHistory": [],
+      "dueAt": 1785029469975,
+      "intervalDays": 0,
+      "ease": 2.5,
+      "lapses": 0,
+      "status": "new",
+      "totalResets": 0,
+      "lastSurface": "Nurturing",
+      "lastForm": "base form",
+      "variants": {
+        "nurtur": 1,
+        "Nurturing": 1
+      },
+      "clicks": 1,
+      "strength": 1,
+      "captured": true,
+      "known": false,
+      "updatedAt": 1785025871231,
+      "loading": false,
+      "tw": "nurtur",
+      "translationSource": "Google Translate",
+      "tip": "Auto translated by MyMemory",
+      "engine": "MyMemory",
+      "pos": ""
     }
   },
   "aiChats": {
