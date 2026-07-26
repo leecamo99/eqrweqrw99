@@ -13578,7 +13578,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1785026121274,
+  "updatedAt": 1785027850173,
   "learn": {
     "github": {
       "word": "github",
@@ -18414,11 +18414,11 @@
       "word": "bre",
       "lemma": "bre",
       "firstSeenAt": 1784703553191,
-      "lastSeenAt": 1785026121251,
+      "lastSeenAt": 1785027850135,
       "lastReviewedAt": 0,
-      "lifetimeClicks": 2,
-      "sessionClicks": 2,
-      "maxClickStreak": 1,
+      "lifetimeClicks": 3,
+      "sessionClicks": 3,
+      "maxClickStreak": 2,
       "reviewHistory": [],
       "dueAt": 1784707153213,
       "intervalDays": 0,
@@ -18426,16 +18426,17 @@
       "lapses": 0,
       "status": "learning",
       "totalResets": 0,
-      "lastSurface": "breed",
-      "lastForm": "-ed / past participle",
+      "lastSurface": "bre",
+      "lastForm": "base form",
       "variants": {
-        "breed": 2
+        "breed": 2,
+        "bre": 1
       },
-      "clicks": 2,
-      "strength": 2,
+      "clicks": 3,
+      "strength": 3,
       "captured": true,
       "known": false,
-      "updatedAt": 1785026121263,
+      "updatedAt": 1785027850159,
       "loading": false,
       "tw": "BRE",
       "engine": "MyMemory",
