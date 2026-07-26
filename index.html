@@ -380,7 +380,66 @@ if(!hasTw || !x.example || !x.synonyms) autoTranslateLemma(key);
   const oldApply=window.applyIntensity;
   window.applyIntensity=function(){const db=getDB();document.querySelectorAll('.mark').forEach(e=>{const key=lemmatize(e.dataset.key||e.textContent).lemma;const w=db.learn[key];for(let i=1;i<=10;i++)e.classList.remove('i'+i);if(w)e.classList.add('i'+Math.min(10,w.strength||0));});};
   const oldCapture=window.renderCapture;
-  window.renderCapture=function(){const db=getDB();const arr=Object.values(db.learn||{}).filter(x=>x.captured&&!x.known).sort((a,b)=>(b.clicks||0)-(a.clicks||0));if(!document.getElementById('capBody'))return;capBody.innerHTML=arr.length?arr.map(x=>`<div class="capitem" data-cap="${esc(x.lemma||x.word)}"><span>${esc(x.lemma||x.word)}<br><small>${esc(x.tw||'')}</small></span><b>${x.clicks||0}</b></div>`).join(''):'<p style="color:var(--muted)">目前沒有捕獲單字。</p>';};
+ window.deleteCapturedWord=function(word,event){
+  event?.stopPropagation();
+
+  const db=getDB();
+
+  if(db.learn[word]){
+    delete db.learn[word];
+    db.updatedAt=Date.now();
+    setDB(db);
+  }
+
+  window.renderCapture();
+
+  if(typeof window.applyIntensity==='function'){
+    try{ window.applyIntensity(); }catch(e){}
+  }
+};
+
+window.renderCapture=function(){
+  const db=getDB();
+
+  const arr=Object.values(db.learn||{})
+    .filter(x=>x.captured&&!x.known)
+    .sort((a,b)=>(b.clicks||0)-(a.clicks||0));
+
+  if(!document.getElementById('capBody')) return;
+
+  capBody.innerHTML=arr.length
+    ? arr.map(x=>`
+        <div class="capitem" data-cap="${esc(x.lemma||x.word)}">
+          <span>
+            ${esc(x.lemma||x.word)}
+            <br>
+            <small>${esc(x.tw||'')}</small>
+          </span>
+
+          <span style="display:flex;align-items:center;gap:10px">
+            <b>${x.clicks||0}</b>
+
+            <button
+              type="button"
+              title="刪除此單字"
+              onclick="deleteCapturedWord(this.closest('.capitem').dataset.cap,event)"
+              style="
+                border:0;
+                background:transparent;
+                color:var(--danger);
+                cursor:pointer;
+                font-size:16px;
+                padding:2px 5px;
+              "
+            >×</button>
+          </span>
+        </div>
+      `).join('')
+    : '<p style="color:var(--muted)">目前沒有捕獲單字。</p>';
+};
+
+  
+  {const db=getDB();const arr=Object.values(db.learn||{}).filter(x=>x.captured&&!x.known).sort((a,b)=>(b.clicks||0)-(a.clicks||0));if(!document.getElementById('capBody'))return;capBody.innerHTML=arr.length?arr.map(x=>`<div class="capitem" data-cap="${esc(x.lemma||x.word)}"><span>${esc(x.lemma||x.word)}<br><small>${esc(x.tw||'')}</small></span><b>${x.clicks||0}</b></div>`).join(''):'<p style="color:var(--muted)">目前沒有捕獲單字。</p>';};
   window.lemmatizeWord=lemmatize;
   window.autoTranslateLemma=autoTranslateLemma;
   setTimeout(()=>{try{window.applyIntensity();window.renderCapture();console.log('Lemma Smart Capture patch loaded');}catch(e){console.warn(e)}},500);
