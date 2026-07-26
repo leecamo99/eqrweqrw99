@@ -398,6 +398,26 @@ if(!hasTw || !x.example || !x.synonyms) autoTranslateLemma(key);
   }
 };
 
+window.deleteCapturedWord=function(word,event){
+  event.stopPropagation();
+
+  const db=getDB();
+
+  delete db.learn[word];
+
+  for(const [key,value] of Object.entries(db.learn||{})){
+    if(value.word===word || value.lemma===word){
+      delete db.learn[key];
+    }
+  }
+
+  db.updatedAt=Date.now();
+  setDB(db);
+  window.renderCapture();
+
+  console.log('✅ 已刪除：',word);
+};
+
 window.renderCapture=function(){
   const db=getDB();
 
@@ -408,33 +428,29 @@ window.renderCapture=function(){
   if(!document.getElementById('capBody')) return;
 
   capBody.innerHTML=arr.length
-    ? arr.map(x=>`
-        <div class="capitem" data-cap="${esc(x.lemma||x.word)}">
-          <span>
-            ${esc(x.lemma||x.word)}
-            <br>
-            <small>${esc(x.tw||'')}</small>
-          </span>
+    ? arr.map(x=>{
+        const word=esc(x.lemma||x.word);
 
-          <span style="display:flex;align-items:center;gap:10px">
-            <b>${x.clicks||0}</b>
+        return `
+          <div class="capitem" data-cap="${word}">
+            <span>
+              ${word}<br>
+              <small>${esc(x.tw||'')}</small>
+            </span>
 
-            <button
-              type="button"
-              title="刪除此單字"
-              onclick="deleteCapturedWord(this.closest('.capitem').dataset.cap,event)"
-              style="
-                border:0;
-                background:transparent;
-                color:var(--danger);
-                cursor:pointer;
-                font-size:16px;
-                padding:2px 5px;
-              "
-            >×</button>
-          </span>
-        </div>
-      `).join('')
+            <span style="display:flex;align-items:center;gap:10px">
+              <b>${x.clicks||0}</b>
+
+              <button
+                type="button"
+                title="刪除此單字"
+                onclick="deleteCapturedWord('${word}',event)"
+                style="border:0;background:transparent;color:var(--danger);font-size:18px;cursor:pointer;padding:2px 5px"
+              >×</button>
+            </span>
+          </div>
+        `;
+      }).join('')
     : '<p style="color:var(--muted)">目前沒有捕獲單字。</p>';
 };
 
