@@ -1,1676 +1,6 @@
 {
   "notebooks": [
     {
-      "id": "nb_1784703451154",
-      "name": "Calling all amateur photographers!",
-      "date": "2026-07-22",
-      "thumb": "",
-      "cards": [
-        {
-          "id": "nb_1784703451154c0",
-          "title": "Chapter 1",
-          "text": "Would you like to see your work {{featured}} in our {{magazine}}? Do you want to make an {{important}} {{statement}} about the {{environment}}? .\n{{Nurturing}} {{Nature}} {{magazine}} is {{holding}} a {{photography}} {{contest}} for our {{subscribers}}. All {{nonprofessional}} {{photographers}} are {{invited}} to {{submit}} up to five {{pictures}} {{illustrating}} their {{observations}} of the {{natural}} world. {{Photographs}} may be {{related}} to any of the {{following}} {{categories}}: the {{beauty}} of {{nature}}; {{people}} {{interacting}} with the {{natural}} world;\nand {{conservation}} {{activities}}. {{Submissions}} will be {{judged}} by the {{editors}} of\n{{Nurturing}} {{Nature}}, and all {{decisions}} are final. The top ten {{photographs}} will be {{featured}} in the May issue of the {{magazine}}. \n{{Submissions}} are due by {{December}} 15. {{Additional}} {{information}} can be found on our Web site at www.{{nurturingnature}}.org/photo_contest.",
-          "myNote": ""
-        }
-      ],
-      "marks": {
-        "featured": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "magazine": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "important": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "statement": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "environment": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Nurturing": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Nature": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "holding": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "photography": {
-          "pos": "n.",
-          "tw": "攝影；拍照",
-          "tip": "",
-          "color": "c1"
-        },
-        "contest": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "subscribers": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "nonprofessional": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "photographers": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "invited": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "submit": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "pictures": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "illustrating": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "observations": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "natural": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Photographs": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "related": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "following": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "categories": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "beauty": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "nature": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "people": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "interacting": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "conservation": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "activities": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Submissions": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "judged": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "editors": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "decisions": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "photographs": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "December": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Additional": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "information": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "nurturingnature": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        }
-      }
-    },
-    {
-      "id": "nb_1784703378149",
-      "name": "Eurotrade Textile Magazine",
-      "date": "2026-07-22",
-      "thumb": "",
-      "cards": [
-        {
-          "id": "nb_1784703378149c0",
-          "title": "Chapter 1",
-          "text": "{{AMSTERDAM}} (5 May)-{{Yesterday}},\nthe\n{{nonprofit}} {{organization}} {{Sustainable}} {{Textile}} {{Partnership}}, based in the {{Netherlands}}, {{released}} a {{report}} {{concerning}} the {{Turkish}} {{garment}} trade.\nIt {{concludes}} that the {{Turkish}} {{garment}} {{industry}} could cut its {{annual}} {{spending}} by 18 {{percent}} by {{recycling}} {{cotton}} waste from its {{factories}} and {{fabric}} mills. The {{report}} was {{partially}} {{funded}} by the {{government}} of {{Turkey}}.\nThe {{Turkish}} {{garment}} {{industry}} {{imports}} {{thousands}} of {{metric}} {{tonnes}} of {{cotton}} a year.\nBut it also {{throws}} away a {{mountain}} of {{cotton}} waste left over from sewn items. At {{present}}, some of this waste, {{including}} {{discarded}} {{fibres}} and {{leftover}} yarn, is used as {{filling}} for {{mattresses}}, but most of it is {{burned}} as {{rubbish}}.\n{{Recycling}} more of the {{scraps}} could {{reduce}} {{cotton}} {{imports}} and save {{substantial}} {{amounts}} of money, {{according}} to the {{partnership}}'s {{report}}.\nOnur {{Arslan}}, {{president}} of the {{Garment}} {{Manufacturers}} {{Association}} of {{Turkey}}, said,\n\"{{Industry}} {{leaders}} are {{keenly}} {{interested}} in {{understanding}} the {{impacts}} of {{recycling}}\"",
-          "myNote": ""
-        }
-      ],
-      "marks": {
-        "AMSTERDAM": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c3"
-        },
-        "Yesterday": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "nonprofit": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "organization": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Sustainable": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Textile": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Partnership": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Netherlands": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "released": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "report": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "concerning": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Turkish": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "garment": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "concludes": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "industry": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "annual": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "spending": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "percent": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "recycling": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "cotton": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "factories": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "fabric": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "partially": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "funded": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "government": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Turkey": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "imports": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "thousands": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "metric": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "tonnes": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "throws": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "mountain": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "present": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "including": {
-          "pos": "prep.",
-          "tw": "包括",
-          "tip": "",
-          "color": "c1"
-        },
-        "discarded": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "fibres": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "leftover": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "filling": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "mattresses": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "burned": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "rubbish": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Recycling": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "scraps": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "reduce": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "substantial": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "amounts": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "according": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "partnership": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Arslan": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "president": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Garment": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Manufacturers": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Association": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Industry": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "leaders": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "keenly": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "interested": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "understanding": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "impacts": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "based": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "trade": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "could": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "waste": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "mills": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "year": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "also": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "away": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "left": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "over": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "sewn": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "items": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "some": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "yarn": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "used": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "most": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "more": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "save": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "money": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Onur": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "said": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "quot": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        }
-      }
-    },
-    {
-      "id": "nb_1784703300149",
-      "name": "text-message chain",
-      "date": "2026-07-22",
-      "thumb": "",
-      "cards": [
-        {
-          "id": "nb_1784703300149c0",
-          "title": "Chapter 1",
-          "text": "Jeff {{Boggins}} (8:54 A.M.)\nHi, {{Sylvia}}. I've got a {{question}} for you. My {{neighbor}} is {{starting}} a {{business}}, but he needs some {{accounting}} {{advice}}. Would you feel {{comfortable}} {{providing}} a {{professional}} {{referral}} for {{Marisol}} Cruz, the {{accountant}} you {{worked}} with on the Smith {{project}}?\n{{Sylvia}} Hao (8:55 A.M.)\nThat's an easy one! Of {{course}}.\nJeff {{Boggins}} (8:56 A.M.)\nI {{thought}} so. I'm not sure what my {{neighbor}} needs {{exactly}}, but if you could give me Ms. Cruz's {{contact}} {{information}}, I'll pass it along.\n{{Sylvia}} Hao (8:57 A.M.)\nSure. 'll send you a link to her Web site. She was {{extremely}} {{knowledgeable}} and a real {{pleasure}} to work with. I'm sure she would be glad to talk to your {{neighbor}}.\nJeff {{Boggins}} (8:58 A.M.)\nI knew I could count on you. {{Thanks}}.",
-          "myNote": ""
-        }
-      ],
-      "marks": {
-        "Boggins": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Sylvia": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "question": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "neighbor": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "starting": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "business": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "accounting": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "advice": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "comfortable": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "providing": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "professional": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "referral": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Marisol": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "accountant": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "worked": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "project": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "course": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "thought": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "exactly": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "contact": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "information": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "extremely": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "knowledgeable": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "pleasure": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Thanks": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Jeff": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "needs": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "some": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Would": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "feel": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Cruz": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Smith": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "easy": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "sure": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "what": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "could": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "give": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "pass": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "along": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Sure": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "send": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "link": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "site": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "real": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "work": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "would": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "glad": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "talk": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "knew": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "count": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        }
-      }
-    },
-    {
-      "id": "nb_1784703233898",
-      "name": "Digital Tech Conference",
-      "date": "2026-07-22",
-      "thumb": "",
-      "cards": [
-        {
-          "id": "nb_1784703233898c0",
-          "title": "Chapter 1",
-          "text": "May 15 and 16, 10:00 A.M.-5:00 P.M.\n{{Exhibitor}} {{Information}}\nEach {{exhibitor}} at the {{Digital}} Tech {{Conference}} will be {{allowed}} one booth space {{measuring}} 3 {{meters}} by 4 {{meters}} that {{includes}} two {{tables}}, four {{chairs}}, and {{access}} to {{electrical}} {{outlets}}. {{Exhibitors}} are {{responsible}} for {{supplying}} all other {{materials}} they may need.\n{{Conference}} {{organizers}} will {{assign}} booth {{locations}}. The {{information}} will be e-{{mailed}} to {{exhibitors}} one week before the {{conference}}. A map of all {{exhibitors}} and their booth {{locations}} will be {{available}} on the {{conference}} Web site and at the {{conference}} {{itself}}.\n{{Exhibitors}} may begin {{setting}} up their {{booths}} at 8:00 A.M. on May 15. All {{materials}} {{should}} be {{removed}} from {{booths}} by 7:00 P.M. on May 16.\n{{During}} the {{conference}}, {{exhibitors}} must have at least one {{representative}} {{present}} at their {{booths}} {{at all times}}.",
-          "myNote": ""
-        }
-      ],
-      "marks": {
-        "at all times": {
-          "pos": "phr.",
-          "tw": "隨時；任何時候",
-          "tip": "",
-          "color": "c2"
-        },
-        "Exhibitor": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Information": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "exhibitor": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Digital": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Conference": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "allowed": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "measuring": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "meters": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "includes": {
-          "pos": "v.",
-          "tw": "包含",
-          "tip": "",
-          "color": "c1"
-        },
-        "tables": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "chairs": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "access": {
-          "pos": "n./v.",
-          "tw": "權限；存取；進入",
-          "tip": "",
-          "color": "c1"
-        },
-        "electrical": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "outlets": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Exhibitors": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "responsible": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "supplying": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "materials": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "organizers": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "assign": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "locations": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "information": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "mailed": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "exhibitors": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "conference": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "available": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "itself": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "setting": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "booths": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "should": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "removed": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "During": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "representative": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "present": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Each": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Tech": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "booth": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "space": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "four": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "other": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "need": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "week": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "site": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "begin": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "least": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        }
-      }
-    },
-    {
-      "id": "nb_1784703058606",
-      "name": "Lanolin Farm-About Us",
-      "date": "2026-07-22",
-      "thumb": "",
-      "cards": [
-        {
-          "id": "nb_1784703058606c0",
-          "title": "Chapter 1",
-          "text": "{{Lanolin}} Farm is home to two {{different}} {{breeds}} of sheep, each known for its {{unique}} {{characteristics}}. The first breed grows short, white wool that feels very soft. The other breed grows gray wool that is long and {{coarse}}. We shear the sheep twice a year to {{collect}} the wool.\nWool can be {{purchased}} from our farm store {{either}} as raw {{material}} or as yarn that we {{process}} on-site. The yarn can be used to make {{sweaters}}, hats, or {{blankets}}. We offer {{several}} {{colors}} of dyed wool as well as {{undyed}} wool that {{retains}} its {{natural}} color.",
-          "myNote": ""
-        }
-      ],
-      "marks": {
-        "Lanolin": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "different": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "breeds": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "unique": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "characteristics": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "coarse": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "collect": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "purchased": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "either": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "material": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "process": {
-          "pos": "n.",
-          "tw": "流程；程序",
-          "tip": "",
-          "color": "c1"
-        },
-        "sweaters": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "blankets": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "several": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "colors": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "undyed": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "retains": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "natural": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Farm": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "home": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "sheep": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "each": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "known": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "first": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "breed": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "grows": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "short": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "white": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "wool": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "feels": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "very": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "soft": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "other": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "gray": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "long": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "shear": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "twice": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "year": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "Wool": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "farm": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "store": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "yarn": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "on-site": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "used": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "make": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "hats": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "offer": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "dyed": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "well": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        },
-        "color": {
-          "pos": "",
-          "tw": "（未建字義，請自行補充）",
-          "tip": "",
-          "color": "c1"
-        }
-      }
-    },
-    {
       "id": "nb_1784314678084",
       "name": "1",
       "date": "2026-07-17",
@@ -1710,9 +40,10 @@
         },
         "Enhancing": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
+          "tw": "增強",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "enhanc"
         },
         "Collaboration": {
           "pos": "",
@@ -1794,9 +125,10 @@
         },
         "enhanced": {
           "pos": "",
-          "tw": "（未建字義，請自行補充）",
+          "tw": "增強",
           "tip": "",
-          "color": "c1"
+          "color": "c1",
+          "lemma": "enhanc"
         },
         "collaboration": {
           "pos": "",
@@ -1935,11 +267,10 @@
           "color": "c1"
         },
         "agenda": {
-          "pos": "noun",
-          "tw": "議程, 行程摘要, 日程",
-          "tip": "A temporally organized plan for matters to be attended to.",
-          "color": "c1",
-          "lemma": "agenda"
+          "pos": "",
+          "tw": "（未建字義，請自行補充）",
+          "tip": "",
+          "color": "c1"
         },
         "afternoon": {
           "pos": "",
@@ -13491,7 +11822,7 @@
     }
   ],
   "dark": false,
-  "updatedAt": 1784703554439,
+  "updatedAt": 1785024882135,
   "learn": {
     "github": {
       "word": "github",
@@ -13646,8 +11977,8 @@
       "strength": 0,
       "captured": true,
       "known": false,
-      "dueAt": 1813127724759,
-      "updatedAt": 1784702124759,
+      "dueAt": 1807973670834,
+      "updatedAt": 1784300070834,
       "variants": {
         "bulleted": 7
       },
@@ -13657,7 +11988,7 @@
       "loading": false,
       "firstSeenAt": 1783352586481,
       "lastSeenAt": 1783352586481,
-      "lastReviewedAt": 1784702124759,
+      "lastReviewedAt": 1784300070834,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 0,
@@ -13841,18 +12172,9 @@
           "clicks": 0,
           "strength": 0,
           "intervalDays": 228
-        },
-        {
-          "ts": 1784702124759,
-          "day": "2026-07-22",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 0,
-          "strength": 0,
-          "intervalDays": 274
         }
       ],
-      "intervalDays": 329,
+      "intervalDays": 274,
       "ease": 1.3,
       "lapses": 0,
       "status": "learning",
@@ -13983,8 +12305,8 @@
       "strength": 3,
       "captured": true,
       "known": false,
-      "dueAt": 1784788563808,
-      "updatedAt": 1784702163808,
+      "dueAt": 1784386460541,
+      "updatedAt": 1784300060541,
       "variants": {
         "validated": 1
       },
@@ -13994,7 +12316,7 @@
       "loading": false,
       "firstSeenAt": 1783352614199,
       "lastSeenAt": 1783352614199,
-      "lastReviewedAt": 1784702163808,
+      "lastReviewedAt": 1784300060541,
       "lifetimeClicks": 0,
       "sessionClicks": 0,
       "maxClickStreak": 3,
@@ -14119,15 +12441,6 @@
         {
           "ts": 1784300060541,
           "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 3,
-          "strength": 3,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784702163808,
-          "day": "2026-07-22",
           "grade": "hard",
           "source": "hard-button",
           "clicks": 3,
@@ -14496,8 +12809,8 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "dueAt": 1784788484752,
-      "updatedAt": 1784702084752,
+      "dueAt": 1784386456894,
+      "updatedAt": 1784300056894,
       "variants": {
         "spontaneously": 29
       },
@@ -14507,7 +12820,7 @@
       "loading": false,
       "firstSeenAt": 1783352941134,
       "lastSeenAt": 1783707229004,
-      "lastReviewedAt": 1784702084752,
+      "lastReviewedAt": 1784300056894,
       "lifetimeClicks": 22,
       "sessionClicks": 22,
       "maxClickStreak": 32,
@@ -14641,15 +12954,6 @@
         {
           "ts": 1784300056894,
           "day": "2026-07-17",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 33,
-          "strength": 10,
-          "intervalDays": 1
-        },
-        {
-          "ts": 1784702084751,
-          "day": "2026-07-22",
           "grade": "hard",
           "source": "hard-button",
           "clicks": 33,
@@ -16991,7 +15295,7 @@
       "lemma": "immerse",
       "firstSeenAt": 1783731376881,
       "lastSeenAt": 1783818065060,
-      "lastReviewedAt": 1784702078341,
+      "lastReviewedAt": 1784300050851,
       "lifetimeClicks": 25,
       "sessionClicks": 25,
       "maxClickStreak": 20,
@@ -17121,18 +15425,9 @@
           "clicks": 34,
           "strength": 10,
           "intervalDays": 1
-        },
-        {
-          "ts": 1784702078341,
-          "day": "2026-07-22",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 34,
-          "strength": 10,
-          "intervalDays": 1
         }
       ],
-      "dueAt": 1784788478341,
+      "dueAt": 1784386450851,
       "intervalDays": 1,
       "ease": 1.3,
       "lapses": 0,
@@ -17148,7 +15443,7 @@
       "strength": 10,
       "captured": true,
       "known": false,
-      "updatedAt": 1784702078341,
+      "updatedAt": 1784300050851,
       "loading": false,
       "tw": "深度體驗",
       "engine": "MyMemory",
@@ -17162,9 +15457,9 @@
       ],
       "definitionSource": "dictionaryapi.dev",
       "geminiPos": "v.",
-      "geminiTw": "使沉浸；使陷入",
+      "geminiTw": "沉浸；使陷入",
       "geminiEx": "She immersed herself in her studies to prepare for the final exam.",
-      "geminiTwEx": "她埋首於學業中，為期末考做準備。",
+      "geminiTwEx": "為了準備期末考，她全神貫注地投入在學業中。",
       "geminiPhonetic": "",
       "geminiSynonyms": [],
       "geminiDerivatives": [],
@@ -17172,12 +15467,12 @@
       "geminiLevel": "",
       "geminiTip": "",
       "geminiSource": "gemini",
-      "geminiUpdatedAt": 1784702150049,
+      "geminiUpdatedAt": 1784040725721,
       "geminiRaw": {
         "pos": "v.",
-        "tw": "使沉浸；使陷入",
+        "tw": "沉浸；使陷入",
         "ex": "She immersed herself in her studies to prepare for the final exam.",
-        "tw_ex": "她埋首於學業中，為期末考做準備。"
+        "tw_ex": "為了準備期末考，她全神貫注地投入在學業中。"
       }
     },
     "expand": {
@@ -17245,7 +15540,7 @@
       "lemma": "perspective",
       "firstSeenAt": 1783799685949,
       "lastSeenAt": 1783817450894,
-      "lastReviewedAt": 1784702096707,
+      "lastReviewedAt": 1784300058711,
       "lifetimeClicks": 11,
       "sessionClicks": 11,
       "maxClickStreak": 5,
@@ -17384,18 +15679,9 @@
           "clicks": 8,
           "strength": 6,
           "intervalDays": 1
-        },
-        {
-          "ts": 1784702096707,
-          "day": "2026-07-22",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 8,
-          "strength": 6,
-          "intervalDays": 1
         }
       ],
-      "dueAt": 1784788496707,
+      "dueAt": 1784386458711,
       "intervalDays": 1,
       "ease": 1.3,
       "lapses": 0,
@@ -17411,7 +15697,7 @@
       "strength": 6,
       "captured": true,
       "known": false,
-      "updatedAt": 1784702096707,
+      "updatedAt": 1784300058711,
       "loading": false,
       "tw": "看法",
       "engine": "MyMemory",
@@ -18253,102 +16539,39 @@
       "translationSource": "Google Translate",
       "tip": ""
     },
-    "agenda": {
-      "word": "agenda",
-      "lemma": "agenda",
-      "firstSeenAt": 1784702265578,
-      "lastSeenAt": 1784702265578,
-      "lastReviewedAt": 1784702356060,
-      "lifetimeClicks": 1,
-      "sessionClicks": 1,
-      "maxClickStreak": 1,
-      "reviewHistory": [
-        {
-          "ts": 1784702356060,
-          "day": "2026-07-22",
-          "grade": "hard",
-          "source": "hard-button",
-          "clicks": 1,
-          "strength": 1,
-          "intervalDays": 0
-        }
-      ],
-      "dueAt": 1784788756060,
-      "intervalDays": 1,
-      "ease": 2.4,
-      "lapses": 0,
-      "status": "learning",
-      "totalResets": 0,
-      "lastSurface": "agenda",
-      "lastForm": "base form",
-      "variants": {
-        "agenda": 2
-      },
-      "clicks": 1,
-      "strength": 1,
-      "captured": true,
-      "known": false,
-      "updatedAt": 1784702356060,
-      "loading": false,
-      "tw": "議程, 行程摘要, 日程",
-      "definitions": [
-        {
-          "pos": "noun",
-          "def": "A temporally organized plan for matters to be attended to.",
-          "example": null
-        },
-        {
-          "pos": "noun",
-          "def": "A list of matters to be taken up (as at a meeting).",
-          "example": null
-        },
-        {
-          "pos": "noun",
-          "def": "A notebook used to organize and maintain such plans or lists, an agenda book, an agenda planner.",
-          "example": null
-        },
-        {
-          "pos": "noun",
-          "def": "A task which ought to be done.",
-          "example": null
-        }
-      ],
-      "definitionSource": "dictionaryapi.dev",
-      "engine": "MyMemory",
-      "pos": "noun",
-      "tip": "A temporally organized plan for matters to be attended to."
-    },
-    "bre": {
-      "word": "bre",
-      "lemma": "bre",
-      "firstSeenAt": 1784703553191,
-      "lastSeenAt": 1784703553191,
+    "enhanc": {
+      "word": "enhanc",
+      "lemma": "enhanc",
+      "firstSeenAt": 1785024877346,
+      "lastSeenAt": 1785024877346,
       "lastReviewedAt": 0,
       "lifetimeClicks": 1,
       "sessionClicks": 1,
       "maxClickStreak": 0,
       "reviewHistory": [],
-      "dueAt": 1784707153213,
+      "dueAt": 1785028477375,
       "intervalDays": 0,
       "ease": 2.5,
       "lapses": 0,
       "status": "new",
       "totalResets": 0,
-      "lastSurface": "breed",
-      "lastForm": "-ed / past participle",
+      "lastSurface": "Enhancing",
+      "lastForm": "base form",
       "variants": {
-        "breed": 1
+        "enhanc": 1,
+        "Enhancing": 1
       },
       "clicks": 1,
       "strength": 1,
       "captured": true,
       "known": false,
-      "updatedAt": 1784703554422,
+      "updatedAt": 1785024882122,
       "loading": false,
-      "tw": "BRE",
+      "tw": "enhanceanc",
+      "translationSource": "Google Translate",
+      "tip": "Auto translated by MyMemory",
       "engine": "MyMemory",
-      "pos": "",
-      "tip": "Auto translated by MyMemory"
+      "pos": ""
     }
   },
   "aiChats": {
